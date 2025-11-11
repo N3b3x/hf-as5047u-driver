@@ -1,3 +1,11 @@
+---
+layout: default
+title: "HardFOC AS5047U Driver"
+description: "Portable C++20 driver for the AS5047U magnetic encoder from ams with SPI interface, CRC protection, DAEC, and DFS™"
+nav_order: 1
+permalink: /
+---
+
 # HF-AS5047U
 Hardware Agnostic AS5047U library - as used in the HardFOC-V1 controller
 

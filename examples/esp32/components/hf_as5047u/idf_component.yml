@@ -1,3 +1,4 @@
+name: hf-as5047u-driver
 version: "1.0.0"
 description: Hardware-agnostic AS5047U driver component
 maintainers:
@@ -10,5 +11,5 @@ repository: https://github.com/N3b3x/hf-as5047u-driver
 issues: https://github.com/N3b3x/hf-as5047u-driver/issues
 include_dirs:
   - ../../../src
-  - ../../../src/include
+  - ../../../inc
 ## Optional dependencies etc. But not required.
