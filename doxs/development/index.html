@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HF-AS5047U Driver: Main Page</title>
+<title>HF-AS5047U Driver: HF-AS5047U Driver</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,10 +92,273 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">HF-AS5047U Driver Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">HF-AS5047U Driver </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><h2><a class="anchor" id="autotoc_md0"></a>
+} md_README</h2>
+<p>layout: default title: "HardFOC AS5047U Driver" description: "Portable C++20 driver for the AS5047U magnetic encoder from ams with SPI interface, CRC protection, DAEC, and DFS™" nav_order: 1 permalink: / </p>
+<h2><a class="anchor" id="autotoc_md1"></a>
+has_children: true</h2>
+<h1><a class="anchor" id="autotoc_md2"></a>
+HF-AS5047U</h1>
+<p>Hardware Agnostic <a class="el" href="classAS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> library - as used in the HardFOC-V1 controller</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+AS5047U – C++ Driver Library</h1>
+<p><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3" style="pointer-events: none;" class="inline"/> <a href="https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml"><img src="https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main" alt="CI Build" style="pointer-events: none;" class="inline"/></a></p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+📦 Overview</h2>
+<blockquote class="doxtable">
+<p>&zwj;<b>📖 <a href="https://n3b3x.github.io/hf-as5047u-driver/">📚🌐 Live Complete Documentation</a></b> - Interactive guides, examples, and step-by-step tutorials </p>
+</blockquote>
+<p><b>HF-AS5047U</b> is a portable C++20 driver for the <b><a class="el" href="classAS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a></b> magnetic encoder from ams. It delivers fast 14‑bit absolute angle readings over SPI, optional CRC protection and advanced features like Dynamic Angle Error Compensation (DAEC) and an adaptive Dynamic Filter System (DFS™). The sensor can also output incremental (A/B/I) and 3‑phase commutation (UVW) signals or a PWM encoded angle, making it a drop‑in replacement for optical encoders in high-performance motor control and robotics. </p>
+<h3><a class="anchor" id="autotoc_md5"></a>
+✨ Key Features</h3>
+<ul>
+<li>🧩 Cross-platform <code>spiBus</code> interface</li>
+<li>📐 Modern C++20 API</li>
+<li>📝 Examples for Arduino, ESP32 and STM32</li>
+<li>🧪 Unit tests for reliability</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+🚀 Sensor Highlights</h2>
+<ul>
+<li><b>14‑bit absolute angle</b> with optional CRC check</li>
+<li><b>DAEC</b> for low‑latency angle correction</li>
+<li><b>DFS™</b> adaptive noise filtering</li>
+<li><b>Stray‑field immunity</b> for robust operation</li>
+<li><b>Incremental ABI</b> outputs up to 4096 PPR</li>
+<li><b>UVW commutation</b> with programmable pole pairs</li>
+<li><b>PWM output</b> option</li>
+<li><b>Diagnostics</b> for AGC, magnitude and error flags</li>
+<li><b>OTP memory</b> for permanent configuration</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md8"></a>
+🏗️ Library Architecture</h2>
+<p>This library exposes a single <code><a class="el" href="classAS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a></code> class that wraps all sensor functionality in a clear, type‑safe API. Key components include:</p>
+<ul>
+<li>**<code><a class="el" href="classAS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a></code> class** – high level interface</li>
+<li><b>Register definitions</b> in <code><a class="el" href="AS5047U__REGISTERS_8hpp.html" title="Register definitions for the AS5047U Rotary Position Sensor.">AS5047U_REGISTERS.hpp</a></code></li>
+<li>**<code>FrameFormat</code> enum** to select 16/24/32‑bit SPI frames</li>
+<li>**<code>spiBus</code> interface** – abstract SPI layer for platform independence</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md9"></a>
+SPI Bus Abstraction</h3>
+<p>Applications implement the virtual <code>spiBus</code> interface and plug it into the driver:</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>spiBus {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <span class="keyword">virtual</span> ~spiBus() = <span class="keywordflow">default</span>;</div>
+<div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">void</span> transfer(<span class="keyword">const</span> uint8_t *tx, uint8_t *rx, <span class="keywordtype">size_t</span> len) = 0;</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>The driver itself contains no hardware specifics – simply implement <code>transfer()</code> for your platform.</p>
+<h2><a class="anchor" id="autotoc_md10"></a>
+🔌 Platform Integration</h2>
+<h3><a class="anchor" id="autotoc_md11"></a>
+ESP-IDF</h3>
+<div class="fragment"><div class="line"><span class="keyword">class </span>ESPBus : <span class="keyword">public</span> <a class="code hl_class" href="classAS5047U_1_1spiBus.html">AS5047U::spiBus</a> {</div>
+<div class="line">    spi_device_handle_t dev;</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    ESPBus(spi_device_handle_t handle) : dev(handle) {}</div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code hl_function" href="classAS5047U_1_1spiBus.html#a7c09daee18f26ed1c2569d49bc2b9a0d">transfer</a>(<span class="keyword">const</span> uint8_t *tx, uint8_t *rx, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
+<div class="line">        spi_transaction_t t = {};</div>
+<div class="line">        t.tx_buffer = tx;</div>
+<div class="line">        t.rx_buffer = rx;</div>
+<div class="line">        t.length = len * 8;</div>
+<div class="line">        spi_device_transmit(dev, &amp;t);</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+<div class="ttc" id="aclassAS5047U_1_1spiBus_html"><div class="ttname"><a href="classAS5047U_1_1spiBus.html">AS5047U::spiBus</a></div><div class="ttdoc">Abstract SPI bus interface that hardware-specific implementations must provide.</div><div class="ttdef"><b>Definition</b> AS5047U.hpp:65</div></div>
+<div class="ttc" id="aclassAS5047U_1_1spiBus_html_a7c09daee18f26ed1c2569d49bc2b9a0d"><div class="ttname"><a href="classAS5047U_1_1spiBus.html#a7c09daee18f26ed1c2569d49bc2b9a0d">AS5047U::spiBus::transfer</a></div><div class="ttdeci">virtual void transfer(const uint8_t *tx, uint8_t *rx, std::size_t len)=0</div><div class="ttdoc">Perform a full-duplex SPI data transfer.</div></div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md12"></a>
+STM32 HAL</h3>
+<div class="fragment"><div class="line"><span class="keyword">class </span>STM32Bus : <span class="keyword">public</span> <a class="code hl_class" href="classAS5047U_1_1spiBus.html">AS5047U::spiBus</a> {</div>
+<div class="line">    SPI_HandleTypeDef *hspi;</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    STM32Bus(SPI_HandleTypeDef *handle) : hspi(handle) {}</div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code hl_function" href="classAS5047U_1_1spiBus.html#a7c09daee18f26ed1c2569d49bc2b9a0d">transfer</a>(<span class="keyword">const</span> uint8_t *tx, uint8_t *rx, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
+<div class="line">        HAL_SPI_TransmitReceive(hspi, (uint8_t*)tx, rx, len, HAL_MAX_DELAY);</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md13"></a>
+Arduino</h3>
+<div class="fragment"><div class="line"><span class="keyword">class </span>ArduinoBus : <span class="keyword">public</span> <a class="code hl_class" href="classAS5047U_1_1spiBus.html">AS5047U::spiBus</a> {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code hl_function" href="classAS5047U_1_1spiBus.html#a7c09daee18f26ed1c2569d49bc2b9a0d">transfer</a>(<span class="keyword">const</span> uint8_t *tx, uint8_t *rx, <span class="keywordtype">size_t</span> len)<span class="keyword"> override </span>{</div>
+<div class="line">        SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE1));</div>
+<div class="line">        digitalWrite(CS_PIN, LOW);</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; len; ++i) {</div>
+<div class="line">            uint8_t out = tx ? tx[i] : 0;</div>
+<div class="line">            uint8_t in  = SPI.transfer(out);</div>
+<div class="line">            <span class="keywordflow">if</span> (rx) rx[i] = in;</div>
+<div class="line">        }</div>
+<div class="line">        digitalWrite(CS_PIN, HIGH);</div>
+<div class="line">        SPI.endTransaction();</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+</div><!-- fragment --><hr  />
+<h2><a class="anchor" id="autotoc_md15"></a>
+📂 Project Structure</h2>
+<div class="fragment"><div class="line">├── Datasheet/               # AS5047U datasheet PDF</div>
+<div class="line">├── examples/                # Wiring and usage examples</div>
+<div class="line">├── src/                     # Library sources</div>
+<div class="line">│   ├── AS5047U.hpp          # Driver API</div>
+<div class="line">│   ├── AS5047U.cpp          # Implementation</div>
+<div class="line">│   └── AS5047U_REGISTERS.hpp# Register definitions</div>
+<div class="line">├── include/                 # Public headers</div>
+<div class="line">│   └── AS5047U_config.hpp   # Default build configuration</div>
+<div class="line">├── tests/                   # Mock-based unit tests</div>
+<div class="line">├── config.mk                # Makefile defaults</div>
+<div class="line">└── README.md                # This document</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
+📖 Documentation</h2>
+<p>Detailed step‑by‑step guides (with example command output) are available in the docs folder. Start with the Quick Start Workflow if you're new.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md18"></a>
+🔧 Installation</h2>
+<ul>
+<li>📥 Copy <code>AS5047U.hpp</code>, <code>AS5047U.cpp</code> and <code><a class="el" href="AS5047U__REGISTERS_8hpp.html" title="Register definitions for the AS5047U Rotary Position Sensor.">AS5047U_REGISTERS.hpp</a></code> into your project</li>
+<li>🔌 Implement the <code>spiBus</code> interface for your platform</li>
+<li>➕ <code>#include "AS5047U.hpp"</code></li>
+<li>🛠️ Compile with a <b>C++20</b> compiler</li>
+<li>🏗️ Optionally build with the provided <code>Makefile</code><ul>
+<li>Override compiler flags on the command line</li>
+<li>Configure default options via <code>Kconfig</code> or <code><a class="el" href="AS5047U__config_8hpp.html">AS5047U_config.hpp</a></code></li>
+</ul>
+</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md20"></a>
+🧠 Quick Start</h2>
+<div class="fragment"><div class="line"><span class="comment">// Instantiate the driver with your platform&#39;s SPI bus</span></div>
+<div class="line"><a class="code hl_class" href="classAS5047U.html">AS5047U</a> encoder(bus, <a class="code hl_enumvalue" href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5">FrameFormat::SPI_24</a>); <span class="comment">// driver using 24-bit frames</span></div>
+<div class="line"> </div>
+<div class="line">uint16_t angle = encoder.getAngle();        <span class="comment">// compensated angle</span></div>
+<div class="line">uint16_t rawAngle = encoder.getRawAngle();  <span class="comment">// raw angle without DAEC</span></div>
+<div class="line">int16_t vel = encoder.getVelocity();        <span class="comment">// velocity in sensor units</span></div>
+<div class="line"><span class="keywordtype">double</span> vel_dps = encoder.getVelocityDegPerSec(); <span class="comment">// velocity in deg/s</span></div>
+<div class="line"> </div>
+<div class="line">uint8_t agc = encoder.getAGC();             <span class="comment">// automatic gain control</span></div>
+<div class="line">uint16_t mag = encoder.getMagnitude();      <span class="comment">// magnetic magnitude</span></div>
+<div class="line">uint16_t errors = encoder.getErrorFlags();  <span class="comment">// current error flags</span></div>
+<div class="ttc" id="aAS5047U__types_8hpp_html_a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5"><div class="ttname"><a href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5">FrameFormat::SPI_24</a></div><div class="ttdeci">@ SPI_24</div></div>
+<div class="ttc" id="aclassAS5047U_html"><div class="ttname"><a href="classAS5047U.html">AS5047U</a></div><div class="ttdoc">AS5047U magnetic rotary sensor driver class.</div><div class="ttdef"><b>Definition</b> AS5047U.hpp:60</div></div>
+</div><!-- fragment --><p>Configure outputs: </p><div class="fragment"><div class="line">encoder.setZeroPosition(8192);            <span class="comment">// set zero electrical angle</span></div>
+<div class="line">encoder.setDirection(<span class="keyword">false</span>);              <span class="comment">// counter-clockwise = positive</span></div>
+<div class="line">encoder.setABIResolution(12);             <span class="comment">// 12-bit incremental output</span></div>
+<div class="line">encoder.setUVWPolePairs(5);               <span class="comment">// 5 electrical pole pairs</span></div>
+<div class="line">encoder.configureInterface(<span class="keyword">true</span>, <span class="keyword">false</span>, <span class="keyword">true</span>); <span class="comment">// enable ABI + PWM</span></div>
+</div><!-- fragment --><p> Perform OTP programming: </p><div class="fragment"><div class="line"><span class="keywordtype">bool</span> ok = encoder.programOTP();  <span class="comment">// write settings to OTP</span></div>
+</div><!-- fragment --><p>Dump diagnostics: </p><div class="fragment"><div class="line">std::string status = encoder.dumpDiagnostics(); <span class="comment">// formatted status text</span></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md21"></a>
+⚙️ Configuration</h2>
+<p>Projects that use a Kconfig-based build system can include the provided <code>Kconfig</code> file. It exposes options such as the default SPI frame format and CRC retry count and also allows enabling the unit tests. When not using Kconfig, you can edit <code>include/AS5047U_config.hpp</code> to set <code><a class="el" href="namespaceAS5047U__CFG.html#a169d05b4070af344342ea2d1d314d933">AS5047U_CFG::DEFAULT_FRAME_FORMAT</a></code> and <code><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></code>.</p>
+<h2><a class="anchor" id="autotoc_md22"></a>
+📟 API Summary</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Function   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="classAS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U(spiBus &amp;bus, FrameFormat fmt)</a>   </td><td class="markdownTableBodyNone">Constructor (SPI interface and frame format)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">void setFrameFormat(FrameFormat fmt)   </td><td class="markdownTableBodyNone">Set SPI frame format (16/24/32-bit mode)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">uint16_t getAngle(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Read 14-bit compensated absolute angle    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">uint16_t getRawAngle(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Read 14-bit raw absolute angle    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">int16_t getVelocity(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Read signed 14-bit velocity (LSB units)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">double getVelocityDegPerSec(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Velocity in degrees/sec    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">double getVelocityRadPerSec(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Velocity in radians/sec    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">double getVelocityRPM(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Velocity in revolutions per minute (RPM)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">uint8_t getAGC(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Read AGC (0–255) value    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">uint16_t getMagnitude(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Read magnetic field magnitude (0–16383)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">uint16_t getErrorFlags(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Read and clear error/status flags    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">void dumpStatus() const   </td><td class="markdownTableBodyNone">Print formatted status/diagnostics    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">uint16_t getZeroPosition(uint8_t retries=0) const   </td><td class="markdownTableBodyNone">Get current zero offset    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">bool setZeroPosition(uint16_t angle, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set new zero offset    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">bool setDirection(bool clockwise, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set rotation direction (CW or CCW)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">bool setABIResolution(uint8_t bits, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set ABI output resolution (10–14 bits)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">bool setUVWPolePairs(uint8_t pairs, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set UVW pole pairs (1–7)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">bool setIndexPulseLength(uint8_t lsbLen, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set ABI index pulse width    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">bool configureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Enable/disable ABI, UVW, PWM    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">bool setDynamicAngleCompensation(bool enable, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Enable/disable DAEC    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">bool setAdaptiveFilter(bool enable, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Enable/disable adaptive filter (DFS)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">bool setFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set DFS filter parameters    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">bool set150CTemperatureMode(bool enable, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Enable 150°C (high-temp mode)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">bool programOTP()   </td><td class="markdownTableBodyNone">Program current settings into OTP (one-time)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">void setPad(uint8_t pad)   </td><td class="markdownTableBodyNone">Set pad byte for 32-bit SPI frames    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">bool setHysteresis(SETTINGS3::Hysteresis hys, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set incremental hysteresis level    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">SETTINGS3::Hysteresis getHysteresis() const   </td><td class="markdownTableBodyNone">Get current hysteresis setting    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">bool setAngleOutputSource(SETTINGS2::AngleOutputSource src, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Select angle output source (comp/raw)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">SETTINGS2::AngleOutputSource getAngleOutputSource() const   </td><td class="markdownTableBodyNone">Get selected angle output source    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="structAS5047U__REG_1_1DIA.html" title="DIA – Diagnostic register (0x3FF5, read-only)">AS5047U_REG::DIA</a> getDiagnostics() const   </td><td class="markdownTableBodyNone">Read full diagnostic register (DIA)   </td></tr>
+</table>
+<hr  />
+<h2><a class="anchor" id="autotoc_md23"></a>
+🧪 Unit Testing</h2>
+<p>Run the provided tests on a desktop system with:</p>
+<div class="fragment"><div class="line">g++ -std=c++20 src/AS5047U.cpp tests/test_as5047u.cpp -o test &amp;&amp; ./test</div>
+</div><!-- fragment --><p>The expected output is:</p>
+<div class="fragment"><div class="line">All tests passed</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md24"></a>
+C++ Features and Requirements</h2>
+<p>This library requires a <b>C++20 (or later)</b> compiler. It uses:</p><ul>
+<li><code>enum class</code></li>
+<li><code>constexpr</code></li>
+<li><code>std::bitset</code></li>
+<li><code>[[nodiscard]]</code></li>
+<li>Modern structured typing</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md25"></a>
+License</h2>
+<p><b>GNU General Public License v3.0</b> You may use, modify, and redistribute this software under GPLv3.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md27"></a>
+🤝 Contributing</h2>
+<p>Pull requests and feature ideas are welcome!</p><ol type="1">
+<li>Fork this repository</li>
+<li>Create a feature branch</li>
+<li>Commit your changes</li>
+<li>Open a PR</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md28"></a>
+🙌 Acknowledgments</h2>
+<p>Developed for the HardFOC-V1 controller.</p><ul>
+<li>Developed by <b>Nebiyu Tadesse</b>, 2025.</li>
+<li>Based on the official <a href="https://ams-osram.com/products/sensor-solutions/position-sensors/ams-as5047u-high-resolution-rotary-position-sensor">AS5047U Datasheet</a> by ASM ASRAM.</li>
+<li>Inspired by embedded needs for a reliable, testable <a class="el" href="classAS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> library.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md29"></a>
+💬 Support</h2>
+<p>For questions, bug reports, or feature requests, please open an <a href="https://github.com/n3b3x/hf-as5047u-driver/issues">issue</a> or contact the maintainer directly. </p>
+</div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"/>
 </div><!-- contents -->
 </div><!-- doc-content -->
