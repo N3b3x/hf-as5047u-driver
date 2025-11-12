@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['as5047u_20esp32_20c6_20examples_0',['AS5047U ESP32-C6 Examples',['../md_examples_2esp32_2README.html',1,'']]]
+  ['as5047u_20driver_0',['HF-AS5047U Driver',['../index.html',1,'']]]
 ];

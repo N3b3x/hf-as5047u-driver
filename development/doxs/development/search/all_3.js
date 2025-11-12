@@ -14,7 +14,10 @@ var searchData=
   ['dir_11',['DIR',['../structAS5047U__REG_1_1SETTINGS2.html#a19d36583a882a42466bfe9b0a72ed7f9',1,'AS5047U_REG::SETTINGS2']]],
   ['disable_12',['DISABLE',['../structAS5047U__REG_1_1DISABLE.html',1,'AS5047U_REG']]],
   ['disabled_13',['Disabled',['../structAS5047U__REG_1_1DISABLE.html#a4246c7cfe013d2fda89d131267aab6deab9f5c797ebbf55adccdd8539a65a0241',1,'AS5047U_REG::DISABLE::Disabled'],['../structAS5047U__REG_1_1SETTINGS2.html#ab066f94f4ae8fcce3710aaefde0ee3a4ab9f5c797ebbf55adccdd8539a65a0241',1,'AS5047U_REG::SETTINGS2::Disabled'],['../structAS5047U__REG_1_1SETTINGS2.html#ad5a8628f490aa8772e556985e13981f1ab9f5c797ebbf55adccdd8539a65a0241',1,'AS5047U_REG::SETTINGS2::Disabled'],['../structAS5047U__REG_1_1ECC.html#a47951071e444d2e8a807d887bce525e6ab9f5c797ebbf55adccdd8539a65a0241',1,'AS5047U_REG::ECC::Disabled']]],
-  ['driverintegrationtest_2ecpp_14',['DriverIntegrationTest.cpp',['../DriverIntegrationTest_8cpp.html',1,'']]],
-  ['dumpstatus_15',['dumpStatus',['../classAS5047U.html#ab4fa5a6e248b49bf053b35d09f5d62b5',1,'AS5047U']]],
-  ['dynamiccompensation_16',['DynamicCompensation',['../structAS5047U__REG_1_1SETTINGS2.html#ab066f94f4ae8fcce3710aaefde0ee3a4',1,'AS5047U_REG::SETTINGS2']]]
+  ['documentation_14',['📖 Documentation',['../index.html#autotoc_md16',1,'']]],
+  ['driver_15',['HF-AS5047U Driver',['../index.html',1,'']]],
+  ['driver_20library_16',['AS5047U – C++ Driver Library',['../index.html#autotoc_md3',1,'']]],
+  ['driverintegrationtest_2ecpp_17',['DriverIntegrationTest.cpp',['../DriverIntegrationTest_8cpp.html',1,'']]],
+  ['dumpstatus_18',['dumpStatus',['../classAS5047U.html#ab4fa5a6e248b49bf053b35d09f5d62b5',1,'AS5047U']]],
+  ['dynamiccompensation_19',['DynamicCompensation',['../structAS5047U__REG_1_1SETTINGS2.html#ab066f94f4ae8fcce3710aaefde0ee3a4',1,'AS5047U_REG::SETTINGS2']]]
 ];

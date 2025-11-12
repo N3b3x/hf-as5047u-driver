@@ -24,3 +24,7 @@
   parameter 'retries'
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/AS5047U.hpp:192: warning: The following parameter of AS5047U::setZeroPosition(uint16_t angleLSB, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
   parameter 'retries'
+index:1: warning: expected whitespace after \{ command
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:1: warning: expected whitespace after \{ command
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:133: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/index.md' for \ref command
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:133: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/workflow.md' for \ref command

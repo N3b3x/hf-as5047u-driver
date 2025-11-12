@@ -1,9 +1,4 @@
 var searchData=
 [
-  ['⚙️_20basic_20configuration_0',['⚙️ Basic Configuration',['..//home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/scripts/docs/getting-started/configuration/index.md#autotoc_md756',1,'']]],
-  ['⚙️_20configuration_1',['⚙️ Configuration',['..//home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/scripts/docs/getting-started/installation/index.md#autotoc_md802',1,'']]],
-  ['⚙️_20strong_20configuration_20and_20customization_20strong_2',['⚙️ &lt;strong&gt;Configuration and Customization&lt;/strong&gt;',['..//home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/scripts/docs/advanced/port-detection/index.md#autotoc_md114',1,'']]],
-  ['⚙️_20strong_20configuration_20file_20structure_20strong_3',['⚙️ strong Configuration File Structure strong',['..//home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/scripts/docs/configuration/centralized/index.md#autotoc_md417',1,'⚙️ &lt;strong&gt;Configuration File Structure&lt;/strong&gt;'],['..//home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/scripts/docs/configuration/index.md#autotoc_md501',1,'⚙️ &lt;strong&gt;Configuration File Structure&lt;/strong&gt;']]],
-  ['⚙️_20strong_20configuration_20system_20strong_4',['⚙️ &lt;strong&gt;Configuration System&lt;/strong&gt;',['..//home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/scripts/docs/build-system/index.md#autotoc_md285',1,'']]],
-  ['⚙️_20strong_20environment_20setup_20and_20automation_20strong_5',['⚙️ &lt;strong&gt;Environment Setup and Automation&lt;/strong&gt;',['..//home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/scripts/docs/advanced/utility-scripts/index.md#autotoc_md191',1,'']]]
+  ['📦_20overview_0',['📦 Overview',['../index.html#autotoc_md4',1,'']]]
 ];
