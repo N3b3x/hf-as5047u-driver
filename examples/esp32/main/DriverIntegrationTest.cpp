@@ -49,6 +49,9 @@ static constexpr bool ENABLE_ERROR_HANDLING_TESTS = true;
 // SHARED TEST RESOURCES
 //=============================================================================
 
+// Global test results instance (required by TestFramework.h)
+TestResults g_test_results;
+
 static std::unique_ptr<Esp32As5047uBus> g_bus;
 static std::unique_ptr<AS5047U> g_encoder;
 
