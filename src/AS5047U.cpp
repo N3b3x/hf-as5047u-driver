@@ -381,8 +381,9 @@ uint16_t AS5047U::rawReadRegister(uint16_t address) const {
     // Prepare read command with CRC
     uint16_t crcInput = static_cast<uint16_t>((1 << 14) | (address & 0x3FFF));
     uint8_t crc = computeCRC8(crcInput);
-    const uint8_t txCmd[3] = {static_cast<uint8_t>(((address >> 8) & 0x3F) | 0x40), // bit6=1 for read
-                               static_cast<uint8_t>(address & 0xFF), crc};
+    const uint8_t txCmd[3] = {
+        static_cast<uint8_t>(((address >> 8) & 0x3F) | 0x40), // bit6=1 for read
+        static_cast<uint8_t>(address & 0xFF), crc};
     uint8_t rxCmd[3];
     spi.transfer(txCmd, rxCmd, 3);
 
@@ -391,7 +392,7 @@ uint16_t AS5047U::rawReadRegister(uint16_t address) const {
     uint16_t nopCrcInput = static_cast<uint16_t>((1 << 14) | (nopAddr & 0x3FFF));
     uint8_t crcNOP = computeCRC8(nopCrcInput);
     const uint8_t txNOP[3] = {static_cast<uint8_t>(((nopAddr >> 8) & 0x3F) | 0x40),
-                               static_cast<uint8_t>(nopAddr & 0xFF), crcNOP};
+                              static_cast<uint8_t>(nopAddr & 0xFF), crcNOP};
     uint8_t rxDataFrame[3];
     spi.transfer(txNOP, rxDataFrame, 3);
 
@@ -408,9 +409,10 @@ uint16_t AS5047U::rawReadRegister(uint16_t address) const {
     // Prepare read command with CRC and pad
     uint16_t crcInput = static_cast<uint16_t>((1 << 14) | (address & 0x3FFF));
     uint8_t crc = computeCRC8(crcInput);
-    const uint8_t txCmd[4] = {padByte,
-                               static_cast<uint8_t>(((address >> 8) & 0x3F) | 0x40), // bit6=1 for read
-                               static_cast<uint8_t>(address & 0xFF), crc};
+    const uint8_t txCmd[4] = {
+        padByte,
+        static_cast<uint8_t>(((address >> 8) & 0x3F) | 0x40), // bit6=1 for read
+        static_cast<uint8_t>(address & 0xFF), crc};
     uint8_t rxCmd[4];
     spi.transfer(txCmd, rxCmd, 4);
 
@@ -419,7 +421,7 @@ uint16_t AS5047U::rawReadRegister(uint16_t address) const {
     uint16_t nopCrcInput = static_cast<uint16_t>((1 << 14) | (nopAddr & 0x3FFF));
     uint8_t crcNOP = computeCRC8(nopCrcInput);
     const uint8_t txNOP[4] = {padByte, static_cast<uint8_t>(((nopAddr >> 8) & 0x3F) | 0x40),
-                               static_cast<uint8_t>(nopAddr & 0xFF), crcNOP};
+                              static_cast<uint8_t>(nopAddr & 0xFF), crcNOP};
     uint8_t rxDataFrame[4];
     spi.transfer(txNOP, rxDataFrame, 4);
 
@@ -476,7 +478,7 @@ bool AS5047U::writeRegister(uint16_t address, uint16_t value, uint8_t retries) c
       uint16_t cmdPayload = static_cast<uint16_t>(address & 0x3FFF);
       uint8_t cmdCrc = computeCRC8(cmdPayload);
       const uint8_t txCmd[3] = {static_cast<uint8_t>((address >> 8) & 0x3F), // bit6=0 for write
-                                 static_cast<uint8_t>(address & 0xFF), cmdCrc};
+                                static_cast<uint8_t>(address & 0xFF), cmdCrc};
       uint8_t rxCmd[3];
       spi.transfer(txCmd, rxCmd, 3);
 
@@ -484,7 +486,7 @@ bool AS5047U::writeRegister(uint16_t address, uint16_t value, uint8_t retries) c
       uint16_t dataPayload = value & 0x3FFF;
       uint8_t dataCrc = computeCRC8(dataPayload);
       const uint8_t txData[3] = {static_cast<uint8_t>((dataPayload >> 8) & 0xFF),
-                                  static_cast<uint8_t>(dataPayload & 0xFF), dataCrc};
+                                 static_cast<uint8_t>(dataPayload & 0xFF), dataCrc};
       uint8_t rxData[3];
       spi.transfer(txData, rxData, 3);
 
@@ -501,8 +503,8 @@ bool AS5047U::writeRegister(uint16_t address, uint16_t value, uint8_t retries) c
       uint16_t cmdPayload = static_cast<uint16_t>(address & 0x3FFF);
       uint8_t cmdCrc = computeCRC8(cmdPayload);
       const uint8_t txCmd[4] = {padByte,
-                                 static_cast<uint8_t>((address >> 8) & 0x3F), // bit6=0 for write
-                                 static_cast<uint8_t>(address & 0xFF), cmdCrc};
+                                static_cast<uint8_t>((address >> 8) & 0x3F), // bit6=0 for write
+                                static_cast<uint8_t>(address & 0xFF), cmdCrc};
       uint8_t rxCmd[4];
       spi.transfer(txCmd, rxCmd, 4);
 
@@ -510,7 +512,7 @@ bool AS5047U::writeRegister(uint16_t address, uint16_t value, uint8_t retries) c
       uint16_t dataPayload = value & 0x3FFF;
       uint8_t dataCrc = computeCRC8(dataPayload);
       const uint8_t txData[4] = {padByte, static_cast<uint8_t>((dataPayload >> 8) & 0xFF),
-                                  static_cast<uint8_t>(dataPayload & 0xFF), dataCrc};
+                                 static_cast<uint8_t>(dataPayload & 0xFF), dataCrc};
       uint8_t rxData[4];
       spi.transfer(txData, rxData, 4);
 
