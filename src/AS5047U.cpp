@@ -1,4 +1,4 @@
-#include "AS5047U.hpp"
+#include "../inc/AS5047U.hpp"
 #include <iomanip> // for std::hex and formatting
 
 // Inline function definitions

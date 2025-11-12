@@ -39,14 +39,10 @@ enum class AS5047U_Error : uint16_t {
   CordicOverflow = 1 << 10 ///< CORDIC algorithm overflow
 };
 
-/**
- * @brief Supported SPI frame formats for AS5047U communication.
- */
-enum class FrameFormat : uint8_t {
-  SPI_16, /**< 16-bit frames (no CRC, high-throughput mode) */
-  SPI_24, /**< 24-bit frames (includes 8-bit CRC for reliability) */
-  SPI_32  /**< 32-bit frames (includes 8-bit CRC and 8-bit pad for daisy-chain) */
-};
+// -----------------------------------------------------------------------------
+// Type definitions
+// -----------------------------------------------------------------------------
+#include "AS5047U_types.hpp" // For FrameFormat enum
 
 // -----------------------------------------------------------------------------
 // Default configuration values
