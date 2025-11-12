@@ -21,5 +21,8 @@ var annotated_dup =
       [ "ZPOSL", "structAS5047U__REG_1_1ZPOSL.html", "structAS5047U__REG_1_1ZPOSL" ],
       [ "ZPOSM", "structAS5047U__REG_1_1ZPOSM.html", "structAS5047U__REG_1_1ZPOSM" ]
     ] ],
-    [ "AS5047U", "classAS5047U.html", "classAS5047U" ]
+    [ "AS5047U", "classAS5047U.html", "classAS5047U" ],
+    [ "Esp32As5047uBus", "classEsp32As5047uBus.html", "classEsp32As5047uBus" ],
+    [ "TestResults", "structTestResults.html", "structTestResults" ],
+    [ "TestTaskContext", "structTestTaskContext.html", "structTestTaskContext" ]
 ];

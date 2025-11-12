@@ -1,0 +1,5 @@
+<map id="AS5047U::spiBus" name="AS5047U::spiBus">
+<area shape="rect" id="Node000001" title="Abstract SPI bus interface that hardware&#45;specific implementations must provide." alt="" coords="10,5,142,31"/>
+<area shape="rect" id="Node000002" href="$classEsp32As5047uBus.html" title="ESP32 SPI transport implementation for AS5047U driver." alt="" coords="5,79,147,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,44,79,79,73,79,73,44"/>
+</map>

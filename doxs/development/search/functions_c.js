@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['test_5ftask_5ftrampoline_0',['test_task_trampoline',['../TestFramework_8h.html#ae0c6ad85cd439fc16572fe4b495e5479',1,'TestFramework.h']]],
-  ['transfer_1',['transfer',['../classEsp32As5047uBus.html#aad6ba1da9dd6643b416d8698f1dde4a4',1,'Esp32As5047uBus']]]
+  ['writereg_0',['writeReg',['../classAS5047U.html#a93b9d2f1d68bb693dadd69f83a469b97',1,'AS5047U']]]
 ];

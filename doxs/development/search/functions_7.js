@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['transfer_0',['transfer',['../classAS5047U_1_1spiBus.html#a7c09daee18f26ed1c2569d49bc2b9a0d',1,'AS5047U::spiBus']]]
+  ['output_5fsection_5findicator_0',['output_section_indicator',['../TestFramework_8h.html#a0b263a245b65a247ab95a28992b8cc4c',1,'TestFramework.h']]]
 ];
