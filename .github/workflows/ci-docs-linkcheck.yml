@@ -37,4 +37,4 @@ jobs:
       exclude_private: true
       exclude_mail: true
       verbose: true
-      config_file: ""
+      # config_file: ""  # Optional: Path to lychee.toml config file
