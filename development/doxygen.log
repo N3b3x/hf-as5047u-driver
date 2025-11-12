@@ -1,0 +1,51 @@
+warning: tag INPUT: input source 'include' does not exist
+warning: source 'include' is not a readable file or directory... skipping.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:5: warning: documented symbol 'void AS5047U::setFrameFormat' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:10: warning: documented symbol 'AS5047U::AS5047U' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:27: warning: documented symbol 'uint16_t AS5047U::getAngle' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:40: warning: documented symbol 'uint16_t AS5047U::getRawAngle' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:53: warning: documented symbol 'int16_t AS5047U::getVelocity' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:67: warning: documented symbol 'double AS5047U::getVelocityDegPerSec' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:71: warning: documented symbol 'double AS5047U::getVelocityRadPerSec' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:75: warning: documented symbol 'double AS5047U::getVelocityRPM' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:79: warning: documented symbol 'uint8_t AS5047U::getAGC' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:92: warning: documented symbol 'uint16_t AS5047U::getMagnitude' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:105: warning: documented symbol 'uint16_t AS5047U::getErrorFlags' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:115: warning: documented symbol 'uint16_t AS5047U::getZeroPosition' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:140: warning: documented symbol 'bool AS5047U::setZeroPosition' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:148: warning: documented symbol 'bool AS5047U::setABIResolution' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:155: warning: documented symbol 'bool AS5047U::setUVWPolePairs' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:162: warning: documented symbol 'bool AS5047U::setIndexPulseLength' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:179: warning: documented symbol 'bool AS5047U::configureInterface' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:197: warning: documented symbol 'bool AS5047U::setDynamicAngleCompensation' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:203: warning: documented symbol 'bool AS5047U::setAdaptiveFilter' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:209: warning: documented symbol 'bool AS5047U::setFilterParameters' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:218: warning: documented symbol 'bool AS5047U::set150CTemperatureMode' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:224: warning: documented symbol 'bool AS5047U::programOTP' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:294: warning: documented symbol 'void AS5047U::updateStickyErrors' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:318: warning: documented symbol 'AS5047U_Error AS5047U::getStickyErrorFlags' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:324: warning: documented symbol 'void AS5047U::setPad' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:328: warning: documented symbol 'bool AS5047U::setHysteresis' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:334: warning: documented symbol 'AS5047U_REG::SETTINGS3::Hysteresis AS5047U::getHysteresis' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:339: warning: documented symbol 'bool AS5047U::setAngleOutputSource' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:345: warning: documented symbol 'AS5047U_REG::SETTINGS2::AngleOutputSource AS5047U::getAngleOutputSource' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:350: warning: documented symbol 'AS5047U_REG::DIA AS5047U::getDiagnostics' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:359: warning: documented symbol 'uint16_t AS5047U::rawReadRegister' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:439: warning: documented symbol 'uint16_t AS5047U::readRegister' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:446: warning: documented symbol 'bool AS5047U::writeRegister' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/src/AS5047U.cpp:534: warning: documented symbol 'void AS5047U::dumpStatus' was not declared or defined.
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/main/TestFramework.h:383: warning: The following parameter of print_test_section_footer(const char *tag, const char *section_name, bool enabled=true) is not documented:
+  parameter 'tag'
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/main/TestFramework.h:357: warning: The following parameter of print_test_section_header(const char *tag, const char *section_name, bool enabled=true) is not documented:
+  parameter 'tag'
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/main/TestFramework.h:341: warning: argument 'test_results' of command @param is not found in the argument list of print_test_section_status(const char *tag, const char *test_suite_name)
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/main/TestFramework.h:341: warning: The following parameter of print_test_section_status(const char *tag, const char *test_suite_name) is not documented:
+  parameter 'tag'
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/main/TestFramework.h:321: warning: The following parameter of print_test_summary(const TestResults &test_results, const char *test_suite_name, const char *tag) is not documented:
+  parameter 'tag'
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/README.md:229: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md' for \ref command
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/README.md:230: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/setup.md' for \ref command
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/README.md:231: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/usage.md' for \ref command
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/README.md:232: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/examples.md' for \ref command
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/README.md:233: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/building.md' for \ref command
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/README.md:278: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/README.md' for \ref command

@@ -1,0 +1,162 @@
+---
+# ESP32 AS5047U Driver - Apps Configuration
+# This file centralizes all app definitions, their source files, and metadata
+# Used by build scripts, flash scripts, CI workflows, and CMake
+#
+# HIERARCHICAL CONFIGURATION:
+# - Global settings in 'metadata' section apply to all apps by default
+# - Individual apps can override 'idf_versions' and 'build_types' if needed
+# - Apps without overrides use global settings automatically
+
+version: "1.0"
+
+metadata:
+  project: "ESP32 AS5047U Driver Examples"
+  default_app: "driver_integration_test"
+  target: "esp32c6"
+  idf_versions: ["release/v5.5", "release/v5.4"]
+  build_types: [["Debug", "Release"], ["Debug"]]
+
+apps:
+  # --------------------------------------------------------------------------
+  # Driver Integration Test Suite
+  # --------------------------------------------------------------------------
+  driver_integration_test:
+    description: >
+      Comprehensive driver integration test suite
+      (no hardware required)
+    source_file: "DriverIntegrationTest.cpp"
+    category: "test"
+    idf_versions: ["release/v5.5"]
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: true
+    documentation: "docs/README_DRIVER_INTEGRATION_TEST.md"
+    test_sections:
+      - "INITIALIZATION_TESTS"
+      - "ANGLE_READING_TESTS"
+      - "VELOCITY_READING_TESTS"
+      - "DIAGNOSTICS_TESTS"
+      - "CONFIGURATION_TESTS"
+      - "FRAME_FORMAT_TESTS"
+      - "ERROR_HANDLING_TESTS"
+    features:
+      - "Complete driver API validation (30+ tests)"
+      - "Multiple test sections covering all functionality"
+      - "Initialization, angle/velocity reading, diagnostics"
+      - "Frame format testing (16/24/32-bit)"
+      - "Configuration and error handling"
+      - "FreeRTOS task-based test execution"
+      - "GPIO14 progress indicator"
+      - "Automatic pass/fail tracking"
+      - "No actual hardware required (driver test only)"
+
+  # --------------------------------------------------------------------------
+  # Basic Angle Reading Example
+  # --------------------------------------------------------------------------
+  basic_angle_reading:
+    description: "Basic angle reading example with diagnostics"
+    source_file: "BasicAngleReadingExample.cpp"
+    category: "example"
+    idf_versions: ["release/v5.5"]
+    build_types: ["Debug", "Release"]
+    ci_enabled: false
+    featured: true
+    hardware_required: true
+    features:
+      - "Simple angle reading loop"
+      - "Angle in LSB and degrees"
+      - "AGC and magnitude diagnostics"
+      - "Error flag monitoring"
+      - "Real hardware testing"
+
+  # --------------------------------------------------------------------------
+  # Velocity Reading Example
+  # --------------------------------------------------------------------------
+  velocity_reading:
+    description: "Velocity reading example with unit conversions"
+    source_file: "VelocityReadingExample.cpp"
+    category: "example"
+    idf_versions: ["release/v5.5"]
+    build_types: ["Debug", "Release"]
+    ci_enabled: false
+    featured: true
+    hardware_required: true
+    features:
+      - "Velocity reading in multiple units"
+      - "Degrees per second, radians per second, RPM"
+      - "Real hardware testing"
+
+  # --------------------------------------------------------------------------
+  # Configuration Example
+  # --------------------------------------------------------------------------
+  configuration_example:
+    description: "Configuration example with ABI, UVW, and PWM setup"
+    source_file: "ConfigurationExample.cpp"
+    category: "example"
+    idf_versions: ["release/v5.5"]
+    build_types: ["Debug", "Release"]
+    ci_enabled: false
+    featured: true
+    hardware_required: true
+    features:
+      - "ABI output configuration"
+      - "UVW commutation setup"
+      - "PWM output configuration"
+      - "Zero position and direction setting"
+      - "Real hardware testing"
+
+  # --------------------------------------------------------------------------
+  # Full Features Example
+  # --------------------------------------------------------------------------
+  full_features:
+    description: "Comprehensive example demonstrating all AS5047U features"
+    source_file: "FullFeaturesExample.cpp"
+    category: "example"
+    idf_versions: ["release/v5.5"]
+    build_types: ["Debug", "Release"]
+    ci_enabled: false
+    featured: true
+    hardware_required: true
+    features:
+      - "All sensor features enabled"
+      - "Angle, velocity, diagnostics"
+      - "ABI, UVW, PWM configuration"
+      - "DAEC and filter settings"
+      - "OTP programming"
+      - "Real hardware testing"
+
+# ============================================================================
+# BUILD CONFIGURATION (ESP-IDF Standard Build Types)
+# ============================================================================
+
+build_config:
+  # Standard ESP-IDF/CMake build types
+  # These match CMAKE_BUILD_TYPE values in ESP-IDF
+  build_types:
+    Debug:
+      description: "Debug build with symbols, verbose logging, assertions"
+      cmake_build_type: "Debug"
+      optimization: "-O0"
+      debug_level: "-g3"
+      defines: ["DEBUG", "AS5047U_DEBUG"]
+
+    Release:
+      description: "Release build optimized for performance"
+      cmake_build_type: "Release"
+      optimization: "-O2"
+      debug_level: "-g0"
+      defines: ["NDEBUG", "AS5047U_RELEASE"]
+
+  build_directory_pattern: "build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}"
+  project_name_pattern: "esp32_as5047u_{app_type}_app"
+
+ci_config:
+  # CI build timeout
+  timeout_minutes: 30
+  # Fail fast on first error
+  fail_fast: false
+  # Apps to exclude from specific build types (if needed)
+  exclude_combinations: []
+  # Apps that require special handling
+  special_apps: []

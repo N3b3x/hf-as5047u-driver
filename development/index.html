@@ -1,0 +1,757 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-as5047u-driver/development/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-as5047u-driver/development/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    
+    .site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-as5047u-driver/development/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-as5047u-driver/development/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>HardFOC AS5047U Driver | HardFOC AS5047U Driver - development</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="HardFOC AS5047U Driver" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Portable C++20 driver for the AS5047U magnetic encoder from ams with SPI interface, CRC protection, DAEC, and DFS™" />
+<meta property="og:description" content="Portable C++20 driver for the AS5047U magnetic encoder from ams with SPI interface, CRC protection, DAEC, and DFS™" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-as5047u-driver/development/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-as5047u-driver/development/" />
+<meta property="og:site_name" content="HardFOC AS5047U Driver - development" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="HardFOC AS5047U Driver" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Portable C++20 driver for the AS5047U magnetic encoder from ams with SPI interface, CRC protection, DAEC, and DFS™","headline":"HardFOC AS5047U Driver","name":"HardFOC AS5047U Driver","sameAs":["https://github.com/n3b3x/hf-as5047u-driver","https://github.com/n3b3x"],"url":"https://n3b3x.github.io/hf-as5047u-driver/development/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- =============================================================================
+     Custom Head Content for HardFOC Driver Documentation
+     =============================================================================
+     This file is included in the <head> section of every page.
+     It loads custom CSS and JavaScript for enhanced functionality.
+     ============================================================================= -->
+
+<!-- Custom CSS for enhanced styling and fixes -->
+<link rel="stylesheet" href="/hf-as5047u-driver/development/assets/css/custom.css">
+
+<!-- Custom JavaScript for interactive features -->
+<script src="/hf-as5047u-driver/development/assets/js/custom.js" defer></script>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-as5047u-driver/development/" class="site-title lh-tight">
+  HardFOC AS5047U Driver - development
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><a href="/hf-as5047u-driver/development/" class="nav-list-link">HardFOC AS5047U Driver</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/examples/esp32/" class="nav-list-link">AS5047U ESP32-C6 Examples</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/" class="nav-list-link">HF-AS5047U Documentation</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/examples.html" class="nav-list-link">🎮 Running the Examples</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/workflow.html" class="nav-list-link">🏁 Quick Start Workflow</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/usage.html" class="nav-list-link">📚 Using the Library</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/setup.html" class="nav-list-link">🛠️ Setup</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/building.html" class="nav-list-link">🧰 Building and Testing</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-footer">
+      This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+    </footer>
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search HardFOC AS5047U Driver - development" aria-label="Search HardFOC AS5047U Driver - development" autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-as5047u-driver/development/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-as5047u-driver" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-as5047u-driver/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-as5047u-driver/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="hf-as5047u">
+  
+  
+    <a href="#hf-as5047u" class="anchor-heading" aria-labelledby="hf-as5047u"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> HF-AS5047U
+  
+  
+</h1>
+    
+<p>Hardware Agnostic AS5047U library - as used in the HardFOC-V1 controller</p>
+<h1 id="as5047u--c-driver-library">
+  
+  
+    <a href="#as5047u--c-driver-library" class="anchor-heading" aria-labelledby="as5047u--c-driver-library"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> AS5047U – C++ Driver Library
+  
+  
+</h1>
+    
+
+<p><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3" />
+<a href="https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml"><img src="https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main" alt="CI Build" /></a></p>
+<h2 id="-overview">
+  
+  
+    <a href="#-overview" class="anchor-heading" aria-labelledby="-overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📦 Overview
+  
+  
+</h2>
+    
+<p><strong>HF-AS5047U</strong> is a portable C++20 driver for the <strong>AS5047U</strong> magnetic encoder from ams. It delivers fast 14‑bit absolute angle readings over SPI, optional CRC protection and advanced features like Dynamic Angle Error Compensation (DAEC) and an adaptive Dynamic Filter System (DFS™). The sensor can also output incremental (A/B/I) and 3‑phase commutation (UVW) signals or a PWM encoded angle, making it a drop‑in replacement for optical encoders in high-performance motor control and robotics.</p>
+<h3 id="-key-features">
+  
+  
+    <a href="#-key-features" class="anchor-heading" aria-labelledby="-key-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✨ Key Features
+  
+  
+</h3>
+    
+<ul>
+  <li>🧩 Cross-platform <code class="language-plaintext highlighter-rouge">spiBus</code> interface</li>
+  <li>📐 Modern C++20 API</li>
+  <li>📝 Examples for Arduino, ESP32 and STM32</li>
+  <li>🧪 Unit tests for reliability</li>
+</ul>
+<h2 id="-sensor-highlights">
+  
+  
+    <a href="#-sensor-highlights" class="anchor-heading" aria-labelledby="-sensor-highlights"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🚀 Sensor Highlights
+  
+  
+</h2>
+    
+<ul>
+  <li><strong>14‑bit absolute angle</strong> with optional CRC check</li>
+  <li><strong>DAEC</strong> for low‑latency angle correction</li>
+  <li><strong>DFS™</strong> adaptive noise filtering</li>
+  <li><strong>Stray‑field immunity</strong> for robust operation</li>
+  <li><strong>Incremental ABI</strong> outputs up to 4096 PPR</li>
+  <li><strong>UVW commutation</strong> with programmable pole pairs</li>
+  <li><strong>PWM output</strong> option</li>
+  <li><strong>Diagnostics</strong> for AGC, magnitude and error flags</li>
+  <li><strong>OTP memory</strong> for permanent configuration</li>
+</ul><hr />
+<h2 id="️-library-architecture">
+  
+  
+    <a href="#️-library-architecture" class="anchor-heading" aria-labelledby="️-library-architecture"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏗️ Library Architecture
+  
+  
+</h2>
+    
+<p>This library exposes a single <code class="language-plaintext highlighter-rouge">AS5047U</code> class that wraps all sensor functionality in a clear, type‑safe API. Key components include:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">AS5047U</code> class</strong> – high level interface</li>
+  <li><strong>Register definitions</strong> in <code class="language-plaintext highlighter-rouge">AS5047U_REGISTERS.hpp</code></li>
+  <li><strong><code class="language-plaintext highlighter-rouge">FrameFormat</code> enum</strong> to select 16/24/32‑bit SPI frames</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">spiBus</code> interface</strong> – abstract SPI layer for platform independence</li>
+</ul>
+<h3 id="spi-bus-abstraction">
+  
+  
+    <a href="#spi-bus-abstraction" class="anchor-heading" aria-labelledby="spi-bus-abstraction"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> SPI Bus Abstraction
+  
+  
+</h3>
+    
+<p>Applications implement the virtual <code class="language-plaintext highlighter-rouge">spiBus</code> interface and plug it into the driver:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">spiBus</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">spiBus</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+
+<p>The driver itself contains no hardware specifics – simply implement <code class="language-plaintext highlighter-rouge">transfer()</code> for your platform.</p>
+<h2 id="-platform-integration">
+  
+  
+    <a href="#-platform-integration" class="anchor-heading" aria-labelledby="-platform-integration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔌 Platform Integration
+  
+  
+</h2>
+    
+<h3 id="esp-idf">
+  
+  
+    <a href="#esp-idf" class="anchor-heading" aria-labelledby="esp-idf"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP-IDF
+  
+  
+</h3>
+    
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">ESPBus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">AS5047U</span><span class="o">::</span><span class="n">spiBus</span> <span class="p">{</span>
+    <span class="n">spi_device_handle_t</span> <span class="n">dev</span><span class="p">;</span>
+<span class="nl">public:</span>
+    <span class="n">ESPBus</span><span class="p">(</span><span class="n">spi_device_handle_t</span> <span class="n">handle</span><span class="p">)</span> <span class="o">:</span> <span class="n">dev</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="n">spi_transaction_t</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="n">t</span><span class="p">.</span><span class="n">tx_buffer</span> <span class="o">=</span> <span class="n">tx</span><span class="p">;</span>
+        <span class="n">t</span><span class="p">.</span><span class="n">rx_buffer</span> <span class="o">=</span> <span class="n">rx</span><span class="p">;</span>
+        <span class="n">t</span><span class="p">.</span><span class="n">length</span> <span class="o">=</span> <span class="n">len</span> <span class="o">*</span> <span class="mi">8</span><span class="p">;</span>
+        <span class="n">spi_device_transmit</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="stm32-hal">
+  
+  
+    <a href="#stm32-hal" class="anchor-heading" aria-labelledby="stm32-hal"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> STM32 HAL
+  
+  
+</h3>
+    
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">STM32Bus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">AS5047U</span><span class="o">::</span><span class="n">spiBus</span> <span class="p">{</span>
+    <span class="n">SPI_HandleTypeDef</span> <span class="o">*</span><span class="n">hspi</span><span class="p">;</span>
+<span class="nl">public:</span>
+    <span class="n">STM32Bus</span><span class="p">(</span><span class="n">SPI_HandleTypeDef</span> <span class="o">*</span><span class="n">handle</span><span class="p">)</span> <span class="o">:</span> <span class="n">hspi</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="n">HAL_SPI_TransmitReceive</span><span class="p">(</span><span class="n">hspi</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">tx</span><span class="p">,</span> <span class="n">rx</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="n">HAL_MAX_DELAY</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="arduino">
+  
+  
+    <a href="#arduino" class="anchor-heading" aria-labelledby="arduino"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Arduino
+  
+  
+</h3>
+    
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">ArduinoBus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">AS5047U</span><span class="o">::</span><span class="n">spiBus</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="n">SPI</span><span class="p">.</span><span class="n">beginTransaction</span><span class="p">(</span><span class="n">SPISettings</span><span class="p">(</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">MSBFIRST</span><span class="p">,</span> <span class="n">SPI_MODE1</span><span class="p">));</span>
+        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">CS_PIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">uint8_t</span> <span class="n">out</span> <span class="o">=</span> <span class="n">tx</span> <span class="o">?</span> <span class="n">tx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="kt">uint8_t</span> <span class="n">in</span>  <span class="o">=</span> <span class="n">SPI</span><span class="p">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">rx</span><span class="p">)</span> <span class="n">rx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">in</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">CS_PIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+        <span class="n">SPI</span><span class="p">.</span><span class="n">endTransaction</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-project-structure">
+  
+  
+    <a href="#-project-structure" class="anchor-heading" aria-labelledby="-project-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📂 Project Structure
+  
+  
+</h2>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>├── Datasheet/               # AS5047U datasheet PDF
+├── examples/                # Wiring and usage examples
+├── src/                     # Library sources
+│   ├── AS5047U.hpp          # Driver API
+│   ├── AS5047U.cpp          # Implementation
+│   └── AS5047U_REGISTERS.hpp# Register definitions
+├── include/                 # Public headers
+│   └── AS5047U_config.hpp   # Default build configuration
+├── tests/                   # Mock-based unit tests
+├── config.mk                # Makefile defaults
+└── README.md                # This document
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="-documentation">
+  
+  
+    <a href="#-documentation" class="anchor-heading" aria-labelledby="-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📖 Documentation
+  
+  
+</h2>
+    
+<p>Detailed step‑by‑step guides (with example command output) are available in the <a href="/hf-as5047u-driver/development/docs/">docs</a> folder. Start with the <a href="/hf-as5047u-driver/development/docs/workflow.html">Quick Start Workflow</a> if you’re new.</p><hr />
+<h2 id="-installation">
+  
+  
+    <a href="#-installation" class="anchor-heading" aria-labelledby="-installation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔧 Installation
+  
+  
+</h2>
+    
+<ul>
+  <li>📥 Copy <code class="language-plaintext highlighter-rouge">AS5047U.hpp</code>, <code class="language-plaintext highlighter-rouge">AS5047U.cpp</code> and <code class="language-plaintext highlighter-rouge">AS5047U_REGISTERS.hpp</code> into your project</li>
+  <li>🔌 Implement the <code class="language-plaintext highlighter-rouge">spiBus</code> interface for your platform</li>
+  <li>➕ <code class="language-plaintext highlighter-rouge">#include "AS5047U.hpp"</code></li>
+  <li>🛠️ Compile with a <strong>C++20</strong> compiler</li>
+  <li>🏗️ Optionally build with the provided <code class="language-plaintext highlighter-rouge">Makefile</code>
+    <ul>
+      <li>Override compiler flags on the command line</li>
+      <li>Configure default options via <code class="language-plaintext highlighter-rouge">Kconfig</code> or <code class="language-plaintext highlighter-rouge">AS5047U_config.hpp</code></li>
+    </ul>
+  </li>
+</ul><hr />
+<h2 id="-quick-start">
+  
+  
+    <a href="#-quick-start" class="anchor-heading" aria-labelledby="-quick-start"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🧠 Quick Start
+  
+  
+</h2>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="c1">// Instantiate the driver with your platform's SPI bus</span>
+<span class="n">AS5047U</span> <span class="nf">encoder</span><span class="p">(</span><span class="n">bus</span><span class="p">,</span> <span class="n">FrameFormat</span><span class="o">::</span><span class="n">SPI_24</span><span class="p">);</span> <span class="c1">// driver using 24-bit frames</span>
+
+<span class="kt">uint16_t</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getAngle</span><span class="p">();</span>        <span class="c1">// compensated angle</span>
+<span class="kt">uint16_t</span> <span class="n">rawAngle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getRawAngle</span><span class="p">();</span>  <span class="c1">// raw angle without DAEC</span>
+<span class="kt">int16_t</span> <span class="n">vel</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getVelocity</span><span class="p">();</span>        <span class="c1">// velocity in sensor units</span>
+<span class="kt">double</span> <span class="n">vel_dps</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getVelocityDegPerSec</span><span class="p">();</span> <span class="c1">// velocity in deg/s</span>
+
+<span class="kt">uint8_t</span> <span class="n">agc</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getAGC</span><span class="p">();</span>             <span class="c1">// automatic gain control</span>
+<span class="kt">uint16_t</span> <span class="n">mag</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getMagnitude</span><span class="p">();</span>      <span class="c1">// magnetic magnitude</span>
+<span class="kt">uint16_t</span> <span class="n">errors</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getErrorFlags</span><span class="p">();</span>  <span class="c1">// current error flags</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+
+<p>Configure outputs:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="n">encoder</span><span class="p">.</span><span class="n">setZeroPosition</span><span class="p">(</span><span class="mi">8192</span><span class="p">);</span>            <span class="c1">// set zero electrical angle</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">setDirection</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>              <span class="c1">// counter-clockwise = positive</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">setABIResolution</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>             <span class="c1">// 12-bit incremental output</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">setUVWPolePairs</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>               <span class="c1">// 5 electrical pole pairs</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">configureInterface</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span> <span class="c1">// enable ABI + PWM</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<p>Perform OTP programming:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="n">ok</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">programOTP</span><span class="p">();</span>  <span class="c1">// write settings to OTP</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+
+<p>Dump diagnostics:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">status</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">dumpDiagnostics</span><span class="p">();</span> <span class="c1">// formatted status text</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="️-configuration">
+  
+  
+    <a href="#️-configuration" class="anchor-heading" aria-labelledby="️-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ⚙️ Configuration
+  
+  
+</h2>
+    
+<p>Projects that use a Kconfig-based build system can include the
+provided <code class="language-plaintext highlighter-rouge">Kconfig</code> file. It exposes options such as the default SPI
+frame format and CRC retry count and also allows enabling the unit
+ tests. When not using Kconfig, you can edit <code class="language-plaintext highlighter-rouge">include/AS5047U_config.hpp</code> to
+set <code class="language-plaintext highlighter-rouge">AS5047U_CFG::DEFAULT_FRAME_FORMAT</code> and <code class="language-plaintext highlighter-rouge">AS5047U_CFG::CRC_RETRIES</code>.</p>
+<h2 id="-api-summary">
+  
+  
+    <a href="#-api-summary" class="anchor-heading" aria-labelledby="-api-summary"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📟 API Summary
+  
+  
+</h2>
+    
+
+<p>| Function | Description |
+|———-|————-|
+| AS5047U(spiBus &amp;bus, FrameFormat fmt) | Constructor (SPI interface and frame format) |
+| void setFrameFormat(FrameFormat fmt) | Set SPI frame format (16/24/32-bit mode) |
+| uint16_t getAngle(uint8_t retries=0) | Read 14-bit compensated absolute angle |
+| uint16_t getRawAngle(uint8_t retries=0) | Read 14-bit raw absolute angle |
+| int16_t getVelocity(uint8_t retries=0) | Read signed 14-bit velocity (LSB units) |
+| double getVelocityDegPerSec(uint8_t retries=0) | Velocity in degrees/sec |
+| double getVelocityRadPerSec(uint8_t retries=0) | Velocity in radians/sec |
+| double getVelocityRPM(uint8_t retries=0) | Velocity in revolutions per minute (RPM) |
+| uint8_t getAGC(uint8_t retries=0) | Read AGC (0–255) value |
+| uint16_t getMagnitude(uint8_t retries=0) | Read magnetic field magnitude (0–16383) |
+| uint16_t getErrorFlags(uint8_t retries=0) | Read and clear error/status flags |
+| void dumpStatus() const | Print formatted status/diagnostics |
+| uint16_t getZeroPosition(uint8_t retries=0) const | Get current zero offset |
+| bool setZeroPosition(uint16_t angle, uint8_t retries=0) | Set new zero offset |
+| bool setDirection(bool clockwise, uint8_t retries=0) | Set rotation direction (CW or CCW) |
+| bool setABIResolution(uint8_t bits, uint8_t retries=0) | Set ABI output resolution (10–14 bits) |
+| bool setUVWPolePairs(uint8_t pairs, uint8_t retries=0) | Set UVW pole pairs (1–7) |
+| bool setIndexPulseLength(uint8_t lsbLen, uint8_t retries=0) | Set ABI index pulse width |
+| bool configureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=0) | Enable/disable ABI, UVW, PWM |
+| bool setDynamicAngleCompensation(bool enable, uint8_t retries=0) | Enable/disable DAEC |
+| bool setAdaptiveFilter(bool enable, uint8_t retries=0) | Enable/disable adaptive filter (DFS) |
+| bool setFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries=0) | Set DFS filter parameters |
+| bool set150CTemperatureMode(bool enable, uint8_t retries=0) | Enable 150°C (high-temp mode) |
+| bool programOTP() | Program current settings into OTP (one-time) |
+| void setPad(uint8_t pad) | Set pad byte for 32-bit SPI frames |
+| bool setHysteresis(SETTINGS3::Hysteresis hys, uint8_t retries=0) | Set incremental hysteresis level |
+| SETTINGS3::Hysteresis getHysteresis() const | Get current hysteresis setting |
+| bool setAngleOutputSource(SETTINGS2::AngleOutputSource src, uint8_t retries=0) | Select angle output source (comp/raw) |
+| SETTINGS2::AngleOutputSource getAngleOutputSource() const | Get selected angle output source |
+| AS5047U_REG::DIA getDiagnostics() const | Read full diagnostic register (DIA) |
+—</p>
+<h2 id="-unit-testing">
+  
+  
+    <a href="#-unit-testing" class="anchor-heading" aria-labelledby="-unit-testing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🧪 Unit Testing
+  
+  
+</h2>
+    
+<p>Run the provided tests on a desktop system with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>g++ <span class="nt">-std</span><span class="o">=</span>c++20 src/AS5047U.cpp tests/test_as5047u.cpp <span class="nt">-o</span> <span class="nb">test</span> <span class="o">&amp;&amp;</span> ./test
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+
+<p>The expected output is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>All tests passed
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="c-features-and-requirements">
+  
+  
+    <a href="#c-features-and-requirements" class="anchor-heading" aria-labelledby="c-features-and-requirements"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> C++ Features and Requirements
+  
+  
+</h2>
+    
+<p>This library requires a <strong>C++20 (or later)</strong> compiler. It uses:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">enum class</code></li>
+  <li><code class="language-plaintext highlighter-rouge">constexpr</code></li>
+  <li><code class="language-plaintext highlighter-rouge">std::bitset</code></li>
+  <li><code class="language-plaintext highlighter-rouge">[[nodiscard]]</code></li>
+  <li>Modern structured typing</li>
+</ul>
+<h2 id="license">
+  
+  
+    <a href="#license" class="anchor-heading" aria-labelledby="license"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> License
+  
+  
+</h2>
+    
+<p><strong>GNU General Public License v3.0</strong>
+You may use, modify, and redistribute this software under GPLv3.</p><hr />
+<h2 id="-contributing">
+  
+  
+    <a href="#-contributing" class="anchor-heading" aria-labelledby="-contributing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🤝 Contributing
+  
+  
+</h2>
+    
+<p>Pull requests and feature ideas are welcome!</p>
+<ol>
+  <li>Fork this repository</li>
+  <li>Create a feature branch</li>
+  <li>Commit your changes</li>
+  <li>Open a PR</li>
+</ol>
+<h2 id="-acknowledgments">
+  
+  
+    <a href="#-acknowledgments" class="anchor-heading" aria-labelledby="-acknowledgments"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🙌 Acknowledgments
+  
+  
+</h2>
+    
+<p>Developed for the HardFOC-V1 controller.</p>
+<ul>
+  <li>Developed by <strong>Nebiyu Tadesse</strong>, 2025.</li>
+  <li>Based on the official <a href="https://ams-osram.com/products/sensor-solutions/position-sensors/ams-as5047u-high-resolution-rotary-position-sensor">AS5047U Datasheet</a> by ASM ASRAM.</li>
+  <li>Inspired by embedded needs for a reliable, testable AS5047U library.</li>
+</ul>
+<h2 id="-support">
+  
+  
+    <a href="#-support" class="anchor-heading" aria-labelledby="-support"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 💬 Support
+  
+  
+</h2>
+    
+
+<p>For questions, bug reports, or feature requests, please open an <a href="https://github.com/n3b3x/hf-as5047u-driver/issues">issue</a> or contact the maintainer directly.</p>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <!-- =============================================================================
+     Custom Footer Content for HardFOC Driver Documentation
+     =============================================================================
+     This footer is displayed at the bottom of every page.
+     ============================================================================= -->
+
+<footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p>
+      <a href="https://github.com/n3b3x/hf-as5047u-driver/development/blob/main/LICENSE">GPL v3 License</a> • 
+      <a href="https://github.com/n3b3x/hf-as5047u-driver/development">View on GitHub</a>
+    </p>
+  </div>
+</footer>
+
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+
