@@ -12,7 +12,7 @@ Hardware Agnostic AS5047U library - as used in the HardFOC-V1 controller
 # AS5047U – C++ Driver Library
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![CI Build](https://github.com/N3b3x/HF-AS5047U/actions/workflows/esp32-component-ci.yml/badge.svg?branch=main)]([https://github.com/N3b3x/HF-AS5047U/actions/workflows/ci.ym](https://github.com/N3b3x/HF-AS5047U/actions/workflows/esp32-component-ci.yml)l)
+[![CI Build](https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main)](https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml)
 
 
 ## 📦 Overview
@@ -263,4 +263,4 @@ Developed for the HardFOC-V1 controller.
 
 ## 💬 Support
 
-For questions, bug reports, or feature requests, please open an [issue](https://github.com/N3b3x/HF-AS5047U/issues) or contact the maintainer directly.
+For questions, bug reports, or feature requests, please open an [issue](https://github.com/n3b3x/hf-as5047u-driver/issues) or contact the maintainer directly.

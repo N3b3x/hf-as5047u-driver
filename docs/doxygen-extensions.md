@@ -25,8 +25,8 @@ Our Doxygen documentation includes several modern enhancements:
 
 ## 📁 Structure
 
-- **[Configuration](doxygen-extensions/)** - Doxygen configuration and setup files
-- **[Submodule](doxygen-extensions/doxygen-awesome-css/)** - Doxygen-awesome-css theme files
+- **[Configuration](https://github.com/n3b3x/hf-as5047u-driver/tree/main/_config/doxygen-extensions)** - Doxygen configuration and setup files
+- **[Submodule](https://github.com/n3b3x/hf-as5047u-driver/tree/main/_config/doxygen-extensions/doxygen-awesome-css)** - Doxygen-awesome-css theme files
 
 ## 🔧 Technical Details
 
