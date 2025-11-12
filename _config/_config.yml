@@ -1,3 +1,4 @@
+---
 # =============================================================================
 # Standardized Jekyll Configuration for HardFOC Driver Documentation
 # =============================================================================
@@ -10,8 +11,9 @@
 # -----------------------------------------------------------------------------
 title: "HardFOC AS5047U Driver"
 description: >
-  Portable C++20 driver for the AS5047U magnetic encoder from ams with 14-bit absolute angle readings,
-  optional CRC protection, Dynamic Angle Error Compensation (DAEC), and adaptive Dynamic Filter System (DFS™)
+  Portable C++20 driver for the AS5047U magnetic encoder from ams with
+  14-bit absolute angle readings, optional CRC protection, Dynamic Angle
+  Error Compensation (DAEC), and adaptive Dynamic Filter System (DFS™)
 
 baseurl: "/hf-as5047u-driver"  # GitHub Pages subpath
 url: "https://n3b3x.github.io"
@@ -133,8 +135,10 @@ aux_links:
 # Footer Customization
 # -----------------------------------------------------------------------------
 footer_content: >
-  Built with ❤️ using <a href='https://just-the-docs.github.io/just-the-docs/'>Just the Docs</a> •
-  <a href='https://github.com/n3b3x/hf-as5047u-driver/blob/main/LICENSE'>GPL v3 License</a> •
+  Built with ❤️ using
+  <a href='https://just-the-docs.github.io/just-the-docs/'>Just the Docs</a> •
+  <a href='https://github.com/n3b3x/hf-as5047u-driver/blob/main/LICENSE'>GPL v3
+  License</a> •
   <a href='https://github.com/n3b3x/hf-as5047u-driver'>View on GitHub</a>
 
 # -----------------------------------------------------------------------------
@@ -211,8 +215,9 @@ seo:
   type: "SoftwareApplication"
   name: "HardFOC AS5047U Driver"
   description: >
-    Portable C++20 driver for the AS5047U magnetic encoder from ams with 14-bit absolute angle readings,
-    optional CRC protection, Dynamic Angle Error Compensation (DAEC), and adaptive Dynamic Filter System (DFS™)
+    Portable C++20 driver for the AS5047U magnetic encoder from ams with
+    14-bit absolute angle readings, optional CRC protection, Dynamic Angle
+    Error Compensation (DAEC), and adaptive Dynamic Filter System (DFS™)
   url: "https://n3b3x.github.io/hf-as5047u-driver"
   twitter:
     card: "summary_large_image"
@@ -252,4 +257,3 @@ compress_html:
 #   features:
 #     - "Feature 1"
 #     - "Feature 2"
-

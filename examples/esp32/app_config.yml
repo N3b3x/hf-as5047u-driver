@@ -1,3 +1,4 @@
+---
 # ESP32 AS5047U Driver - Apps Configuration
 # This file centralizes all app definitions, their source files, and metadata
 # Used by build scripts, flash scripts, CI workflows, and CMake
@@ -21,7 +22,9 @@ apps:
   # Driver Integration Test Suite
   # --------------------------------------------------------------------------
   driver_integration_test:
-    description: "Comprehensive driver integration test suite (no hardware required)"
+    description: >
+      Comprehensive driver integration test suite
+      (no hardware required)
     source_file: "DriverIntegrationTest.cpp"
     category: "test"
     idf_versions: ["release/v5.5"]

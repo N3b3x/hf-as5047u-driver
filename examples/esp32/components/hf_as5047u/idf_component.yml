@@ -1,3 +1,4 @@
+---
 name: hf-as5047u-driver
 version: "1.0.0"
 description: Hardware-agnostic AS5047U driver component

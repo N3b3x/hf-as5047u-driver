@@ -57,7 +57,8 @@ jobs:
           cd ${{ steps.vars.outputs.tools_dir }}
           MATRIX=$(python3 generate_matrix.py)
           echo "matrix=${MATRIX}" >> "$GITHUB_OUTPUT"
-          echo "Generated matrix with $(echo "${MATRIX}" | jq '.include | length') build combinations"
+          echo "Generated matrix with $(echo "${MATRIX}" | \
+            jq '.include | length') build combinations"
 
   # 🏗️ Build firmware (parallel matrix)
   build:
