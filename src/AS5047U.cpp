@@ -362,14 +362,14 @@ uint16_t AS5047U::rawReadRegister(uint16_t address) const {
     // ---- 16-bit frame without CRC ----
     // Prepare read command (bit14=1 for read)
     uint16_t cmd = static_cast<uint16_t>(0x4000 | (address & 0x3FFF));
-    uint8_t tx[2] = {static_cast<uint8_t>(cmd >> 8), static_cast<uint8_t>(cmd & 0xFF)};
+    const uint8_t tx[2] = {static_cast<uint8_t>(cmd >> 8), static_cast<uint8_t>(cmd & 0xFF)};
     uint8_t rx[2];
 
     // Send read command
     spi.transfer(tx, rx, 2);
 
     // Send NOP to receive register data
-    uint8_t txNOP[2] = {0x00, 0x00};
+    const uint8_t txNOP[2] = {0x00, 0x00};
     uint8_t rxData[2];
     spi.transfer(txNOP, rxData, 2);
 
@@ -381,8 +381,8 @@ uint16_t AS5047U::rawReadRegister(uint16_t address) const {
     // Prepare read command with CRC
     uint16_t crcInput = static_cast<uint16_t>((1 << 14) | (address & 0x3FFF));
     uint8_t crc = computeCRC8(crcInput);
-    uint8_t txCmd[3] = {static_cast<uint8_t>(((address >> 8) & 0x3F) | 0x40), // bit6=1 for read
-                        static_cast<uint8_t>(address & 0xFF), crc};
+    const uint8_t txCmd[3] = {static_cast<uint8_t>(((address >> 8) & 0x3F) | 0x40), // bit6=1 for read
+                               static_cast<uint8_t>(address & 0xFF), crc};
     uint8_t rxCmd[3];
     spi.transfer(txCmd, rxCmd, 3);
 
@@ -390,8 +390,8 @@ uint16_t AS5047U::rawReadRegister(uint16_t address) const {
     uint16_t nopAddr = AS5047U_REG::NOP::ADDRESS;
     uint16_t nopCrcInput = static_cast<uint16_t>((1 << 14) | (nopAddr & 0x3FFF));
     uint8_t crcNOP = computeCRC8(nopCrcInput);
-    uint8_t txNOP[3] = {static_cast<uint8_t>(((nopAddr >> 8) & 0x3F) | 0x40),
-                        static_cast<uint8_t>(nopAddr & 0xFF), crcNOP};
+    const uint8_t txNOP[3] = {static_cast<uint8_t>(((nopAddr >> 8) & 0x3F) | 0x40),
+                               static_cast<uint8_t>(nopAddr & 0xFF), crcNOP};
     uint8_t rxDataFrame[3];
     spi.transfer(txNOP, rxDataFrame, 3);
 
@@ -408,9 +408,9 @@ uint16_t AS5047U::rawReadRegister(uint16_t address) const {
     // Prepare read command with CRC and pad
     uint16_t crcInput = static_cast<uint16_t>((1 << 14) | (address & 0x3FFF));
     uint8_t crc = computeCRC8(crcInput);
-    uint8_t txCmd[4] = {padByte,
-                        static_cast<uint8_t>(((address >> 8) & 0x3F) | 0x40), // bit6=1 for read
-                        static_cast<uint8_t>(address & 0xFF), crc};
+    const uint8_t txCmd[4] = {padByte,
+                               static_cast<uint8_t>(((address >> 8) & 0x3F) | 0x40), // bit6=1 for read
+                               static_cast<uint8_t>(address & 0xFF), crc};
     uint8_t rxCmd[4];
     spi.transfer(txCmd, rxCmd, 4);
 
@@ -418,8 +418,8 @@ uint16_t AS5047U::rawReadRegister(uint16_t address) const {
     uint16_t nopAddr = AS5047U_REG::NOP::ADDRESS;
     uint16_t nopCrcInput = static_cast<uint16_t>((1 << 14) | (nopAddr & 0x3FFF));
     uint8_t crcNOP = computeCRC8(nopCrcInput);
-    uint8_t txNOP[4] = {padByte, static_cast<uint8_t>(((nopAddr >> 8) & 0x3F) | 0x40),
-                        static_cast<uint8_t>(nopAddr & 0xFF), crcNOP};
+    const uint8_t txNOP[4] = {padByte, static_cast<uint8_t>(((nopAddr >> 8) & 0x3F) | 0x40),
+                               static_cast<uint8_t>(nopAddr & 0xFF), crcNOP};
     uint8_t rxDataFrame[4];
     spi.transfer(txNOP, rxDataFrame, 4);
 
@@ -473,18 +473,18 @@ bool AS5047U::writeRegister(uint16_t address, uint16_t value, uint8_t retries) c
     } else if (frameFormat == FrameFormat::SPI_24) {
       // ---- 24-bit write with CRC ----
       // First frame: send address with CRC
-      uint16_t cmdPayload = static_cast<uint16_t>((0 << 14) | (address & 0x3FFF));
+      uint16_t cmdPayload = static_cast<uint16_t>(address & 0x3FFF);
       uint8_t cmdCrc = computeCRC8(cmdPayload);
-      uint8_t txCmd[3] = {static_cast<uint8_t>(((address >> 8) & 0x3F) | 0x00), // bit6=0 for write
-                          static_cast<uint8_t>(address & 0xFF), cmdCrc};
+      const uint8_t txCmd[3] = {static_cast<uint8_t>((address >> 8) & 0x3F), // bit6=0 for write
+                                 static_cast<uint8_t>(address & 0xFF), cmdCrc};
       uint8_t rxCmd[3];
       spi.transfer(txCmd, rxCmd, 3);
 
       // Second frame: send data with CRC
       uint16_t dataPayload = value & 0x3FFF;
       uint8_t dataCrc = computeCRC8(dataPayload);
-      uint8_t txData[3] = {static_cast<uint8_t>((dataPayload >> 8) & 0xFF),
-                           static_cast<uint8_t>(dataPayload & 0xFF), dataCrc};
+      const uint8_t txData[3] = {static_cast<uint8_t>((dataPayload >> 8) & 0xFF),
+                                  static_cast<uint8_t>(dataPayload & 0xFF), dataCrc};
       uint8_t rxData[3];
       spi.transfer(txData, rxData, 3);
 
@@ -498,19 +498,19 @@ bool AS5047U::writeRegister(uint16_t address, uint16_t value, uint8_t retries) c
     } else if (frameFormat == FrameFormat::SPI_32) {
       // ---- 32-bit write with CRC and pad byte ----
       // First frame: send address with CRC and pad
-      uint16_t cmdPayload = static_cast<uint16_t>((0 << 14) | (address & 0x3FFF));
+      uint16_t cmdPayload = static_cast<uint16_t>(address & 0x3FFF);
       uint8_t cmdCrc = computeCRC8(cmdPayload);
-      uint8_t txCmd[4] = {padByte,
-                          static_cast<uint8_t>(((address >> 8) & 0x3F) | 0x00), // bit6=0 for write
-                          static_cast<uint8_t>(address & 0xFF), cmdCrc};
+      const uint8_t txCmd[4] = {padByte,
+                                 static_cast<uint8_t>((address >> 8) & 0x3F), // bit6=0 for write
+                                 static_cast<uint8_t>(address & 0xFF), cmdCrc};
       uint8_t rxCmd[4];
       spi.transfer(txCmd, rxCmd, 4);
 
       // Second frame: send data with CRC and pad
       uint16_t dataPayload = value & 0x3FFF;
       uint8_t dataCrc = computeCRC8(dataPayload);
-      uint8_t txData[4] = {padByte, static_cast<uint8_t>((dataPayload >> 8) & 0xFF),
-                           static_cast<uint8_t>(dataPayload & 0xFF), dataCrc};
+      const uint8_t txData[4] = {padByte, static_cast<uint8_t>((dataPayload >> 8) & 0xFF),
+                                  static_cast<uint8_t>(dataPayload & 0xFF), dataCrc};
       uint8_t rxData[4];
       spi.transfer(txData, rxData, 4);
 
