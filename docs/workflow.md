@@ -44,4 +44,4 @@ Follow these steps to go from a fresh clone to running the example code.
   The serial monitor should show angle readings similar to `Angle: 16384`.
 
 ---
-⬅️ **Previous:** [Running the Examples](examples.md) | [Back to Documentation Index](README.md)
+⬅️ **Previous:** [Running the Examples](examples.md) | [Back to Documentation Index](index.md)

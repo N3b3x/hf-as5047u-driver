@@ -44,4 +44,4 @@ Example projects for Arduino, ESP32 (ESP-IDF) and STM32 are provided in the `exa
 Each example demonstrates basic angle reading and can be extended to suit your application.
 
 ---
-⬅️ **Previous:** [Using the Library](usage.md) | [Back to Documentation Index](README.md) | **Next:** [Quick Start Workflow](workflow.md) ➡️
+⬅️ **Previous:** [Using the Library](usage.md) | [Back to Documentation Index](index.md) | **Next:** [Quick Start Workflow](workflow.md) ➡️

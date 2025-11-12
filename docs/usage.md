@@ -73,4 +73,4 @@ Which might print something like `Velocity: 30.5 deg/s`.
 Refer to the [API summary](../README.md#-api-summary) for the full list of methods.
 
 ---
-⬅️ **Previous:** [Building and Testing](building.md) | [Back to Documentation Index](README.md) | **Next:** [Running the Examples](examples.md) ➡️
+⬅️ **Previous:** [Building and Testing](building.md) | [Back to Documentation Index](index.md) | **Next:** [Running the Examples](examples.md) ➡️

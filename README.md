@@ -129,7 +129,7 @@ public:
 ```
 
 ## 📖 Documentation
-Detailed step‑by‑step guides (with example command output) are available in the [docs](docs/README.md) folder. Start with the [Quick Start Workflow](docs/workflow.md) if you're new.
+Detailed step‑by‑step guides (with example command output) are available in the [docs](docs/index.md) folder. Start with the [Quick Start Workflow](docs/workflow.md) if you're new.
 
 ---
 

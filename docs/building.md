@@ -32,4 +32,4 @@ Object files are generated in the `src` directory.
 If the build fails ensure your compiler supports C++20 and that `make` is installed.
 
 ---
-⬅️ **Previous:** [Setup](setup.md) | [Back to Documentation Index](README.md) | **Next:** [Using the Library](usage.md) ➡️
+⬅️ **Previous:** [Setup](setup.md) | [Back to Documentation Index](index.md) | **Next:** [Using the Library](usage.md) ➡️

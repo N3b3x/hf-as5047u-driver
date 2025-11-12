@@ -42,4 +42,4 @@ cd HF-AS5047U
 The rest of the documentation assumes you are inside the project directory.
 
 ---
-⬅️ [Back to Documentation Index](README.md) | **Next:** [Building and Testing](building.md) ➡️
+⬅️ [Back to Documentation Index](index.md) | **Next:** [Building and Testing](building.md) ➡️

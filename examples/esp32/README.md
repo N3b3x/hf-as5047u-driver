@@ -275,7 +275,7 @@ See the main driver [LICENSE](../../LICENSE) file.
 
 ## 🤝 Contributing
 
-See the main driver [Contributing Guide](../../docs/README.md).
+See the main driver [Contributing Guide](../../docs/index.md).
 
 ---
 
