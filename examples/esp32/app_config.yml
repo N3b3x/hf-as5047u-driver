@@ -160,4 +160,3 @@ ci_config:
   exclude_combinations: []
   # Apps that require special handling
   special_apps: []
-
