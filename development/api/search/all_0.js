@@ -1,4 +1,32 @@
 var searchData=
 [
-  ['0_20strong_0',['&lt;strong&gt;Functions Removed in Version 2.0&lt;/strong&gt;',['..//home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/scripts/docs/configuration/index.md#autotoc_md575',1,'']]]
+  ['abi_5fdec_0',['ABI_DEC',['../structAS5047U__REG_1_1SETTINGS2.html#a239dd4ec0a2f0c6a1a1595f6f73d58f9',1,'AS5047U_REG::SETTINGS2']]],
+  ['abi_5foff_1',['ABI_off',['../structAS5047U__REG_1_1DISABLE.html#a3e8f2b9e0afc210a07fda53d8917fef8',1,'AS5047U_REG::DISABLE']]],
+  ['abi_5fpwm_5fon_5fw_2',['ABI_PWM_on_W',['../structAS5047U__REG_1_1SETTINGS2.html#af842d979eb61f108243f7d9a59612e00a08f1a2380c96da5b1ddefedc4820d32f',1,'AS5047U_REG::SETTINGS2']]],
+  ['abicountmode_3',['ABICountMode',['../structAS5047U__REG_1_1SETTINGS2.html#a2eb243d2f86ae9c4bbc5d0aaac4a5947',1,'AS5047U_REG::SETTINGS2']]],
+  ['abimode_4',['ABIMode',['../structAS5047U__REG_1_1DISABLE.html#ab4c532c4b7ab8568f78b98aebebe50bc',1,'AS5047U_REG::DISABLE']]],
+  ['abires_5',['ABIRES',['../structAS5047U__REG_1_1SETTINGS3.html#af600a0c7688ecdeef79d4145cca168b1',1,'AS5047U_REG::SETTINGS3']]],
+  ['abiresolution_6',['ABIResolution',['../structAS5047U__REG_1_1SETTINGS3.html#a871e1f5ebd8db0b97b1bd44e97c1d283',1,'AS5047U_REG::SETTINGS3']]],
+  ['adaptivefilterkmax_7',['AdaptiveFilterKmax',['../structAS5047U__REG_1_1SETTINGS1.html#a88cda91842f104287ef1f870c68f87ef',1,'AS5047U_REG::SETTINGS1']]],
+  ['adaptivefilterkmin_8',['AdaptiveFilterKmin',['../structAS5047U__REG_1_1SETTINGS1.html#a5ef3b6165d17481e82fb365b34af7a62',1,'AS5047U_REG::SETTINGS1']]],
+  ['address_9',['ADDRESS',['../structAS5047U__REG_1_1NOP.html#abdc65f191d44906cab0cf9ee3dc60058',1,'AS5047U_REG::NOP::ADDRESS'],['../structAS5047U__REG_1_1ERRFL.html#afc6a58cd114560da74d3f8f78053408d',1,'AS5047U_REG::ERRFL::ADDRESS'],['../structAS5047U__REG_1_1PROG.html#a841581d1b25f6ead439a1ff561ebccf8',1,'AS5047U_REG::PROG::ADDRESS'],['../structAS5047U__REG_1_1DIA.html#a1e572e1899de613fee0eea644ad86f0d',1,'AS5047U_REG::DIA::ADDRESS'],['../structAS5047U__REG_1_1AGC.html#a312e025904805af46b1ccc2b66d9b443',1,'AS5047U_REG::AGC::ADDRESS'],['../structAS5047U__REG_1_1SINDATA.html#a436abe11aa6754e4910871df5b38cbad',1,'AS5047U_REG::SINDATA::ADDRESS'],['../structAS5047U__REG_1_1COSDATA.html#a03c25c5c27c63239d03aa6ea7963b189',1,'AS5047U_REG::COSDATA::ADDRESS'],['../structAS5047U__REG_1_1VEL.html#a4875bceeeee09ea237fdb08e72a0e36a',1,'AS5047U_REG::VEL::ADDRESS'],['../structAS5047U__REG_1_1MAG.html#a968b42c9149f762d4190b2b33587e518',1,'AS5047U_REG::MAG::ADDRESS'],['../structAS5047U__REG_1_1ANGLEUNC.html#aa8b5ad7d7c27d4c6070cfc843cf91b14',1,'AS5047U_REG::ANGLEUNC::ADDRESS'],['../structAS5047U__REG_1_1ECC__Checksum.html#abfd230fb0d3c8102abdcf3d48a90577b',1,'AS5047U_REG::ECC_Checksum::ADDRESS'],['../structAS5047U__REG_1_1ANGLECOM.html#aaf4d8a183170df649183576cb0efb560',1,'AS5047U_REG::ANGLECOM::ADDRESS'],['../structAS5047U__REG_1_1DISABLE.html#a34c853267b1de0b9b36d62bacd6e4903',1,'AS5047U_REG::DISABLE::ADDRESS'],['../structAS5047U__REG_1_1ZPOSM.html#a93344793e2657eb6a4dbaf57d22086a1',1,'AS5047U_REG::ZPOSM::ADDRESS'],['../structAS5047U__REG_1_1ZPOSL.html#a917565d88925acade956aff3183a29ae',1,'AS5047U_REG::ZPOSL::ADDRESS'],['../structAS5047U__REG_1_1SETTINGS1.html#aa9d25c84c1f642a46fec7206174dd3fe',1,'AS5047U_REG::SETTINGS1::ADDRESS'],['../structAS5047U__REG_1_1SETTINGS2.html#addeebb2c33f31124fbda8472ede70b9c',1,'AS5047U_REG::SETTINGS2::ADDRESS'],['../structAS5047U__REG_1_1SETTINGS3.html#a762640a98d18b9f5ec26958eafa965db',1,'AS5047U_REG::SETTINGS3::ADDRESS'],['../structAS5047U__REG_1_1ECC.html#a1481e7d6bc12377f1d33913472d0164c',1,'AS5047U_REG::ECC::ADDRESS']]],
+  ['agc_10',['AGC',['../structAS5047U__REG_1_1AGC.html',1,'AS5047U_REG']]],
+  ['agc_5ffinished_11',['AGC_finished',['../structAS5047U__REG_1_1DIA.html#ae0ab092b02ec1635897d769455ef0bf6',1,'AS5047U_REG::DIA']]],
+  ['agc_5fvalue_12',['AGC_value',['../structAS5047U__REG_1_1AGC.html#af39316452ba2268e4cb66a765f7d837f',1,'AS5047U_REG::AGC']]],
+  ['agc_5fwarning_13',['AGC_warning',['../structAS5047U__REG_1_1ERRFL.html#a592a533249a323135cd5e68dfa776d32',1,'AS5047U_REG::ERRFL']]],
+  ['agcwarning_14',['AgcWarning',['../AS5047U_8hpp.html#a65e970630e302a2ffedf003f59fe4df5a858ff7c22c19037f5772f6c1b00286d2',1,'AS5047U.hpp']]],
+  ['anglecom_15',['ANGLECOM',['../structAS5047U__REG_1_1ANGLECOM.html',1,'AS5047U_REG']]],
+  ['anglecom_5fvalue_16',['ANGLECOM_value',['../structAS5047U__REG_1_1ANGLECOM.html#ae2ec14560c6f755869fb7f97a350fde9',1,'AS5047U_REG::ANGLECOM']]],
+  ['angleoutputsource_17',['AngleOutputSource',['../structAS5047U__REG_1_1SETTINGS2.html#a0bf2613a54b21f890873793e8e87cb46',1,'AS5047U_REG::SETTINGS2']]],
+  ['angleunc_18',['ANGLEUNC',['../structAS5047U__REG_1_1ANGLEUNC.html',1,'AS5047U_REG']]],
+  ['angleunc_5fvalue_19',['ANGLEUNC_value',['../structAS5047U__REG_1_1ANGLEUNC.html#a7193cd00d36b54d4034ecf2950f075bc',1,'AS5047U_REG::ANGLEUNC']]],
+  ['as5047u_20',['AS5047U',['../classAS5047U.html',1,'AS5047U'],['../classAS5047U.html#a368f6372b9c9cef15da2f60852eb27d8',1,'AS5047U::AS5047U()']]],
+  ['as5047u_2ecpp_21',['AS5047U.cpp',['../AS5047U_8cpp.html',1,'']]],
+  ['as5047u_2ehpp_22',['AS5047U.hpp',['../AS5047U_8hpp.html',1,'']]],
+  ['as5047u_5fcfg_23',['AS5047U_CFG',['../namespaceAS5047U__CFG.html',1,'']]],
+  ['as5047u_5fconfig_2ehpp_24',['AS5047U_config.hpp',['../AS5047U__config_8hpp.html',1,'']]],
+  ['as5047u_5ferror_25',['AS5047U_Error',['../AS5047U_8hpp.html#a65e970630e302a2ffedf003f59fe4df5',1,'AS5047U.hpp']]],
+  ['as5047u_5freg_26',['AS5047U_REG',['../namespaceAS5047U__REG.html',1,'']]],
+  ['as5047u_5fregisters_2ehpp_27',['AS5047U_REGISTERS.hpp',['../AS5047U__REGISTERS_8hpp.html',1,'']]],
+  ['as5047u_5ftypes_2ehpp_28',['AS5047U_types.hpp',['../AS5047U__types_8hpp.html',1,'']]]
 ];

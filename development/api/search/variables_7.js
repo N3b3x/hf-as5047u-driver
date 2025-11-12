@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['results_0',['results',['../structTestTaskContext.html#a1c97680bd267a35637278ea10a3fae0e',1,'TestTaskContext']]]
+  ['iwidth_0',['IWIDTH',['../structAS5047U__REG_1_1SETTINGS2.html#a8652ef5f7179931e7d648a29fb3d387d',1,'AS5047U_REG::SETTINGS2']]]
 ];

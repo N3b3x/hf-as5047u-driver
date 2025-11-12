@@ -1,7 +1,31 @@
 <map id="src/AS5047U.cpp" name="src/AS5047U.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="79,5,209,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,149,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,33,99,70,96,67,131,29"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="173,79,248,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="157,29,192,67,189,70,153,33"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="535,5,666,31"/>
+<area shape="rect" id="Node000002" href="$AS5047U_8hpp.html" title="Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21)." alt="" coords="462,79,606,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="592,33,556,70,552,67,588,29"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="630,79,705,104"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="614,29,649,67,645,70,610,33"/>
+<area shape="rect" id="Node000003" href="$AS5047U__REGISTERS_8hpp.html" title="Register definitions for the AS5047U Rotary Position Sensor." alt="" coords="5,225,193,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="462,99,343,116,277,132,214,154,163,185,122,218,119,214,160,180,212,150,275,127,342,111,461,94"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="491,299,558,324"/>
+<area shape="poly" id="edge9_Node000002_Node000004" title=" " alt="" coords="462,101,403,108,342,119,290,134,271,143,259,154,250,168,246,182,247,194,252,206,274,229,308,249,350,266,395,280,478,299,477,304,394,285,348,271,306,253,271,233,248,209,242,196,240,181,245,166,255,150,268,139,288,129,341,113,402,102,461,95"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="269,152,354,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="499,107,361,150,359,145,497,101"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="378,152,434,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="515,106,440,147,438,143,512,102"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="458,152,525,177"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="529,106,507,142,503,139,525,103"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="549,152,607,177"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="544,103,566,139,561,142,539,106"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="632,152,695,177"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="556,102,631,143,629,147,554,106"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="719,152,781,177"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="570,101,707,146,705,152,568,107"/>
+<area shape="rect" id="Node000011" href="$AS5047U__types_8hpp.html" title="Type definitions for the AS5047U driver." alt="" coords="742,225,894,251"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="600,101,718,125,767,138,794,150,805,164,813,179,820,211,814,212,808,181,801,166,791,154,766,143,717,131,599,107"/>
+<area shape="rect" id="Node000012" href="$AS5047U__config_8hpp.html" title=" " alt="" coords="855,152,1010,177"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="599,101,855,147,854,152,598,107"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="168,248,478,300,477,305,167,253"/>
+<area shape="poly" id="edge12_Node000011_Node000004" title=" " alt="" coords="771,253,572,301,571,296,770,248"/>
+<area shape="poly" id="edge14_Node000012_Node000004" title=" " alt="" coords="935,178,930,215,922,235,908,253,882,268,846,280,755,297,656,307,572,311,572,306,655,301,754,292,845,275,880,263,904,249,917,233,925,213,930,177"/>
+<area shape="poly" id="edge15_Node000012_Node000011" title=" " alt="" coords="916,180,850,220,847,216,913,175"/>
 </map>

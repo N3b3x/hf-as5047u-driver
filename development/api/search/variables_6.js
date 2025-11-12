@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['queue_5fsize_0',['queue_size',['../structEsp32As5047uBus_1_1SPIConfig.html#ab17d5c7de4929e7e3b4476740b2516f5',1,'Esp32As5047uBus::SPIConfig']]]
+  ['hys_0',['HYS',['../structAS5047U__REG_1_1SETTINGS3.html#a03143fb0cac6f0d127b475fe9e5cadc3',1,'AS5047U_REG::SETTINGS3']]]
 ];

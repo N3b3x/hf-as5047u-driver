@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['passed_5ftests_0',['passed_tests',['../structTestResults.html#a55b5f813fe7b5863b46e03f2c7f761ea',1,'TestResults']]]
+  ['filter_5fdisable_0',['FILTER_disable',['../structAS5047U__REG_1_1DISABLE.html#ad012f583e95c4b88e11ea4b657a51f96',1,'AS5047U_REG::DISABLE']]],
+  ['framing_5ferror_1',['Framing_error',['../structAS5047U__REG_1_1ERRFL.html#a4b10b7dd554cd14c452a406085ce0686',1,'AS5047U_REG::ERRFL']]]
 ];

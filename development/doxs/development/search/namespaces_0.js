@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['generate_5fmatrix_0',['generate_matrix',['../namespacegenerate__matrix.html',1,'']]],
-  ['get_5fapp_5finfo_1',['get_app_info',['../namespaceget__app__info.html',1,'']]]
+  ['as5047u_5fcfg_0',['AS5047U_CFG',['../namespaceAS5047U__CFG.html',1,'']]],
+  ['as5047u_5freg_1',['AS5047U_REG',['../namespaceAS5047U__REG.html',1,'']]]
 ];

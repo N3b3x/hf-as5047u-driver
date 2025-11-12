@@ -14,9 +14,10 @@
   <style id="jtd-nav-activation">
   
 
+    .site-nav > ul.nav-list:first-child > li > a,
     
-    .site-nav > ul.nav-list:first-child > li:not(:nth-child(3)) > a,
-    .site-nav > ul.nav-list:first-child > li > ul > li a {
+    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(1)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
       background-image: none;
     }
 
@@ -25,12 +26,14 @@
       background-image: none;
     }
 
-    .site-nav > ul.nav-list:first-child > li:nth-child(3) > a {
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > a {
       font-weight: 600;
       text-decoration: none;
-    }.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg {
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > button svg {
       transform: rotate(-90deg);
-    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list {
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
       display: block;
     }
   </style>
@@ -50,21 +53,21 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>HF-AS5047U Documentation | HardFOC AS5047U Driver - development</title>
+<title>📚 Documentation | HardFOC AS5047U Driver - development</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="HF-AS5047U Documentation" />
+<meta property="og:title" content="📚 Documentation" />
 <meta name="author" content="N3b3x" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Portable C++20 driver for the AS5047U magnetic encoder from ams with 14-bit absolute angle readings, optional CRC protection, Dynamic Angle Error Compensation (DAEC), and adaptive Dynamic Filter System (DFS™)" />
-<meta property="og:description" content="Portable C++20 driver for the AS5047U magnetic encoder from ams with 14-bit absolute angle readings, optional CRC protection, Dynamic Angle Error Compensation (DAEC), and adaptive Dynamic Filter System (DFS™)" />
+<meta name="description" content="Complete documentation for the HardFOC AS5047U Driver - Setup guides, usage examples, and API reference" />
+<meta property="og:description" content="Complete documentation for the HardFOC AS5047U Driver - Setup guides, usage examples, and API reference" />
 <link rel="canonical" href="https://n3b3x.github.io/hf-as5047u-driver/development/docs/" />
 <meta property="og:url" content="https://n3b3x.github.io/hf-as5047u-driver/development/docs/" />
 <meta property="og:site_name" content="HardFOC AS5047U Driver - development" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="HF-AS5047U Documentation" />
+<meta property="twitter:title" content="📚 Documentation" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Portable C++20 driver for the AS5047U magnetic encoder from ams with 14-bit absolute angle readings, optional CRC protection, Dynamic Angle Error Compensation (DAEC), and adaptive Dynamic Filter System (DFS™)","headline":"HF-AS5047U Documentation","url":"https://n3b3x.github.io/hf-as5047u-driver/development/docs/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Complete documentation for the HardFOC AS5047U Driver - Setup guides, usage examples, and API reference","headline":"📚 Documentation","url":"https://n3b3x.github.io/hf-as5047u-driver/development/docs/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -166,7 +169,11 @@
   <nav aria-label="Main" id="site-nav" class="site-nav">
   
   
-    <ul class="nav-list"><li class="nav-list-item"><a href="/hf-as5047u-driver/development/" class="nav-list-link">HardFOC AS5047U Driver</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/examples/esp32/" class="nav-list-link">AS5047U ESP32-C6 Examples</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/" class="nav-list-link">HF-AS5047U Documentation</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/examples.html" class="nav-list-link">🎮 Running the Examples</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/workflow.html" class="nav-list-link">🏁 Quick Start Workflow</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/usage.html" class="nav-list-link">📚 Using the Library</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/setup.html" class="nav-list-link">🛠️ Setup</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/building.html" class="nav-list-link">🧰 Building and Testing</a></li></ul>
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in HardFOC AS5047U Driver category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-as5047u-driver/development/" class="nav-list-link">HardFOC AS5047U Driver</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-as5047u-driver/development/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/setup/" class="nav-list-link">🛠️ Setup</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/building/" class="nav-list-link">🧰 Building and Testing</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/workflow/" class="nav-list-link">🏁 Quick Start Workflow</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/usage/" class="nav-list-link">📚 Using the Library</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/examples/" class="nav-list-link">🎮 Running the Examples</a></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/docs/doxygen-extensions/" class="nav-list-link">📖 Doxygen Extensions</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-as5047u-driver/development/examples/esp32/" class="nav-list-link">AS5047U ESP32-C6 Examples</a></li></ul>
   
 </nav>
 
@@ -240,7 +247,14 @@
 </div>
 
     <div class="main-content-wrap">
-      
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-as5047u-driver/development/">HardFOC AS5047U Driver</a></li>
+    <li class="breadcrumb-nav-list-item"><span>📚 Documentation</span></li>
+  </ol>
+</nav>
+
+
       <div id="main-content" class="main-content">
         <main>
           
@@ -254,21 +268,118 @@
     
 
 <p>Welcome! This directory contains step‑by‑step guides for installing, building and using the <strong>HF-AS5047U</strong> library. Each guide focuses on a specific topic and is meant to be read in order. Example output is provided so you know what to expect when commands run correctly.</p>
+<h2 id="-documentation-structure">
+  
+  
+    <a href="#-documentation-structure" class="anchor-heading" aria-labelledby="-documentation-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📚 Documentation Structure
+  
+  
+</h2>
+    
+<h3 id="getting-started">
+  
+  
+    <a href="#getting-started" class="anchor-heading" aria-labelledby="getting-started"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Getting Started</strong>
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong><a href="/hf-as5047u-driver/development/docs/setup/">🛠️ Setup</a></strong> – prerequisites and how to obtain the source</li>
+  <li><strong><a href="/hf-as5047u-driver/development/docs/building/">🧰 Building and Testing</a></strong> – compile the library and run the unit tests</li>
+  <li><strong><a href="/hf-as5047u-driver/development/docs/workflow/">🏁 Quick Start Workflow</a></strong> – everything from cloning to running examples</li>
+</ol>
+<h3 id="usage-guides">
+  
+  
+    <a href="#usage-guides" class="anchor-heading" aria-labelledby="usage-guides"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Usage Guides</strong>
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong><a href="/hf-as5047u-driver/development/docs/usage/">📚 Using the Library</a></strong> – integrate the driver in your own project</li>
+  <li><strong><a href="/hf-as5047u-driver/development/docs/examples/">🎮 Running the Examples</a></strong> – compile and upload the example sketches</li>
+</ol>
+<h3 id="advanced-topics">
+  
+  
+    <a href="#advanced-topics" class="anchor-heading" aria-labelledby="advanced-topics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Advanced Topics</strong>
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong><a href="/hf-as5047u-driver/development/docs/doxygen-extensions/">📖 Doxygen Extensions</a></strong> – Advanced Doxygen documentation features</li>
+</ol><hr />
+<h2 id="-quick-start">
+  
+  
+    <a href="#-quick-start" class="anchor-heading" aria-labelledby="-quick-start"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🚀 Quick Start
+  
+  
+</h2>
+    
+
+<p><strong>New to AS5047U?</strong> Follow this recommended path:</p>
+
+<ol>
+  <li>Start with <strong><a href="/hf-as5047u-driver/development/docs/setup/">Setup</a></strong> to prepare your environment</li>
+  <li>Follow <strong><a href="/hf-as5047u-driver/development/docs/building/">Building and Testing</a></strong> to compile the library</li>
+  <li>Read <strong><a href="/hf-as5047u-driver/development/docs/usage/">Using the Library</a></strong> to integrate it into your project</li>
+  <li>Try <strong><a href="/hf-as5047u-driver/development/docs/examples/">Running the Examples</a></strong> to see it in action</li>
+</ol><hr />
+<h2 id="-need-help">
+  
+  
+    <a href="#-need-help" class="anchor-heading" aria-labelledby="-need-help"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 💡 Need Help?
+  
+  
+</h2>
+    
 
 <ul>
-  <li>📥 <a href="/hf-as5047u-driver/development/docs/setup.html">Setup</a> – prerequisites and how to obtain the source</li>
-  <li>🛠️ <a href="/hf-as5047u-driver/development/docs/building.html">Building and Testing</a> – compile the library and run the unit tests</li>
-  <li>🧩 <a href="/hf-as5047u-driver/development/docs/usage.html">Using the Library</a> – integrate the driver in your own project</li>
-  <li>🚀 <a href="/hf-as5047u-driver/development/docs/examples.html">Running the Examples</a> – compile and upload the example sketches</li>
-  <li>🏃 <a href="/hf-as5047u-driver/development/docs/workflow.html">Quick Start Workflow</a> – everything from cloning to running examples</li>
+  <li><strong>🐛 Found a bug?</strong> Check the troubleshooting sections in each guide</li>
+  <li><strong>❓ Have questions?</strong> Review the usage guide</li>
+  <li><strong>📝 Want to contribute?</strong> See the contributing guidelines</li>
 </ul>
 
-<p>Use the links above to navigate to each section.</p>
-
           
 
           
-            
+            <hr>
+<h2 class="text-delta">Table of contents</h2>
+
+<ul>
+  
+  <li>
+    <a href="/hf-as5047u-driver/development/docs/setup/">🛠️ Setup</a>
+  </li>
+  
+  <li>
+    <a href="/hf-as5047u-driver/development/docs/building/">🧰 Building and Testing</a>
+  </li>
+  
+  <li>
+    <a href="/hf-as5047u-driver/development/docs/workflow/">🏁 Quick Start Workflow</a>
+  </li>
+  
+  <li>
+    <a href="/hf-as5047u-driver/development/docs/usage/">📚 Using the Library</a>
+  </li>
+  
+  <li>
+    <a href="/hf-as5047u-driver/development/docs/examples/">🎮 Running the Examples</a>
+  </li>
+  
+  <li>
+    <a href="/hf-as5047u-driver/development/docs/doxygen-extensions/">📖 Doxygen Extensions</a>
+  </li>
+  
+</ul>
           
         </main>
         

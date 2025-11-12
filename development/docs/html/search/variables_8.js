@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sclk_5fpin_0',['sclk_pin',['../structEsp32As5047uBus_1_1SPIConfig.html#aa1b2b13dde4473e6c8e7247eb3b25a37',1,'Esp32As5047uBus::SPIConfig']]]
+  ['k_5fmax_0',['K_max',['../structAS5047U__REG_1_1SETTINGS1.html#ac3961a1497a2ebb991e134e5706ff415',1,'AS5047U_REG::SETTINGS1']]],
+  ['k_5fmin_1',['K_min',['../structAS5047U__REG_1_1SETTINGS1.html#a1b98ed73bf6882ac65fe7abc03b45b0c',1,'AS5047U_REG::SETTINGS1']]]
 ];
