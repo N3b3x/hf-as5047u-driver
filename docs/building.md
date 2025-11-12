@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🧰 Building and Testing"
+description: "How to compile the AS5047U library and run unit tests"
+nav_order: 2
+parent: "📚 Documentation"
+permalink: /docs/building/
+---
+
 # 🧰 Building and Testing
 
 This guide explains how to compile the library and run the provided unit tests.

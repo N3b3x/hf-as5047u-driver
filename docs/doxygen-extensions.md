@@ -1,10 +1,11 @@
 ---
 layout: default
-title: "Doxygen Extensions"
-nav_order: 1
-parent: "Documentation"
+title: "📖 Doxygen Extensions"
 description: "Advanced Doxygen documentation with automatic dark mode, interactive features, and modern styling"
-has_children: true
+nav_order: 6
+parent: "📚 Documentation"
+permalink: /docs/doxygen-extensions/
+has_children: false
 has_toc: true
 ---
 

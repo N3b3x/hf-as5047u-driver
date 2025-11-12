@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🛠️ Setup"
+description: "Prerequisites and how to obtain the AS5047U driver source"
+nav_order: 1
+parent: "📚 Documentation"
+permalink: /docs/setup/
+---
+
 # 🛠️ Setup
 
 This guide walks you through preparing your environment and cloning the repository.

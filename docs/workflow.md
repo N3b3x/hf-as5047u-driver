@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🏁 Quick Start Workflow"
+description: "Complete workflow from cloning to running examples"
+nav_order: 3
+parent: "📚 Documentation"
+permalink: /docs/workflow/
+---
+
 # 🏁 Quick Start Workflow
 Follow these steps to go from a fresh clone to running the example code.
 

@@ -1,3 +1,12 @@
+---
+layout: default
+title: "📚 Using the Library"
+description: "How to integrate the AS5047U driver into your own project"
+nav_order: 4
+parent: "📚 Documentation"
+permalink: /docs/usage/
+---
+
 # 📚 Using the Library
 
 This document shows how to integrate `HF-AS5047U` into your own project.

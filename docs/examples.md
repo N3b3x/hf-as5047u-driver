@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🎮 Running the Examples"
+description: "How to compile and run example projects for Arduino, ESP32, and STM32"
+nav_order: 5
+parent: "📚 Documentation"
+permalink: /docs/examples/
+---
+
 # 🎮 Running the Examples
 
 Example projects for Arduino, ESP32 (ESP-IDF) and STM32 are provided in the `examples` directory.
