@@ -1,13 +1,14 @@
 var searchData=
 [
-  ['unused_5f10_0',['unused_10',['../structAS5047U__REG_1_1DIA.html#ada8b2d4a016d97b9648e440afd13a0d2',1,'AS5047U_REG::DIA']]],
-  ['unused_5f8_1',['unused_8',['../structAS5047U__REG_1_1ERRFL.html#a40301b054ff974202fc92a46706ac1f8',1,'AS5047U_REG::ERRFL']]],
-  ['useanglecom_2',['UseANGLECOM',['../structAS5047U__REG_1_1SETTINGS2.html#a0bf2613a54b21f890873793e8e87cb46aa24118a34beac00630b1ce5c444b20dc',1,'AS5047U_REG::SETTINGS2']]],
-  ['useangleunc_3',['UseANGLEUNC',['../structAS5047U__REG_1_1SETTINGS2.html#a0bf2613a54b21f890873793e8e87cb46a67a4ef1b6a4b1a3c35b064d10f7175af',1,'AS5047U_REG::SETTINGS2']]],
-  ['uvw_5fabi_4',['UVW_ABI',['../structAS5047U__REG_1_1SETTINGS2.html#ad62fae5c399dce0feb8ea70115e1a440',1,'AS5047U_REG::SETTINGS2']]],
-  ['uvw_5foff_5',['UVW_off',['../structAS5047U__REG_1_1DISABLE.html#a930f339b2effc442be9f78fab730b794',1,'AS5047U_REG::DISABLE']]],
-  ['uvw_5fpwm_5fon_5fi_6',['UVW_PWM_on_I',['../structAS5047U__REG_1_1SETTINGS2.html#af842d979eb61f108243f7d9a59612e00ae9949b878df882ba7a4d12ad488b79cc',1,'AS5047U_REG::SETTINGS2']]],
-  ['uvwmode_7',['UVWMode',['../structAS5047U__REG_1_1DISABLE.html#a0b0f8cfb593348630f6c272a0e4e2e7c',1,'AS5047U_REG::DISABLE']]],
-  ['uvwpolepairs_8',['UVWPolePairs',['../structAS5047U__REG_1_1SETTINGS3.html#a011bfba50dbb2544e2f6766cad602184',1,'AS5047U_REG::SETTINGS3']]],
-  ['uvwpp_9',['UVWPP',['../structAS5047U__REG_1_1SETTINGS3.html#a39b94dea94aff4ec2022bc147ce12752',1,'AS5047U_REG::SETTINGS3']]]
+  ['tag_0',['tag',['../structTestTaskContext.html#ae51f49c33ea802bc7f8bdde560a27304',1,'TestTaskContext']]],
+  ['test_5ffunc_1',['test_func',['../structTestTaskContext.html#aa72faa223fd0ff992772b12458f62ec8',1,'TestTaskContext']]],
+  ['test_5fname_2',['test_name',['../structTestTaskContext.html#abcf19d2762ab98990c3fdc1eacf86130',1,'TestTaskContext']]],
+  ['test_5ftask_5ftrampoline_3',['test_task_trampoline',['../TestFramework_8h.html#ae0c6ad85cd439fc16572fe4b495e5479',1,'TestFramework.h']]],
+  ['testframework_2eh_4',['TestFramework.h',['../TestFramework_8h.html',1,'']]],
+  ['testresults_5',['TestResults',['../structTestResults.html',1,'']]],
+  ['testtaskcontext_6',['TestTaskContext',['../structTestTaskContext.html',1,'']]],
+  ['total_5fexecution_5ftime_5fus_7',['total_execution_time_us',['../structTestResults.html#a7eddc258a4288ac5f0a36a1008c9d014',1,'TestResults']]],
+  ['total_5ftests_8',['total_tests',['../structTestResults.html#afe20b168a13950ffca7296c0c56d4359',1,'TestResults']]],
+  ['transfer_9',['transfer',['../classAS5047U_1_1spiBus.html#a7c09daee18f26ed1c2569d49bc2b9a0d',1,'AS5047U::spiBus::transfer()'],['../classEsp32As5047uBus.html#aad6ba1da9dd6643b416d8698f1dde4a4',1,'Esp32As5047uBus::transfer()']]],
+  ['tristate_10',['Tristate',['../structAS5047U__REG_1_1DISABLE.html#a0b0f8cfb593348630f6c272a0e4e2e7ca1e12ce0c312e7dd542b46ed8e35a8902',1,'AS5047U_REG::DISABLE::Tristate'],['../structAS5047U__REG_1_1DISABLE.html#ab4c532c4b7ab8568f78b98aebebe50bca1e12ce0c312e7dd542b46ed8e35a8902',1,'AS5047U_REG::DISABLE::Tristate']]]
 ];

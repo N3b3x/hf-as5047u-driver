@@ -1,8 +1,16 @@
 var searchData=
 [
-  ['parse_5farguments_0',['parse_arguments',['../namespacegenerate__matrix.html#a1da8047bf7c969f1d945aa01de1f046a',1,'generate_matrix.parse_arguments()'],['../namespaceget__app__info.html#a397e6415c4e38813cc55459cb37cf825',1,'get_app_info.parse_arguments()']]],
-  ['print_5ftest_5fsection_5ffooter_1',['print_test_section_footer',['../TestFramework_8h.html#a5fe4d7658c49a1f3999cd09c0db952c0',1,'TestFramework.h']]],
-  ['print_5ftest_5fsection_5fheader_2',['print_test_section_header',['../TestFramework_8h.html#a5c46ab8dc59b071f0843bc287145d5f1',1,'TestFramework.h']]],
-  ['print_5ftest_5fsection_5fstatus_3',['print_test_section_status',['../TestFramework_8h.html#a200bb35a3a48c625b9cb8d2511d6bd87',1,'TestFramework.h']]],
-  ['print_5ftest_5fsummary_4',['print_test_summary',['../TestFramework_8h.html#ab7e4c076755ecdf2ad6212cb8f6578ab',1,'TestFramework.h']]]
+  ['set150ctemperaturemode_0',['set150CTemperatureMode',['../classAS5047U.html#a8872b10334328da690a2f904730d818b',1,'AS5047U']]],
+  ['setabiresolution_1',['setABIResolution',['../classAS5047U.html#afd3ae450e868dabf070685ee1c81defb',1,'AS5047U']]],
+  ['setadaptivefilter_2',['setAdaptiveFilter',['../classAS5047U.html#aca559314775725b04bc9ed6a59af98af',1,'AS5047U']]],
+  ['setangleoutputsource_3',['setAngleOutputSource',['../classAS5047U.html#a855bb192bd220be712fecb14532a6a04',1,'AS5047U']]],
+  ['setdirection_4',['setDirection',['../classAS5047U.html#ab99702e24e357ecaf7cff7ac8b7bb0a6',1,'AS5047U']]],
+  ['setdynamicanglecompensation_5',['setDynamicAngleCompensation',['../classAS5047U.html#ac3b7f1511ab5a36242a800135158f413',1,'AS5047U']]],
+  ['setfilterparameters_6',['setFilterParameters',['../classAS5047U.html#a5f1b1edcae3b4742bf31ec91b17bf963',1,'AS5047U']]],
+  ['setframeformat_7',['setFrameFormat',['../classAS5047U.html#ac95b1b6b14a50f4903e16fbdf9c889bd',1,'AS5047U']]],
+  ['sethysteresis_8',['setHysteresis',['../classAS5047U.html#a268450f6fa22da80f4e9c0a19590e244',1,'AS5047U']]],
+  ['setindexpulselength_9',['setIndexPulseLength',['../classAS5047U.html#a69e6bcaa93d7e75319873d64cb5f2099',1,'AS5047U']]],
+  ['setpad_10',['setPad',['../classAS5047U.html#a5ccab4ee781224d52eff77db974c525f',1,'AS5047U']]],
+  ['setuvwpolepairs_11',['setUVWPolePairs',['../classAS5047U.html#a7865fe60700f81fed48b2d53f8baebfc',1,'AS5047U']]],
+  ['setzeroposition_12',['setZeroPosition',['../classAS5047U.html#ae97c5e5a6f12e0a27d4b7e72a93dec04',1,'AS5047U']]]
 ];

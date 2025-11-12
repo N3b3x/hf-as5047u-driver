@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['zposl_5fbits_0',['ZPOSL_bits',['../structAS5047U__REG_1_1ZPOSL.html#a9d49eca4159460c58617cfe5a9997659',1,'AS5047U_REG::ZPOSL']]],
-  ['zposm_5fbits_1',['ZPOSM_bits',['../structAS5047U__REG_1_1ZPOSM.html#a84f2d26c8506c546826c69ffe4100161',1,'AS5047U_REG::ZPOSM']]]
+  ['unused_5f10_0',['unused_10',['../structAS5047U__REG_1_1DIA.html#ada8b2d4a016d97b9648e440afd13a0d2',1,'AS5047U_REG::DIA']]],
+  ['unused_5f8_1',['unused_8',['../structAS5047U__REG_1_1ERRFL.html#a40301b054ff974202fc92a46706ac1f8',1,'AS5047U_REG::ERRFL']]],
+  ['uvw_5fabi_2',['UVW_ABI',['../structAS5047U__REG_1_1SETTINGS2.html#ad62fae5c399dce0feb8ea70115e1a440',1,'AS5047U_REG::SETTINGS2']]],
+  ['uvw_5foff_3',['UVW_off',['../structAS5047U__REG_1_1DISABLE.html#a930f339b2effc442be9f78fab730b794',1,'AS5047U_REG::DISABLE']]],
+  ['uvwpp_4',['UVWPP',['../structAS5047U__REG_1_1SETTINGS3.html#a39b94dea94aff4ec2022bc147ce12752',1,'AS5047U_REG::SETTINGS3']]]
 ];

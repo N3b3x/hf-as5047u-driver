@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['show_5fhelp_0',['show_help',['../namespacegenerate__matrix.html#afcf2a75bce129733b2ec942bdfd73e44',1,'generate_matrix.show_help()'],['../namespaceget__app__info.html#a5d141025b7e34cd1c55bcdb883b3e08f',1,'get_app_info.show_help()']]]
+  ['test_5ftask_5ftrampoline_0',['test_task_trampoline',['../TestFramework_8h.html#ae0c6ad85cd439fc16572fe4b495e5479',1,'TestFramework.h']]],
+  ['transfer_1',['transfer',['../classAS5047U_1_1spiBus.html#a7c09daee18f26ed1c2569d49bc2b9a0d',1,'AS5047U::spiBus::transfer()'],['../classEsp32As5047uBus.html#aad6ba1da9dd6643b416d8698f1dde4a4',1,'Esp32As5047uBus::transfer()']]]
 ];
