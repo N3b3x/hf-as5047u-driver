@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdint>
+
 #include "AS5047U_types.hpp" // For FrameFormat enum
 
 // This header provides default configuration values for the AS5047U driver.
