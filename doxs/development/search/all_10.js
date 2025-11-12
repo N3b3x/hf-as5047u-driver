@@ -1,4 +1,26 @@
 var searchData=
 [
-  ['jenkins_20pipeline_20integration_20strong_0',['&lt;strong&gt;Jenkins Pipeline Integration&lt;/strong&gt;',['..//home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/scripts/docs/advanced/utility-scripts/index.md#autotoc_md258',1,'']]]
+  ['set150ctemperaturemode_0',['set150CTemperatureMode',['../classAS5047U.html#a8872b10334328da690a2f904730d818b',1,'AS5047U']]],
+  ['setabiresolution_1',['setABIResolution',['../classAS5047U.html#afd3ae450e868dabf070685ee1c81defb',1,'AS5047U']]],
+  ['setadaptivefilter_2',['setAdaptiveFilter',['../classAS5047U.html#aca559314775725b04bc9ed6a59af98af',1,'AS5047U']]],
+  ['setangleoutputsource_3',['setAngleOutputSource',['../classAS5047U.html#a855bb192bd220be712fecb14532a6a04',1,'AS5047U']]],
+  ['setdirection_4',['setDirection',['../classAS5047U.html#ab99702e24e357ecaf7cff7ac8b7bb0a6',1,'AS5047U']]],
+  ['setdynamicanglecompensation_5',['setDynamicAngleCompensation',['../classAS5047U.html#ac3b7f1511ab5a36242a800135158f413',1,'AS5047U']]],
+  ['setfilterparameters_6',['setFilterParameters',['../classAS5047U.html#a5f1b1edcae3b4742bf31ec91b17bf963',1,'AS5047U']]],
+  ['setframeformat_7',['setFrameFormat',['../classAS5047U.html#ac95b1b6b14a50f4903e16fbdf9c889bd',1,'AS5047U']]],
+  ['sethysteresis_8',['setHysteresis',['../classAS5047U.html#a268450f6fa22da80f4e9c0a19590e244',1,'AS5047U']]],
+  ['setindexpulselength_9',['setIndexPulseLength',['../classAS5047U.html#a69e6bcaa93d7e75319873d64cb5f2099',1,'AS5047U']]],
+  ['setpad_10',['setPad',['../classAS5047U.html#a5ccab4ee781224d52eff77db974c525f',1,'AS5047U']]],
+  ['settings1_11',['SETTINGS1',['../structAS5047U__REG_1_1SETTINGS1.html',1,'AS5047U_REG']]],
+  ['settings2_12',['SETTINGS2',['../structAS5047U__REG_1_1SETTINGS2.html',1,'AS5047U_REG']]],
+  ['settings3_13',['SETTINGS3',['../structAS5047U__REG_1_1SETTINGS3.html',1,'AS5047U_REG']]],
+  ['setuvwpolepairs_14',['setUVWPolePairs',['../classAS5047U.html#a7865fe60700f81fed48b2d53f8baebfc',1,'AS5047U']]],
+  ['setzeroposition_15',['setZeroPosition',['../classAS5047U.html#ae97c5e5a6f12e0a27d4b7e72a93dec04',1,'AS5047U']]],
+  ['sindata_16',['SINDATA',['../structAS5047U__REG_1_1SINDATA.html',1,'AS5047U_REG::SINDATA'],['../structAS5047U__REG_1_1SINDATA.html#a08db4472081e1330592099bfbc1e0066',1,'AS5047U_REG::SINDATA::SINDATA()']]],
+  ['sinoff_5ffin_17',['SinOff_fin',['../structAS5047U__REG_1_1DIA.html#aadd817f6beba6e731c6f528902509352',1,'AS5047U_REG::DIA']]],
+  ['spi_5f16_18',['SPI_16',['../AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a6d31511b938d463710373fc895ef4bd9',1,'AS5047U_types.hpp']]],
+  ['spi_5f24_19',['SPI_24',['../AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5',1,'AS5047U_types.hpp']]],
+  ['spi_5f32_20',['SPI_32',['../AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a367bc64c294b2a6476209c2d855171b5',1,'AS5047U_types.hpp']]],
+  ['spi_5fcnt_21',['SPI_cnt',['../structAS5047U__REG_1_1DIA.html#a530346c236a0a1a3f13ddd011d4ab34c',1,'AS5047U_REG::DIA']]],
+  ['spibus_22',['spiBus',['../classAS5047U_1_1spiBus.html',1,'AS5047U']]]
 ];
