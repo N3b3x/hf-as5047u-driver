@@ -1,7 +1,7 @@
 var searchData=
 [
   ['sclk_5fpin_0',['sclk_pin',['../structEsp32As5047uBus_1_1SPIConfig.html#aa1b2b13dde4473e6c8e7247eb3b25a37',1,'Esp32As5047uBus::SPIConfig']]],
-  ['sensor_20highlights_1',['🚀 Sensor Highlights',['../index.html#autotoc_md6',1,'']]],
+  ['sensor_20highlights_1',['🚀 Sensor Highlights',['../index.html#autotoc_md4',1,'']]],
   ['set150ctemperaturemode_2',['set150CTemperatureMode',['../classAS5047U.html#a8872b10334328da690a2f904730d818b',1,'AS5047U']]],
   ['setabiresolution_3',['setABIResolution',['../classAS5047U.html#afd3ae450e868dabf070685ee1c81defb',1,'AS5047U']]],
   ['setadaptivefilter_4',['setAdaptiveFilter',['../classAS5047U.html#aca559314775725b04bc9ed6a59af98af',1,'AS5047U']]],
@@ -20,16 +20,14 @@ var searchData=
   ['setzeroposition_17',['setZeroPosition',['../classAS5047U.html#ae97c5e5a6f12e0a27d4b7e72a93dec04',1,'AS5047U']]],
   ['sindata_18',['SINDATA',['../structAS5047U__REG_1_1SINDATA.html',1,'AS5047U_REG::SINDATA'],['../structAS5047U__REG_1_1SINDATA.html#a08db4472081e1330592099bfbc1e0066',1,'AS5047U_REG::SINDATA::SINDATA()']]],
   ['sinoff_5ffin_19',['SinOff_fin',['../structAS5047U__REG_1_1DIA.html#aadd817f6beba6e731c6f528902509352',1,'AS5047U_REG::DIA']]],
-  ['spi_20bus_20abstraction_20',['SPI Bus Abstraction',['../index.html#autotoc_md9',1,'']]],
-  ['spi_5f16_21',['SPI_16',['../AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a6d31511b938d463710373fc895ef4bd9',1,'AS5047U_types.hpp']]],
-  ['spi_5f24_22',['SPI_24',['../AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5',1,'AS5047U_types.hpp']]],
-  ['spi_5f32_23',['SPI_32',['../AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a367bc64c294b2a6476209c2d855171b5',1,'AS5047U_types.hpp']]],
-  ['spi_5fcnt_24',['SPI_cnt',['../structAS5047U__REG_1_1DIA.html#a530346c236a0a1a3f13ddd011d4ab34c',1,'AS5047U_REG::DIA']]],
-  ['spibus_25',['spiBus',['../classAS5047U_1_1spiBus.html',1,'AS5047U']]],
-  ['spiconfig_26',['SPIConfig',['../structEsp32As5047uBus_1_1SPIConfig.html',1,'Esp32As5047uBus']]],
-  ['start_27',['🧠 Quick Start',['../index.html#autotoc_md20',1,'']]],
-  ['stm32_20hal_28',['STM32 HAL',['../index.html#autotoc_md12',1,'']]],
-  ['structure_29',['📂 Project Structure',['../index.html#autotoc_md15',1,'']]],
-  ['summary_30',['📟 API Summary',['../index.html#autotoc_md22',1,'']]],
-  ['support_31',['💬 Support',['../index.html#autotoc_md29',1,'']]]
+  ['spi_5f16_20',['SPI_16',['../AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a6d31511b938d463710373fc895ef4bd9',1,'AS5047U_types.hpp']]],
+  ['spi_5f24_21',['SPI_24',['../AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5',1,'AS5047U_types.hpp']]],
+  ['spi_5f32_22',['SPI_32',['../AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a367bc64c294b2a6476209c2d855171b5',1,'AS5047U_types.hpp']]],
+  ['spi_5fcnt_23',['SPI_cnt',['../structAS5047U__REG_1_1DIA.html#a530346c236a0a1a3f13ddd011d4ab34c',1,'AS5047U_REG::DIA']]],
+  ['spibus_24',['spiBus',['../classAS5047U_1_1spiBus.html',1,'AS5047U']]],
+  ['spiconfig_25',['SPIConfig',['../structEsp32As5047uBus_1_1SPIConfig.html',1,'Esp32As5047uBus']]],
+  ['start_26',['🧠 Quick Start',['../index.html#autotoc_md7',1,'']]],
+  ['structure_27',['📂 Project Structure',['../index.html#autotoc_md5',1,'']]],
+  ['summary_28',['📟 API Summary',['../index.html#autotoc_md9',1,'']]],
+  ['support_29',['💬 Support',['../index.html#autotoc_md12',1,'']]]
 ];
