@@ -56,16 +56,39 @@ enum class AS5047U_Error : uint16_t {
  * reading rotation velocity, retrieving AGC and magnitude diagnostics, configuring outputs (ABI,
  * UVW, PWM), handling error flags, and performing OTP programming for permanent configuration
  * storage.
+ *
+ * @tparam SpiType The SPI interface implementation type that inherits from AS5047U::spiBus<SpiType>
+ *
+ * @note The driver uses CRTP-based SPI interface for zero virtual call overhead.
  */
+template <typename SpiType>
 class AS5047U {
 public:
   /**
-   * @brief Abstract SPI bus interface that hardware-specific implementations must provide.
+   * @brief CRTP-based template interface for SPI bus operations
+   *
+   * This template class provides a hardware-agnostic interface for SPI communication
+   * using the CRTP pattern. Platform-specific implementations should inherit from
+   * this template with themselves as the template parameter.
+   *
+   * Benefits of CRTP:
+   * - Compile-time polymorphism (no virtual function overhead)
+   * - Static dispatch instead of dynamic dispatch
+   * - Better optimization opportunities for the compiler
+   *
+   * Example usage:
+   * @code
+   * class MySPI : public AS5047U::spiBus<MySPI> {
+   * public:
+   *   void transfer(...) { ... }
+   * };
+   * @endcode
+   *
+   * @tparam Derived The derived class type (CRTP pattern)
    */
+  template <typename Derived>
   class spiBus {
   public:
-    virtual ~spiBus() = default;
-
     /**
      * @brief Perform a full-duplex SPI data transfer.
      *
@@ -77,7 +100,29 @@ public:
      * be ignored.
      * @param len Number of bytes to transfer.
      */
-    virtual void transfer(const uint8_t* tx, uint8_t* rx, std::size_t len) = 0;
+    void transfer(const uint8_t* tx, uint8_t* rx, std::size_t len) {
+      return static_cast<Derived*>(this)->transfer(tx, rx, len);
+    }
+
+  protected:
+    /**
+     * @brief Protected constructor to prevent direct instantiation
+     */
+    spiBus() = default;
+
+    // Prevent copying
+    spiBus(const spiBus&) = delete;
+    spiBus& operator=(const spiBus&) = delete;
+
+    // Allow moving
+    spiBus(spiBus&&) = default;
+    spiBus& operator=(spiBus&&) = default;
+
+    /**
+     * @brief Protected destructor
+     * @note Derived classes can have public destructors
+     */
+    ~spiBus() = default;
   };
 
   //------------------------------------------------------------------
@@ -86,10 +131,10 @@ public:
 
   /**
    * @brief Construct a new AS5047U driver.
-   * @param bus Reference to an spiBus implementation for SPI communication.
+   * @param bus Reference to an SPI interface implementation (must inherit from AS5047U::spiBus<SpiType>).
    * @param format SPI frame format to use (16-bit, 24-bit, or 32-bit). Default is 16-bit frames.
    */
-  explicit AS5047U(AS5047U::spiBus& bus,
+  explicit AS5047U(SpiType& bus,
                    FrameFormat format = AS5047U_CFG::DEFAULT_FRAME_FORMAT) noexcept;
 
   ~AS5047U() = default;
@@ -364,12 +409,18 @@ private:
   uint16_t readRegister(uint16_t addr) const;    ///< read register and refresh sticky errors
   bool writeRegister(uint16_t addr, uint16_t val, uint8_t retries) const;
 
-  spiBus& spi;             ///< reference to user-supplied SPI driver
+  SpiType& spi;            ///< reference to user-supplied SPI driver
   FrameFormat frameFormat; ///< current SPI frame format
   uint8_t padByte{0};      ///< pad byte for SPI_32 daisy-chain indexing
 
   mutable std::atomic<uint16_t> stickyErrors{0}; ///< sticky error bits since last clear
   void updateStickyErrors(uint16_t errfl) const;
+};
+
+// Include template implementation
+#define AS5047U_HEADER_INCLUDED
+#include "../src/AS5047U.cpp"
+#undef AS5047U_HEADER_INCLUDED
 
   // Helper functions implemented inline for templates
   template <typename RegT>
@@ -385,7 +436,8 @@ private:
   }
 };
 
-inline bool AS5047U::setDirection(bool clockwise, uint8_t retries) {
+template <typename SpiType>
+inline bool AS5047U<SpiType>::setDirection(bool clockwise, uint8_t retries) {
   auto s2 = readReg<AS5047U_REG::SETTINGS2>();
   s2.bits.DIR = clockwise ? 0 : 1;
   return writeReg(s2, retries);
