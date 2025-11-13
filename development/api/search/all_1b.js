@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🏗️_20library_20architecture_0',['🏗️ Library Architecture',['../index.html#autotoc_md8',1,'']]]
+  ['💬_20support_0',['💬 Support',['../index.html#autotoc_md12',1,'']]]
 ];

@@ -1,5 +1,5 @@
-warning: ignoring unsupported tag 'PAGE_OUTLINE_PANEL' at line 1764, file /tmp/doxyfile.pP7Pox
-warning: Tag 'DOT_TRANSPARENT' at line 2787 of file '/tmp/doxyfile.pP7Pox' has become obsolete.
+warning: ignoring unsupported tag 'PAGE_OUTLINE_PANEL' at line 1765, file /tmp/doxyfile.kxGCMR
+warning: Tag 'DOT_TRANSPARENT' at line 2788 of file '/tmp/doxyfile.kxGCMR' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/main/TestFramework.h:383: warning: The following parameter of print_test_section_footer(const char *tag, const char *section_name, bool enabled=true) is not documented:
   parameter 'tag'
@@ -27,7 +27,5 @@ warning: Tag 'DOT_TRANSPARENT' at line 2787 of file '/tmp/doxyfile.pP7Pox' has b
   parameter 'retries'
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/AS5047U.hpp:192: warning: The following parameter of AS5047U::setZeroPosition(uint16_t angleLSB, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
   parameter 'retries'
-index:1: warning: expected whitespace after \{ command
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:1: warning: expected whitespace after \{ command
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:133: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/index.md' for \ref command
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:133: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/workflow.md' for \ref command
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:52: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/index.md' for \ref command
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:52: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/workflow.md' for \ref command

@@ -25,35 +25,7 @@
 var NAVTREE =
 [
   [ "HF-AS5047U Driver", "index.html", [
-    [ "HF-AS5047U", "index.html#autotoc_md2", null ],
-    [ "AS5047U – C++ Driver Library", "index.html#autotoc_md3", [
-      [ "} md_README", "index.html#autotoc_md0", null ],
-      [ "has_children: true", "index.html#autotoc_md1", null ],
-      [ "📦 Overview", "index.html#autotoc_md4", [
-        [ "✨ Key Features", "index.html#autotoc_md5", null ]
-      ] ],
-      [ "🚀 Sensor Highlights", "index.html#autotoc_md6", null ],
-      [ "🏗️ Library Architecture", "index.html#autotoc_md8", [
-        [ "SPI Bus Abstraction", "index.html#autotoc_md9", null ]
-      ] ],
-      [ "🔌 Platform Integration", "index.html#autotoc_md10", [
-        [ "ESP-IDF", "index.html#autotoc_md11", null ],
-        [ "STM32 HAL", "index.html#autotoc_md12", null ],
-        [ "Arduino", "index.html#autotoc_md13", null ]
-      ] ],
-      [ "📂 Project Structure", "index.html#autotoc_md15", null ],
-      [ "📖 Documentation", "index.html#autotoc_md16", null ],
-      [ "🔧 Installation", "index.html#autotoc_md18", null ],
-      [ "🧠 Quick Start", "index.html#autotoc_md20", null ],
-      [ "⚙️ Configuration", "index.html#autotoc_md21", null ],
-      [ "📟 API Summary", "index.html#autotoc_md22", null ],
-      [ "🧪 Unit Testing", "index.html#autotoc_md23", null ],
-      [ "C++ Features and Requirements", "index.html#autotoc_md24", null ],
-      [ "License", "index.html#autotoc_md25", null ],
-      [ "🤝 Contributing", "index.html#autotoc_md27", null ],
-      [ "🙌 Acknowledgments", "index.html#autotoc_md28", null ],
-      [ "💬 Support", "index.html#autotoc_md29", null ]
-    ] ],
+    [ "HF-AS5047U", "index.html", "index" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -88,8 +60,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AS5047U_8cpp.html",
-"structAS5047U__REG_1_1DIA.html#ada8b2d4a016d97b9648e440afd13a0d2",
-"structAS5047U__REG_1_1SETTINGS2.html#ad5a8628f490aa8772e556985e13981f1"
+"structAS5047U__REG_1_1DISABLE.html#a0b0f8cfb593348630f6c272a0e4e2e7ca960b44c579bc2f6818d2daaf9e4c16f0",
+"structAS5047U__REG_1_1SETTINGS2.html#af842d979eb61f108243f7d9a59612e00ae9949b878df882ba7a4d12ad488b79cc"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

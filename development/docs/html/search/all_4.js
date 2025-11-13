@@ -9,8 +9,7 @@ var searchData=
   ['enabled_6',['Enabled',['../structAS5047U__REG_1_1DISABLE.html#a4246c7cfe013d2fda89d131267aab6dea00d23a76e43b46dae9ec7aa9dcbebb32',1,'AS5047U_REG::DISABLE::Enabled'],['../structAS5047U__REG_1_1SETTINGS2.html#ab066f94f4ae8fcce3710aaefde0ee3a4a00d23a76e43b46dae9ec7aa9dcbebb32',1,'AS5047U_REG::SETTINGS2::Enabled'],['../structAS5047U__REG_1_1SETTINGS2.html#ad5a8628f490aa8772e556985e13981f1a00d23a76e43b46dae9ec7aa9dcbebb32',1,'AS5047U_REG::SETTINGS2::Enabled'],['../structAS5047U__REG_1_1ECC.html#a47951071e444d2e8a807d887bce525e6a00d23a76e43b46dae9ec7aa9dcbebb32',1,'AS5047U_REG::ECC::Enabled']]],
   ['ensure_5fgpio14_5finitialized_7',['ensure_gpio14_initialized',['../TestFramework_8h.html#a57a48f91a141d98e45f82937581e1a97',1,'TestFramework.h']]],
   ['errfl_8',['ERRFL',['../structAS5047U__REG_1_1ERRFL.html',1,'AS5047U_REG']]],
-  ['esp_20idf_9',['ESP-IDF',['../index.html#autotoc_md11',1,'']]],
-  ['esp32as5047ubus_10',['Esp32As5047uBus',['../classEsp32As5047uBus.html',1,'Esp32As5047uBus'],['../classEsp32As5047uBus.html#a1b10e4979fb46d3e01d937469e454645',1,'Esp32As5047uBus::Esp32As5047uBus()'],['../classEsp32As5047uBus.html#a2cac4af138fd741af6542bfe66adf42c',1,'Esp32As5047uBus::Esp32As5047uBus(const SPIConfig &amp;config)']]],
-  ['esp32as5047ubus_2ecpp_11',['Esp32As5047uBus.cpp',['../Esp32As5047uBus_8cpp.html',1,'']]],
-  ['esp32as5047ubus_2ehpp_12',['Esp32As5047uBus.hpp',['../Esp32As5047uBus_8hpp.html',1,'']]]
+  ['esp32as5047ubus_9',['Esp32As5047uBus',['../classEsp32As5047uBus.html',1,'Esp32As5047uBus'],['../classEsp32As5047uBus.html#a1b10e4979fb46d3e01d937469e454645',1,'Esp32As5047uBus::Esp32As5047uBus()'],['../classEsp32As5047uBus.html#a2cac4af138fd741af6542bfe66adf42c',1,'Esp32As5047uBus::Esp32As5047uBus(const SPIConfig &amp;config)']]],
+  ['esp32as5047ubus_2ecpp_10',['Esp32As5047uBus.cpp',['../Esp32As5047uBus_8cpp.html',1,'']]],
+  ['esp32as5047ubus_2ehpp_11',['Esp32As5047uBus.hpp',['../Esp32As5047uBus_8hpp.html',1,'']]]
 ];
