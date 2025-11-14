@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>HF-AS5047U Driver: HF-AS5047U</title>
+<title>HF-AS5047U Driver: HF-AS5047U Driver</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -132,20 +132,19 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">HF-AS5047U </div></div>
+  <div class="headertitle"><div class="title">HF-AS5047U Driver </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a>Hardware Agnostic AS5047U library - as used in the HardFOC-V1 controller</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
-AS5047U – C++ Driver Library</h1>
+<div class="textblock"><p><a class="anchor" id="md_README"></a>#HF - AS5047U Hardware Agnostic AS5047U library - as used in the HardFOC-V1 controller</p>
+<p>#AS5047U – C++ Driver Library</p>
 <p><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3" style="pointer-events: none;" class="inline"/> <a href="https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml"><img src="https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main" alt="CI Build" style="pointer-events: none;" class="inline"/></a></p>
-<h2><a class="anchor" id="autotoc_md2"></a>
+<h2><a class="anchor" id="autotoc_md0"></a>
 📦 Overview</h2>
 <blockquote class="doxtable">
 <p>&zwj;<b>📖 <a href="https://n3b3x.github.io/hf-as5047u-driver/">📚🌐 Live Complete Documentation</a></b> - Interactive guides, examples, and step-by-step tutorials </p>
 </blockquote>
 <p><b>HF-AS5047U</b> is a portable C++20 driver for the <b>AS5047U</b> magnetic encoder from ams. It delivers fast 14‑bit absolute angle readings over SPI, optional CRC protection and advanced features like Dynamic Angle Error Compensation (DAEC) and an adaptive Dynamic Filter System (DFS™). The sensor can also output incremental (A/B/I) and 3‑phase commutation (UVW) signals or a PWM encoded angle, making it a drop‑in replacement for optical encoders in high-performance motor control and robotics. </p>
-<h3><a class="anchor" id="autotoc_md3"></a>
+<h3><a class="anchor" id="autotoc_md1"></a>
 ✨ Key Features</h3>
 <ul>
 <li>🧩 Cross-platform <code>spiBus</code> interface</li>
@@ -153,7 +152,7 @@ AS5047U – C++ Driver Library</h1>
 <li>📝 Examples for Arduino, ESP32 and STM32</li>
 <li>🧪 Unit tests for reliability</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md2"></a>
 🚀 Sensor Highlights</h2>
 <ul>
 <li><b>14‑bit absolute angle</b> with optional CRC check</li>
@@ -166,7 +165,7 @@ AS5047U – C++ Driver Library</h1>
 <li><b>Diagnostics</b> for AGC, magnitude and error flags</li>
 <li><b>OTP memory</b> for permanent configuration</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md3"></a>
 📂 Project Structure</h2>
 <div class="fragment"><div class="line">├── Datasheet/               # AS5047U datasheet PDF</div>
 <div class="line">├── examples/                # Wiring and usage examples</div>
@@ -179,100 +178,103 @@ AS5047U – C++ Driver Library</h1>
 <div class="line">├── tests/                   # Mock-based unit tests</div>
 <div class="line">├── config.mk                # Makefile defaults</div>
 <div class="line">└── README.md                # This document</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
 📖 Documentation</h2>
 <p>Detailed step‑by‑step guides (with example command output) are available in the docs folder. Start with the Quick Start Workflow if you're new.</p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 🧠 Quick Start</h2>
 <div class="fragment"><div class="line"><span class="comment">// Instantiate the driver with your platform&#39;s SPI bus</span></div>
 <div class="line">AS5047U encoder(bus, <a class="code hl_enumvalue" href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5">FrameFormat::SPI_24</a>); <span class="comment">// driver using 24-bit frames</span></div>
 <div class="line"> </div>
-<div class="line">uint16_t angle = encoder.getAngle();        <span class="comment">// compensated angle</span></div>
-<div class="line">uint16_t rawAngle = encoder.getRawAngle();  <span class="comment">// raw angle without DAEC</span></div>
-<div class="line">int16_t vel = encoder.getVelocity();        <span class="comment">// velocity in sensor units</span></div>
-<div class="line"><span class="keywordtype">double</span> vel_dps = encoder.getVelocityDegPerSec(); <span class="comment">// velocity in deg/s</span></div>
+<div class="line">uint16_t angle = encoder.GetAngle();             <span class="comment">// compensated angle</span></div>
+<div class="line">uint16_t rawAngle = encoder.GetRawAngle();       <span class="comment">// raw angle without DAEC</span></div>
+<div class="line">int16_t vel = encoder.GetVelocity();             <span class="comment">// velocity in sensor units</span></div>
+<div class="line"><span class="keywordtype">float</span> vel_dps = encoder.GetVelocityDegPerSec(); <span class="comment">// velocity in deg/s</span></div>
 <div class="line"> </div>
-<div class="line">uint8_t agc = encoder.getAGC();             <span class="comment">// automatic gain control</span></div>
-<div class="line">uint16_t mag = encoder.getMagnitude();      <span class="comment">// magnetic magnitude</span></div>
-<div class="line">uint16_t errors = encoder.getErrorFlags();  <span class="comment">// current error flags</span></div>
+<div class="line">uint8_t agc = encoder.GetAGC();            <span class="comment">// automatic gain control</span></div>
+<div class="line">uint16_t mag = encoder.GetMagnitude();     <span class="comment">// magnetic magnitude</span></div>
+<div class="line">uint16_t errors = encoder.GetErrorFlags(); <span class="comment">// current error flags</span></div>
 <div class="ttc" id="aAS5047U__types_8hpp_html_a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5"><div class="ttname"><a href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5">FrameFormat::SPI_24</a></div><div class="ttdeci">@ SPI_24</div></div>
-</div><!-- fragment --><p>Configure outputs: </p><div class="fragment"><div class="line">encoder.setZeroPosition(8192);            <span class="comment">// set zero electrical angle</span></div>
-<div class="line">encoder.setDirection(<span class="keyword">false</span>);              <span class="comment">// counter-clockwise = positive</span></div>
-<div class="line">encoder.setABIResolution(12);             <span class="comment">// 12-bit incremental output</span></div>
-<div class="line">encoder.setUVWPolePairs(5);               <span class="comment">// 5 electrical pole pairs</span></div>
-<div class="line">encoder.configureInterface(<span class="keyword">true</span>, <span class="keyword">false</span>, <span class="keyword">true</span>); <span class="comment">// enable ABI + PWM</span></div>
-</div><!-- fragment --><p> Perform OTP programming: </p><div class="fragment"><div class="line"><span class="keywordtype">bool</span> ok = encoder.programOTP();  <span class="comment">// write settings to OTP</span></div>
-</div><!-- fragment --><p>Dump diagnostics: </p><div class="fragment"><div class="line">std::string status = encoder.dumpDiagnostics(); <span class="comment">// formatted status text</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --> <pre class="fragment">Configure outputs :
+</pre> <div class="fragment"><div class="line"> encoder.SetZeroPosition(8192);         <span class="comment">// set zero electrical angle</span></div>
+<div class="line">encoder.SetDirection(<span class="keyword">false</span>);                   <span class="comment">// counter-clockwise = positive</span></div>
+<div class="line">encoder.SetABIResolution(12);                  <span class="comment">// 12-bit incremental output</span></div>
+<div class="line">encoder.SetUVWPolePairs(5);                    <span class="comment">// 5 electrical pole pairs</span></div>
+<div class="line">encoder.ConfigureInterface(<span class="keyword">true</span>, <span class="keyword">false</span>, <span class="keyword">true</span>); <span class="comment">// enable ABI + PWM</span></div>
+</div><!-- fragment --><p> Perform OTP programming : </p><div class="fragment"><div class="line"><span class="keywordtype">bool</span> ok = encoder.ProgramOTP();        <span class="comment">// write settings to OTP</span></div>
+</div><!-- fragment --> <pre class="fragment">Dump diagnostics :
+</pre> <div class="fragment"><div class="line">encoder.DumpStatus(); <span class="comment">// print formatted status/diagnostics</span></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
 ⚙️ Configuration</h2>
 <p>Projects that use a Kconfig-based build system can include the provided <code>Kconfig</code> file. It exposes options such as the default SPI frame format and CRC retry count and also allows enabling the unit tests. When not using Kconfig, you can edit <code>include/AS5047U_config.hpp</code> to set <code><a class="el" href="namespaceAS5047U__CFG.html#a169d05b4070af344342ea2d1d314d933">AS5047U_CFG::DEFAULT_FRAME_FORMAT</a></code> and <code><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></code>.</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 📟 API Summary</h2>
+<p>Click on any function name to jump directly to its implementation in the source code.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Function   </th><th class="markdownTableHeadNone">Description    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">AS5047U(spiBus &amp;bus, FrameFormat fmt)   </td><td class="markdownTableBodyNone">Constructor (SPI interface and frame format)    </td></tr>
+<td class="markdownTableBodyNone"><a href="inc/AS5047U.hpp#L91"><code>AS5047U(spiBus &amp;bus, FrameFormat format)</code></a>   </td><td class="markdownTableBodyNone">Constructor (SPI interface and frame format)    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">void setFrameFormat(FrameFormat fmt)   </td><td class="markdownTableBodyNone">Set SPI frame format (16/24/32-bit mode)    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L16"><code>void SetFrameFormat(FrameFormat format)</code></a>   </td><td class="markdownTableBodyNone">Set SPI frame format (16/24/32-bit mode)    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">uint16_t getAngle(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Read 14-bit compensated absolute angle    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L33"><code>uint16_t GetAngle(uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Read 14-bit compensated absolute angle    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">uint16_t getRawAngle(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Read 14-bit raw absolute angle    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L48"><code>uint16_t GetRawAngle(uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Read 14-bit raw absolute angle    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">int16_t getVelocity(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Read signed 14-bit velocity (LSB units)    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L63"><code>int16_t GetVelocity(uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Read signed 14-bit velocity (LSB units)    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">double getVelocityDegPerSec(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Velocity in degrees/sec    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L79"><code>float GetVelocityDegPerSec(uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Velocity in degrees/sec    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">double getVelocityRadPerSec(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Velocity in radians/sec    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L84"><code>float GetVelocityRadPerSec(uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Velocity in radians/sec    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">double getVelocityRPM(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Velocity in revolutions per minute (RPM)    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L89"><code>float GetVelocityRPM(uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Velocity in revolutions per minute (RPM)    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">uint8_t getAGC(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Read AGC (0–255) value    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L94"><code>uint8_t GetAGC(uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Read AGC (0–255) value    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">uint16_t getMagnitude(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Read magnetic field magnitude (0–16383)    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L109"><code>uint16_t GetMagnitude(uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Read magnetic field magnitude (0–16383)    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">uint16_t getErrorFlags(uint8_t retries=0)   </td><td class="markdownTableBodyNone">Read and clear error/status flags    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L124"><code>uint16_t GetErrorFlags(uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Read and clear error/status flags    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">void dumpStatus() const   </td><td class="markdownTableBodyNone">Print formatted status/diagnostics    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L597"><code>void DumpStatus() const</code></a>   </td><td class="markdownTableBodyNone">Print formatted status/diagnostics    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">uint16_t getZeroPosition(uint8_t retries=0) const   </td><td class="markdownTableBodyNone">Get current zero offset    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L135"><code>uint16_t GetZeroPosition(uint8_t retries=0) const</code></a>   </td><td class="markdownTableBodyNone">Get current zero offset    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">bool setZeroPosition(uint16_t angle, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set new zero offset    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L162"><code>bool SetZeroPosition(uint16_t angle_lsb, uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Set new zero offset    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">bool setDirection(bool clockwise, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set rotation direction (CW or CCW)    </td></tr>
+<td class="markdownTableBodyNone"><a href="inc/AS5047U.hpp#L445"><code>bool SetDirection(bool clockwise, uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Set rotation direction (CW or CCW)    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">bool setABIResolution(uint8_t bits, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set ABI output resolution (10–14 bits)    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L171"><code>bool SetABIResolution(uint8_t resolution_bits, uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Set ABI output resolution (10–14 bits)    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">bool setUVWPolePairs(uint8_t pairs, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set UVW pole pairs (1–7)    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L179"><code>bool SetUVWPolePairs(uint8_t pairs, uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Set UVW pole pairs (1–7)    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">bool setIndexPulseLength(uint8_t lsbLen, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set ABI index pulse width    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L187"><code>bool SetIndexPulseLength(uint8_t lsb_len, uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Set ABI index pulse width    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">bool configureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Enable/disable ABI, UVW, PWM    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L205"><code>bool ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Enable/disable ABI, UVW, PWM    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">bool setDynamicAngleCompensation(bool enable, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Enable/disable DAEC    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L225"><code>bool SetDynamicAngleCompensation(bool enable, uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Enable/disable DAEC    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">bool setAdaptiveFilter(bool enable, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Enable/disable adaptive filter (DFS)    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L232"><code>bool SetAdaptiveFilter(bool enable, uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Enable/disable adaptive filter (DFS)    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">bool setFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set DFS filter parameters    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L239"><code>bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Set DFS filter parameters    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">bool set150CTemperatureMode(bool enable, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Enable 150°C (high-temp mode)    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L250"><code>bool Set150CTemperatureMode(bool enable, uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Enable 150°C (high-temp mode)    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">bool programOTP()   </td><td class="markdownTableBodyNone">Program current settings into OTP (one-time)    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L257"><code>bool ProgramOTP()</code></a>   </td><td class="markdownTableBodyNone">Program current settings into OTP (one-time)    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">void setPad(uint8_t pad)   </td><td class="markdownTableBodyNone">Set pad byte for 32-bit SPI frames    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L360"><code>void SetPad(uint8_t pad)</code></a>   </td><td class="markdownTableBodyNone">Set pad byte for 32-bit SPI frames    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">bool setHysteresis(SETTINGS3::Hysteresis hys, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Set incremental hysteresis level    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L363"><code>bool SetHysteresis(SETTINGS3::Hysteresis hysteresis, uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Set incremental hysteresis level    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">SETTINGS3::Hysteresis getHysteresis() const   </td><td class="markdownTableBodyNone">Get current hysteresis setting    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L371"><code>SETTINGS3::Hysteresis GetHysteresis() const</code></a>   </td><td class="markdownTableBodyNone">Get current hysteresis setting    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">bool setAngleOutputSource(SETTINGS2::AngleOutputSource src, uint8_t retries=0)   </td><td class="markdownTableBodyNone">Select angle output source (comp/raw)    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L377"><code>bool SetAngleOutputSource(SETTINGS2::AngleOutputSource source, uint8_t retries=0)</code></a>   </td><td class="markdownTableBodyNone">Select angle output source (comp/raw)    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">SETTINGS2::AngleOutputSource getAngleOutputSource() const   </td><td class="markdownTableBodyNone">Get selected angle output source    </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L385"><code>SETTINGS2::AngleOutputSource GetAngleOutputSource() const</code></a>   </td><td class="markdownTableBodyNone">Get selected angle output source    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="structAS5047U__REG_1_1DIA.html" title="DIA – Diagnostic register (0x3FF5, read-only)">AS5047U_REG::DIA</a> getDiagnostics() const   </td><td class="markdownTableBodyNone">Read full diagnostic register (DIA)   </td></tr>
+<td class="markdownTableBodyNone"><a href="src/AS5047U.cpp#L393"><code>AS5047U_REG::DIA GetDiagnostics() const</code></a>   </td><td class="markdownTableBodyNone">Read full diagnostic register (DIA)   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 🤝 Contributing</h2>
 <p>Pull requests and feature ideas are welcome!</p><ol type="1">
 <li>Fork this repository</li>
@@ -280,14 +282,14 @@ AS5047U – C++ Driver Library</h1>
 <li>Commit your changes</li>
 <li>Open a PR</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 🙌 Acknowledgments</h2>
 <p>Developed for the HardFOC-V1 controller.</p><ul>
 <li>Developed by <b>Nebiyu Tadesse</b>, 2025.</li>
 <li>Based on the official <a href="https://ams-osram.com/products/sensor-solutions/position-sensors/ams-as5047u-high-resolution-rotary-position-sensor">AS5047U Datasheet</a> by ASM ASRAM.</li>
 <li>Inspired by embedded needs for a reliable, testable AS5047U library.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 💬 Support</h2>
 <p>For questions, bug reports, or feature requests, please open an <a href="https://github.com/n3b3x/hf-as5047u-driver/issues">issue</a> or contact the maintainer directly. </p>
 </div></div><!-- PageDoc -->

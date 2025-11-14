@@ -248,23 +248,10 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 id="hf-as5047u">
-  
-  
-    <a href="#hf-as5047u" class="anchor-heading" aria-labelledby="hf-as5047u"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> HF-AS5047U
-  
-  
-</h1>
-    
-<p>Hardware Agnostic AS5047U library - as used in the HardFOC-V1 controller</p>
-<h1 id="as5047u--c-driver-library">
-  
-  
-    <a href="#as5047u--c-driver-library" class="anchor-heading" aria-labelledby="as5047u--c-driver-library"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> AS5047U – C++ Driver Library
-  
-  
-</h1>
-    
+            <p>#HF - AS5047U
+Hardware Agnostic AS5047U library - as used in the HardFOC-V1 controller</p>
+
+<p>#AS5047U – C++ Driver Library</p>
 
 <p><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3" />
 <a href="https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml"><img src="https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main" alt="CI Build" /></a></p>
@@ -349,8 +336,8 @@ Interactive guides, examples, and step-by-step tutorials</p>
 5
 </pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">spiBus</span> <span class="p">{</span>
 <span class="nl">public:</span>
-    <span class="k">virtual</span> <span class="o">~</span><span class="n">spiBus</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
-    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="o">~</span><span class="n">spiBus</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 
@@ -383,17 +370,19 @@ Interactive guides, examples, and step-by-step tutorials</p>
 10
 11
 12
+13
 </pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">ESPBus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">AS5047U</span><span class="o">::</span><span class="n">spiBus</span> <span class="p">{</span>
-    <span class="n">spi_device_handle_t</span> <span class="n">dev</span><span class="p">;</span>
+  <span class="n">spi_device_handle_t</span> <span class="n">dev</span><span class="p">;</span>
+
 <span class="nl">public:</span>
-    <span class="n">ESPBus</span><span class="p">(</span><span class="n">spi_device_handle_t</span> <span class="n">handle</span><span class="p">)</span> <span class="o">:</span> <span class="n">dev</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span> <span class="p">{}</span>
-    <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
-        <span class="n">spi_transaction_t</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{};</span>
-        <span class="n">t</span><span class="p">.</span><span class="n">tx_buffer</span> <span class="o">=</span> <span class="n">tx</span><span class="p">;</span>
-        <span class="n">t</span><span class="p">.</span><span class="n">rx_buffer</span> <span class="o">=</span> <span class="n">rx</span><span class="p">;</span>
-        <span class="n">t</span><span class="p">.</span><span class="n">length</span> <span class="o">=</span> <span class="n">len</span> <span class="o">*</span> <span class="mi">8</span><span class="p">;</span>
-        <span class="n">spi_device_transmit</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
-    <span class="p">}</span>
+  <span class="n">ESPBus</span><span class="p">(</span><span class="n">spi_device_handle_t</span> <span class="n">handle</span><span class="p">)</span> <span class="o">:</span> <span class="n">dev</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span> <span class="p">{}</span>
+  <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+    <span class="n">spi_transaction_t</span> <span class="n">t</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">tx_buffer</span> <span class="o">=</span> <span class="n">tx</span><span class="p">;</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">rx_buffer</span> <span class="o">=</span> <span class="n">rx</span><span class="p">;</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">length</span> <span class="o">=</span> <span class="n">len</span> <span class="o">*</span> <span class="mi">8</span><span class="p">;</span>
+    <span class="n">spi_device_transmit</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">};</span>
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 <h3 id="stm32-hal">
@@ -412,13 +401,15 @@ Interactive guides, examples, and step-by-step tutorials</p>
 6
 7
 8
+9
 </pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">STM32Bus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">AS5047U</span><span class="o">::</span><span class="n">spiBus</span> <span class="p">{</span>
-    <span class="n">SPI_HandleTypeDef</span> <span class="o">*</span><span class="n">hspi</span><span class="p">;</span>
+  <span class="n">SPI_HandleTypeDef</span><span class="o">*</span> <span class="n">hspi</span><span class="p">;</span>
+
 <span class="nl">public:</span>
-    <span class="n">STM32Bus</span><span class="p">(</span><span class="n">SPI_HandleTypeDef</span> <span class="o">*</span><span class="n">handle</span><span class="p">)</span> <span class="o">:</span> <span class="n">hspi</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span> <span class="p">{}</span>
-    <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
-        <span class="n">HAL_SPI_TransmitReceive</span><span class="p">(</span><span class="n">hspi</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">tx</span><span class="p">,</span> <span class="n">rx</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="n">HAL_MAX_DELAY</span><span class="p">);</span>
-    <span class="p">}</span>
+  <span class="n">STM32Bus</span><span class="p">(</span><span class="n">SPI_HandleTypeDef</span> <span class="o">*</span> <span class="n">handle</span><span class="p">)</span> <span class="o">:</span> <span class="n">hspi</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span> <span class="p">{}</span>
+  <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+    <span class="n">HAL_SPI_TransmitReceive</span><span class="p">(</span><span class="n">hspi</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">tx</span><span class="p">,</span> <span class="n">rx</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="n">HAL_MAX_DELAY</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">};</span>
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 <h3 id="arduino">
@@ -443,20 +434,24 @@ Interactive guides, examples, and step-by-step tutorials</p>
 12
 13
 14
+15
+16
 </pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">ArduinoBus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">AS5047U</span><span class="o">::</span><span class="n">spiBus</span> <span class="p">{</span>
 <span class="nl">public:</span>
     <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
         <span class="n">SPI</span><span class="p">.</span><span class="n">beginTransaction</span><span class="p">(</span><span class="n">SPISettings</span><span class="p">(</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">MSBFIRST</span><span class="p">,</span> <span class="n">SPI_MODE1</span><span class="p">));</span>
         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">CS_PIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kt">uint8_t</span> <span class="n">out</span> <span class="o">=</span> <span class="n">tx</span> <span class="o">?</span> <span class="n">tx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="kt">uint8_t</span> <span class="n">in</span>  <span class="o">=</span> <span class="n">SPI</span><span class="p">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">rx</span><span class="p">)</span> <span class="n">rx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">in</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">out</span> <span class="o">=</span> <span class="n">tx</span> <span class="o">?</span> <span class="n">tx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">in</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">rx</span><span class="p">)</span>
+    <span class="n">rx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">in</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">CS_PIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
         <span class="n">SPI</span><span class="p">.</span><span class="n">endTransaction</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">};</span>
+<span class="p">}</span>
+<span class="p">}</span>
+<span class="p">;</span>
 </pre></td></tr></tbody></table></div></code></pre></div></div><hr />
 <h2 id="-project-structure">
   
@@ -542,36 +537,22 @@ Interactive guides, examples, and step-by-step tutorials</p>
 </pre></td><td class="rouge-code"><pre><span class="c1">// Instantiate the driver with your platform's SPI bus</span>
 <span class="n">AS5047U</span> <span class="nf">encoder</span><span class="p">(</span><span class="n">bus</span><span class="p">,</span> <span class="n">FrameFormat</span><span class="o">::</span><span class="n">SPI_24</span><span class="p">);</span> <span class="c1">// driver using 24-bit frames</span>
 
-<span class="kt">uint16_t</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getAngle</span><span class="p">();</span>        <span class="c1">// compensated angle</span>
-<span class="kt">uint16_t</span> <span class="n">rawAngle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getRawAngle</span><span class="p">();</span>  <span class="c1">// raw angle without DAEC</span>
-<span class="kt">int16_t</span> <span class="n">vel</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getVelocity</span><span class="p">();</span>        <span class="c1">// velocity in sensor units</span>
-<span class="kt">double</span> <span class="n">vel_dps</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getVelocityDegPerSec</span><span class="p">();</span> <span class="c1">// velocity in deg/s</span>
+<span class="kt">uint16_t</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">();</span>             <span class="c1">// compensated angle</span>
+<span class="kt">uint16_t</span> <span class="n">rawAngle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetRawAngle</span><span class="p">();</span>       <span class="c1">// raw angle without DAEC</span>
+<span class="kt">int16_t</span> <span class="n">vel</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocity</span><span class="p">();</span>             <span class="c1">// velocity in sensor units</span>
+<span class="kt">float</span> <span class="n">vel_dps</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocityDegPerSec</span><span class="p">();</span> <span class="c1">// velocity in deg/s</span>
 
-<span class="kt">uint8_t</span> <span class="n">agc</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getAGC</span><span class="p">();</span>             <span class="c1">// automatic gain control</span>
-<span class="kt">uint16_t</span> <span class="n">mag</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getMagnitude</span><span class="p">();</span>      <span class="c1">// magnetic magnitude</span>
-<span class="kt">uint16_t</span> <span class="n">errors</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getErrorFlags</span><span class="p">();</span>  <span class="c1">// current error flags</span>
+<span class="kt">uint8_t</span> <span class="n">agc</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAGC</span><span class="p">();</span>            <span class="c1">// automatic gain control</span>
+<span class="kt">uint16_t</span> <span class="n">mag</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetMagnitude</span><span class="p">();</span>     <span class="c1">// magnetic magnitude</span>
+<span class="kt">uint16_t</span> <span class="n">errors</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetErrorFlags</span><span class="p">();</span> <span class="c1">// current error flags</span>
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 
-<p>Configure outputs:</p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
-4
-5
-</pre></td><td class="rouge-code"><pre><span class="n">encoder</span><span class="p">.</span><span class="n">setZeroPosition</span><span class="p">(</span><span class="mi">8192</span><span class="p">);</span>            <span class="c1">// set zero electrical angle</span>
-<span class="n">encoder</span><span class="p">.</span><span class="n">setDirection</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>              <span class="c1">// counter-clockwise = positive</span>
-<span class="n">encoder</span><span class="p">.</span><span class="n">setABIResolution</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>             <span class="c1">// 12-bit incremental output</span>
-<span class="n">encoder</span><span class="p">.</span><span class="n">setUVWPolePairs</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>               <span class="c1">// 5 electrical pole pairs</span>
-<span class="n">encoder</span><span class="p">.</span><span class="n">configureInterface</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span> <span class="c1">// enable ABI + PWM</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-<p>Perform OTP programming:</p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="n">ok</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">programOTP</span><span class="p">();</span>  <span class="c1">// write settings to OTP</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
+</pre></td><td class="rouge-code"><pre>Configure outputs : ```cpp encoder.SetZeroPosition(8192);         // set zero electrical angle encoder.SetDirection(false);                   // counter-clockwise = positive encoder.SetABIResolution(12);                  // 12-bit incremental output encoder.SetUVWPolePairs(5);                    // 5 electrical pole pairs encoder.ConfigureInterface(true, false, true); // enable ABI + PWM ``` Perform OTP programming : ```cpp bool ok = encoder.ProgramOTP();        // write settings to OTP ```
 
-<p>Dump diagnostics:</p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">status</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">dumpDiagnostics</span><span class="p">();</span> <span class="c1">// formatted status text</span>
+Dump diagnostics : ```cpp encoder.DumpStatus(); // print formatted status/diagnostics ```
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 <h2 id="️-configuration">
   
@@ -595,38 +576,40 @@ set <code class="language-plaintext highlighter-rouge">AS5047U_CFG::DEFAULT_FRAM
 </h2>
     
 
+<p>Click on any function name to jump directly to its implementation in the source code.</p>
+
 <p>| Function | Description |
 |———-|————-|
-| AS5047U(spiBus &amp;bus, FrameFormat fmt) | Constructor (SPI interface and frame format) |
-| void setFrameFormat(FrameFormat fmt) | Set SPI frame format (16/24/32-bit mode) |
-| uint16_t getAngle(uint8_t retries=0) | Read 14-bit compensated absolute angle |
-| uint16_t getRawAngle(uint8_t retries=0) | Read 14-bit raw absolute angle |
-| int16_t getVelocity(uint8_t retries=0) | Read signed 14-bit velocity (LSB units) |
-| double getVelocityDegPerSec(uint8_t retries=0) | Velocity in degrees/sec |
-| double getVelocityRadPerSec(uint8_t retries=0) | Velocity in radians/sec |
-| double getVelocityRPM(uint8_t retries=0) | Velocity in revolutions per minute (RPM) |
-| uint8_t getAGC(uint8_t retries=0) | Read AGC (0–255) value |
-| uint16_t getMagnitude(uint8_t retries=0) | Read magnetic field magnitude (0–16383) |
-| uint16_t getErrorFlags(uint8_t retries=0) | Read and clear error/status flags |
-| void dumpStatus() const | Print formatted status/diagnostics |
-| uint16_t getZeroPosition(uint8_t retries=0) const | Get current zero offset |
-| bool setZeroPosition(uint16_t angle, uint8_t retries=0) | Set new zero offset |
-| bool setDirection(bool clockwise, uint8_t retries=0) | Set rotation direction (CW or CCW) |
-| bool setABIResolution(uint8_t bits, uint8_t retries=0) | Set ABI output resolution (10–14 bits) |
-| bool setUVWPolePairs(uint8_t pairs, uint8_t retries=0) | Set UVW pole pairs (1–7) |
-| bool setIndexPulseLength(uint8_t lsbLen, uint8_t retries=0) | Set ABI index pulse width |
-| bool configureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=0) | Enable/disable ABI, UVW, PWM |
-| bool setDynamicAngleCompensation(bool enable, uint8_t retries=0) | Enable/disable DAEC |
-| bool setAdaptiveFilter(bool enable, uint8_t retries=0) | Enable/disable adaptive filter (DFS) |
-| bool setFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries=0) | Set DFS filter parameters |
-| bool set150CTemperatureMode(bool enable, uint8_t retries=0) | Enable 150°C (high-temp mode) |
-| bool programOTP() | Program current settings into OTP (one-time) |
-| void setPad(uint8_t pad) | Set pad byte for 32-bit SPI frames |
-| bool setHysteresis(SETTINGS3::Hysteresis hys, uint8_t retries=0) | Set incremental hysteresis level |
-| SETTINGS3::Hysteresis getHysteresis() const | Get current hysteresis setting |
-| bool setAngleOutputSource(SETTINGS2::AngleOutputSource src, uint8_t retries=0) | Select angle output source (comp/raw) |
-| SETTINGS2::AngleOutputSource getAngleOutputSource() const | Get selected angle output source |
-| AS5047U_REG::DIA getDiagnostics() const | Read full diagnostic register (DIA) |
+| <a href="inc/AS5047U.hpp#L91"><code class="language-plaintext highlighter-rouge">AS5047U(spiBus &amp;bus, FrameFormat format)</code></a> | Constructor (SPI interface and frame format) |
+| <a href="src/AS5047U.cpp#L16"><code class="language-plaintext highlighter-rouge">void SetFrameFormat(FrameFormat format)</code></a> | Set SPI frame format (16/24/32-bit mode) |
+| <a href="src/AS5047U.cpp#L33"><code class="language-plaintext highlighter-rouge">uint16_t GetAngle(uint8_t retries=0)</code></a> | Read 14-bit compensated absolute angle |
+| <a href="src/AS5047U.cpp#L48"><code class="language-plaintext highlighter-rouge">uint16_t GetRawAngle(uint8_t retries=0)</code></a> | Read 14-bit raw absolute angle |
+| <a href="src/AS5047U.cpp#L63"><code class="language-plaintext highlighter-rouge">int16_t GetVelocity(uint8_t retries=0)</code></a> | Read signed 14-bit velocity (LSB units) |
+| <a href="src/AS5047U.cpp#L79"><code class="language-plaintext highlighter-rouge">float GetVelocityDegPerSec(uint8_t retries=0)</code></a> | Velocity in degrees/sec |
+| <a href="src/AS5047U.cpp#L84"><code class="language-plaintext highlighter-rouge">float GetVelocityRadPerSec(uint8_t retries=0)</code></a> | Velocity in radians/sec |
+| <a href="src/AS5047U.cpp#L89"><code class="language-plaintext highlighter-rouge">float GetVelocityRPM(uint8_t retries=0)</code></a> | Velocity in revolutions per minute (RPM) |
+| <a href="src/AS5047U.cpp#L94"><code class="language-plaintext highlighter-rouge">uint8_t GetAGC(uint8_t retries=0)</code></a> | Read AGC (0–255) value |
+| <a href="src/AS5047U.cpp#L109"><code class="language-plaintext highlighter-rouge">uint16_t GetMagnitude(uint8_t retries=0)</code></a> | Read magnetic field magnitude (0–16383) |
+| <a href="src/AS5047U.cpp#L124"><code class="language-plaintext highlighter-rouge">uint16_t GetErrorFlags(uint8_t retries=0)</code></a> | Read and clear error/status flags |
+| <a href="src/AS5047U.cpp#L597"><code class="language-plaintext highlighter-rouge">void DumpStatus() const</code></a> | Print formatted status/diagnostics |
+| <a href="src/AS5047U.cpp#L135"><code class="language-plaintext highlighter-rouge">uint16_t GetZeroPosition(uint8_t retries=0) const</code></a> | Get current zero offset |
+| <a href="src/AS5047U.cpp#L162"><code class="language-plaintext highlighter-rouge">bool SetZeroPosition(uint16_t angle_lsb, uint8_t retries=0)</code></a> | Set new zero offset |
+| <a href="inc/AS5047U.hpp#L445"><code class="language-plaintext highlighter-rouge">bool SetDirection(bool clockwise, uint8_t retries=0)</code></a> | Set rotation direction (CW or CCW) |
+| <a href="src/AS5047U.cpp#L171"><code class="language-plaintext highlighter-rouge">bool SetABIResolution(uint8_t resolution_bits, uint8_t retries=0)</code></a> | Set ABI output resolution (10–14 bits) |
+| <a href="src/AS5047U.cpp#L179"><code class="language-plaintext highlighter-rouge">bool SetUVWPolePairs(uint8_t pairs, uint8_t retries=0)</code></a> | Set UVW pole pairs (1–7) |
+| <a href="src/AS5047U.cpp#L187"><code class="language-plaintext highlighter-rouge">bool SetIndexPulseLength(uint8_t lsb_len, uint8_t retries=0)</code></a> | Set ABI index pulse width |
+| <a href="src/AS5047U.cpp#L205"><code class="language-plaintext highlighter-rouge">bool ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=0)</code></a> | Enable/disable ABI, UVW, PWM |
+| <a href="src/AS5047U.cpp#L225"><code class="language-plaintext highlighter-rouge">bool SetDynamicAngleCompensation(bool enable, uint8_t retries=0)</code></a> | Enable/disable DAEC |
+| <a href="src/AS5047U.cpp#L232"><code class="language-plaintext highlighter-rouge">bool SetAdaptiveFilter(bool enable, uint8_t retries=0)</code></a> | Enable/disable adaptive filter (DFS) |
+| <a href="src/AS5047U.cpp#L239"><code class="language-plaintext highlighter-rouge">bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries=0)</code></a> | Set DFS filter parameters |
+| <a href="src/AS5047U.cpp#L250"><code class="language-plaintext highlighter-rouge">bool Set150CTemperatureMode(bool enable, uint8_t retries=0)</code></a> | Enable 150°C (high-temp mode) |
+| <a href="src/AS5047U.cpp#L257"><code class="language-plaintext highlighter-rouge">bool ProgramOTP()</code></a> | Program current settings into OTP (one-time) |
+| <a href="src/AS5047U.cpp#L360"><code class="language-plaintext highlighter-rouge">void SetPad(uint8_t pad)</code></a> | Set pad byte for 32-bit SPI frames |
+| <a href="src/AS5047U.cpp#L363"><code class="language-plaintext highlighter-rouge">bool SetHysteresis(SETTINGS3::Hysteresis hysteresis, uint8_t retries=0)</code></a> | Set incremental hysteresis level |
+| <a href="src/AS5047U.cpp#L371"><code class="language-plaintext highlighter-rouge">SETTINGS3::Hysteresis GetHysteresis() const</code></a> | Get current hysteresis setting |
+| <a href="src/AS5047U.cpp#L377"><code class="language-plaintext highlighter-rouge">bool SetAngleOutputSource(SETTINGS2::AngleOutputSource source, uint8_t retries=0)</code></a> | Select angle output source (comp/raw) |
+| <a href="src/AS5047U.cpp#L385"><code class="language-plaintext highlighter-rouge">SETTINGS2::AngleOutputSource GetAngleOutputSource() const</code></a> | Get selected angle output source |
+| <a href="src/AS5047U.cpp#L393"><code class="language-plaintext highlighter-rouge">AS5047U_REG::DIA GetDiagnostics() const</code></a> | Read full diagnostic register (DIA) |
 —</p>
 <h2 id="-unit-testing">
   

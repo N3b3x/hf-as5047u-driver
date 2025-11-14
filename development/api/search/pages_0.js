@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['as5047u_0',['HF-AS5047U',['../index.html',1,'']]]
+  ['as5047u_20driver_0',['HF-AS5047U Driver',['../index.html',1,'']]]
 ];

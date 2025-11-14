@@ -1,368 +1,340 @@
 {"0": {
     "doc": "HardFOC AS5047U Driver",
-    "title": "HF-AS5047U",
-    "content": "Hardware Agnostic AS5047U library - as used in the HardFOC-V1 controller . ",
-    "url": "/hf-as5047u-driver/development/#hf-as5047u",
-    
-    "relUrl": "/#hf-as5047u"
-  },"1": {
-    "doc": "HardFOC AS5047U Driver",
-    "title": "AS5047U – C++ Driver Library",
-    "content": ". ",
-    "url": "/hf-as5047u-driver/development/#as5047u--c-driver-library",
-    
-    "relUrl": "/#as5047u--c-driver-library"
-  },"2": {
-    "doc": "HardFOC AS5047U Driver",
     "title": "📦 Overview",
     "content": "📖 📚🌐 Live Complete Documentation - Interactive guides, examples, and step-by-step tutorials . HF-AS5047U is a portable C++20 driver for the AS5047U magnetic encoder from ams. It delivers fast 14‑bit absolute angle readings over SPI, optional CRC protection and advanced features like Dynamic Angle Error Compensation (DAEC) and an adaptive Dynamic Filter System (DFS™). The sensor can also output incremental (A/B/I) and 3‑phase commutation (UVW) signals or a PWM encoded angle, making it a drop‑in replacement for optical encoders in high-performance motor control and robotics. ",
     "url": "/hf-as5047u-driver/development/#-overview",
     
     "relUrl": "/#-overview"
-  },"3": {
+  },"1": {
     "doc": "HardFOC AS5047U Driver",
     "title": "✨ Key Features",
     "content": ". | 🧩 Cross-platform spiBus interface | 📐 Modern C++20 API | 📝 Examples for Arduino, ESP32 and STM32 | 🧪 Unit tests for reliability | . ",
     "url": "/hf-as5047u-driver/development/#-key-features",
     
     "relUrl": "/#-key-features"
-  },"4": {
+  },"2": {
     "doc": "HardFOC AS5047U Driver",
     "title": "🚀 Sensor Highlights",
     "content": ". | 14‑bit absolute angle with optional CRC check | DAEC for low‑latency angle correction | DFS™ adaptive noise filtering | Stray‑field immunity for robust operation | Incremental ABI outputs up to 4096 PPR | UVW commutation with programmable pole pairs | PWM output option | Diagnostics for AGC, magnitude and error flags | OTP memory for permanent configuration | . ",
     "url": "/hf-as5047u-driver/development/#-sensor-highlights",
     
     "relUrl": "/#-sensor-highlights"
-  },"5": {
+  },"3": {
     "doc": "HardFOC AS5047U Driver",
     "title": "🏗️ Library Architecture",
     "content": "This library exposes a single AS5047U class that wraps all sensor functionality in a clear, type‑safe API. Key components include: . | AS5047U class – high level interface | Register definitions in AS5047U_REGISTERS.hpp | FrameFormat enum to select 16/24/32‑bit SPI frames | spiBus interface – abstract SPI layer for platform independence | . ",
     "url": "/hf-as5047u-driver/development/#%EF%B8%8F-library-architecture",
     
     "relUrl": "/#️-library-architecture"
-  },"6": {
+  },"4": {
     "doc": "HardFOC AS5047U Driver",
     "title": "SPI Bus Abstraction",
-    "content": "Applications implement the virtual spiBus interface and plug it into the driver: . | 1 2 3 4 5 . | class spiBus { public: virtual ~spiBus() = default; virtual void transfer(const uint8_t *tx, uint8_t *rx, size_t len) = 0; }; . | . The driver itself contains no hardware specifics – simply implement transfer() for your platform. ",
+    "content": "Applications implement the virtual spiBus interface and plug it into the driver: . | 1 2 3 4 5 . | class spiBus { public: virtual ~spiBus() = default; virtual void transfer(const uint8_t* tx, uint8_t* rx, size_t len) = 0; }; . | . The driver itself contains no hardware specifics – simply implement transfer() for your platform. ",
     "url": "/hf-as5047u-driver/development/#spi-bus-abstraction",
     
     "relUrl": "/#spi-bus-abstraction"
-  },"7": {
+  },"5": {
     "doc": "HardFOC AS5047U Driver",
     "title": "🔌 Platform Integration",
     "content": " ",
     "url": "/hf-as5047u-driver/development/#-platform-integration",
     
     "relUrl": "/#-platform-integration"
-  },"8": {
+  },"6": {
     "doc": "HardFOC AS5047U Driver",
     "title": "ESP-IDF",
-    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 . | class ESPBus : public AS5047U::spiBus { spi_device_handle_t dev; public: ESPBus(spi_device_handle_t handle) : dev(handle) {} void transfer(const uint8_t *tx, uint8_t *rx, size_t len) override { spi_transaction_t t = {}; t.tx_buffer = tx; t.rx_buffer = rx; t.length = len * 8; spi_device_transmit(dev, &amp;t); } }; . | . ",
+    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 . | class ESPBus : public AS5047U::spiBus { spi_device_handle_t dev; public: ESPBus(spi_device_handle_t handle) : dev(handle) {} void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override { spi_transaction_t t = {}; t.tx_buffer = tx; t.rx_buffer = rx; t.length = len * 8; spi_device_transmit(dev, &amp;t); } }; . | . ",
     "url": "/hf-as5047u-driver/development/#esp-idf",
     
     "relUrl": "/#esp-idf"
-  },"9": {
+  },"7": {
     "doc": "HardFOC AS5047U Driver",
     "title": "STM32 HAL",
-    "content": "| 1 2 3 4 5 6 7 8 . | class STM32Bus : public AS5047U::spiBus { SPI_HandleTypeDef *hspi; public: STM32Bus(SPI_HandleTypeDef *handle) : hspi(handle) {} void transfer(const uint8_t *tx, uint8_t *rx, size_t len) override { HAL_SPI_TransmitReceive(hspi, (uint8_t*)tx, rx, len, HAL_MAX_DELAY); } }; . | . ",
+    "content": "| 1 2 3 4 5 6 7 8 9 . | class STM32Bus : public AS5047U::spiBus { SPI_HandleTypeDef* hspi; public: STM32Bus(SPI_HandleTypeDef * handle) : hspi(handle) {} void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override { HAL_SPI_TransmitReceive(hspi, (uint8_t*)tx, rx, len, HAL_MAX_DELAY); } }; . | . ",
     "url": "/hf-as5047u-driver/development/#stm32-hal",
     
     "relUrl": "/#stm32-hal"
-  },"10": {
+  },"8": {
     "doc": "HardFOC AS5047U Driver",
     "title": "Arduino",
-    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 14 . | class ArduinoBus : public AS5047U::spiBus { public: void transfer(const uint8_t *tx, uint8_t *rx, size_t len) override { SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE1)); digitalWrite(CS_PIN, LOW); for (size_t i = 0; i &lt; len; ++i) { uint8_t out = tx ? tx[i] : 0; uint8_t in = SPI.transfer(out); if (rx) rx[i] = in; } digitalWrite(CS_PIN, HIGH); SPI.endTransaction(); } }; . | . ",
+    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 . | class ArduinoBus : public AS5047U::spiBus { public: void transfer(const uint8_t *tx, uint8_t *rx, size_t len) override { SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE1)); digitalWrite(CS_PIN, LOW); for (size_t i = 0; i &lt; len; ++i) { uint8_t out = tx ? tx[i] : 0; uint8_t in = SPI.transfer(out); if (rx) rx[i] = in; } digitalWrite(CS_PIN, HIGH); SPI.endTransaction(); } } ; . | . ",
     "url": "/hf-as5047u-driver/development/#arduino",
     
     "relUrl": "/#arduino"
-  },"11": {
+  },"9": {
     "doc": "HardFOC AS5047U Driver",
     "title": "📂 Project Structure",
     "content": "| 1 2 3 4 5 6 7 8 9 10 11 . | ├── Datasheet/ # AS5047U datasheet PDF ├── examples/ # Wiring and usage examples ├── src/ # Library sources │ ├── AS5047U.hpp # Driver API │ ├── AS5047U.cpp # Implementation │ └── AS5047U_REGISTERS.hpp# Register definitions ├── include/ # Public headers │ └── AS5047U_config.hpp # Default build configuration ├── tests/ # Mock-based unit tests ├── config.mk # Makefile defaults └── README.md # This document . | . ",
     "url": "/hf-as5047u-driver/development/#-project-structure",
     
     "relUrl": "/#-project-structure"
-  },"12": {
+  },"10": {
     "doc": "HardFOC AS5047U Driver",
     "title": "📖 Documentation",
     "content": "Detailed step‑by‑step guides (with example command output) are available in the docs folder. Start with the Quick Start Workflow if you’re new. ",
     "url": "/hf-as5047u-driver/development/#-documentation",
     
     "relUrl": "/#-documentation"
-  },"13": {
+  },"11": {
     "doc": "HardFOC AS5047U Driver",
     "title": "🔧 Installation",
     "content": ". | 📥 Copy AS5047U.hpp, AS5047U.cpp and AS5047U_REGISTERS.hpp into your project | 🔌 Implement the spiBus interface for your platform | ➕ #include \"AS5047U.hpp\" | 🛠️ Compile with a C++20 compiler | 🏗️ Optionally build with the provided Makefile . | Override compiler flags on the command line | Configure default options via Kconfig or AS5047U_config.hpp | . | . ",
     "url": "/hf-as5047u-driver/development/#-installation",
     
     "relUrl": "/#-installation"
-  },"14": {
+  },"12": {
     "doc": "HardFOC AS5047U Driver",
     "title": "🧠 Quick Start",
-    "content": "| 1 2 3 4 5 6 7 8 9 10 11 . | // Instantiate the driver with your platform's SPI bus AS5047U encoder(bus, FrameFormat::SPI_24); // driver using 24-bit frames uint16_t angle = encoder.getAngle(); // compensated angle uint16_t rawAngle = encoder.getRawAngle(); // raw angle without DAEC int16_t vel = encoder.getVelocity(); // velocity in sensor units double vel_dps = encoder.getVelocityDegPerSec(); // velocity in deg/s uint8_t agc = encoder.getAGC(); // automatic gain control uint16_t mag = encoder.getMagnitude(); // magnetic magnitude uint16_t errors = encoder.getErrorFlags(); // current error flags . | . Configure outputs: . | 1 2 3 4 5 . | encoder.setZeroPosition(8192); // set zero electrical angle encoder.setDirection(false); // counter-clockwise = positive encoder.setABIResolution(12); // 12-bit incremental output encoder.setUVWPolePairs(5); // 5 electrical pole pairs encoder.configureInterface(true, false, true); // enable ABI + PWM . | . Perform OTP programming: . | 1 . | bool ok = encoder.programOTP(); // write settings to OTP . | . Dump diagnostics: . | 1 . | std::string status = encoder.dumpDiagnostics(); // formatted status text . | . ",
+    "content": "| 1 2 3 4 5 6 7 8 9 10 11 . | // Instantiate the driver with your platform's SPI bus AS5047U encoder(bus, FrameFormat::SPI_24); // driver using 24-bit frames uint16_t angle = encoder.GetAngle(); // compensated angle uint16_t rawAngle = encoder.GetRawAngle(); // raw angle without DAEC int16_t vel = encoder.GetVelocity(); // velocity in sensor units float vel_dps = encoder.GetVelocityDegPerSec(); // velocity in deg/s uint8_t agc = encoder.GetAGC(); // automatic gain control uint16_t mag = encoder.GetMagnitude(); // magnetic magnitude uint16_t errors = encoder.GetErrorFlags(); // current error flags . | . | 1 2 3 . | Configure outputs : ```cpp encoder.SetZeroPosition(8192); // set zero electrical angle encoder.SetDirection(false); // counter-clockwise = positive encoder.SetABIResolution(12); // 12-bit incremental output encoder.SetUVWPolePairs(5); // 5 electrical pole pairs encoder.ConfigureInterface(true, false, true); // enable ABI + PWM ``` Perform OTP programming : ```cpp bool ok = encoder.ProgramOTP(); // write settings to OTP ``` Dump diagnostics : ```cpp encoder.DumpStatus(); // print formatted status/diagnostics ``` . | . ",
     "url": "/hf-as5047u-driver/development/#-quick-start",
     
     "relUrl": "/#-quick-start"
-  },"15": {
+  },"13": {
     "doc": "HardFOC AS5047U Driver",
     "title": "⚙️ Configuration",
     "content": "Projects that use a Kconfig-based build system can include the provided Kconfig file. It exposes options such as the default SPI frame format and CRC retry count and also allows enabling the unit tests. When not using Kconfig, you can edit include/AS5047U_config.hpp to set AS5047U_CFG::DEFAULT_FRAME_FORMAT and AS5047U_CFG::CRC_RETRIES. ",
     "url": "/hf-as5047u-driver/development/#%EF%B8%8F-configuration",
     
     "relUrl": "/#️-configuration"
-  },"16": {
+  },"14": {
     "doc": "HardFOC AS5047U Driver",
     "title": "📟 API Summary",
-    "content": "| Function | Description |———-|————-| AS5047U(spiBus &amp;bus, FrameFormat fmt) | Constructor (SPI interface and frame format) | void setFrameFormat(FrameFormat fmt) | Set SPI frame format (16/24/32-bit mode) | uint16_t getAngle(uint8_t retries=0) | Read 14-bit compensated absolute angle | uint16_t getRawAngle(uint8_t retries=0) | Read 14-bit raw absolute angle | int16_t getVelocity(uint8_t retries=0) | Read signed 14-bit velocity (LSB units) | double getVelocityDegPerSec(uint8_t retries=0) | Velocity in degrees/sec | double getVelocityRadPerSec(uint8_t retries=0) | Velocity in radians/sec | double getVelocityRPM(uint8_t retries=0) | Velocity in revolutions per minute (RPM) | uint8_t getAGC(uint8_t retries=0) | Read AGC (0–255) value | uint16_t getMagnitude(uint8_t retries=0) | Read magnetic field magnitude (0–16383) | uint16_t getErrorFlags(uint8_t retries=0) | Read and clear error/status flags | void dumpStatus() const | Print formatted status/diagnostics | uint16_t getZeroPosition(uint8_t retries=0) const | Get current zero offset | bool setZeroPosition(uint16_t angle, uint8_t retries=0) | Set new zero offset | bool setDirection(bool clockwise, uint8_t retries=0) | Set rotation direction (CW or CCW) | bool setABIResolution(uint8_t bits, uint8_t retries=0) | Set ABI output resolution (10–14 bits) | bool setUVWPolePairs(uint8_t pairs, uint8_t retries=0) | Set UVW pole pairs (1–7) | bool setIndexPulseLength(uint8_t lsbLen, uint8_t retries=0) | Set ABI index pulse width | bool configureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=0) | Enable/disable ABI, UVW, PWM | bool setDynamicAngleCompensation(bool enable, uint8_t retries=0) | Enable/disable DAEC | bool setAdaptiveFilter(bool enable, uint8_t retries=0) | Enable/disable adaptive filter (DFS) | bool setFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries=0) | Set DFS filter parameters | bool set150CTemperatureMode(bool enable, uint8_t retries=0) | Enable 150°C (high-temp mode) | bool programOTP() | Program current settings into OTP (one-time) | void setPad(uint8_t pad) | Set pad byte for 32-bit SPI frames | bool setHysteresis(SETTINGS3::Hysteresis hys, uint8_t retries=0) | Set incremental hysteresis level | SETTINGS3::Hysteresis getHysteresis() const | Get current hysteresis setting | bool setAngleOutputSource(SETTINGS2::AngleOutputSource src, uint8_t retries=0) | Select angle output source (comp/raw) | SETTINGS2::AngleOutputSource getAngleOutputSource() const | Get selected angle output source | AS5047U_REG::DIA getDiagnostics() const | Read full diagnostic register (DIA) | — . ",
+    "content": "Click on any function name to jump directly to its implementation in the source code. | Function | Description |———-|————-| AS5047U(spiBus &amp;bus, FrameFormat format) | Constructor (SPI interface and frame format) | void SetFrameFormat(FrameFormat format) | Set SPI frame format (16/24/32-bit mode) | uint16_t GetAngle(uint8_t retries=0) | Read 14-bit compensated absolute angle | uint16_t GetRawAngle(uint8_t retries=0) | Read 14-bit raw absolute angle | int16_t GetVelocity(uint8_t retries=0) | Read signed 14-bit velocity (LSB units) | float GetVelocityDegPerSec(uint8_t retries=0) | Velocity in degrees/sec | float GetVelocityRadPerSec(uint8_t retries=0) | Velocity in radians/sec | float GetVelocityRPM(uint8_t retries=0) | Velocity in revolutions per minute (RPM) | uint8_t GetAGC(uint8_t retries=0) | Read AGC (0–255) value | uint16_t GetMagnitude(uint8_t retries=0) | Read magnetic field magnitude (0–16383) | uint16_t GetErrorFlags(uint8_t retries=0) | Read and clear error/status flags | void DumpStatus() const | Print formatted status/diagnostics | uint16_t GetZeroPosition(uint8_t retries=0) const | Get current zero offset | bool SetZeroPosition(uint16_t angle_lsb, uint8_t retries=0) | Set new zero offset | bool SetDirection(bool clockwise, uint8_t retries=0) | Set rotation direction (CW or CCW) | bool SetABIResolution(uint8_t resolution_bits, uint8_t retries=0) | Set ABI output resolution (10–14 bits) | bool SetUVWPolePairs(uint8_t pairs, uint8_t retries=0) | Set UVW pole pairs (1–7) | bool SetIndexPulseLength(uint8_t lsb_len, uint8_t retries=0) | Set ABI index pulse width | bool ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=0) | Enable/disable ABI, UVW, PWM | bool SetDynamicAngleCompensation(bool enable, uint8_t retries=0) | Enable/disable DAEC | bool SetAdaptiveFilter(bool enable, uint8_t retries=0) | Enable/disable adaptive filter (DFS) | bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries=0) | Set DFS filter parameters | bool Set150CTemperatureMode(bool enable, uint8_t retries=0) | Enable 150°C (high-temp mode) | bool ProgramOTP() | Program current settings into OTP (one-time) | void SetPad(uint8_t pad) | Set pad byte for 32-bit SPI frames | bool SetHysteresis(SETTINGS3::Hysteresis hysteresis, uint8_t retries=0) | Set incremental hysteresis level | SETTINGS3::Hysteresis GetHysteresis() const | Get current hysteresis setting | bool SetAngleOutputSource(SETTINGS2::AngleOutputSource source, uint8_t retries=0) | Select angle output source (comp/raw) | SETTINGS2::AngleOutputSource GetAngleOutputSource() const | Get selected angle output source | AS5047U_REG::DIA GetDiagnostics() const | Read full diagnostic register (DIA) | — . ",
     "url": "/hf-as5047u-driver/development/#-api-summary",
     
     "relUrl": "/#-api-summary"
-  },"17": {
+  },"15": {
     "doc": "HardFOC AS5047U Driver",
     "title": "🧪 Unit Testing",
     "content": "Run the provided tests on a desktop system with: . | 1 . | g++ -std=c++20 src/AS5047U.cpp tests/test_as5047u.cpp -o test &amp;&amp; ./test . | . The expected output is: . | 1 . | All tests passed . | . ",
     "url": "/hf-as5047u-driver/development/#-unit-testing",
     
     "relUrl": "/#-unit-testing"
-  },"18": {
+  },"16": {
     "doc": "HardFOC AS5047U Driver",
     "title": "C++ Features and Requirements",
     "content": "This library requires a C++20 (or later) compiler. It uses: . | enum class | constexpr | std::bitset | [[nodiscard]] | Modern structured typing | . ",
     "url": "/hf-as5047u-driver/development/#c-features-and-requirements",
     
     "relUrl": "/#c-features-and-requirements"
-  },"19": {
+  },"17": {
     "doc": "HardFOC AS5047U Driver",
     "title": "License",
     "content": "GNU General Public License v3.0 You may use, modify, and redistribute this software under GPLv3. ",
     "url": "/hf-as5047u-driver/development/#license",
     
     "relUrl": "/#license"
-  },"20": {
+  },"18": {
     "doc": "HardFOC AS5047U Driver",
     "title": "🤝 Contributing",
     "content": "Pull requests and feature ideas are welcome! . | Fork this repository | Create a feature branch | Commit your changes | Open a PR | . ",
     "url": "/hf-as5047u-driver/development/#-contributing",
     
     "relUrl": "/#-contributing"
-  },"21": {
+  },"19": {
     "doc": "HardFOC AS5047U Driver",
     "title": "🙌 Acknowledgments",
     "content": "Developed for the HardFOC-V1 controller. | Developed by Nebiyu Tadesse, 2025. | Based on the official AS5047U Datasheet by ASM ASRAM. | Inspired by embedded needs for a reliable, testable AS5047U library. | . ",
     "url": "/hf-as5047u-driver/development/#-acknowledgments",
     
     "relUrl": "/#-acknowledgments"
-  },"22": {
+  },"20": {
     "doc": "HardFOC AS5047U Driver",
     "title": "💬 Support",
     "content": "For questions, bug reports, or feature requests, please open an issue or contact the maintainer directly. ",
     "url": "/hf-as5047u-driver/development/#-support",
     
     "relUrl": "/#-support"
-  },"23": {
+  },"21": {
     "doc": "HardFOC AS5047U Driver",
     "title": "HardFOC AS5047U Driver",
-    "content": " ",
+    "content": "#HF - AS5047U Hardware Agnostic AS5047U library - as used in the HardFOC-V1 controller . #AS5047U – C++ Driver Library . ",
     "url": "/hf-as5047u-driver/development/",
     
     "relUrl": "/"
-  },"24": {
+  },"22": {
     "doc": "🧰 Building and Testing",
     "title": "🧰 Building and Testing",
     "content": "This guide explains how to compile the library and run the provided unit tests. ",
     "url": "/hf-as5047u-driver/development/docs/building/",
     
     "relUrl": "/docs/building/"
-  },"25": {
+  },"23": {
     "doc": "🧰 Building and Testing",
     "title": "Building the Static Library",
     "content": ". | 🔨 Run make lib to build libas5047u.a | 🧹 Use make clean before rebuilding | . The archive will be placed in the project root. Typical output: . | 1 2 . | g++ -I./src -I. -std=c++20 -Wall -Wextra -pedantic -O2 -c src/AS5047U.cpp -o src/AS5047U.o ar rcs libas5047u.a src/AS5047U.o . | . Object files are generated in the src directory. ",
     "url": "/hf-as5047u-driver/development/docs/building/#building-the-static-library",
     
     "relUrl": "/docs/building/#building-the-static-library"
-  },"26": {
+  },"24": {
     "doc": "🧰 Building and Testing",
     "title": "Running the Unit Tests",
     "content": ". | 🏃 make test builds and runs unit_tests . | Expect All tests passed on success | . | . If the build fails ensure your compiler supports C++20 and that make is installed. ⬅️ Previous: Setup | Back to Documentation Index | Next: Using the Library ➡️ . ",
     "url": "/hf-as5047u-driver/development/docs/building/#running-the-unit-tests",
     
     "relUrl": "/docs/building/#running-the-unit-tests"
-  },"27": {
+  },"25": {
     "doc": "📖 Doxygen Extensions",
     "title": "📖 Doxygen Extensions",
     "content": "This section contains advanced Doxygen documentation features and extensions. ",
     "url": "/hf-as5047u-driver/development/docs/doxygen-extensions/",
     
     "relUrl": "/docs/doxygen-extensions/"
-  },"28": {
+  },"26": {
     "doc": "📖 Doxygen Extensions",
     "title": "🌟 Features",
     "content": "Our Doxygen documentation includes several modern enhancements: . | 🌓 Automatic Dark Mode - Detects system preference and switches automatically | 📋 Copy Buttons - Hover over code blocks to copy them to clipboard | 🔗 Paragraph Links - Click the ¶ symbol to get direct links to sections | 📑 Interactive TOC - Dynamic table of contents with progress highlighting | 📑 Tabs - Organize content in tabbed interfaces | 📱 Responsive Design - Works perfectly on desktop and mobile devices | . ",
     "url": "/hf-as5047u-driver/development/docs/doxygen-extensions/#-features",
     
     "relUrl": "/docs/doxygen-extensions/#-features"
-  },"29": {
+  },"27": {
     "doc": "📖 Doxygen Extensions",
     "title": "📁 Structure",
     "content": ". | Configuration - Doxygen configuration and setup files | doxygen-awesome-css - Doxygen-awesome-css theme submodule | . ",
     "url": "/hf-as5047u-driver/development/docs/doxygen-extensions/#-structure",
     
     "relUrl": "/docs/doxygen-extensions/#-structure"
-  },"30": {
+  },"28": {
     "doc": "📖 Doxygen Extensions",
     "title": "🔧 Technical Details",
     "content": "The documentation system uses: . | Doxygen - For generating API documentation from source code | doxygen-awesome-css - Modern CSS theme with dark mode support | Custom Extensions - JavaScript enhancements for better user experience | Automatic Detection - System preference detection for theme switching | . ",
     "url": "/hf-as5047u-driver/development/docs/doxygen-extensions/#-technical-details",
     
     "relUrl": "/docs/doxygen-extensions/#-technical-details"
-  },"31": {
+  },"29": {
     "doc": "📖 Doxygen Extensions",
     "title": "📖 Usage",
     "content": "To generate the documentation locally: . | 1 . | doxygen _config/Doxyfile . | . The generated documentation will be available in the docs/doxygen/ directory. ",
     "url": "/hf-as5047u-driver/development/docs/doxygen-extensions/#-usage",
     
     "relUrl": "/docs/doxygen-extensions/#-usage"
-  },"32": {
+  },"30": {
     "doc": "🎮 Running the Examples",
     "title": "🎮 Running the Examples",
     "content": "Example projects for Arduino, ESP32 (ESP-IDF) and STM32 are provided in the examples directory. ",
     "url": "/hf-as5047u-driver/development/docs/examples/",
     
     "relUrl": "/docs/examples/"
-  },"33": {
+  },"31": {
     "doc": "🎮 Running the Examples",
     "title": "Arduino",
     "content": ". | 📂 Open examples/arduino_basic_interface/main.ino in the Arduino IDE | 🔧 Adjust the pin numbers to match your wiring | 🚀 Compile and upload the sketch | 🖥️ Open the serial monitor to view angle output | 1 2 . | [Angle] 12345 LSB (67.89°) [Diag] AGC=128 MAG=16000 . | . | . ",
     "url": "/hf-as5047u-driver/development/docs/examples/#arduino",
     
     "relUrl": "/docs/examples/#arduino"
-  },"34": {
+  },"32": {
     "doc": "🎮 Running the Examples",
     "title": "ESP32 (ESP-IDF)",
     "content": ". | 📂 Copy examples/es32_basic_interface into an ESP-IDF project | 🔧 Implement an spiBus using ESP-IDF SPI API | 🚀 Build and flash using idf.py flash monitor | 1 . | Angle: 90.0 deg . | . | . ",
     "url": "/hf-as5047u-driver/development/docs/examples/#esp32-esp-idf",
     
     "relUrl": "/docs/examples/#esp32-esp-idf"
-  },"35": {
+  },"33": {
     "doc": "🎮 Running the Examples",
     "title": "STM32 HAL",
     "content": ". | 📂 Import examples/stm32_basic_interface into STM32CubeIDE | 🔧 Wire the sensor and adjust pins in app_encoder_init.cpp | 🚀 Build and flash your board | 🖥️ Open the UART console to see: | 1 . | Angle: 45 deg . | . | . Each example demonstrates basic angle reading and can be extended to suit your application. ⬅️ Previous: Using the Library | Back to Documentation Index | Next: Quick Start Workflow ➡️ . ",
     "url": "/hf-as5047u-driver/development/docs/examples/#stm32-hal",
     
     "relUrl": "/docs/examples/#stm32-hal"
-  },"36": {
+  },"34": {
     "doc": "📚 Documentation",
     "title": "HF-AS5047U Documentation",
     "content": "Welcome! This directory contains step‑by‑step guides for installing, building and using the HF-AS5047U library. Each guide focuses on a specific topic and is meant to be read in order. Example output is provided so you know what to expect when commands run correctly. ",
     "url": "/hf-as5047u-driver/development/docs/#hf-as5047u-documentation",
     
     "relUrl": "/docs/#hf-as5047u-documentation"
-  },"37": {
+  },"35": {
     "doc": "📚 Documentation",
     "title": "📚 Documentation Structure",
     "content": " ",
     "url": "/hf-as5047u-driver/development/docs/#-documentation-structure",
     
     "relUrl": "/docs/#-documentation-structure"
-  },"38": {
+  },"36": {
     "doc": "📚 Documentation",
     "title": "Getting Started",
     "content": ". | 🛠️ Setup – prerequisites and how to obtain the source | 🧰 Building and Testing – compile the library and run the unit tests | 🏁 Quick Start Workflow – everything from cloning to running examples | . ",
     "url": "/hf-as5047u-driver/development/docs/#getting-started",
     
     "relUrl": "/docs/#getting-started"
-  },"39": {
+  },"37": {
     "doc": "📚 Documentation",
     "title": "Usage Guides",
     "content": ". | 📚 Using the Library – integrate the driver in your own project | 🎮 Running the Examples – compile and upload the example sketches | . ",
     "url": "/hf-as5047u-driver/development/docs/#usage-guides",
     
     "relUrl": "/docs/#usage-guides"
-  },"40": {
+  },"38": {
     "doc": "📚 Documentation",
     "title": "Advanced Topics",
     "content": ". | 📖 Doxygen Extensions – Advanced Doxygen documentation features | . ",
     "url": "/hf-as5047u-driver/development/docs/#advanced-topics",
     
     "relUrl": "/docs/#advanced-topics"
-  },"41": {
+  },"39": {
     "doc": "📚 Documentation",
     "title": "🚀 Quick Start",
     "content": "New to AS5047U? Follow this recommended path: . | Start with Setup to prepare your environment | Follow Building and Testing to compile the library | Read Using the Library to integrate it into your project | Try Running the Examples to see it in action | . ",
     "url": "/hf-as5047u-driver/development/docs/#-quick-start",
     
     "relUrl": "/docs/#-quick-start"
-  },"42": {
+  },"40": {
     "doc": "📚 Documentation",
     "title": "💡 Need Help?",
     "content": ". | 🐛 Found a bug? Check the troubleshooting sections in each guide | ❓ Have questions? Review the usage guide | 📝 Want to contribute? See the contributing guidelines | . ",
     "url": "/hf-as5047u-driver/development/docs/#-need-help",
     
     "relUrl": "/docs/#-need-help"
-  },"43": {
+  },"41": {
     "doc": "📚 Documentation",
     "title": "📚 Documentation",
     "content": " ",
     "url": "/hf-as5047u-driver/development/docs/",
     
     "relUrl": "/docs/"
-  },"44": {
+  },"42": {
     "doc": "🛠️ Setup",
     "title": "🛠️ Setup",
     "content": "This guide walks you through preparing your environment and cloning the repository. ",
     "url": "/hf-as5047u-driver/development/docs/setup/",
     
     "relUrl": "/docs/setup/"
-  },"45": {
+  },"43": {
     "doc": "🛠️ Setup",
     "title": "Prerequisites",
     "content": ". | ✅ C++20 compiler (e.g. g++ 10+) | ✅ Make utility | ✅ Git for cloning the sources | . These packages are available on most Linux distributions. On Debian/Ubuntu you can install them with: . | 1 2 . | sudo apt-get update sudo apt-get install build-essential git . | . Verify that g++ supports C++20: . | 1 . | g++ --version # should report version 10 or later . | . ",
     "url": "/hf-as5047u-driver/development/docs/setup/#prerequisites",
     
     "relUrl": "/docs/setup/#prerequisites"
-  },"46": {
+  },"44": {
     "doc": "🛠️ Setup",
     "title": "Cloning the Repository",
     "content": "Use git clone to download the project: . | 1 2 . | git clone https://github.com/N3b3x/HF-AS5047U.git cd HF-AS5047U . | . The rest of the documentation assumes you are inside the project directory. ⬅️ Back to Documentation Index | Next: Building and Testing ➡️ . ",
     "url": "/hf-as5047u-driver/development/docs/setup/#cloning-the-repository",
     
     "relUrl": "/docs/setup/#cloning-the-repository"
-  },"47": {
+  },"45": {
     "doc": "📚 Using the Library",
     "title": "📚 Using the Library",
     "content": "This document shows how to integrate HF-AS5047U into your own project. ",
     "url": "/hf-as5047u-driver/development/docs/usage/",
     
     "relUrl": "/docs/usage/"
-  },"48": {
+  },"46": {
     "doc": "📚 Using the Library",
     "title": "1. Provide a SPI Bus Implementation",
-    "content": "The driver uses a small spiBus interface. Implement the transfer() method for your platform. Example for Arduino: . | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 . | class ArduinoBus : public spiBus { public: ArduinoBus(SPIClass&amp; spi, uint8_t cs) : spi_(spi), csPin_(cs) { pinMode(csPin_, OUTPUT); digitalWrite(csPin_, HIGH); } void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override { digitalWrite(csPin_, LOW); for (size_t i = 0; i &lt; len; ++i) { uint8_t out = tx ? tx[i] : 0x00; uint8_t in = spi_.transfer(out); if (rx) rx[i] = in; } digitalWrite(csPin_, HIGH); } private: SPIClass&amp; spi_; uint8_t csPin_; }; . | . ",
+    "content": "The driver uses a small spiBus interface. Implement the transfer() method for your platform. Example for Arduino: . | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 . | class ArduinoBus : public spiBus { public: ArduinoBus(SPIClass&amp; spi, uint8_t cs) : spi_(spi), csPin_(cs) { pinMode(csPin_, OUTPUT); digitalWrite(csPin_, HIGH); } void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override { digitalWrite(csPin_, LOW); for (size_t i = 0; i &lt; len; ++i) { uint8_t out = tx ? tx[i] : 0x00; uint8_t in = spi_.transfer(out); if (rx) rx[i] = in; } digitalWrite(csPin_, HIGH); } private: SPIClass &amp; spi_; uint8_t csPin_; }; . | . | 1 2 3 . | ##2. Create the Driver Pass your bus implementation and desired frame format to the constructor : . | . ```cpp ArduinoBus bus(SPI, CS_PIN); // platform SPI wrapper AS5047U encoder(bus, FrameFormat::SPI_24); // use 24-bit frames . | 1 2 3 4 5 6 7 . | ##3. Read Data Call the API methods to access sensor data : ```cpp uint16_t angle = encoder.GetAngle(); uint8_t agc = encoder.GetAGC(); . | . | 1 . | Typical output when printing the values might look like : . | . ``` Angle : 16384 AGC : 128 . | 1 2 3 4 5 . | You can also read velocity in degrees per second : ```cpp float velDeg = encoder.GetVelocityDegPerSec(); // velocity in deg/s . | . Which might print something like Velocity: 30.5 deg/s. Refer to the API summary for the full list of methods. ⬅️ Previous: Building and Testing | Back to Documentation Index | Next: Running the Examples ➡️ . ",
     "url": "/hf-as5047u-driver/development/docs/usage/#1-provide-a-spi-bus-implementation",
     
     "relUrl": "/docs/usage/#1-provide-a-spi-bus-implementation"
-  },"49": {
-    "doc": "📚 Using the Library",
-    "title": "2. Create the Driver",
-    "content": "Pass your bus implementation and desired frame format to the constructor: . | 1 2 . | ArduinoBus bus(SPI, CS_PIN); // platform SPI wrapper AS5047U encoder(bus, FrameFormat::SPI_24); // use 24-bit frames . | . ",
-    "url": "/hf-as5047u-driver/development/docs/usage/#2-create-the-driver",
-    
-    "relUrl": "/docs/usage/#2-create-the-driver"
-  },"50": {
-    "doc": "📚 Using the Library",
-    "title": "3. Read Data",
-    "content": "Call the API methods to access sensor data: . | 1 2 . | uint16_t angle = encoder.getAngle(); uint8_t agc = encoder.getAGC(); . | . Typical output when printing the values might look like: . | 1 2 . | Angle: 16384 AGC: 128 . | . You can also read velocity in degrees per second: . | 1 . | double velDeg = encoder.getVelocityDegPerSec(); // velocity in deg/s . | . Which might print something like Velocity: 30.5 deg/s. Refer to the API summary for the full list of methods. ⬅️ Previous: Building and Testing | Back to Documentation Index | Next: Running the Examples ➡️ . ",
-    "url": "/hf-as5047u-driver/development/docs/usage/#3-read-data",
-    
-    "relUrl": "/docs/usage/#3-read-data"
-  },"51": {
+  },"47": {
     "doc": "🏁 Quick Start Workflow",
     "title": "🏁 Quick Start Workflow",
     "content": "Follow these steps to go from a fresh clone to running the example code. | 🛠️ Setup – install g++, make and git (Debian/Ubuntu example) | 1 2 3 . | sudo apt-get update sudo apt-get install build-essential git g++ --version . | . | 📥 Clone the repository | 1 2 . | git clone https://github.com/N3b3x/HF-AS5047U.git cd HF-AS5047U . | . | 🔨 Build the library | 1 . | make lib . | . Typical output: . | 1 . | ar rcs libas5047u.a src/AS5047U.o . | . | ✅ Run the unit tests | 1 . | make test . | . Expect All tests passed. | 🧩 Integrate the driver as shown in Using the Library and link against libas5047u.a in your project. | 🚀 Try the examples | 1 2 . | cd examples/arduino_basic_interface # open `main.ino` in the Arduino IDE and upload . | . The serial monitor should show angle readings similar to Angle: 16384. | . ⬅️ Previous: Running the Examples | Back to Documentation Index . ",
     "url": "/hf-as5047u-driver/development/docs/workflow/",
     
     "relUrl": "/docs/workflow/"
-  },"52": {
+  },"48": {
     "doc": "AS5047U ESP32-C6 Examples",
     "title": "AS5047U ESP32-C6 Examples",
     "content": "# AS5047U ESP32-C6 Examples This directory contains comprehensive examples demonstrating the AS5047U driver on ESP32-C6 platform. ## 🎯 Overview The ESP32-C6 examples showcase real-world usage of the AS5047U magnetic encoder with: - **Hardware-specific HAL** implementation for ESP32-C6 - **Multiple example applications** covering different use cases - **Automated build system** with configurable app types - **Comprehensive documentation** for each example - **Production-ready code** with proper error handling ## 🔧 Hardware Requirements ### ESP32-C6 Development Board - ESP32-C6-DevKitC-1 or compatible - USB-C cable for programming and power ### AS5047U Connections | AS5047U Pin | ESP32-C6 GPIO | Function |-------------|---------------|----------| MISO | GPIO2 | SPI Data In | MOSI | GPIO7 | SPI Data Out | SCLK | GPIO6 | SPI Clock | CS | GPIO10 | Chip Select | VDD | 3.3V | Logic Supply | GND | GND | Ground | **Note:** The default SPI configuration uses mode 1 (CPOL=0, CPHA=1) at 4MHz. ## 🚀 Quick Start ### 1. Prerequisites ```bash # Install ESP-IDF v5.5 curl -fsSL https://raw.githubusercontent.com/espressif/esp-idf/master/tools/install.sh | bash source ~/esp/esp-idf/export.sh # Verify installation idf.py --version ``` ### 2. Setup Repository ```bash # Clone and setup git clone --recursive https://github.com/n3b3x/hf-as5047u-driver.git cd hf-as5047u-driver/examples/esp32 # Initialize build environment ./scripts/setup_repo.sh ``` ### 3. Build and Flash ```bash # Build driver integration test (default) ./scripts/build_app.sh driver_integration_test Release # Flash to ESP32-C6 ./scripts/flash_app.sh driver_integration_test Release # Monitor output idf.py monitor ``` ## 📱 Available Examples ### 🟢 Test Suite #### `driver_integration_test` **Comprehensive Driver Integration Test Suite** - Complete driver API validation (30+ tests) - Multiple test sections covering all functionality - Initialization, angle/velocity reading, diagnostics - Frame format testing (16/24/32-bit) - Configuration and error handling - FreeRTOS task-based test execution - GPIO14 progress indicator - Automatic pass/fail tracking - No actual hardware required (driver test only) **Build:** ```bash ./scripts/build_app.sh driver_integration_test Release ``` ### 🟡 Basic Examples #### `basic_angle_reading` **Basic Angle Reading Example** - Simple angle reading loop - Angle in LSB and degrees - AGC and magnitude diagnostics - Error flag monitoring - Real hardware testing **Build:** ```bash ./scripts/build_app.sh basic_angle_reading Release ``` #### `velocity_reading` **Velocity Reading Example** - Velocity reading in multiple units - Degrees per second, radians per second, RPM - Real hardware testing **Build:** ```bash ./scripts/build_app.sh velocity_reading Release ``` #### `configuration_example` **Configuration Example** - ABI output configuration - UVW commutation setup - PWM output configuration - Zero position and direction setting - Real hardware testing **Build:** ```bash ./scripts/build_app.sh configuration_example Release ``` #### `full_features` **Comprehensive Example** - All sensor features enabled - Angle, velocity, diagnostics - ABI, UVW, PWM configuration - DAEC and filter settings - OTP programming - Real hardware testing **Build:** ```bash ./scripts/build_app.sh full_features Release ``` ## 🔨 Building Examples ### Using Build Scripts (Recommended) ```bash # List available app types ./scripts/build_app.sh list # Build specific app ./scripts/build_app.sh # Examples: ./scripts/build_app.sh driver_integration_test Release ./scripts/build_app.sh basic_angle_reading Debug ``` ### Using ESP-IDF Directly ```bash # Set app type and build type idf.py build -DAPP_TYPE=driver_integration_test -DBUILD_TYPE=Release # Flash idf.py flash # Monitor idf.py monitor ``` ## 📊 Test Framework All test examples use a standardized test framework with: - **Test result tracking** - Automatic pass/fail counting - **Execution timing** - Performance measurement - **FreeRTOS task execution** - Isolated test environments - **GPIO14 progress indicator** - Visual test progression - **Standardized logging** - Consistent output format ### Test Framework Features - `RUN_TEST(test_func)` - Run test inline - `RUN_TEST_IN_TASK(name, func, stack_size, priority)` - Run test in FreeRTOS task - `RUN_TEST_SECTION_IF_ENABLED(enabled, section_name, ...)` - Conditional test sections - `g_test_results` - Global test results tracking ## 🔌 Hardware Configuration ### SPI Configuration The default SPI configuration can be modified in the example files: ```cpp Esp32As5047uBus::SPIConfig config; config.miso_pin = GPIO_NUM_2; // MISO pin config.mosi_pin = GPIO_NUM_7; // MOSI pin config.sclk_pin = GPIO_NUM_6; // SCLK pin config.cs_pin = GPIO_NUM_10; // CS pin config.frequency = 4000000; // SPI frequency (4MHz) config.mode = 1; // SPI mode (1: CPOL=0, CPHA=1) ``` ### Pin Configuration | Function | Default GPIO | Notes |----------|-------------|-------| SPI MISO | GPIO2 | Can be changed in code | SPI MOSI | GPIO7 | Can be changed in code | SPI SCLK | GPIO6 | Can be changed in code | SPI CS | GPIO10 | Can be changed in code | Test Progress | GPIO14 | Used by test framework | ### Frame Formats The AS5047U supports three SPI frame formats: - **SPI_16** - 16-bit frames (no CRC, high-throughput mode) - **SPI_24** - 24-bit frames (includes 8-bit CRC for reliability) - **Recommended** - **SPI_32** - 32-bit frames (includes 8-bit CRC and 8-bit pad for daisy-chain) ## 📚 Documentation For more detailed documentation, see: - [Main Driver README](/hf-as5047u-driver/development/) - [Setup Guide](/hf-as5047u-driver/development/docs/setup/) - [Usage Guide](/hf-as5047u-driver/development/docs/usage/) - [Examples Guide](/hf-as5047u-driver/development/docs/examples/) - [Building Guide](/hf-as5047u-driver/development/docs/building/) ## 🐛 Troubleshooting ### Build Issues **Error: \"APP_TYPE not defined\"** - Use the build scripts: `./scripts/build_app.sh ` - Or set manually: `idf.py build -DAPP_TYPE=driver_integration_test -DBUILD_TYPE=Release` **Error: \"Failed to read valid app types from app_config.yml\"** - Ensure the scripts submodule is initialized: `git submodule update --init --recursive` - Check that `scripts/get_app_info.py` exists ### Runtime Issues **SPI Communication Errors** - Check wiring connections (MISO, MOSI, SCLK, CS, GND, VDD) - Verify SPI mode (default is mode 1: CPOL=0, CPHA=1) - Check SPI frequency (default is 4MHz) - Verify chip select is properly configured **No Angle Data** - Ensure encoder is powered (3.3V) - Check magnetic field is present (magnitude should be > 0) - Verify SPI communication (check error flags) - Ensure proper SPI frame format (24-bit recommended) **CRC Errors** - Use 24-bit or 32-bit frame format (includes CRC) - Check SPI signal integrity - Verify SPI timing and frequency **Initialization Failures** - Check SPI bus initialization - Verify chip select pin configuration - Ensure proper power supply (3.3V) - Check for SPI bus conflicts ## 📝 License See the main driver [LICENSE](/hf-as5047u-driver/development/LICENSE) file. ## 🤝 Contributing See the main driver [Contributing Guide](/hf-as5047u-driver/development/docs/). --- **For questions or issues, please open an issue on GitHub.** ",

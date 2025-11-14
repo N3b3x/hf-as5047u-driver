@@ -302,71 +302,72 @@
 17
 18
 19
+20
+21
 </pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">ArduinoBus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">spiBus</span> <span class="p">{</span>
 <span class="nl">public:</span>
-    <span class="n">ArduinoBus</span><span class="p">(</span><span class="n">SPIClass</span><span class="o">&amp;</span> <span class="n">spi</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">cs</span><span class="p">)</span> <span class="o">:</span> <span class="n">spi_</span><span class="p">(</span><span class="n">spi</span><span class="p">),</span> <span class="n">csPin_</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">pinMode</span><span class="p">(</span><span class="n">csPin_</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">csPin_</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="n">ArduinoBus</span><span class="p">(</span><span class="n">SPIClass</span><span class="o">&amp;</span> <span class="n">spi</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">cs</span><span class="p">)</span> <span class="o">:</span> <span class="n">spi_</span><span class="p">(</span><span class="n">spi</span><span class="p">),</span> <span class="n">csPin_</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">pinMode</span><span class="p">(</span><span class="n">csPin_</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">csPin_</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">csPin_</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">uint8_t</span> <span class="n">out</span> <span class="o">=</span> <span class="n">tx</span> <span class="o">?</span> <span class="n">tx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">:</span> <span class="mh">0x00</span><span class="p">;</span>
+      <span class="kt">uint8_t</span> <span class="n">in</span> <span class="o">=</span> <span class="n">spi_</span><span class="p">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">rx</span><span class="p">)</span>
+        <span class="n">rx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">in</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
-        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">csPin_</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kt">uint8_t</span> <span class="n">out</span> <span class="o">=</span> <span class="n">tx</span> <span class="o">?</span> <span class="n">tx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">:</span> <span class="mh">0x00</span><span class="p">;</span>
-            <span class="kt">uint8_t</span> <span class="n">in</span>  <span class="o">=</span> <span class="n">spi_</span><span class="p">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">rx</span><span class="p">)</span> <span class="n">rx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">in</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">csPin_</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">csPin_</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="p">}</span>
+
 <span class="nl">private:</span>
-    <span class="n">SPIClass</span><span class="o">&amp;</span> <span class="n">spi_</span><span class="p">;</span>
-    <span class="kt">uint8_t</span>   <span class="n">csPin_</span><span class="p">;</span>
+  <span class="n">SPIClass</span> <span class="o">&amp;</span> <span class="n">spi_</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">csPin_</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></td></tr></tbody></table></div></code></pre></div></div>
-<h2 id="2-create-the-driver">
-  
-  
-    <a href="#2-create-the-driver" class="anchor-heading" aria-labelledby="2-create-the-driver"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Create the Driver
-  
-  
-</h2>
-    
-
-<p>Pass your bus implementation and desired frame format to the constructor:</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="n">ArduinoBus</span> <span class="nf">bus</span><span class="p">(</span><span class="n">SPI</span><span class="p">,</span> <span class="n">CS_PIN</span><span class="p">);</span>                 <span class="c1">// platform SPI wrapper</span>
-<span class="n">AS5047U</span> <span class="nf">encoder</span><span class="p">(</span><span class="n">bus</span><span class="p">,</span> <span class="n">FrameFormat</span><span class="o">::</span><span class="n">SPI_24</span><span class="p">);</span>    <span class="c1">// use 24-bit frames</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-<h2 id="3-read-data">
-  
-  
-    <a href="#3-read-data" class="anchor-heading" aria-labelledby="3-read-data"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Read Data
-  
-  
-</h2>
-    
-
-<p>Call the API methods to access sensor data:</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="kt">uint16_t</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getAngle</span><span class="p">();</span>
-<span class="kt">uint8_t</span> <span class="n">agc</span>    <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getAGC</span><span class="p">();</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p>Typical output when printing the values might look like:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre>Angle: 16384
-AGC: 128
+3
+</pre></td><td class="rouge-code"><pre>##2. Create the Driver
+
+    Pass your bus implementation and desired frame format to the constructor :
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 
-<p>You can also read velocity in degrees per second:</p>
+<p>```cpp ArduinoBus bus(SPI, CS_PIN);       // platform SPI wrapper
+AS5047U encoder(bus, FrameFormat::SPI_24); // use 24-bit frames</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>
+    ##3. Read Data
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">double</span> <span class="n">velDeg</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">getVelocityDegPerSec</span><span class="p">();</span> <span class="c1">// velocity in deg/s</span>
+        Call the API methods to access sensor data :
+
+```cpp uint16_t angle = encoder.GetAngle();
+uint8_t agc = encoder.GetAGC();
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Typical output when printing the values might look like :
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+
+<p>``` Angle : 16384 AGC : 128</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>
+    You can also read velocity in degrees per second :
+
+```cpp
+float velDeg = encoder.GetVelocityDegPerSec(); // velocity in deg/s
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 
 <p>Which might print something like <code class="language-plaintext highlighter-rouge">Velocity: 30.5 deg/s</code>.</p>

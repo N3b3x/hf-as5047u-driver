@@ -30,7 +30,7 @@
 #include "Esp32As5047uBus.hpp"
 #include "TestFramework.h"
 
-static const char *TAG = "AS5047U_Test";
+static const char* TAG = "AS5047U_Test";
 
 //=============================================================================
 // TEST CONFIGURATION
@@ -84,8 +84,7 @@ static bool create_test_bus() noexcept {
 /**
  * @brief Create and initialize test encoder
  */
-static bool
-create_test_encoder(FrameFormat format = FrameFormat::SPI_24) noexcept {
+static bool create_test_encoder(FrameFormat format = FrameFormat::SPI_24) noexcept {
   if (!g_bus) {
     ESP_LOGE(TAG, "SPI bus not initialized");
     return false;
@@ -93,8 +92,7 @@ create_test_encoder(FrameFormat format = FrameFormat::SPI_24) noexcept {
 
   g_encoder = std::make_unique<as5047u::AS5047U<Esp32As5047uBus>>(*g_bus, format);
 
-  ESP_LOGI(TAG, "as5047u::AS5047U encoder created with frame format: %d",
-           static_cast<int>(format));
+  ESP_LOGI(TAG, "as5047u::AS5047U encoder created with frame format: %d", static_cast<int>(format));
   return true;
 }
 
@@ -131,13 +129,11 @@ static bool test_angle_reading() noexcept {
     return false;
   }
 
-  uint16_t angle = g_encoder->getAngle();
-  ESP_LOGI(TAG, "Angle (compensated): %u (%.2f°)", angle,
-           angle * 360.0 / 16384.0);
+  uint16_t angle = g_encoder->GetAngle();
+  ESP_LOGI(TAG, "Angle (compensated): %u (%.2f°)", angle, angle * 360.0 / 16384.0);
 
-  uint16_t raw_angle = g_encoder->getRawAngle();
-  ESP_LOGI(TAG, "Angle (raw): %u (%.2f°)", raw_angle,
-           raw_angle * 360.0 / 16384.0);
+  uint16_t raw_angle = g_encoder->GetRawAngle();
+  ESP_LOGI(TAG, "Angle (raw): %u (%.2f°)", raw_angle, raw_angle * 360.0 / 16384.0);
 
   ESP_LOGI(TAG, "Angle reading test passed");
   return true;
@@ -152,9 +148,8 @@ static bool test_angle_multiple_reads() noexcept {
   }
 
   for (int i = 0; i < 10; ++i) {
-    uint16_t angle = g_encoder->getAngle();
-    ESP_LOGI(TAG, "Read %d: Angle = %u (%.2f°)", i + 1, angle,
-             angle * 360.0 / 16384.0);
+    uint16_t angle = g_encoder->GetAngle();
+    ESP_LOGI(TAG, "Read %d: Angle = %u (%.2f°)", i + 1, angle, angle * 360.0 / 16384.0);
     vTaskDelay(pdMS_TO_TICKS(100));
   }
 
@@ -174,16 +169,16 @@ static bool test_velocity_reading() noexcept {
     return false;
   }
 
-  int16_t velocity = g_encoder->getVelocity();
+  int16_t velocity = g_encoder->GetVelocity();
   ESP_LOGI(TAG, "Velocity (LSB): %d", velocity);
 
-  double vel_deg = g_encoder->getVelocityDegPerSec();
+  float vel_deg = g_encoder->GetVelocityDegPerSec();
   ESP_LOGI(TAG, "Velocity: %.2f deg/s", vel_deg);
 
-  double vel_rad = g_encoder->getVelocityRadPerSec();
+  float vel_rad = g_encoder->GetVelocityRadPerSec();
   ESP_LOGI(TAG, "Velocity: %.2f rad/s", vel_rad);
 
-  double vel_rpm = g_encoder->getVelocityRPM();
+  float vel_rpm = g_encoder->GetVelocityRPM();
   ESP_LOGI(TAG, "Velocity: %.2f RPM", vel_rpm);
 
   ESP_LOGI(TAG, "Velocity reading test passed");
@@ -202,19 +197,18 @@ static bool test_diagnostics() noexcept {
     return false;
   }
 
-  uint8_t agc = g_encoder->getAGC();
+  uint8_t agc = g_encoder->GetAGC();
   ESP_LOGI(TAG, "AGC: %u", agc);
 
-  uint16_t magnitude = g_encoder->getMagnitude();
+  uint16_t magnitude = g_encoder->GetMagnitude();
   ESP_LOGI(TAG, "Magnitude: %u", magnitude);
 
-  uint16_t error_flags = g_encoder->getErrorFlags();
+  uint16_t error_flags = g_encoder->GetErrorFlags();
   ESP_LOGI(TAG, "Error flags: 0x%04X", error_flags);
 
-  AS5047U_Error sticky_errors = g_encoder->getStickyErrorFlags();
+  AS5047U_Error sticky_errors = g_encoder->GetStickyErrorFlags();
   if (sticky_errors != AS5047U_Error::None) {
-    ESP_LOGW(TAG, "Sticky errors: 0x%04X",
-             static_cast<uint16_t>(sticky_errors));
+    ESP_LOGW(TAG, "Sticky errors: 0x%04X", static_cast<uint16_t>(sticky_errors));
   }
 
   ESP_LOGI(TAG, "Diagnostics test passed");
@@ -233,7 +227,7 @@ static bool test_zero_position() noexcept {
     return false;
   }
 
-  uint16_t current_zero = g_encoder->getZeroPosition();
+  uint16_t current_zero = g_encoder->GetZeroPosition();
   ESP_LOGI(TAG, "Current zero position: %u", current_zero);
 
   // Try setting a new zero position (test only, don't actually change)
@@ -268,7 +262,7 @@ static bool test_frame_format_16() noexcept {
 
   auto encoder_16 =
       std::make_unique<as5047u::AS5047U<Esp32As5047uBus>>(*g_bus, FrameFormat::SPI_16);
-  uint16_t angle = encoder_16->getAngle();
+  uint16_t angle = encoder_16->GetAngle();
   ESP_LOGI(TAG, "16-bit frame format: Angle = %u", angle);
 
   ESP_LOGI(TAG, "16-bit frame format test passed");
@@ -285,7 +279,7 @@ static bool test_frame_format_24() noexcept {
 
   auto encoder_24 =
       std::make_unique<as5047u::AS5047U<Esp32As5047uBus>>(*g_bus, FrameFormat::SPI_24);
-  uint16_t angle = encoder_24->getAngle();
+  uint16_t angle = encoder_24->GetAngle();
   ESP_LOGI(TAG, "24-bit frame format: Angle = %u", angle);
 
   ESP_LOGI(TAG, "24-bit frame format test passed");
@@ -302,7 +296,7 @@ static bool test_frame_format_32() noexcept {
 
   auto encoder_32 =
       std::make_unique<as5047u::AS5047U<Esp32As5047uBus>>(*g_bus, FrameFormat::SPI_32);
-  uint16_t angle = encoder_32->getAngle();
+  uint16_t angle = encoder_32->GetAngle();
   ESP_LOGI(TAG, "32-bit frame format: Angle = %u", angle);
 
   ESP_LOGI(TAG, "32-bit frame format test passed");
@@ -322,11 +316,11 @@ static bool test_error_handling() noexcept {
   }
 
   // Test error flag reading
-  uint16_t error_flags = g_encoder->getErrorFlags();
+  uint16_t error_flags = g_encoder->GetErrorFlags();
   ESP_LOGI(TAG, "Error flags: 0x%04X", error_flags);
 
   // Test sticky error flags
-  AS5047U_Error sticky = g_encoder->getStickyErrorFlags();
+  AS5047U_Error sticky = g_encoder->GetStickyErrorFlags();
   ESP_LOGI(TAG, "Sticky errors: 0x%04X", static_cast<uint16_t>(sticky));
 
   ESP_LOGI(TAG, "Error handling test passed");
@@ -360,22 +354,18 @@ extern "C" void app_main(void) {
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_ANGLE_READING_TESTS, "ANGLE READING TESTS",
       RUN_TEST_IN_TASK("test_angle_reading", test_angle_reading, 8192, 5);
-      RUN_TEST_IN_TASK("test_angle_multiple_reads", test_angle_multiple_reads,
-                       8192, 5););
+      RUN_TEST_IN_TASK("test_angle_multiple_reads", test_angle_multiple_reads, 8192, 5););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_VELOCITY_READING_TESTS, "VELOCITY READING TESTS",
-      RUN_TEST_IN_TASK("test_velocity_reading", test_velocity_reading, 8192,
-                       5););
+      RUN_TEST_IN_TASK("test_velocity_reading", test_velocity_reading, 8192, 5););
 
-  RUN_TEST_SECTION_IF_ENABLED(
-      ENABLE_DIAGNOSTICS_TESTS, "DIAGNOSTICS TESTS",
-      RUN_TEST_IN_TASK("test_diagnostics", test_diagnostics, 8192, 5););
+  RUN_TEST_SECTION_IF_ENABLED(ENABLE_DIAGNOSTICS_TESTS, "DIAGNOSTICS TESTS",
+                              RUN_TEST_IN_TASK("test_diagnostics", test_diagnostics, 8192, 5););
 
-  RUN_TEST_SECTION_IF_ENABLED(
-      ENABLE_CONFIGURATION_TESTS, "CONFIGURATION TESTS",
-      RUN_TEST_IN_TASK("test_zero_position", test_zero_position, 8192, 5);
-      RUN_TEST_IN_TASK("test_direction", test_direction, 8192, 5););
+  RUN_TEST_SECTION_IF_ENABLED(ENABLE_CONFIGURATION_TESTS, "CONFIGURATION TESTS",
+                              RUN_TEST_IN_TASK("test_zero_position", test_zero_position, 8192, 5);
+                              RUN_TEST_IN_TASK("test_direction", test_direction, 8192, 5););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_FRAME_FORMAT_TESTS, "FRAME FORMAT TESTS",

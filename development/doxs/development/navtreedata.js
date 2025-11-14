@@ -25,8 +25,19 @@
 var NAVTREE =
 [
   [ "HF-AS5047U Driver", "index.html", [
-    [ "HF-AS5047U", "index.html", "index" ],
     [ "Namespaces", "namespaces.html", [
+      [ "📦 Overview", "index.html#autotoc_md0", [
+        [ "✨ Key Features", "index.html#autotoc_md1", null ]
+      ] ],
+      [ "🚀 Sensor Highlights", "index.html#autotoc_md2", null ],
+      [ "📂 Project Structure", "index.html#autotoc_md3", null ],
+      [ "📖 Documentation", "index.html#autotoc_md4", null ],
+      [ "🧠 Quick Start", "index.html#autotoc_md5", null ],
+      [ "⚙️ Configuration", "index.html#autotoc_md6", null ],
+      [ "📟 API Summary", "index.html#autotoc_md7", null ],
+      [ "🤝 Contributing", "index.html#autotoc_md8", null ],
+      [ "🙌 Acknowledgments", "index.html#autotoc_md9", null ],
+      [ "💬 Support", "index.html#autotoc_md10", null ],
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
@@ -60,8 +71,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AS5047U_8cpp.html",
-"structAS5047U__REG_1_1ANGLEUNC.html#a7193cd00d36b54d4034ecf2950f075bc",
-"structAS5047U__REG_1_1SETTINGS2.html#a25181ac421b6a9d224af0c4cc9f418f2"
+"structAS5047U__REG_1_1ANGLEUNC.html#a9afd4c2bd0777ecc4334a324f0e9ae34",
+"structAS5047U__REG_1_1SETTINGS2.html#a284ab210e81f0e3e71fba8fa7bdda325"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
