@@ -6,9 +6,11 @@
 #include "Esp32As5047uBus.hpp"
 #include "esp_err.h"
 
-Esp32As5047uBus::Esp32As5047uBus(const SPIConfig &config) : config_(config) {}
+Esp32As5047uBus::Esp32As5047uBus(const SPIConfig& config) : config_(config) {}
 
-Esp32As5047uBus::~Esp32As5047uBus() { deinitialize(); }
+Esp32As5047uBus::~Esp32As5047uBus() {
+  deinitialize();
+}
 
 bool Esp32As5047uBus::initialize() {
   if (initialized_) {
@@ -50,8 +52,7 @@ void Esp32As5047uBus::deinitialize() {
   ESP_LOGI(TAG, "SPI bus deinitialized");
 }
 
-void Esp32As5047uBus::transfer(const uint8_t *tx, uint8_t *rx,
-                               std::size_t len) {
+void Esp32As5047uBus::transfer(const uint8_t* tx, uint8_t* rx, std::size_t len) {
   if (!initialized_ || spi_device_ == nullptr) {
     ESP_LOGE(TAG, "SPI bus not initialized");
     return;
@@ -83,8 +84,8 @@ bool Esp32As5047uBus::initializeSPI() {
     return false;
   }
 
-  ESP_LOGI(TAG, "SPI bus configured: MISO=%d, MOSI=%d, SCLK=%d, Host=%d",
-           config_.miso_pin, config_.mosi_pin, config_.sclk_pin, config_.host);
+  ESP_LOGI(TAG, "SPI bus configured: MISO=%d, MOSI=%d, SCLK=%d, Host=%d", config_.miso_pin,
+           config_.mosi_pin, config_.sclk_pin, config_.host);
 
   return true;
 }
@@ -105,8 +106,8 @@ bool Esp32As5047uBus::addSPIDevice() {
     return false;
   }
 
-  ESP_LOGI(TAG, "SPI device added: CS=%d, Freq=%lu Hz, Mode=%d", config_.cs_pin,
-           config_.frequency, config_.mode);
+  ESP_LOGI(TAG, "SPI device added: CS=%d, Freq=%lu Hz, Mode=%d", config_.cs_pin, config_.frequency,
+           config_.mode);
 
   return true;
 }

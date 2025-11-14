@@ -19,7 +19,7 @@
 #include "../../../inc/AS5047U.hpp"
 #include "Esp32As5047uBus.hpp"
 
-static const char *TAG = "AS5047U_Velocity";
+static const char* TAG = "AS5047U_Velocity";
 
 extern "C" void app_main(void) {
   ESP_LOGI(TAG, "as5047u::AS5047U Velocity Reading Example");
@@ -50,13 +50,13 @@ extern "C" void app_main(void) {
   // Main reading loop
   while (true) {
     // Read velocity in different units
-    int16_t velocity_lsb = encoder.getVelocity();
-    double vel_deg = encoder.getVelocityDegPerSec();
-    double vel_rad = encoder.getVelocityRadPerSec();
-    double vel_rpm = encoder.getVelocityRPM();
+    int16_t velocity_lsb = encoder.GetVelocity();
+    float vel_deg = encoder.GetVelocityDegPerSec();
+    float vel_rad = encoder.GetVelocityRadPerSec();
+    float vel_rpm = encoder.GetVelocityRPM();
 
-    ESP_LOGI(TAG, "Velocity: %d LSB, %.2f deg/s, %.2f rad/s, %.2f RPM",
-             velocity_lsb, vel_deg, vel_rad, vel_rpm);
+    ESP_LOGI(TAG, "Velocity: %d LSB, %.2f deg/s, %.2f rad/s, %.2f RPM", velocity_lsb, vel_deg,
+             vel_rad, vel_rpm);
 
     vTaskDelay(pdMS_TO_TICKS(100));
   }

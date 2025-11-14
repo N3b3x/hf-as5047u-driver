@@ -18,54 +18,52 @@ The driver uses a small `spiBus` interface. Implement the `transfer()` method fo
 ```cpp
 class ArduinoBus : public spiBus {
 public:
-    ArduinoBus(SPIClass& spi, uint8_t cs) : spi_(spi), csPin_(cs) {
-        pinMode(csPin_, OUTPUT);
-        digitalWrite(csPin_, HIGH);
+  ArduinoBus(SPIClass& spi, uint8_t cs) : spi_(spi), csPin_(cs) {
+    pinMode(csPin_, OUTPUT);
+    digitalWrite(csPin_, HIGH);
+  }
+  void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override {
+    digitalWrite(csPin_, LOW);
+    for (size_t i = 0; i < len; ++i) {
+      uint8_t out = tx ? tx[i] : 0x00;
+      uint8_t in = spi_.transfer(out);
+      if (rx)
+        rx[i] = in;
     }
-    void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override {
-        digitalWrite(csPin_, LOW);
-        for (size_t i = 0; i < len; ++i) {
-            uint8_t out = tx ? tx[i] : 0x00;
-            uint8_t in  = spi_.transfer(out);
-            if (rx) rx[i] = in;
-        }
-        digitalWrite(csPin_, HIGH);
-    }
+    digitalWrite(csPin_, HIGH);
+  }
+
 private:
-    SPIClass& spi_;
-    uint8_t   csPin_;
+  SPIClass & spi_;
+  uint8_t csPin_;
 };
 ```
 
-## 2. Create the Driver
+    ##2. Create the Driver
 
-Pass your bus implementation and desired frame format to the constructor:
+        Pass your bus implementation and desired frame format to the constructor :
+
+```cpp ArduinoBus bus(SPI, CS_PIN);       // platform SPI wrapper
+AS5047U encoder(bus, FrameFormat::SPI_24); // use 24-bit frames
+```
+
+    ##3. Read Data
+
+        Call the API methods to access sensor data :
+
+```cpp uint16_t angle = encoder.GetAngle();
+uint8_t agc = encoder.GetAGC();
+```
+
+    Typical output when printing the values might look like :
+
+``` Angle : 16384 AGC : 128
+```
+
+    You can also read velocity in degrees per second :
 
 ```cpp
-ArduinoBus bus(SPI, CS_PIN);                 // platform SPI wrapper
-AS5047U encoder(bus, FrameFormat::SPI_24);    // use 24-bit frames
-```
-
-## 3. Read Data
-
-Call the API methods to access sensor data:
-
-```cpp
-uint16_t angle = encoder.getAngle();
-uint8_t agc    = encoder.getAGC();
-```
-
-Typical output when printing the values might look like:
-
-```
-Angle: 16384
-AGC: 128
-```
-
-You can also read velocity in degrees per second:
-
-```cpp
-double velDeg = encoder.getVelocityDegPerSec(); // velocity in deg/s
+float velDeg = encoder.GetVelocityDegPerSec(); // velocity in deg/s
 ```
 
 Which might print something like `Velocity: 30.5 deg/s`.

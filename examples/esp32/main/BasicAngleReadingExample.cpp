@@ -21,7 +21,7 @@
 #include "../../../inc/AS5047U.hpp"
 #include "Esp32As5047uBus.hpp"
 
-static const char *TAG = "AS5047U_Basic";
+static const char* TAG = "AS5047U_Basic";
 
 extern "C" void app_main(void) {
   ESP_LOGI(TAG, "as5047u::AS5047U Basic Angle Reading Example");
@@ -52,17 +52,17 @@ extern "C" void app_main(void) {
   // Main reading loop
   while (true) {
     // Read angle
-    uint16_t angle = encoder.getAngle();
-    double angle_deg = angle * 360.0 / 16384.0;
+    uint16_t angle = encoder.GetAngle();
+    float angle_deg = angle * 360.0f / 16384.0f;
     ESP_LOGI(TAG, "Angle: %u (%.2f°)", angle, angle_deg);
 
     // Read diagnostics
-    uint8_t agc = encoder.getAGC();
-    uint16_t mag = encoder.getMagnitude();
+    uint8_t agc = encoder.GetAGC();
+    uint16_t mag = encoder.GetMagnitude();
     ESP_LOGI(TAG, "AGC: %u, Magnitude: %u", agc, mag);
 
     // Check for errors
-    AS5047U_Error errors = encoder.getStickyErrorFlags();
+    AS5047U_Error errors = encoder.GetStickyErrorFlags();
     if (errors != AS5047U_Error::None) {
       ESP_LOGW(TAG, "Errors detected: 0x%04X", static_cast<uint16_t>(errors));
     }

@@ -22,7 +22,7 @@
 #include "../../../inc/AS5047U.hpp"
 #include "Esp32As5047uBus.hpp"
 
-static const char *TAG = "AS5047U_Full";
+static const char* TAG = "AS5047U_Full";
 
 extern "C" void app_main(void) {
   ESP_LOGI(TAG, "as5047u::AS5047U Full Features Example");
@@ -50,19 +50,19 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "as5047u::AS5047U encoder initialized");
 
   // Configure advanced features
-  encoder.setDynamicAngleCompensation(true);
+  encoder.SetDynamicAngleCompensation(true);
   ESP_LOGI(TAG, "DAEC enabled");
 
-  encoder.setAdaptiveFilter(true);
+  encoder.SetAdaptiveFilter(true);
   ESP_LOGI(TAG, "Adaptive filter enabled");
 
-  encoder.setFilterParameters(2, 3);
+  encoder.SetFilterParameters(2, 3);
   ESP_LOGI(TAG, "Filter parameters set: K_min=2, K_max=3");
 
   // Configure outputs
-  encoder.setABIResolution(12);
-  encoder.setUVWPolePairs(5);
-  encoder.configureInterface(true, true, false);
+  encoder.SetABIResolution(12);
+  encoder.SetUVWPolePairs(5);
+  encoder.ConfigureInterface(true, true, false);
   ESP_LOGI(TAG, "Outputs configured: ABI (12-bit), UVW (5 pole pairs)");
 
   ESP_LOGI(TAG, "Starting comprehensive reading loop...");
@@ -70,23 +70,23 @@ extern "C" void app_main(void) {
   // Main reading loop
   while (true) {
     // Read angle
-    uint16_t angle = encoder.getAngle();
-    uint16_t raw_angle = encoder.getRawAngle();
-    double angle_deg = angle * 360.0 / 16384.0;
+    uint16_t angle = encoder.GetAngle();
+    uint16_t raw_angle = encoder.GetRawAngle();
+    float angle_deg = angle * 360.0f / 16384.0f;
     ESP_LOGI(TAG, "Angle: %u (%.2f°), Raw: %u", angle, angle_deg, raw_angle);
 
     // Read velocity
-    double vel_deg = encoder.getVelocityDegPerSec();
-    double vel_rpm = encoder.getVelocityRPM();
+    float vel_deg = encoder.GetVelocityDegPerSec();
+    float vel_rpm = encoder.GetVelocityRPM();
     ESP_LOGI(TAG, "Velocity: %.2f deg/s, %.2f RPM", vel_deg, vel_rpm);
 
     // Read diagnostics
-    uint8_t agc = encoder.getAGC();
-    uint16_t mag = encoder.getMagnitude();
+    uint8_t agc = encoder.GetAGC();
+    uint16_t mag = encoder.GetMagnitude();
     ESP_LOGI(TAG, "AGC: %u, Magnitude: %u", agc, mag);
 
     // Check for errors
-    AS5047U_Error errors = encoder.getStickyErrorFlags();
+    AS5047U_Error errors = encoder.GetStickyErrorFlags();
     if (errors != AS5047U_Error::None) {
       ESP_LOGW(TAG, "Errors: 0x%04X", static_cast<uint16_t>(errors));
     }

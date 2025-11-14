@@ -31,14 +31,14 @@
 // Error flags from ERRFL register
 enum class AS5047U_Error : uint16_t {
   None = 0,
-  AgcWarning = 1 << 0, ///< AGC reached minimum (0) or maximum (255) value
-  MagHalf = 1 << 1,    ///< Magnetic field is half of regulated value (AGC=255)
-  P2ramWarning = 1 << 2, ///< ECC corrected 1 bit in P2RAM customer area
-  P2ramError = 1 << 3,   ///< ECC detected 2+ uncorrectable errors in P2RAM
-  FramingError = 1 << 4, ///< SPI framing error
-  CommandError = 1 << 5, ///< Invalid SPI command received
-  CrcError = 1 << 6,     ///< CRC error during SPI communication
-  WatchdogError = 1 << 7, ///< Internal oscillator or watchdog not working proper
+  AgcWarning = 1 << 0,     ///< AGC reached minimum (0) or maximum (255) value
+  MagHalf = 1 << 1,        ///< Magnetic field is half of regulated value (AGC=255)
+  P2ramWarning = 1 << 2,   ///< ECC corrected 1 bit in P2RAM customer area
+  P2ramError = 1 << 3,     ///< ECC detected 2+ uncorrectable errors in P2RAM
+  FramingError = 1 << 4,   ///< SPI framing error
+  CommandError = 1 << 5,   ///< Invalid SPI command received
+  CrcError = 1 << 6,       ///< CRC error during SPI communication
+  WatchdogError = 1 << 7,  ///< Internal oscillator or watchdog not working proper
   OffCompError = 1 << 9,   ///< Internal offset compensation not finished
   CordicOverflow = 1 << 10 ///< CORDIC algorithm overflow
 };
@@ -88,14 +88,12 @@ public:
    * @param format SPI frame format to use (16-bit, 24-bit, or 32-bit). Default
    * is 16-bit frames.
    */
-  explicit AS5047U(
-      SpiType &bus,
-      FrameFormat format = AS5047U_CFG::DEFAULT_FRAME_FORMAT) noexcept;
+  explicit AS5047U(SpiType& bus, FrameFormat format = AS5047U_CFG::DEFAULT_FRAME_FORMAT) noexcept;
 
   ~AS5047U() = default;
 
   /** Compute the CRC8 value used by AS5047U SPI frames. */
-  static constexpr uint8_t computeCRC8(uint16_t data16) {
+  static constexpr uint8_t ComputeCRC8(uint16_t data16) {
     uint8_t crc = 0xC4;
     for (int i = 0; i < 16; ++i) {
       bool bit = ((data16 >> (15 - i)) & 1) ^ ((crc >> 7) & 1);
@@ -109,9 +107,9 @@ public:
   //------------------------------------------------------------------
   /**
    * @brief Set the SPI frame format (16, 24, or 32-bit).
-   * @param fmt The desired SPI frame format.
+   * @param format The desired SPI frame format.
    */
-  void setFrameFormat(FrameFormat fmt) noexcept;
+  void SetFrameFormat(FrameFormat format) noexcept;
 
   /**
    * @brief Read the 14-bit absolute angle with dynamic compensation (DAEC
@@ -120,8 +118,7 @@ public:
    * retry).
    *  @return The current angle in LSB (0-16383).
    */
-  [[nodiscard]] uint16_t
-  getAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+  [[nodiscard]] uint16_t GetAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
 
   /**
    * @brief Read the 14-bit absolute angle without dynamic compensation (raw
@@ -130,8 +127,7 @@ public:
    * retry).
    *  @return The current raw angle in LSB (0-16383).
    */
-  [[nodiscard]] uint16_t
-  getRawAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+  [[nodiscard]] uint16_t GetRawAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
 
   /**
    * @brief Read the current rotational velocity (signed 14-bit).
@@ -139,34 +135,30 @@ public:
    * retry).
    *  @return The current velocity in LSB (signed 14-bit).
    */
-  [[nodiscard]] int16_t
-  getVelocity(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+  [[nodiscard]] int16_t GetVelocity(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
 
   /** @brief Helper constants and methods for velocity unit conversions. */
   struct Velocity {
-    static constexpr double DEG_PER_LSB = 24.141;
-    static constexpr double RAD_PER_LSB = DEG_PER_LSB * M_PI / 180.0;
-    static constexpr double RPM_PER_LSB = DEG_PER_LSB * (60.0 / 360.0);
+    static constexpr float DEG_PER_LSB = 24.141f;
+    static constexpr float RAD_PER_LSB = DEG_PER_LSB * M_PI / 180.0f;
+    static constexpr float RPM_PER_LSB = DEG_PER_LSB * (60.0f / 360.0f);
   };
 
   /** @brief Get rotational velocity in degrees per second.
    *  @param retries Number of retries on CRC/framing error (default 0 = no
    * retry).
    */
-  [[nodiscard]] double
-  getVelocityDegPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+  [[nodiscard]] float GetVelocityDegPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
   /** @brief Get rotational velocity in radians per second.
    *  @param retries Number of retries on CRC/framing error (default 0 = no
    * retry).
    */
-  [[nodiscard]] double
-  getVelocityRadPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+  [[nodiscard]] float GetVelocityRadPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
   /** @brief Get rotational velocity in revolutions per minute.
    *  @param retries Number of retries on CRC/framing error (default 0 = no
    * retry).
    */
-  [[nodiscard]] double
-  getVelocityRPM(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+  [[nodiscard]] float GetVelocityRPM(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
 
   /**
    * @brief Read the current Automatic Gain Control (AGC) value (0-255).
@@ -174,8 +166,7 @@ public:
    * retry).
    * @return The current AGC value.
    */
-  [[nodiscard]] uint8_t
-  getAGC(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+  [[nodiscard]] uint8_t GetAGC(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
 
   /**
    * @brief Read the current magnetic field magnitude (14-bit value).
@@ -183,8 +174,7 @@ public:
    * retry).
    * @return The current magnetic field magnitude in LSB (0-16383).
    */
-  [[nodiscard]] uint16_t
-  getMagnitude(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+  [[nodiscard]] uint16_t GetMagnitude(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
 
   /**
    * @brief Read and clear error flags.
@@ -192,13 +182,12 @@ public:
    * retry).
    * @return 16-bit error flag register (ERRFL). All flags clear after read.
    */
-  [[nodiscard]] uint16_t
-  getErrorFlags(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+  [[nodiscard]] uint16_t GetErrorFlags(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
 
   /**
    * @brief Dump formatted status and diagnostics using printf
    */
-  void dumpStatus() const;
+  void DumpStatus() const;
 
   /**
    * @brief Get the currently configured soft zero position offset (14-bit).
@@ -206,15 +195,13 @@ public:
    * retry).
    * @return The current zero position in LSB (0-16383).
    */
-  [[nodiscard]] uint16_t
-  getZeroPosition(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+  [[nodiscard]] uint16_t GetZeroPosition(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
 
   /**
    * @brief Set a new zero reference position (soft offset).
-   * @param angleLSB 14-bit angle value that should be treated as 0°.
+   * @param angle_lsb 14-bit angle value that should be treated as 0°.
    */
-  bool setZeroPosition(uint16_t angleLSB,
-                       uint8_t retries = AS5047U_CFG::CRC_RETRIES);
+  bool SetZeroPosition(uint16_t angle_lsb, uint8_t retries = AS5047U_CFG::CRC_RETRIES);
 
   /**
    * @brief Define the rotation direction for increasing angle.
@@ -224,28 +211,25 @@ public:
    * retry).
    * @return true if register write succeeded.
    */
-  bool setDirection(bool clockwise, uint8_t retries = AS5047U_CFG::CRC_RETRIES);
+  bool SetDirection(bool clockwise, uint8_t retries = AS5047U_CFG::CRC_RETRIES);
 
   /**
    * @brief Set the ABI (incremental encoder) resolution.
-   * @param resolutionBits Resolution in bits (10 to 14 bits).
+   * @param resolution_bits Resolution in bits (10 to 14 bits).
    */
-  bool setABIResolution(uint8_t resolutionBits,
-                        uint8_t retries = AS5047U_CFG::CRC_RETRIES);
+  bool SetABIResolution(uint8_t resolution_bits, uint8_t retries = AS5047U_CFG::CRC_RETRIES);
 
   /**
    * @brief Set the number of pole pairs for UVW commutation outputs.
    * @param pairs Number of pole pairs (1-7).
    */
-  bool setUVWPolePairs(uint8_t pairs,
-                       uint8_t retries = AS5047U_CFG::CRC_RETRIES);
+  bool SetUVWPolePairs(uint8_t pairs, uint8_t retries = AS5047U_CFG::CRC_RETRIES);
 
   /**
    * @brief Set the index pulse width for ABI output.
-   * @param lsbLen Index pulse length in LSB periods (3 or 1).
+   * @param lsb_len Index pulse length in LSB periods (3 or 1).
    */
-  bool setIndexPulseLength(uint8_t lsbLen,
-                           uint8_t retries = AS5047U_CFG::CRC_RETRIES);
+  bool SetIndexPulseLength(uint8_t lsb_len, uint8_t retries = AS5047U_CFG::CRC_RETRIES);
 
   /**
    * @brief Configure interface outputs (ABI, UVW) and PWM output.
@@ -266,19 +250,16 @@ public:
    * @param pwm Enable PWM output on the appropriate pin (W if UVW disabled, I
    * if ABI disabled).
    */
-  bool configureInterface(bool abi, bool uvw, bool pwm,
-                          uint8_t retries = AS5047U_CFG::CRC_RETRIES);
+  bool ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries = AS5047U_CFG::CRC_RETRIES);
 
   /** @brief Enable/disable Dynamic Angle Error Compensation (DAEC). */
-  bool setDynamicAngleCompensation(bool enable,
-                                   uint8_t retries = AS5047U_CFG::CRC_RETRIES);
+  bool SetDynamicAngleCompensation(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES);
 
   /** @brief Enable/disable the adaptive filter (Dynamic Filter System). */
-  bool setAdaptiveFilter(bool enable,
-                         uint8_t retries = AS5047U_CFG::CRC_RETRIES);
+  bool SetAdaptiveFilter(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES);
 
   /** @brief Set adaptive filter parameters (K_min and K_max, 3-bit each). */
-  bool setFilterParameters(uint8_t k_min, uint8_t k_max,
+  bool SetFilterParameters(uint8_t k_min, uint8_t k_max,
                            uint8_t retries = AS5047U_CFG::CRC_RETRIES);
 
   /** @brief Set temperature mode for 150°C operation (NOISESET bit).
@@ -289,8 +270,7 @@ public:
    * @param enable True for 150°C mode (NOISESET=1), false for low-noise
    * (NOISESET=0).
    */
-  bool set150CTemperatureMode(bool enable,
-                              uint8_t retries = AS5047U_CFG::CRC_RETRIES);
+  bool Set150CTemperatureMode(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES);
 
   /**
    * @brief Permanently program current settings into OTP memory.
@@ -309,7 +289,7 @@ public:
    * (3.3-3.5V for 3V mode, ~5V for 5V mode) and desired configuration before
    * use.
    */
-  bool programOTP();
+  bool ProgramOTP();
 
   /**
    * @brief Set the daisy-chain pad byte for 32-bit SPI frames.
@@ -319,52 +299,52 @@ public:
    * @param pad Pad byte value (0x00–0xFF) to send as the MSB of each 32-bit
    * transfer.
    */
-  void setPad(uint8_t pad) noexcept;
+  void SetPad(uint8_t pad) noexcept;
 
   /**
    * @brief Set incremental output hysteresis level.
    *
    * Controls the HYS field in SETTINGS3 to add output deadband and reduce
    * chatter.
-   * @param hys Hysteresis level:
+   * @param hysteresis Hysteresis level:
    *   - SETTINGS3::Hysteresis::LSB_1 (0b00): 1 LSB deadband (~0.17°, default)
    *   - SETTINGS3::Hysteresis::LSB_2 (0b01): 2 LSB deadband (~0.35°)
    *   - SETTINGS3::Hysteresis::LSB_3 (0b10): 3 LSB deadband (~0.52°)
    *   - SETTINGS3::Hysteresis::NONE  (0b11): No hysteresis
    */
-  bool setHysteresis(AS5047U_REG::SETTINGS3::Hysteresis hys,
+  bool SetHysteresis(AS5047U_REG::SETTINGS3::Hysteresis hysteresis,
                      uint8_t retries = AS5047U_CFG::CRC_RETRIES);
 
   /**
    * @brief Get current incremental output hysteresis setting.
    * @return Current Hysteresis enum value (0b00–0b11).
    */
-  AS5047U_REG::SETTINGS3::Hysteresis getHysteresis() const;
+  AS5047U_REG::SETTINGS3::Hysteresis GetHysteresis() const;
 
   /**
    * @brief Select which angle register (0x3FFF) is returned on reads.
    *
    * Controls the Data_select bit in SETTINGS2.
-   * @param src Angle output source:
+   * @param source Angle output source:
    *   - SETTINGS2::AngleOutputSource::UseANGLECOM: read compensated angle
    * (ANGLECOM)
    *   - SETTINGS2::AngleOutputSource::UseANGLEUNC: read raw angle (ANGLEUNC)
    */
-  bool setAngleOutputSource(AS5047U_REG::SETTINGS2::AngleOutputSource src,
+  bool SetAngleOutputSource(AS5047U_REG::SETTINGS2::AngleOutputSource source,
                             uint8_t retries = AS5047U_CFG::CRC_RETRIES);
 
   /**
    * @brief Get currently selected angle output source for 0x3FFF reads.
    * @return AngleOutputSource enum indicating ANGLECOM or ANGLEUNC.
    */
-  AS5047U_REG::SETTINGS2::AngleOutputSource getAngleOutputSource() const;
+  AS5047U_REG::SETTINGS2::AngleOutputSource GetAngleOutputSource() const;
 
   /**
    * @brief Read the full diagnostic register (DIA).
    * @return DIA register struct containing per-bit calibration and status
    * flags.
    */
-  AS5047U_REG::DIA getDiagnostics() const;
+  AS5047U_REG::DIA GetDiagnostics() const;
 
   /**
    * @brief Reads data from a specified register in the AS5047U sensor
@@ -377,7 +357,8 @@ public:
    * This method reads the raw value from the specified register address and
    * decodes it into a strongly-typed register object.
    */
-  template <typename RegT> RegT readReg() const {
+  template <typename RegT>
+  RegT ReadReg() const {
     return decode<RegT>(readRegister(RegT::ADDRESS));
   }
 
@@ -392,7 +373,7 @@ public:
    * @return true if write succeeded, false on CRC/framing error
    */
   template <typename RegT>
-  bool writeReg(const RegT &reg, uint8_t retries = AS5047U_CFG::CRC_RETRIES) {
+  bool WriteReg(const RegT& reg, uint8_t retries = AS5047U_CFG::CRC_RETRIES) {
     return writeRegister(RegT::ADDRESS, encode(reg), retries);
   }
 
@@ -400,33 +381,32 @@ public:
    * @brief Retrieve and clear the accumulated sticky error flags.
    * @return Bitwise OR of AS5047U_Error enum flags since last call.
    */
-  AS5047U_Error getStickyErrorFlags() const;
+  AS5047U_Error GetStickyErrorFlags() const;
 
 private:
   //------------------------------------------------------------------
   // Low-level helpers
   //------------------------------------------------------------------
   // Low level register access helpers
-  uint16_t rawReadRegister(
-      uint16_t addr) const; ///< read register without updating sticky errors
-  uint16_t readRegister(
-      uint16_t addr) const; ///< read register and refresh sticky errors
+  uint16_t rawReadRegister(uint16_t addr) const; ///< read register without updating sticky errors
+  uint16_t readRegister(uint16_t addr) const;    ///< read register and refresh sticky errors
   bool writeRegister(uint16_t addr, uint16_t val, uint8_t retries) const;
 
-  SpiType& spi;            ///< SPI bus reference
-  FrameFormat frameFormat; ///< current SPI frame format
-  uint8_t padByte{0};      ///< pad byte for SPI_32 daisy-chain indexing
+  SpiType& spi_;             ///< SPI bus reference
+  FrameFormat frame_format_; ///< current SPI frame format
+  uint8_t pad_byte_{0};      ///< pad byte for SPI_32 daisy-chain indexing
 
-  mutable std::atomic<uint16_t> stickyErrors{
-      0}; ///< sticky error bits since last clear
-  void updateStickyErrors(uint16_t errfl) const;
+  mutable std::atomic<uint16_t> sticky_errors_{0}; ///< sticky error bits since last clear
+  void updateStickyErrors(uint16_t err_fl) const;
 
   // Helper functions implemented inline for templates
-  template <typename RegT> static constexpr uint16_t encode(const RegT &r) {
+  template <typename RegT>
+  static constexpr uint16_t encode(const RegT& r) {
     return r.value;
   }
 
-  template <typename RegT> static constexpr RegT decode(uint16_t raw) {
+  template <typename RegT>
+  static constexpr RegT decode(uint16_t raw) {
     RegT r{};
     r.value = raw;
     return r;
@@ -435,17 +415,16 @@ private:
 
 // Template member function definitions must be in header
 template <typename SpiType>
-AS5047U<SpiType>::AS5047U(SpiType &bus, FrameFormat frameFormat) noexcept
-    : spi(bus),
-      frameFormat(frameFormat) {
+AS5047U<SpiType>::AS5047U(SpiType& bus, FrameFormat format) noexcept
+    : spi_(bus), frame_format_(format) {
   // No further initialization (use sensor defaults unless configured).
 }
 
 template <typename SpiType>
-inline bool AS5047U<SpiType>::setDirection(bool clockwise, uint8_t retries) {
-  auto s2 = readReg<AS5047U_REG::SETTINGS2>();
+inline bool AS5047U<SpiType>::SetDirection(bool clockwise, uint8_t retries) {
+  auto s2 = ReadReg<AS5047U_REG::SETTINGS2>();
   s2.bits.DIR = clockwise ? 0 : 1;
-  return writeReg(s2, retries);
+  return WriteReg(s2, retries);
 }
 
 } // namespace as5047u
