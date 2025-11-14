@@ -12,8 +12,8 @@
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title=" ">
-<polygon fill="#999999" stroke="#666666" points="579,-140 445,-140 445,-121 579,-121 579,-140"/>
-<text text-anchor="middle" x="512" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">inc/AS5047U_config.hpp</text>
+<polygon fill="#999999" stroke="#666666" points="660,-140 526,-140 526,-121 660,-121 660,-140"/>
+<text text-anchor="middle" x="593" y="-128" font-family="Helvetica,sans-Serif" font-size="10.00">inc/AS5047U_config.hpp</text>
 </a>
 </g>
 </g>
@@ -21,8 +21,8 @@
 <g id="Node000002" class="node">
 <title>Node2</title>
 <g id="a_Node000002"><a xlink:href="AS5047U_8hpp.html" target="_top" xlink:title="Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21).">
-<polygon fill="white" stroke="#666666" points="561.5,-85 462.5,-85 462.5,-66 561.5,-66 561.5,-85"/>
-<text text-anchor="middle" x="512" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">inc/AS5047U.hpp</text>
+<polygon fill="white" stroke="#666666" points="642.5,-85 543.5,-85 543.5,-66 642.5,-66 642.5,-85"/>
+<text text-anchor="middle" x="593" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">inc/AS5047U.hpp</text>
 </a>
 </g>
 </g>
@@ -30,8 +30,8 @@
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M512,-110.66C512,-101.93 512,-91.99 512,-85.09"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="508.5,-110.75 512,-120.75 515.5,-110.75 508.5,-110.75"/>
+<path fill="none" stroke="#63b8ff" d="M593,-110.66C593,-101.93 593,-91.99 593,-85.09"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="589.5,-110.75 593,-120.75 596.5,-110.75 589.5,-110.75"/>
 </a>
 </g>
 </g>
@@ -49,8 +49,8 @@
 <g id="edge2_Node000002_Node000003" class="edge">
 <title>Node2&#45;&gt;Node3</title>
 <g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M452.25,-66.52C386.68,-57.72 278.31,-43.08 185,-30 182.05,-29.59 179.05,-29.16 176.02,-28.74"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="452.02,-70.02 462.4,-67.88 452.95,-63.08 452.02,-70.02"/>
+<path fill="none" stroke="#63b8ff" d="M533,-68.61C453.37,-60.65 308.46,-45.64 185,-30 182.05,-29.63 179.04,-29.24 176.01,-28.84"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="533.02,-72.13 543.32,-69.64 533.72,-65.17 533.02,-72.13"/>
 </a>
 </g>
 </g>
@@ -68,15 +68,15 @@
 <g id="edge3_Node000002_Node000004" class="edge">
 <title>Node2&#45;&gt;Node4</title>
 <g id="a_edge3_Node000002_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M466.64,-63.62C427.14,-54.16 369.64,-40.37 326.66,-30.06"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="465.98,-67.07 476.52,-65.99 467.61,-60.26 465.98,-67.07"/>
+<path fill="none" stroke="#63b8ff" d="M535.67,-64.18C481.79,-54.48 400.84,-39.91 342.08,-29.33"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="535.28,-67.67 545.74,-65.99 536.52,-60.78 535.28,-67.67"/>
 </a>
 </g>
 </g>
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="DriverIntegrationTest_8cpp.html" target="_top" xlink:title="Comprehensive Integration Test Suite for AS5047U Driver.">
+<g id="a_Node000005"><a xlink:href="DriverIntegrationTest_8cpp.html" target="_top" xlink:title="Comprehensive Integration Test Suite for as5047u::AS5047U Driver.">
 <polygon fill="white" stroke="#666666" points="503.5,-30 360.5,-30 360.5,0 503.5,0 503.5,-30"/>
 <text text-anchor="start" x="368.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">examples/esp32/main</text>
 <text text-anchor="middle" x="432" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">/DriverIntegrationTest.cpp</text>
@@ -87,15 +87,15 @@
 <g id="edge4_Node000002_Node000005" class="edge">
 <title>Node2&#45;&gt;Node5</title>
 <g id="a_edge4_Node000002_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M491.85,-59.77C479.42,-50.68 463.57,-39.09 451.3,-30.11"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="490.06,-62.79 500.2,-65.87 494.19,-57.14 490.06,-62.79"/>
+<path fill="none" stroke="#63b8ff" d="M559.86,-62.46C533.96,-53.05 497.92,-39.95 470.71,-30.06"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="559,-65.87 569.59,-65.99 561.39,-59.29 559,-65.87"/>
 </a>
 </g>
 </g>
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="FullFeaturesExample_8cpp.html" target="_top" xlink:title="Comprehensive example demonstrating all AS5047U features.">
+<g id="a_Node000006"><a xlink:href="FullFeaturesExample_8cpp.html" target="_top" xlink:title="Comprehensive example demonstrating all as5047u::AS5047U features.">
 <polygon fill="white" stroke="#666666" points="664,-30 522,-30 522,0 664,0 664,-30"/>
 <text text-anchor="start" x="530" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">examples/esp32/main</text>
 <text text-anchor="middle" x="593" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">/FullFeaturesExample.cpp</text>
@@ -106,8 +106,8 @@
 <g id="edge5_Node000002_Node000006" class="edge">
 <title>Node2&#45;&gt;Node6</title>
 <g id="a_edge5_Node000002_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M532.4,-59.77C544.98,-50.68 561.04,-39.09 573.46,-30.11"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="530.01,-57.18 523.95,-65.87 534.11,-62.85 530.01,-57.18"/>
+<path fill="none" stroke="#63b8ff" d="M593,-55.65C593,-47.36 593,-37.78 593,-30.11"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="589.5,-55.87 593,-65.87 596.5,-55.87 589.5,-55.87"/>
 </a>
 </g>
 </g>
@@ -125,8 +125,8 @@
 <g id="edge6_Node000002_Node000007" class="edge">
 <title>Node2&#45;&gt;Node7</title>
 <g id="a_edge6_Node000002_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M558.41,-63.68C599.04,-54.21 658.35,-40.39 702.66,-30.06"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="557.44,-60.32 548.5,-65.99 559.03,-67.13 557.44,-60.32"/>
+<path fill="none" stroke="#63b8ff" d="M627.27,-62.71C654.66,-53.28 693.14,-40.04 722.13,-30.06"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="626.04,-59.43 617.72,-65.99 628.31,-66.05 626.04,-59.43"/>
 </a>
 </g>
 </g>
@@ -143,8 +143,17 @@
 <g id="edge7_Node000002_Node000008" class="edge">
 <title>Node2&#45;&gt;Node8</title>
 <g id="a_edge7_Node000002_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M571.82,-68.65C640.15,-61.52 755.15,-48.14 853,-30 861.25,-28.47 870.09,-26.51 878.31,-24.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="571.26,-65.19 561.67,-69.7 571.98,-72.16 571.26,-65.19"/>
+<path fill="none" stroke="#63b8ff" d="M652.7,-64.3C703.7,-55.98 778.75,-43.44 844,-30 851.91,-28.37 860.39,-26.43 868.6,-24.53"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="651.83,-60.89 642.52,-65.95 652.95,-67.8 651.83,-60.89"/>
+</a>
+</g>
+</g>
+<!-- Node8&#45;&gt;Node2 -->
+<g id="edge8_Node000008_Node000002" class="edge">
+<title>Node8&#45;&gt;Node2</title>
+<g id="a_edge8_Node000008_Node000002"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M876.03,-26.93C871.34,-28.01 866.58,-29.06 862,-30 786.2,-45.62 697.17,-60.01 642.82,-67.99"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="877.18,-30.25 886.1,-24.53 875.56,-23.45 877.18,-30.25"/>
 </a>
 </g>
 </g>
