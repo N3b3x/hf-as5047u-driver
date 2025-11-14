@@ -13,5 +13,5 @@ var searchData=
   ['setpad_10',['SetPad',['../classas5047u_1_1AS5047U.html#a122e4a73e632ed7d7ecac38ce9f7e0d5',1,'as5047u::AS5047U']]],
   ['setuvwpolepairs_11',['SetUVWPolePairs',['../classas5047u_1_1AS5047U.html#a65f9fefba659e3dfc60a47400e0f318a',1,'as5047u::AS5047U']]],
   ['setzeroposition_12',['SetZeroPosition',['../classas5047u_1_1AS5047U.html#aa0d2a1bee4ab7b53f4ee6b98d519337b',1,'as5047u::AS5047U']]],
-  ['spiinterface_13',['SpiInterface',['../classas5047u_1_1SpiInterface.html#a1c4aec20d704a271ff056ecfd6fc3ea7',1,'as5047u::SpiInterface::SpiInterface()=default'],['../classas5047u_1_1SpiInterface.html#a41e724c8421c08fd43576c1dddd7ff98',1,'as5047u::SpiInterface::SpiInterface(const SpiInterface &amp;)=delete'],['../classas5047u_1_1SpiInterface.html#a54fbeb1a16a6802873a6e3272c996d54',1,'as5047u::SpiInterface::SpiInterface(SpiInterface &amp;&amp;)=default']]]
+  ['spiinterface_13',['SpiInterface',['../classas5047u_1_1SpiInterface.html#a41e724c8421c08fd43576c1dddd7ff98',1,'as5047u::SpiInterface::SpiInterface(const SpiInterface &amp;)=delete'],['../classas5047u_1_1SpiInterface.html#a1c4aec20d704a271ff056ecfd6fc3ea7',1,'as5047u::SpiInterface::SpiInterface()=default'],['../classas5047u_1_1SpiInterface.html#a54fbeb1a16a6802873a6e3272c996d54',1,'as5047u::SpiInterface::SpiInterface(SpiInterface &amp;&amp;)=default']]]
 ];

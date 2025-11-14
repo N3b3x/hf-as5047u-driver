@@ -150,16 +150,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aafdd971e247401dd58852d6d0d65c979" id="r_aafdd971e247401dd58852d6d0d65c979"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafdd971e247401dd58852d6d0d65c979">transfer</a> (const uint8_t *tx, uint8_t *rx, std::size_t len)</td></tr>
 <tr class="memdesc:aafdd971e247401dd58852d6d0d65c979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a full-duplex SPI data transfer.  <br /></td></tr>
 <tr class="separator:aafdd971e247401dd58852d6d0d65c979"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41e724c8421c08fd43576c1dddd7ff98" id="r_a41e724c8421c08fd43576c1dddd7ff98"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41e724c8421c08fd43576c1dddd7ff98">SpiInterface</a> (const <a class="el" href="classas5047u_1_1SpiInterface.html">SpiInterface</a> &amp;)=delete</td></tr>
+<tr class="separator:a41e724c8421c08fd43576c1dddd7ff98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa31b982640ee3e66191e4872916e9407" id="r_aa31b982640ee3e66191e4872916e9407"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classas5047u_1_1SpiInterface.html">SpiInterface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa31b982640ee3e66191e4872916e9407">operator=</a> (const <a class="el" href="classas5047u_1_1SpiInterface.html">SpiInterface</a> &amp;)=delete</td></tr>
+<tr class="separator:aa31b982640ee3e66191e4872916e9407"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a1c4aec20d704a271ff056ecfd6fc3ea7" id="r_a1c4aec20d704a271ff056ecfd6fc3ea7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c4aec20d704a271ff056ecfd6fc3ea7">SpiInterface</a> ()=default</td></tr>
 <tr class="memdesc:a1c4aec20d704a271ff056ecfd6fc3ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protected constructor to prevent direct instantiation.  <br /></td></tr>
 <tr class="separator:a1c4aec20d704a271ff056ecfd6fc3ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41e724c8421c08fd43576c1dddd7ff98" id="r_a41e724c8421c08fd43576c1dddd7ff98"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41e724c8421c08fd43576c1dddd7ff98">SpiInterface</a> (const <a class="el" href="classas5047u_1_1SpiInterface.html">SpiInterface</a> &amp;)=delete</td></tr>
-<tr class="separator:a41e724c8421c08fd43576c1dddd7ff98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa31b982640ee3e66191e4872916e9407" id="r_aa31b982640ee3e66191e4872916e9407"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classas5047u_1_1SpiInterface.html">SpiInterface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa31b982640ee3e66191e4872916e9407">operator=</a> (const <a class="el" href="classas5047u_1_1SpiInterface.html">SpiInterface</a> &amp;)=delete</td></tr>
-<tr class="separator:aa31b982640ee3e66191e4872916e9407"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54fbeb1a16a6802873a6e3272c996d54" id="r_a54fbeb1a16a6802873a6e3272c996d54"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54fbeb1a16a6802873a6e3272c996d54">SpiInterface</a> (<a class="el" href="classas5047u_1_1SpiInterface.html">SpiInterface</a> &amp;&amp;)=default</td></tr>
 <tr class="separator:a54fbeb1a16a6802873a6e3272c996d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a571ae5b38bfd48441be85853faf7955f" id="r_a571ae5b38bfd48441be85853faf7955f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classas5047u_1_1SpiInterface.html">SpiInterface</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a571ae5b38bfd48441be85853faf7955f">operator=</a> (<a class="el" href="classas5047u_1_1SpiInterface.html">SpiInterface</a> &amp;&amp;)=default</td></tr>
@@ -191,8 +191,35 @@ class as5047u::SpiInterface&lt; Derived &gt;</div><p>CRTP-based template interfa
   </dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a41e724c8421c08fd43576c1dddd7ff98" name="a41e724c8421c08fd43576c1dddd7ff98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41e724c8421c08fd43576c1dddd7ff98">&#9670;&#160;</a></span>SpiInterface() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Derived &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classas5047u_1_1SpiInterface.html">as5047u::SpiInterface</a>&lt; Derived &gt;::SpiInterface </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classas5047u_1_1SpiInterface.html">SpiInterface</a>&lt; Derived &gt; &amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a1c4aec20d704a271ff056ecfd6fc3ea7" name="a1c4aec20d704a271ff056ecfd6fc3ea7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c4aec20d704a271ff056ecfd6fc3ea7">&#9670;&#160;</a></span>SpiInterface() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c4aec20d704a271ff056ecfd6fc3ea7">&#9670;&#160;</a></span>SpiInterface() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -217,33 +244,6 @@ template&lt;typename Derived &gt; </div>
 </div><div class="memdoc">
 
 <p>Protected constructor to prevent direct instantiation. </p>
-
-</div>
-</div>
-<a id="a41e724c8421c08fd43576c1dddd7ff98" name="a41e724c8421c08fd43576c1dddd7ff98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41e724c8421c08fd43576c1dddd7ff98">&#9670;&#160;</a></span>SpiInterface() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Derived &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classas5047u_1_1SpiInterface.html">as5047u::SpiInterface</a>&lt; Derived &gt;::SpiInterface </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classas5047u_1_1SpiInterface.html">SpiInterface</a>&lt; Derived &gt; &amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">delete</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -325,7 +325,7 @@ template&lt;typename Derived &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">delete</span></span>  </td>
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
