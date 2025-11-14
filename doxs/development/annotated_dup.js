@@ -1,5 +1,9 @@
 var annotated_dup =
 [
+    [ "as5047u", "namespaceas5047u.html", [
+      [ "Encoder", "classas5047u_1_1Encoder.html", "classas5047u_1_1Encoder" ],
+      [ "spiBus", "classas5047u_1_1spiBus.html", "classas5047u_1_1spiBus" ]
+    ] ],
     [ "AS5047U_REG", "namespaceAS5047U__REG.html", [
       [ "AGC", "structAS5047U__REG_1_1AGC.html", "structAS5047U__REG_1_1AGC" ],
       [ "ANGLECOM", "structAS5047U__REG_1_1ANGLECOM.html", "structAS5047U__REG_1_1ANGLECOM" ],
@@ -21,7 +25,6 @@ var annotated_dup =
       [ "ZPOSL", "structAS5047U__REG_1_1ZPOSL.html", "structAS5047U__REG_1_1ZPOSL" ],
       [ "ZPOSM", "structAS5047U__REG_1_1ZPOSM.html", "structAS5047U__REG_1_1ZPOSM" ]
     ] ],
-    [ "AS5047U", "classAS5047U.html", "classAS5047U" ],
     [ "Esp32As5047uBus", "classEsp32As5047uBus.html", "classEsp32As5047uBus" ],
     [ "TestResults", "structTestResults.html", "structTestResults" ],
     [ "TestTaskContext", "structTestTaskContext.html", "structTestTaskContext" ]

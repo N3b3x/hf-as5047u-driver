@@ -170,7 +170,7 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ab17d5c7de4929e7e3b4476740b2516f5" id="r_ab17d5c7de4929e7e3b4476740b2516f5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab17d5c7de4929e7e3b4476740b2516f5">queue_size</a> = 1</td></tr>
 <tr class="memdesc:ab17d5c7de4929e7e3b4476740b2516f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transaction queue size.  <br /></td></tr>
 <tr class="separator:ab17d5c7de4929e7e3b4476740b2516f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade58f1aa91f421f50418e17db52493b2" id="r_ade58f1aa91f421f50418e17db52493b2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade58f1aa91f421f50418e17db52493b2">cs_ena_pretrans</a> = 1</td></tr>
+<tr class="memitem:ade58f1aa91f421f50418e17db52493b2" id="r_ade58f1aa91f421f50418e17db52493b2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade58f1aa91f421f50418e17db52493b2">cs_ena_pretrans</a></td></tr>
 <tr class="memdesc:ade58f1aa91f421f50418e17db52493b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">CS asserted N clock cycles before transaction.  <br /></td></tr>
 <tr class="separator:ade58f1aa91f421f50418e17db52493b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a80583d4b0729c90b04713318f9dbac" id="r_a8a80583d4b0729c90b04713318f9dbac"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a80583d4b0729c90b04713318f9dbac">cs_ena_posttrans</a> = 1</td></tr>
@@ -203,11 +203,13 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t Esp32As5047uBus::SPIConfig::cs_ena_pretrans = 1</td>
+          <td class="memname">uint8_t Esp32As5047uBus::SPIConfig::cs_ena_pretrans</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">        1</div>
+</div><!-- fragment -->
 <p>CS asserted N clock cycles before transaction. </p>
 
 </div>
