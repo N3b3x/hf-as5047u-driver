@@ -1,6 +1,6 @@
 /**
  * @file FullFeaturesExample.cpp
- * @brief Comprehensive example demonstrating all AS5047U features
+ * @brief Comprehensive example demonstrating all as5047u::AS5047U features
  *
  * This example demonstrates:
  * - All sensor features enabled
@@ -25,7 +25,7 @@
 static const char *TAG = "AS5047U_Full";
 
 extern "C" void app_main(void) {
-  ESP_LOGI(TAG, "AS5047U Full Features Example");
+  ESP_LOGI(TAG, "as5047u::AS5047U Full Features Example");
   ESP_LOGI(TAG, "=============================");
 
   // Configure SPI bus
@@ -45,9 +45,9 @@ extern "C" void app_main(void) {
   }
 
   // Create encoder instance
-  as5047u::Encoder encoder(*bus, FrameFormat::SPI_24);
+  as5047u::AS5047U encoder(*bus, FrameFormat::SPI_24);
 
-  ESP_LOGI(TAG, "AS5047U encoder initialized");
+  ESP_LOGI(TAG, "as5047u::AS5047U encoder initialized");
 
   // Configure advanced features
   encoder.setDynamicAngleCompensation(true);

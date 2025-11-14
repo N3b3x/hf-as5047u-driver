@@ -1,7 +1,8 @@
 var AS5047U_8hpp =
 [
-    [ "as5047u::Encoder", "classas5047u_1_1Encoder.html", "classas5047u_1_1Encoder" ],
-    [ "as5047u::Encoder::Velocity", "structas5047u_1_1Encoder_1_1Velocity.html", null ],
+    [ "as5047u::AS5047U< SpiType >", "classas5047u_1_1AS5047U.html", "classas5047u_1_1AS5047U" ],
+    [ "as5047u::AS5047U< SpiType >::Velocity", "structas5047u_1_1AS5047U_1_1Velocity.html", null ],
+    [ "AS5047U_HEADER_INCLUDED", "AS5047U_8hpp.html#acfbfd1b6f3b51f7a790ae86416b3df4a", null ],
     [ "AS5047U_Error", "AS5047U_8hpp.html#a65e970630e302a2ffedf003f59fe4df5", [
       [ "None", "AS5047U_8hpp.html#a65e970630e302a2ffedf003f59fe4df5a6adf97f83acf6453d4a6a4b1070f3754", null ],
       [ "AgcWarning", "AS5047U_8hpp.html#a65e970630e302a2ffedf003f59fe4df5a858ff7c22c19037f5772f6c1b00286d2", null ],

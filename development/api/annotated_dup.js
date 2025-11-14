@@ -1,7 +1,7 @@
 var annotated_dup =
 [
     [ "as5047u", "namespaceas5047u.html", [
-      [ "Encoder", "classas5047u_1_1Encoder.html", "classas5047u_1_1Encoder" ],
+      [ "AS5047U", "classas5047u_1_1AS5047U.html", "classas5047u_1_1AS5047U" ],
       [ "spiBus", "classas5047u_1_1spiBus.html", "classas5047u_1_1spiBus" ]
     ] ],
     [ "AS5047U_REG", "namespaceAS5047U__REG.html", [

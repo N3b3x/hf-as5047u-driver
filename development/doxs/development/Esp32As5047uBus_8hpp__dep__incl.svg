@@ -59,7 +59,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="DriverIntegrationTest_8cpp.html" target="_top" xlink:title="Comprehensive Integration Test Suite for AS5047U Driver.">
+<g id="a_Node000004"><a xlink:href="DriverIntegrationTest_8cpp.html" target="_top" xlink:title="Comprehensive Integration Test Suite for as5047u::AS5047U Driver.">
 <polygon fill="white" stroke="#666666" points="503.5,-30 360.5,-30 360.5,0 503.5,0 503.5,-30"/>
 <text text-anchor="start" x="368.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">examples/esp32/main</text>
 <text text-anchor="middle" x="432" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">/DriverIntegrationTest.cpp</text>
@@ -78,7 +78,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="Esp32As5047uBus_8cpp.html" target="_top" xlink:title="ESP32 SPI transport implementation for AS5047U driver.">
+<g id="a_Node000005"><a xlink:href="Esp32As5047uBus_8cpp.html" target="_top" xlink:title="ESP32 SPI transport implementation for as5047u::AS5047U driver.">
 <polygon fill="white" stroke="#666666" points="650.5,-30 521.5,-30 521.5,0 650.5,0 650.5,-30"/>
 <text text-anchor="start" x="529.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">examples/esp32/main</text>
 <text text-anchor="middle" x="586" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">/Esp32As5047uBus.cpp</text>
@@ -97,7 +97,7 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="FullFeaturesExample_8cpp.html" target="_top" xlink:title="Comprehensive example demonstrating all AS5047U features.">
+<g id="a_Node000006"><a xlink:href="FullFeaturesExample_8cpp.html" target="_top" xlink:title="Comprehensive example demonstrating all as5047u::AS5047U features.">
 <polygon fill="white" stroke="#666666" points="811,-30 669,-30 669,0 811,0 811,-30"/>
 <text text-anchor="start" x="677" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">examples/esp32/main</text>
 <text text-anchor="middle" x="740" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">/FullFeaturesExample.cpp</text>

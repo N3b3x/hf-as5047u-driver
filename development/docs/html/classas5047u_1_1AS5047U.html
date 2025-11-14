@@ -1,0 +1,1362 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>HF-AS5047U Driver: as5047u::AS5047U&lt; SpiType &gt; Class Template Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HF-AS5047U Driver
+   &#160;<span id="projectnumber">0.1.0-dev</span>
+   </div>
+   <div id="projectbrief">HF-AS5047U C++ Driver</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+<div id="theme-selection">
+ <label for="theme-select">Theme:</label>
+ <select id="theme-select">
+  <option value="theme-default">Default</option>
+  <option value="theme-round">Round</option>
+  <option value="theme-robot">Robot</option>
+ </select>
+</div>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classas5047u_1_1AS5047U.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="classas5047u_1_1AS5047U-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">as5047u::AS5047U&lt; SpiType &gt; Class Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> magnetic rotary sensor driver class.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="AS5047U_8hpp_source.html">AS5047U.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structas5047u_1_1AS5047U_1_1Velocity.html">Velocity</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper constants and methods for velocity unit conversions.  <a href="structas5047u_1_1AS5047U_1_1Velocity.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a1381ab5d9830a9decdbbdf87f0804cf4" id="r_a1381ab5d9830a9decdbbdf87f0804cf4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1381ab5d9830a9decdbbdf87f0804cf4">AS5047U</a> (SpiType &amp;bus, <a class="el" href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532">FrameFormat</a> format=<a class="el" href="namespaceAS5047U__CFG.html#a169d05b4070af344342ea2d1d314d933">AS5047U_CFG::DEFAULT_FRAME_FORMAT</a>) noexcept</td></tr>
+<tr class="memdesc:a1381ab5d9830a9decdbbdf87f0804cf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> encoder driver.  <br /></td></tr>
+<tr class="separator:a1381ab5d9830a9decdbbdf87f0804cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ac088dcd0b2f4fbb63ea155c935645f" id="r_a0ac088dcd0b2f4fbb63ea155c935645f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ac088dcd0b2f4fbb63ea155c935645f">~AS5047U</a> ()=default</td></tr>
+<tr class="separator:a0ac088dcd0b2f4fbb63ea155c935645f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3abf0854ed7bca32623e98ba39f5d71f" id="r_a3abf0854ed7bca32623e98ba39f5d71f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3abf0854ed7bca32623e98ba39f5d71f">setFrameFormat</a> (<a class="el" href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532">FrameFormat</a> fmt) noexcept</td></tr>
+<tr class="memdesc:a3abf0854ed7bca32623e98ba39f5d71f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the SPI frame format (16, 24, or 32-bit).  <br /></td></tr>
+<tr class="separator:a3abf0854ed7bca32623e98ba39f5d71f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa770a7cce3a8f4c514494d729d2e0190" id="r_aa770a7cce3a8f4c514494d729d2e0190"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa770a7cce3a8f4c514494d729d2e0190">getAngle</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:aa770a7cce3a8f4c514494d729d2e0190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the 14-bit absolute angle with dynamic compensation (DAEC active).  <br /></td></tr>
+<tr class="separator:aa770a7cce3a8f4c514494d729d2e0190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a594ba0fbedbb195020a0663ee2caa9ea" id="r_a594ba0fbedbb195020a0663ee2caa9ea"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a594ba0fbedbb195020a0663ee2caa9ea">getRawAngle</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:a594ba0fbedbb195020a0663ee2caa9ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the 14-bit absolute angle without dynamic compensation (raw angle).  <br /></td></tr>
+<tr class="separator:a594ba0fbedbb195020a0663ee2caa9ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f4759695eb40f78d5deb81a834750a5" id="r_a2f4759695eb40f78d5deb81a834750a5"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f4759695eb40f78d5deb81a834750a5">getVelocity</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:a2f4759695eb40f78d5deb81a834750a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the current rotational velocity (signed 14-bit).  <br /></td></tr>
+<tr class="separator:a2f4759695eb40f78d5deb81a834750a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e3b3d785b9774db72c31802bca99b5f" id="r_a2e3b3d785b9774db72c31802bca99b5f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e3b3d785b9774db72c31802bca99b5f">getVelocityDegPerSec</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:a2e3b3d785b9774db72c31802bca99b5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get rotational velocity in degrees per second.  <br /></td></tr>
+<tr class="separator:a2e3b3d785b9774db72c31802bca99b5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63e44da74683f8f43657fdf3af066df4" id="r_a63e44da74683f8f43657fdf3af066df4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63e44da74683f8f43657fdf3af066df4">getVelocityRadPerSec</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:a63e44da74683f8f43657fdf3af066df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get rotational velocity in radians per second.  <br /></td></tr>
+<tr class="separator:a63e44da74683f8f43657fdf3af066df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5efa677a25c1cf65b88d6c5c7977d79d" id="r_a5efa677a25c1cf65b88d6c5c7977d79d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5efa677a25c1cf65b88d6c5c7977d79d">getVelocityRPM</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:a5efa677a25c1cf65b88d6c5c7977d79d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get rotational velocity in revolutions per minute.  <br /></td></tr>
+<tr class="separator:a5efa677a25c1cf65b88d6c5c7977d79d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0388f412d4f5d9cf08c85c7ba0d84532" id="r_a0388f412d4f5d9cf08c85c7ba0d84532"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0388f412d4f5d9cf08c85c7ba0d84532">getAGC</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:a0388f412d4f5d9cf08c85c7ba0d84532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the current Automatic Gain Control (AGC) value (0-255).  <br /></td></tr>
+<tr class="separator:a0388f412d4f5d9cf08c85c7ba0d84532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa23eb002adad6a9e0f76831804895b48" id="r_aa23eb002adad6a9e0f76831804895b48"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa23eb002adad6a9e0f76831804895b48">getMagnitude</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:aa23eb002adad6a9e0f76831804895b48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the current magnetic field magnitude (14-bit value).  <br /></td></tr>
+<tr class="separator:aa23eb002adad6a9e0f76831804895b48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a00c4f4fd2b13581408bfdab52bc298" id="r_a1a00c4f4fd2b13581408bfdab52bc298"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a00c4f4fd2b13581408bfdab52bc298">getErrorFlags</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:a1a00c4f4fd2b13581408bfdab52bc298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read and clear error flags.  <br /></td></tr>
+<tr class="separator:a1a00c4f4fd2b13581408bfdab52bc298"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a878a8a341fe89b9cba21c269cc9c9950" id="r_a878a8a341fe89b9cba21c269cc9c9950"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a878a8a341fe89b9cba21c269cc9c9950">dumpStatus</a> () const</td></tr>
+<tr class="memdesc:a878a8a341fe89b9cba21c269cc9c9950"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump formatted status and diagnostics using printf.  <br /></td></tr>
+<tr class="separator:a878a8a341fe89b9cba21c269cc9c9950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a205b2a98c0aae654b212e7423825ee4b" id="r_a205b2a98c0aae654b212e7423825ee4b"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a205b2a98c0aae654b212e7423825ee4b">getZeroPosition</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:a205b2a98c0aae654b212e7423825ee4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the currently configured soft zero position offset (14-bit).  <br /></td></tr>
+<tr class="separator:a205b2a98c0aae654b212e7423825ee4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f25abe0a328ce4713940eec43c6d858" id="r_a1f25abe0a328ce4713940eec43c6d858"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f25abe0a328ce4713940eec43c6d858">setZeroPosition</a> (uint16_t angleLSB, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:a1f25abe0a328ce4713940eec43c6d858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a new zero reference position (soft offset).  <br /></td></tr>
+<tr class="separator:a1f25abe0a328ce4713940eec43c6d858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedf491ded4d3145b8a8ce43c240037bc" id="r_aedf491ded4d3145b8a8ce43c240037bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedf491ded4d3145b8a8ce43c240037bc">setDirection</a> (bool clockwise, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:aedf491ded4d3145b8a8ce43c240037bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the rotation direction for increasing angle.  <br /></td></tr>
+<tr class="separator:aedf491ded4d3145b8a8ce43c240037bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3d1fb2ab93c7946fc0f62b1284a3acf" id="r_aa3d1fb2ab93c7946fc0f62b1284a3acf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3d1fb2ab93c7946fc0f62b1284a3acf">setABIResolution</a> (uint8_t resolutionBits, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:aa3d1fb2ab93c7946fc0f62b1284a3acf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the ABI (incremental encoder) resolution.  <br /></td></tr>
+<tr class="separator:aa3d1fb2ab93c7946fc0f62b1284a3acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42978617e942a17febd7f70890e3614a" id="r_a42978617e942a17febd7f70890e3614a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42978617e942a17febd7f70890e3614a">setUVWPolePairs</a> (uint8_t pairs, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:a42978617e942a17febd7f70890e3614a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the number of pole pairs for UVW commutation outputs.  <br /></td></tr>
+<tr class="separator:a42978617e942a17febd7f70890e3614a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af975c51f6b28c82d1389dc21f1130877" id="r_af975c51f6b28c82d1389dc21f1130877"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af975c51f6b28c82d1389dc21f1130877">setIndexPulseLength</a> (uint8_t lsbLen, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:af975c51f6b28c82d1389dc21f1130877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the index pulse width for ABI output.  <br /></td></tr>
+<tr class="separator:af975c51f6b28c82d1389dc21f1130877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeee55942b1ceb7f2525754739b253ee2" id="r_aeee55942b1ceb7f2525754739b253ee2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeee55942b1ceb7f2525754739b253ee2">configureInterface</a> (bool abi, bool uvw, bool pwm, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:aeee55942b1ceb7f2525754739b253ee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure interface outputs (ABI, UVW) and PWM output.  <br /></td></tr>
+<tr class="separator:aeee55942b1ceb7f2525754739b253ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7fa51374fc902d087ebb29d38f6be48" id="r_af7fa51374fc902d087ebb29d38f6be48"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7fa51374fc902d087ebb29d38f6be48">setDynamicAngleCompensation</a> (bool enable, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:af7fa51374fc902d087ebb29d38f6be48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable/disable Dynamic Angle Error Compensation (DAEC).  <br /></td></tr>
+<tr class="separator:af7fa51374fc902d087ebb29d38f6be48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3141ec60f44a550beef72676d44cc205" id="r_a3141ec60f44a550beef72676d44cc205"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3141ec60f44a550beef72676d44cc205">setAdaptiveFilter</a> (bool enable, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:a3141ec60f44a550beef72676d44cc205"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable/disable the adaptive filter (Dynamic Filter System).  <br /></td></tr>
+<tr class="separator:a3141ec60f44a550beef72676d44cc205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa20feafd1abaf6a2c839bb861a774f7c" id="r_aa20feafd1abaf6a2c839bb861a774f7c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa20feafd1abaf6a2c839bb861a774f7c">setFilterParameters</a> (uint8_t k_min, uint8_t k_max, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:aa20feafd1abaf6a2c839bb861a774f7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set adaptive filter parameters (K_min and K_max, 3-bit each).  <br /></td></tr>
+<tr class="separator:aa20feafd1abaf6a2c839bb861a774f7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f6ab32518244d2d2ff397392365863c" id="r_a6f6ab32518244d2d2ff397392365863c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f6ab32518244d2d2ff397392365863c">set150CTemperatureMode</a> (bool enable, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:a6f6ab32518244d2d2ff397392365863c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set temperature mode for 150°C operation (NOISESET bit).  <br /></td></tr>
+<tr class="separator:a6f6ab32518244d2d2ff397392365863c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c240da1c2c5adf423d35677f51fc4f9" id="r_a3c240da1c2c5adf423d35677f51fc4f9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c240da1c2c5adf423d35677f51fc4f9">programOTP</a> ()</td></tr>
+<tr class="memdesc:a3c240da1c2c5adf423d35677f51fc4f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permanently program current settings into OTP memory.  <br /></td></tr>
+<tr class="separator:a3c240da1c2c5adf423d35677f51fc4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29f0505fd70e8d7a48e91acbcce1d22b" id="r_a29f0505fd70e8d7a48e91acbcce1d22b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29f0505fd70e8d7a48e91acbcce1d22b">setPad</a> (uint8_t pad) noexcept</td></tr>
+<tr class="memdesc:a29f0505fd70e8d7a48e91acbcce1d22b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the daisy-chain pad byte for 32-bit SPI frames.  <br /></td></tr>
+<tr class="separator:a29f0505fd70e8d7a48e91acbcce1d22b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9284a9b21d91397dba2e23238b8b8e51" id="r_a9284a9b21d91397dba2e23238b8b8e51"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9284a9b21d91397dba2e23238b8b8e51">setHysteresis</a> (<a class="el" href="structAS5047U__REG_1_1SETTINGS3.html#a16233828ec14057e07249ab765dda276">AS5047U_REG::SETTINGS3::Hysteresis</a> hys, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:a9284a9b21d91397dba2e23238b8b8e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set incremental output hysteresis level.  <br /></td></tr>
+<tr class="separator:a9284a9b21d91397dba2e23238b8b8e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cf3448ef04b82ac4d95fb1262ae5a93" id="r_a4cf3448ef04b82ac4d95fb1262ae5a93"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAS5047U__REG_1_1SETTINGS3.html#a16233828ec14057e07249ab765dda276">AS5047U_REG::SETTINGS3::Hysteresis</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cf3448ef04b82ac4d95fb1262ae5a93">getHysteresis</a> () const</td></tr>
+<tr class="memdesc:a4cf3448ef04b82ac4d95fb1262ae5a93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current incremental output hysteresis setting.  <br /></td></tr>
+<tr class="separator:a4cf3448ef04b82ac4d95fb1262ae5a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56a67f705bef85b9a38a8ec806d98ca4" id="r_a56a67f705bef85b9a38a8ec806d98ca4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56a67f705bef85b9a38a8ec806d98ca4">setAngleOutputSource</a> (<a class="el" href="structAS5047U__REG_1_1SETTINGS2.html#a0bf2613a54b21f890873793e8e87cb46">AS5047U_REG::SETTINGS2::AngleOutputSource</a> src, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:a56a67f705bef85b9a38a8ec806d98ca4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select which angle register (0x3FFF) is returned on reads.  <br /></td></tr>
+<tr class="separator:a56a67f705bef85b9a38a8ec806d98ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22f41bc07c8d27f66ca719aa7e016821" id="r_a22f41bc07c8d27f66ca719aa7e016821"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAS5047U__REG_1_1SETTINGS2.html#a0bf2613a54b21f890873793e8e87cb46">AS5047U_REG::SETTINGS2::AngleOutputSource</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22f41bc07c8d27f66ca719aa7e016821">getAngleOutputSource</a> () const</td></tr>
+<tr class="memdesc:a22f41bc07c8d27f66ca719aa7e016821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get currently selected angle output source for 0x3FFF reads.  <br /></td></tr>
+<tr class="separator:a22f41bc07c8d27f66ca719aa7e016821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ebb5ba708d07e7219d5db170630a4ae" id="r_a7ebb5ba708d07e7219d5db170630a4ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAS5047U__REG_1_1DIA.html">AS5047U_REG::DIA</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ebb5ba708d07e7219d5db170630a4ae">getDiagnostics</a> () const</td></tr>
+<tr class="memdesc:a7ebb5ba708d07e7219d5db170630a4ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the full diagnostic register (DIA).  <br /></td></tr>
+<tr class="separator:a7ebb5ba708d07e7219d5db170630a4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6beb902861102828ff8d21bc2fc47136" id="r_a6beb902861102828ff8d21bc2fc47136"><td class="memTemplParams" colspan="2">template&lt;typename RegT &gt; </td></tr>
+<tr class="memitem:a6beb902861102828ff8d21bc2fc47136"><td class="memTemplItemLeft" align="right" valign="top">RegT&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a6beb902861102828ff8d21bc2fc47136">readReg</a> () const</td></tr>
+<tr class="memdesc:a6beb902861102828ff8d21bc2fc47136"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data from a specified register in the <a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> sensor.  <br /></td></tr>
+<tr class="separator:a6beb902861102828ff8d21bc2fc47136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a604418c33255be78f26e2996b4b938cd" id="r_a604418c33255be78f26e2996b4b938cd"><td class="memTemplParams" colspan="2">template&lt;typename RegT &gt; </td></tr>
+<tr class="memitem:a604418c33255be78f26e2996b4b938cd"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a604418c33255be78f26e2996b4b938cd">writeReg</a> (const RegT &amp;reg, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:a604418c33255be78f26e2996b4b938cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes data to a specified register in the <a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> sensor.  <br /></td></tr>
+<tr class="separator:a604418c33255be78f26e2996b4b938cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a037f5c8de2bf639d6849a4356804b7aa" id="r_a037f5c8de2bf639d6849a4356804b7aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="AS5047U_8hpp.html#a65e970630e302a2ffedf003f59fe4df5">AS5047U_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a037f5c8de2bf639d6849a4356804b7aa">getStickyErrorFlags</a> () const</td></tr>
+<tr class="memdesc:a037f5c8de2bf639d6849a4356804b7aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve and clear the accumulated sticky error flags.  <br /></td></tr>
+<tr class="separator:a037f5c8de2bf639d6849a4356804b7aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aafa01a6e692d33b96de2d45fdd28107d" id="r_aafa01a6e692d33b96de2d45fdd28107d"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafa01a6e692d33b96de2d45fdd28107d">computeCRC8</a> (uint16_t data16)</td></tr>
+<tr class="separator:aafa01a6e692d33b96de2d45fdd28107d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename SpiType&gt;<br />
+class as5047u::AS5047U&lt; SpiType &gt;</div><p><a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> magnetic rotary sensor driver class. </p>
+<p>Provides high-level access to sensor features: reading angle (with or without DAEC compensation), reading rotation velocity, retrieving AGC and magnitude diagnostics, configuring outputs (ABI, UVW, PWM), handling error flags, and performing OTP programming for permanent configuration storage.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">SpiType</td><td>The SPI bus type (must inherit from as5047u::spiBus&lt;SpiType&gt;)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The driver uses CRTP-based SPI interface for zero virtual call overhead. SPI implementations should inherit from as5047u::spiBus&lt;DerivedType&gt;</dd>
+<dd>
+C++17 CTAD allows automatic type deduction: <a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> encoder(bus, format); // Type deduced automatically </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a1381ab5d9830a9decdbbdf87f0804cf4" name="a1381ab5d9830a9decdbbdf87f0804cf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1381ab5d9830a9decdbbdf87f0804cf4">&#9670;&#160;</a></span>AS5047U()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::AS5047U </td>
+          <td>(</td>
+          <td class="paramtype">SpiType &amp;</td>          <td class="paramname"><span class="paramname"><em>bus</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532">FrameFormat</a></td>          <td class="paramname"><span class="paramname"><em>format</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a169d05b4070af344342ea2d1d314d933">AS5047U_CFG::DEFAULT_FRAME_FORMAT</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> encoder driver. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bus</td><td>Reference to an SPI interface implementation. </td></tr>
+    <tr><td class="paramname">format</td><td>SPI frame format to use (16-bit, 24-bit, or 32-bit). Default is 16-bit frames. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0ac088dcd0b2f4fbb63ea155c935645f" name="a0ac088dcd0b2f4fbb63ea155c935645f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ac088dcd0b2f4fbb63ea155c935645f">&#9670;&#160;</a></span>~AS5047U()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::~<a class="el" href="classas5047u_1_1AS5047U.html">AS5047U</a> </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aafa01a6e692d33b96de2d45fdd28107d" name="aafa01a6e692d33b96de2d45fdd28107d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafa01a6e692d33b96de2d45fdd28107d">&#9670;&#160;</a></span>computeCRC8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr uint8_t <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::computeCRC8 </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>data16</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Compute the CRC8 value used by <a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> SPI frames. </p>
+
+</div>
+</div>
+<a id="aeee55942b1ceb7f2525754739b253ee2" name="aeee55942b1ceb7f2525754739b253ee2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeee55942b1ceb7f2525754739b253ee2">&#9670;&#160;</a></span>configureInterface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::configureInterface </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>abi</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>uvw</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>pwm</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure interface outputs (ABI, UVW) and PWM output. </p>
+<p>Enables/disables ABI and UVW outputs and configures PWM on the available pin:</p><ul>
+<li>If <code>abi</code> is true and <code>uvw</code> false, ABI outputs are enabled and PWM (if enabled) is on W pin.</li>
+<li>If <code>uvw</code> is true and <code>abi</code> false, UVW outputs are enabled and PWM (if enabled) is on I pin.</li>
+<li>If both <code>abi</code> and <code>uvw</code> are true, both interfaces are active (PWM not available in this mode).</li>
+<li>If both are false, all interfaces are disabled (PWM can still be enabled on W by default).</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">abi</td><td>Enable ABI (A, B, I) outputs. </td></tr>
+    <tr><td class="paramname">uvw</td><td>Enable UVW commutation outputs. </td></tr>
+    <tr><td class="paramname">pwm</td><td>Enable PWM output on the appropriate pin (W if UVW disabled, I if ABI disabled). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a878a8a341fe89b9cba21c269cc9c9950" name="a878a8a341fe89b9cba21c269cc9c9950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a878a8a341fe89b9cba21c269cc9c9950">&#9670;&#160;</a></span>dumpStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::dumpStatus </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dump formatted status and diagnostics using printf. </p>
+
+</div>
+</div>
+<a id="a0388f412d4f5d9cf08c85c7ba0d84532" name="a0388f412d4f5d9cf08c85c7ba0d84532"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0388f412d4f5d9cf08c85c7ba0d84532">&#9670;&#160;</a></span>getAGC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getAGC </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read the current Automatic Gain Control (AGC) value (0-255). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The current AGC value. </dd></dl>
+
+</div>
+</div>
+<a id="aa770a7cce3a8f4c514494d729d2e0190" name="aa770a7cce3a8f4c514494d729d2e0190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa770a7cce3a8f4c514494d729d2e0190">&#9670;&#160;</a></span>getAngle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getAngle </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read the 14-bit absolute angle with dynamic compensation (DAEC active). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The current angle in LSB (0-16383). </dd></dl>
+
+</div>
+</div>
+<a id="a22f41bc07c8d27f66ca719aa7e016821" name="a22f41bc07c8d27f66ca719aa7e016821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22f41bc07c8d27f66ca719aa7e016821">&#9670;&#160;</a></span>getAngleOutputSource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structAS5047U__REG_1_1SETTINGS2.html#a0bf2613a54b21f890873793e8e87cb46">AS5047U_REG::SETTINGS2::AngleOutputSource</a> <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getAngleOutputSource </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get currently selected angle output source for 0x3FFF reads. </p>
+<dl class="section return"><dt>Returns</dt><dd>AngleOutputSource enum indicating ANGLECOM or ANGLEUNC. </dd></dl>
+
+</div>
+</div>
+<a id="a7ebb5ba708d07e7219d5db170630a4ae" name="a7ebb5ba708d07e7219d5db170630a4ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ebb5ba708d07e7219d5db170630a4ae">&#9670;&#160;</a></span>getDiagnostics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structAS5047U__REG_1_1DIA.html">AS5047U_REG::DIA</a> <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getDiagnostics </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read the full diagnostic register (DIA). </p>
+<dl class="section return"><dt>Returns</dt><dd>DIA register struct containing per-bit calibration and status flags. </dd></dl>
+
+</div>
+</div>
+<a id="a1a00c4f4fd2b13581408bfdab52bc298" name="a1a00c4f4fd2b13581408bfdab52bc298"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a00c4f4fd2b13581408bfdab52bc298">&#9670;&#160;</a></span>getErrorFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getErrorFlags </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read and clear error flags. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>16-bit error flag register (ERRFL). All flags clear after read. </dd></dl>
+
+</div>
+</div>
+<a id="a4cf3448ef04b82ac4d95fb1262ae5a93" name="a4cf3448ef04b82ac4d95fb1262ae5a93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cf3448ef04b82ac4d95fb1262ae5a93">&#9670;&#160;</a></span>getHysteresis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structAS5047U__REG_1_1SETTINGS3.html#a16233828ec14057e07249ab765dda276">AS5047U_REG::SETTINGS3::Hysteresis</a> <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getHysteresis </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get current incremental output hysteresis setting. </p>
+<dl class="section return"><dt>Returns</dt><dd>Current Hysteresis enum value (0b00–0b11). </dd></dl>
+
+</div>
+</div>
+<a id="aa23eb002adad6a9e0f76831804895b48" name="aa23eb002adad6a9e0f76831804895b48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa23eb002adad6a9e0f76831804895b48">&#9670;&#160;</a></span>getMagnitude()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getMagnitude </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read the current magnetic field magnitude (14-bit value). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The current magnetic field magnitude in LSB (0-16383). </dd></dl>
+
+</div>
+</div>
+<a id="a594ba0fbedbb195020a0663ee2caa9ea" name="a594ba0fbedbb195020a0663ee2caa9ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a594ba0fbedbb195020a0663ee2caa9ea">&#9670;&#160;</a></span>getRawAngle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getRawAngle </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read the 14-bit absolute angle without dynamic compensation (raw angle). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The current raw angle in LSB (0-16383). </dd></dl>
+
+</div>
+</div>
+<a id="a037f5c8de2bf639d6849a4356804b7aa" name="a037f5c8de2bf639d6849a4356804b7aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a037f5c8de2bf639d6849a4356804b7aa">&#9670;&#160;</a></span>getStickyErrorFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="AS5047U_8hpp.html#a65e970630e302a2ffedf003f59fe4df5">AS5047U_Error</a> <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getStickyErrorFlags </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve and clear the accumulated sticky error flags. </p>
+<dl class="section return"><dt>Returns</dt><dd>Bitwise OR of AS5047U_Error enum flags since last call. </dd></dl>
+
+</div>
+</div>
+<a id="a2f4759695eb40f78d5deb81a834750a5" name="a2f4759695eb40f78d5deb81a834750a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f4759695eb40f78d5deb81a834750a5">&#9670;&#160;</a></span>getVelocity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getVelocity </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read the current rotational velocity (signed 14-bit). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The current velocity in LSB (signed 14-bit). </dd></dl>
+
+</div>
+</div>
+<a id="a2e3b3d785b9774db72c31802bca99b5f" name="a2e3b3d785b9774db72c31802bca99b5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e3b3d785b9774db72c31802bca99b5f">&#9670;&#160;</a></span>getVelocityDegPerSec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getVelocityDegPerSec </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get rotational velocity in degrees per second. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a63e44da74683f8f43657fdf3af066df4" name="a63e44da74683f8f43657fdf3af066df4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63e44da74683f8f43657fdf3af066df4">&#9670;&#160;</a></span>getVelocityRadPerSec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getVelocityRadPerSec </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get rotational velocity in radians per second. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5efa677a25c1cf65b88d6c5c7977d79d" name="a5efa677a25c1cf65b88d6c5c7977d79d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5efa677a25c1cf65b88d6c5c7977d79d">&#9670;&#160;</a></span>getVelocityRPM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getVelocityRPM </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get rotational velocity in revolutions per minute. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a205b2a98c0aae654b212e7423825ee4b" name="a205b2a98c0aae654b212e7423825ee4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a205b2a98c0aae654b212e7423825ee4b">&#9670;&#160;</a></span>getZeroPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::getZeroPosition </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the currently configured soft zero position offset (14-bit). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The current zero position in LSB (0-16383). </dd></dl>
+
+</div>
+</div>
+<a id="a3c240da1c2c5adf423d35677f51fc4f9" name="a3c240da1c2c5adf423d35677f51fc4f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c240da1c2c5adf423d35677f51fc4f9">&#9670;&#160;</a></span>programOTP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::programOTP </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permanently program current settings into OTP memory. </p>
+<p>Performs the full OTP programming sequence:</p><ul>
+<li>Writes current configuration (zero position, settings registers) to volatile registers.</li>
+<li>Reads current angle and sets it as zero reference.</li>
+<li>Enables ECC, reads and writes ECC checksum.</li>
+<li>Triggers OTP burn and waits for completion.</li>
+<li>Performs guard-band verification (clears registers, refreshes from OTP, verifies content).</li>
+</ul>
+<dl class="section return"><dt>Returns</dt><dd>True if programming and verification succeeded, false otherwise. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>OTP can be programmed only once. Ensure proper supply voltage (3.3-3.5V for 3V mode, ~5V for 5V mode) and desired configuration before use. </dd></dl>
+
+</div>
+</div>
+<a id="a6beb902861102828ff8d21bc2fc47136" name="a6beb902861102828ff8d21bc2fc47136"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6beb902861102828ff8d21bc2fc47136">&#9670;&#160;</a></span>readReg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+<div class="memtemplate">
+template&lt;typename RegT &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RegT <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::readReg </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads data from a specified register in the <a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> sensor. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">RegT</td><td>The register type which must have an ADDRESS static member and be decodable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>RegT The register object populated with the data read from the sensor</dd></dl>
+<p>This method reads the raw value from the specified register address and decodes it into a strongly-typed register object. </p>
+
+</div>
+</div>
+<a id="a6f6ab32518244d2d2ff397392365863c" name="a6f6ab32518244d2d2ff397392365863c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f6ab32518244d2d2ff397392365863c">&#9670;&#160;</a></span>set150CTemperatureMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::set150CTemperatureMode </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set temperature mode for 150°C operation (NOISESET bit). </p>
+<p>When enabled, the sensor supports full 150°C range (NOISESET=1), but with increased noise. When disabled, lower noise but max 125°C.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>True for 150°C mode (NOISESET=1), false for low-noise (NOISESET=0). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa3d1fb2ab93c7946fc0f62b1284a3acf" name="aa3d1fb2ab93c7946fc0f62b1284a3acf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3d1fb2ab93c7946fc0f62b1284a3acf">&#9670;&#160;</a></span>setABIResolution()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::setABIResolution </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>resolutionBits</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the ABI (incremental encoder) resolution. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">resolutionBits</td><td>Resolution in bits (10 to 14 bits). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3141ec60f44a550beef72676d44cc205" name="a3141ec60f44a550beef72676d44cc205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3141ec60f44a550beef72676d44cc205">&#9670;&#160;</a></span>setAdaptiveFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::setAdaptiveFilter </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enable/disable the adaptive filter (Dynamic Filter System). </p>
+
+</div>
+</div>
+<a id="a56a67f705bef85b9a38a8ec806d98ca4" name="a56a67f705bef85b9a38a8ec806d98ca4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56a67f705bef85b9a38a8ec806d98ca4">&#9670;&#160;</a></span>setAngleOutputSource()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::setAngleOutputSource </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAS5047U__REG_1_1SETTINGS2.html#a0bf2613a54b21f890873793e8e87cb46">AS5047U_REG::SETTINGS2::AngleOutputSource</a></td>          <td class="paramname"><span class="paramname"><em>src</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Select which angle register (0x3FFF) is returned on reads. </p>
+<p>Controls the Data_select bit in SETTINGS2. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Angle output source:<ul>
+<li>SETTINGS2::AngleOutputSource::UseANGLECOM: read compensated angle (ANGLECOM)</li>
+<li>SETTINGS2::AngleOutputSource::UseANGLEUNC: read raw angle (ANGLEUNC) </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aedf491ded4d3145b8a8ce43c240037bc" name="aedf491ded4d3145b8a8ce43c240037bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedf491ded4d3145b8a8ce43c240037bc">&#9670;&#160;</a></span>setDirection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::setDirection </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>clockwise</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Define the rotation direction for increasing angle. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clockwise</td><td>If true, clockwise rotation yields increasing angle (DIR=0). If false, invert direction (DIR=1). </td></tr>
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if register write succeeded. </dd></dl>
+
+</div>
+</div>
+<a id="af7fa51374fc902d087ebb29d38f6be48" name="af7fa51374fc902d087ebb29d38f6be48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7fa51374fc902d087ebb29d38f6be48">&#9670;&#160;</a></span>setDynamicAngleCompensation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::setDynamicAngleCompensation </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enable/disable Dynamic Angle Error Compensation (DAEC). </p>
+
+</div>
+</div>
+<a id="aa20feafd1abaf6a2c839bb861a774f7c" name="aa20feafd1abaf6a2c839bb861a774f7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa20feafd1abaf6a2c839bb861a774f7c">&#9670;&#160;</a></span>setFilterParameters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::setFilterParameters </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>k_min</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>k_max</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set adaptive filter parameters (K_min and K_max, 3-bit each). </p>
+
+</div>
+</div>
+<a id="a3abf0854ed7bca32623e98ba39f5d71f" name="a3abf0854ed7bca32623e98ba39f5d71f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3abf0854ed7bca32623e98ba39f5d71f">&#9670;&#160;</a></span>setFrameFormat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::setFrameFormat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532">FrameFormat</a></td>          <td class="paramname"><span class="paramname"><em>fmt</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the SPI frame format (16, 24, or 32-bit). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fmt</td><td>The desired SPI frame format. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9284a9b21d91397dba2e23238b8b8e51" name="a9284a9b21d91397dba2e23238b8b8e51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9284a9b21d91397dba2e23238b8b8e51">&#9670;&#160;</a></span>setHysteresis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::setHysteresis </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structAS5047U__REG_1_1SETTINGS3.html#a16233828ec14057e07249ab765dda276">AS5047U_REG::SETTINGS3::Hysteresis</a></td>          <td class="paramname"><span class="paramname"><em>hys</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set incremental output hysteresis level. </p>
+<p>Controls the HYS field in SETTINGS3 to add output deadband and reduce chatter. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hys</td><td>Hysteresis level:<ul>
+<li>SETTINGS3::Hysteresis::LSB_1 (0b00): 1 LSB deadband (~0.17°, default)</li>
+<li>SETTINGS3::Hysteresis::LSB_2 (0b01): 2 LSB deadband (~0.35°)</li>
+<li>SETTINGS3::Hysteresis::LSB_3 (0b10): 3 LSB deadband (~0.52°)</li>
+<li>SETTINGS3::Hysteresis::NONE (0b11): No hysteresis </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af975c51f6b28c82d1389dc21f1130877" name="af975c51f6b28c82d1389dc21f1130877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af975c51f6b28c82d1389dc21f1130877">&#9670;&#160;</a></span>setIndexPulseLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::setIndexPulseLength </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>lsbLen</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the index pulse width for ABI output. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lsbLen</td><td>Index pulse length in LSB periods (3 or 1). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a29f0505fd70e8d7a48e91acbcce1d22b" name="a29f0505fd70e8d7a48e91acbcce1d22b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29f0505fd70e8d7a48e91acbcce1d22b">&#9670;&#160;</a></span>setPad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::setPad </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>pad</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the daisy-chain pad byte for 32-bit SPI frames. </p>
+<p>In 32-bit frame mode, the first byte is used as a pad to allow multiple devices on the same bus. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pad</td><td>Pad byte value (0x00–0xFF) to send as the MSB of each 32-bit transfer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a42978617e942a17febd7f70890e3614a" name="a42978617e942a17febd7f70890e3614a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42978617e942a17febd7f70890e3614a">&#9670;&#160;</a></span>setUVWPolePairs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::setUVWPolePairs </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>pairs</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the number of pole pairs for UVW commutation outputs. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pairs</td><td>Number of pole pairs (1-7). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1f25abe0a328ce4713940eec43c6d858" name="a1f25abe0a328ce4713940eec43c6d858"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f25abe0a328ce4713940eec43c6d858">&#9670;&#160;</a></span>setZeroPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::setZeroPosition </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>angleLSB</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a new zero reference position (soft offset). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angleLSB</td><td>14-bit angle value that should be treated as 0°. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a604418c33255be78f26e2996b4b938cd" name="a604418c33255be78f26e2996b4b938cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a604418c33255be78f26e2996b4b938cd">&#9670;&#160;</a></span>writeReg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+<div class="memtemplate">
+template&lt;typename RegT &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::writeReg </td>
+          <td>(</td>
+          <td class="paramtype">const RegT &amp;</td>          <td class="paramname"><span class="paramname"><em>reg</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes data to a specified register in the <a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> sensor. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">RegT</td><td>The register type which must have an ADDRESS static member and be encodable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>The register object containing the data to be written </td></tr>
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if write succeeded, false on CRC/framing error </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>inc/<a class="el" href="AS5047U_8hpp_source.html">AS5047U.hpp</a></li>
+<li>src/<a class="el" href="AS5047U_8cpp_source.html">AS5047U.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceas5047u.html">as5047u</a></li><li class="navelem"><a class="el" href="classas5047u_1_1AS5047U.html">AS5047U</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,9 +1,9 @@
 /**
  * @file DriverIntegrationTest.cpp
- * @brief Comprehensive Integration Test Suite for AS5047U Driver
+ * @brief Comprehensive Integration Test Suite for as5047u::AS5047U Driver
  *
  * This is a complete integration test suite that tests all functionality
- * of the AS5047U driver.
+ * of the as5047u::AS5047U driver.
  *
  * Test Categories:
  * - Initialization Tests
@@ -53,7 +53,7 @@ static constexpr bool ENABLE_ERROR_HANDLING_TESTS = true;
 TestResults g_test_results;
 
 static std::unique_ptr<Esp32As5047uBus> g_bus;
-static std::unique_ptr<as5047u::Encoder> g_encoder;
+static std::unique_ptr<as5047u::AS5047U<Esp32As5047uBus>> g_encoder;
 
 //=============================================================================
 // TEST HELPER FUNCTIONS
@@ -91,9 +91,9 @@ create_test_encoder(FrameFormat format = FrameFormat::SPI_24) noexcept {
     return false;
   }
 
-  g_encoder = std::make_unique<as5047u::Encoder>(*g_bus, format);
+  g_encoder = std::make_unique<as5047u::AS5047U<Esp32As5047uBus>>(*g_bus, format);
 
-  ESP_LOGI(TAG, "AS5047U encoder created with frame format: %d",
+  ESP_LOGI(TAG, "as5047u::AS5047U encoder created with frame format: %d",
            static_cast<int>(format));
   return true;
 }
@@ -267,7 +267,7 @@ static bool test_frame_format_16() noexcept {
   }
 
   auto encoder_16 =
-      std::make_unique<as5047u::Encoder>(*g_bus, FrameFormat::SPI_16);
+      std::make_unique<as5047u::AS5047U<Esp32As5047uBus>>(*g_bus, FrameFormat::SPI_16);
   uint16_t angle = encoder_16->getAngle();
   ESP_LOGI(TAG, "16-bit frame format: Angle = %u", angle);
 
@@ -284,7 +284,7 @@ static bool test_frame_format_24() noexcept {
   }
 
   auto encoder_24 =
-      std::make_unique<as5047u::Encoder>(*g_bus, FrameFormat::SPI_24);
+      std::make_unique<as5047u::AS5047U<Esp32As5047uBus>>(*g_bus, FrameFormat::SPI_24);
   uint16_t angle = encoder_24->getAngle();
   ESP_LOGI(TAG, "24-bit frame format: Angle = %u", angle);
 
@@ -301,7 +301,7 @@ static bool test_frame_format_32() noexcept {
   }
 
   auto encoder_32 =
-      std::make_unique<as5047u::Encoder>(*g_bus, FrameFormat::SPI_32);
+      std::make_unique<as5047u::AS5047U<Esp32As5047uBus>>(*g_bus, FrameFormat::SPI_32);
   uint16_t angle = encoder_32->getAngle();
   ESP_LOGI(TAG, "32-bit frame format: Angle = %u", angle);
 
@@ -341,7 +341,7 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "");
   ESP_LOGI(TAG, "╔═════════════════════════════════════════════════════════════"
                 "═════════════════╗");
-  ESP_LOGI(TAG, "║                  AS5047U Driver Integration Test Suite      "
+  ESP_LOGI(TAG, "║                  as5047u::AS5047U Driver Integration Test Suite      "
                 "                  ║");
   ESP_LOGI(TAG, "╚═════════════════════════════════════════════════════════════"
                 "═════════════════╝");
