@@ -1,20 +1,20 @@
----
-layout: default
-title: "HardFOC AS5047U Driver"
-description: "Portable C++20 driver for the AS5047U magnetic encoder from ams with SPI interface, CRC protection, DAEC, and DFS™"
-nav_order: 1
-permalink: /
-has_children: true
----
+# HF-AS5047U Driver
 
-#HF - AS5047U
-Hardware Agnostic AS5047U library - as used in the HardFOC-V1 controller
+**Portable C++20 driver for the AS5047U magnetic encoder from ams with SPI interface, CRC protection, DAEC, and DFS™**
 
-#AS5047U – C++ Driver Library
-
-![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![CI Build](https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main)](https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml)
 
+## 📚 Table of Contents
+1. [Overview](#-overview)
+2. [Features](#-features)
+3. [Quick Start](#-quick-start)
+4. [Installation](#-installation)
+5. [API Reference](#-api-reference)
+6. [Examples](#-examples)
+7. [Documentation](#-documentation)
+8. [Contributing](#-contributing)
+9. [License](#-license)
 
 ## 📦 Overview
 
@@ -22,254 +22,107 @@ Hardware Agnostic AS5047U library - as used in the HardFOC-V1 controller
 > Interactive guides, examples, and step-by-step tutorials
 
 **HF-AS5047U** is a portable C++20 driver for the **AS5047U** magnetic encoder from ams. It delivers fast 14‑bit absolute angle readings over SPI, optional CRC protection and advanced features like Dynamic Angle Error Compensation (DAEC) and an adaptive Dynamic Filter System (DFS™). The sensor can also output incremental (A/B/I) and 3‑phase commutation (UVW) signals or a PWM encoded angle, making it a drop‑in replacement for optical encoders in high-performance motor control and robotics.
-### ✨ Key Features
-- 🧩 Cross-platform `SpiInterface` interface
-- 📐 Modern C++20 API
-- 📝 Examples for Arduino, ESP32 and STM32
-- 🧪 Unit tests for reliability
 
-## 🚀 Sensor Highlights
-* **14‑bit absolute angle** with optional CRC check
-* **DAEC** for low‑latency angle correction
-* **DFS™** adaptive noise filtering
-* **Stray‑field immunity** for robust operation
-* **Incremental ABI** outputs up to 4096 PPR
-* **UVW commutation** with programmable pole pairs
-* **PWM output** option
-* **Diagnostics** for AGC, magnitude and error flags
-* **OTP memory** for permanent configuration
+The driver uses a CRTP-based `SpiInterface` for hardware abstraction, allowing it to run on any platform (ESP32, STM32, Arduino, etc.) with zero runtime overhead. It implements all major features from the AS5047U datasheet including absolute angle readout with/without DAEC, velocity measurement, AGC and magnetic field diagnostics, ABI/UVW/PWM interface configuration, error/status flag handling, and full OTP programming sequence.
 
----
+## ✨ Features
 
-## 🏗️ Library Architecture
-This library exposes a single `AS5047U` class that wraps all sensor functionality in a clear, type‑safe API. Key components include:
+- ✅ **14-bit absolute angle** with optional CRC check
+- ✅ **DAEC** (Dynamic Angle Error Compensation) for low-latency angle correction
+- ✅ **DFS™** (Dynamic Filter System) adaptive noise filtering
+- ✅ **Stray-field immunity** for robust operation
+- ✅ **Incremental ABI outputs** up to 4096 PPR
+- ✅ **UVW commutation** with programmable pole pairs
+- ✅ **PWM output** option
+- ✅ **Diagnostics** for AGC, magnitude and error flags
+- ✅ **OTP memory** for permanent configuration
+- ✅ **Hardware Agnostic**: SPI interface for platform independence
+- ✅ **Modern C++**: C++20 with CRTP-based design
+- ✅ **Zero Overhead**: CRTP-based design for compile-time polymorphism
 
-* **`AS5047U` class** – high level interface
-* **Register definitions** in `AS5047U_REGISTERS.hpp`
-* **`FrameFormat` enum** to select 16/24/32‑bit SPI frames
-* **`SpiInterface` interface** – abstract SPI layer for platform independence
-
-### SPI Bus Abstraction
-Applications implement the `SpiInterface` interface and plug it into the driver:
+## 🚀 Quick Start
 
 ```cpp
-class MySpiInterface : public as5047u::SpiInterface<MySpiInterface> {
+#include "as5047u.hpp"
+
+// 1. Implement the SPI interface (see platform_integration.md)
+class MySpi : public as5047u::SpiInterface<MySpi> {
 public:
-  // CRTP implementation - implement required methods
-  void Transfer(const uint8_t* tx, uint8_t* rx, size_t len) {
-    // Your SPI transfer implementation
-  }
+    void transfer(const uint8_t* tx, uint8_t* rx, size_t len) {
+        // Your SPI transfer implementation
+    }
 };
-```
 
-The driver itself contains no hardware specifics – simply implement the required methods for your platform.
+// 2. Create driver instance
+MySpi spi;
+as5047u::AS5047U encoder(spi, FrameFormat::SPI_24); // 24-bit frames with CRC
 
-## 🔌 Platform Integration
-
-### ESP-IDF
-```cpp
-class ESPBus : public as5047u::SpiInterface<ESPBus> {
-  spi_device_handle_t dev;
-
-public:
-  ESPBus(spi_device_handle_t handle) : dev(handle) {}
-  void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override {
-    spi_transaction_t t = {};
-    t.tx_buffer = tx;
-    t.rx_buffer = rx;
-    t.length = len * 8;
-    spi_device_transmit(dev, &t);
-  }
-};
-```
-
-### STM32 HAL
-```cpp
-class STM32Bus : public as5047u::SpiInterface<STM32Bus> {
-  SPI_HandleTypeDef* hspi;
-
-public:
-  STM32Bus(SPI_HandleTypeDef * handle) : hspi(handle) {}
-  void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override {
-    HAL_SPI_TransmitReceive(hspi, (uint8_t*)tx, rx, len, HAL_MAX_DELAY);
-  }
-};
-```
-
-### Arduino
-```cpp
-class ArduinoBus : public as5047u::SpiInterface<ArduinoBus> {
-public:
-    void transfer(const uint8_t *tx, uint8_t *rx, size_t len) override {
-        SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE1));
-        digitalWrite(CS_PIN, LOW);
-        for (size_t i = 0; i < len; ++i) {
-  uint8_t out = tx ? tx[i] : 0;
-  uint8_t in = SPI.transfer(out);
-  if (rx)
-    rx[i] = in;
-        }
-        digitalWrite(CS_PIN, HIGH);
-        SPI.endTransaction();
-}
-}
-;
-```
-
----
-
-## 📂 Project Structure
-
-```
-├── Datasheet/               # AS5047U datasheet PDF
-├── examples/                # Wiring and usage examples
-├── src/                     # Library sources
-│   ├── AS5047U.hpp          # Driver API
-│   ├── AS5047U.cpp          # Implementation
-│   └── AS5047U_REGISTERS.hpp# Register definitions
-├── include/                 # Public headers
-│   └── AS5047U_config.hpp   # Default build configuration
-├── tests/                   # Mock-based unit tests
-├── config.mk                # Makefile defaults
-└── README.md                # This document
-```
-
-## 📖 Documentation
-Detailed step‑by‑step guides (with example command output) are available in the [docs](docs/index.md) folder. Start with the [Quick Start Workflow](docs/workflow.md) if you're new.
-
----
-
-## 🔧 Installation
-- 📥 Copy `AS5047U.hpp`, `AS5047U.cpp` and `AS5047U_REGISTERS.hpp` into your project
-- 🔌 Implement the `SpiInterface` interface for your platform
-- ➕ `#include "AS5047U.hpp"`
-- 🛠️ Compile with a **C++20** compiler
-- 🏗️ Optionally build with the provided `Makefile`
-  - Override compiler flags on the command line
-  - Configure default options via `Kconfig` or `AS5047U_config.hpp`
-
----
-
-## 🧠 Quick Start
-
-```cpp
-// Instantiate the driver with your platform's SPI bus
-AS5047U encoder(bus, FrameFormat::SPI_24); // driver using 24-bit frames
-
+// 3. Read angle
 uint16_t angle = encoder.GetAngle();             // compensated angle
 uint16_t rawAngle = encoder.GetRawAngle();       // raw angle without DAEC
 int16_t vel = encoder.GetVelocity();             // velocity in sensor units
 float vel_dps = encoder.GetVelocityDegPerSec(); // velocity in deg/s
 
+// 4. Diagnostics
 uint8_t agc = encoder.GetAGC();            // automatic gain control
 uint16_t mag = encoder.GetMagnitude();     // magnetic magnitude
 uint16_t errors = encoder.GetErrorFlags(); // current error flags
 ```
 
-    Configure outputs :
-```cpp encoder.SetZeroPosition(8192);         // set zero electrical angle
-encoder.SetDirection(false);                   // counter-clockwise = positive
-encoder.SetABIResolution(12);                  // 12-bit incremental output
-encoder.SetUVWPolePairs(5);                    // 5 electrical pole pairs
-encoder.ConfigureInterface(true, false, true); // enable ABI + PWM
-``` Perform OTP programming :
-```cpp bool ok = encoder.ProgramOTP();        // write settings to OTP
-```
+For detailed setup, see [Installation](docs/installation.md) and [Quick Start Guide](docs/quickstart.md).
 
-    Dump diagnostics :
-```cpp encoder.DumpStatus(); // print formatted status/diagnostics
-```
+## 🔧 Installation
 
-## ⚙️ Configuration
-Projects that use a Kconfig-based build system can include the
-provided `Kconfig` file. It exposes options such as the default SPI
-frame format and CRC retry count and also allows enabling the unit
- tests. When not using Kconfig, you can edit `include/AS5047U_config.hpp` to
-set `AS5047U_CFG::DEFAULT_FRAME_FORMAT` and `AS5047U_CFG::CRC_RETRIES`.
+1. **Clone or copy** the driver files into your project
+2. **Implement the SPI interface** for your platform (see [Platform Integration](docs/platform_integration.md))
+3. **Include the header** in your code:
+   ```cpp
+   #include "as5047u.hpp"
+   ```
+4. Compile with a **C++20** or newer compiler
 
-## 📟 API Summary
+For detailed installation instructions, see [docs/installation.md](docs/installation.md).
 
-Click on any function name to jump directly to its implementation in the source code.
+## 📖 API Reference
 
-| Function | Description |
-|----------|-------------|
-| [`AS5047U(SpiInterface &bus, FrameFormat format)`](inc/AS5047U.hpp#L91) | Constructor (SPI interface and frame format) |
-| [`void SetFrameFormat(FrameFormat format)`](src/AS5047U.cpp#L16) | Set SPI frame format (16/24/32-bit mode) |
-| [`uint16_t GetAngle(uint8_t retries=0)`](src/AS5047U.cpp#L33) | Read 14-bit compensated absolute angle |
-| [`uint16_t GetRawAngle(uint8_t retries=0)`](src/AS5047U.cpp#L48) | Read 14-bit raw absolute angle |
-| [`int16_t GetVelocity(uint8_t retries=0)`](src/AS5047U.cpp#L63) | Read signed 14-bit velocity (LSB units) |
-| [`float GetVelocityDegPerSec(uint8_t retries=0)`](src/AS5047U.cpp#L79) | Velocity in degrees/sec |
-| [`float GetVelocityRadPerSec(uint8_t retries=0)`](src/AS5047U.cpp#L84) | Velocity in radians/sec |
-| [`float GetVelocityRPM(uint8_t retries=0)`](src/AS5047U.cpp#L89) | Velocity in revolutions per minute (RPM) |
-| [`uint8_t GetAGC(uint8_t retries=0)`](src/AS5047U.cpp#L94) | Read AGC (0–255) value |
-| [`uint16_t GetMagnitude(uint8_t retries=0)`](src/AS5047U.cpp#L109) | Read magnetic field magnitude (0–16383) |
-| [`uint16_t GetErrorFlags(uint8_t retries=0)`](src/AS5047U.cpp#L124) | Read and clear error/status flags |
-| [`void DumpStatus() const`](src/AS5047U.cpp#L597) | Print formatted status/diagnostics |
-| [`uint16_t GetZeroPosition(uint8_t retries=0) const`](src/AS5047U.cpp#L135) | Get current zero offset |
-| [`bool SetZeroPosition(uint16_t angle_lsb, uint8_t retries=0)`](src/AS5047U.cpp#L162) | Set new zero offset |
-| [`bool SetDirection(bool clockwise, uint8_t retries=0)`](inc/AS5047U.hpp#L445) | Set rotation direction (CW or CCW) |
-| [`bool SetABIResolution(uint8_t resolution_bits, uint8_t retries=0)`](src/AS5047U.cpp#L171) | Set ABI output resolution (10–14 bits) |
-| [`bool SetUVWPolePairs(uint8_t pairs, uint8_t retries=0)`](src/AS5047U.cpp#L179) | Set UVW pole pairs (1–7) |
-| [`bool SetIndexPulseLength(uint8_t lsb_len, uint8_t retries=0)`](src/AS5047U.cpp#L187) | Set ABI index pulse width |
-| [`bool ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=0)`](src/AS5047U.cpp#L205) | Enable/disable ABI, UVW, PWM |
-| [`bool SetDynamicAngleCompensation(bool enable, uint8_t retries=0)`](src/AS5047U.cpp#L225) | Enable/disable DAEC |
-| [`bool SetAdaptiveFilter(bool enable, uint8_t retries=0)`](src/AS5047U.cpp#L232) | Enable/disable adaptive filter (DFS) |
-| [`bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries=0)`](src/AS5047U.cpp#L239) | Set DFS filter parameters |
-| [`bool Set150CTemperatureMode(bool enable, uint8_t retries=0)`](src/AS5047U.cpp#L250) | Enable 150°C (high-temp mode) |
-| [`bool ProgramOTP()`](src/AS5047U.cpp#L257) | Program current settings into OTP (one-time) |
-| [`void SetPad(uint8_t pad)`](src/AS5047U.cpp#L360) | Set pad byte for 32-bit SPI frames |
-| [`bool SetHysteresis(SETTINGS3::Hysteresis hysteresis, uint8_t retries=0)`](src/AS5047U.cpp#L363) | Set incremental hysteresis level |
-| [`SETTINGS3::Hysteresis GetHysteresis() const`](src/AS5047U.cpp#L371) | Get current hysteresis setting |
-| [`bool SetAngleOutputSource(SETTINGS2::AngleOutputSource source, uint8_t retries=0)`](src/AS5047U.cpp#L377) | Select angle output source (comp/raw) |
-| [`SETTINGS2::AngleOutputSource GetAngleOutputSource() const`](src/AS5047U.cpp#L385) | Get selected angle output source |
-| [`AS5047U_REG::DIA GetDiagnostics() const`](src/AS5047U.cpp#L393) | Read full diagnostic register (DIA) |
----
+| Method | Description |
+|--------|-------------|
+| `GetAngle()` | Read 14-bit compensated absolute angle |
+| `GetRawAngle()` | Read 14-bit raw absolute angle |
+| `GetVelocity()` | Read signed 14-bit velocity (LSB units) |
+| `GetVelocityDegPerSec()` | Velocity in degrees/sec |
+| `GetVelocityRPM()` | Velocity in revolutions per minute |
+| `GetAGC()` | Read AGC (0–255) value |
+| `GetMagnitude()` | Read magnetic field magnitude |
+| `GetErrorFlags()` | Read and clear error/status flags |
+| `SetZeroPosition()` | Set new zero offset |
+| `SetDirection()` | Set rotation direction (CW or CCW) |
+| `SetABIResolution()` | Set ABI output resolution (10–14 bits) |
+| `SetUVWPolePairs()` | Set UVW pole pairs (1–7) |
+| `ConfigureInterface()` | Enable/disable ABI, UVW, PWM |
+| `SetDynamicAngleCompensation()` | Enable/disable DAEC |
+| `SetAdaptiveFilter()` | Enable/disable adaptive filter (DFS) |
+| `ProgramOTP()` | Program current settings into OTP |
 
-## 🧪 Unit Testing
-Run the provided tests on a desktop system with:
+For complete API documentation, see [docs/api_reference.md](docs/api_reference.md).
 
-```bash
-g++ -std=c++20 src/AS5047U.cpp tests/test_as5047u.cpp -o test && ./test
-```
+## 📊 Examples
 
-The expected output is:
+For ESP32 examples, see the [examples/esp32](examples/esp32/) directory.
+Additional examples for other platforms are available in the [examples](examples/) directory.
 
-```
-All tests passed
-```
+Detailed example walkthroughs are available in [docs/examples.md](docs/examples.md).
 
+## 📚 Documentation
 
-## C++ Features and Requirements
-This library requires a **C++20 (or later)** compiler. It uses:
-- `enum class`
-- `constexpr`
-- `std::bitset`
-- `[[nodiscard]]`
-- Modern structured typing
-
-
-
-
-## License
-**GNU General Public License v3.0**
-You may use, modify, and redistribute this software under GPLv3.
-
----
+For complete documentation, see the [docs directory](docs/index.md).
 
 ## 🤝 Contributing
-Pull requests and feature ideas are welcome!
-1. Fork this repository
-2. Create a feature branch
-3. Commit your changes
-4. Open a PR
 
-## 🙌 Acknowledgments
-Developed for the HardFOC-V1 controller.
-- Developed by **Nebiyu Tadesse**, 2025.
-- Based on the official [AS5047U Datasheet](https://ams-osram.com/products/sensor-solutions/position-sensors/ams-as5047u-high-resolution-rotary-position-sensor) by ASM ASRAM.
-- Inspired by embedded needs for a reliable, testable AS5047U library.
+Pull requests and suggestions are welcome! Please follow the existing code style and include tests for new features.
 
+## 📄 License
 
-## 💬 Support
+This project is licensed under the **GNU General Public License v3.0**.
+See the [LICENSE](LICENSE) file for details.
 
-For questions, bug reports, or feature requests, please open an [issue](https://github.com/n3b3x/hf-as5047u-driver/issues) or contact the maintainer directly.
