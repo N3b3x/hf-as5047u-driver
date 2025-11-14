@@ -66,11 +66,17 @@ namespace as5047u {
  * diagnostics, configuring outputs (ABI, UVW, PWM), handling error flags, and
  * performing OTP programming for permanent configuration storage.
  *
+ * @tparam SpiType The SPI bus type (must inherit from as5047u::spiBus<SpiType>)
+ *
  * @note The driver uses CRTP-based SPI interface for zero virtual call
  * overhead. SPI implementations should inherit from
  * as5047u::spiBus<DerivedType>
+ *
+ * @note C++17 CTAD allows automatic type deduction:
+ *       AS5047U encoder(bus, format); // Type deduced automatically
  */
-class Encoder {
+template <typename SpiType>
+class AS5047U {
 public:
   //------------------------------------------------------------------
   // Constructor and destructor
@@ -78,18 +84,15 @@ public:
 
   /**
    * @brief Construct a new AS5047U encoder driver.
-   * @tparam SpiType The SPI bus type (must inherit from
-   * as5047u::spiBus<SpiType>).
    * @param bus Reference to an SPI interface implementation.
    * @param format SPI frame format to use (16-bit, 24-bit, or 32-bit). Default
    * is 16-bit frames.
    */
-  template <typename SpiType>
-  explicit Encoder(
+  explicit AS5047U(
       SpiType &bus,
       FrameFormat format = AS5047U_CFG::DEFAULT_FRAME_FORMAT) noexcept;
 
-  ~Encoder() = default;
+  ~AS5047U() = default;
 
   /** Compute the CRC8 value used by AS5047U SPI frames. */
   static constexpr uint8_t computeCRC8(uint16_t data16) {
@@ -410,8 +413,7 @@ private:
       uint16_t addr) const; ///< read register and refresh sticky errors
   bool writeRegister(uint16_t addr, uint16_t val, uint8_t retries) const;
 
-  std::function<void(const uint8_t *, uint8_t *, std::size_t)>
-      spiTransfer;         ///< SPI transfer function
+  SpiType& spi;            ///< SPI bus reference
   FrameFormat frameFormat; ///< current SPI frame format
   uint8_t padByte{0};      ///< pad byte for SPI_32 daisy-chain indexing
 
@@ -433,18 +435,22 @@ private:
 
 // Template member function definitions must be in header
 template <typename SpiType>
-Encoder::Encoder(SpiType &bus, FrameFormat frameFormat) noexcept
-    : spiTransfer([&bus](const uint8_t *tx, uint8_t *rx, std::size_t len) {
-        bus.transfer(tx, rx, len);
-      }),
+AS5047U<SpiType>::AS5047U(SpiType &bus, FrameFormat frameFormat) noexcept
+    : spi(bus),
       frameFormat(frameFormat) {
   // No further initialization (use sensor defaults unless configured).
 }
 
-inline bool Encoder::setDirection(bool clockwise, uint8_t retries) {
+template <typename SpiType>
+inline bool AS5047U<SpiType>::setDirection(bool clockwise, uint8_t retries) {
   auto s2 = readReg<AS5047U_REG::SETTINGS2>();
   s2.bits.DIR = clockwise ? 0 : 1;
   return writeReg(s2, retries);
 }
 
 } // namespace as5047u
+
+// Include template implementation
+#define AS5047U_HEADER_INCLUDED
+#include "../src/AS5047U.cpp"
+#undef AS5047U_HEADER_INCLUDED

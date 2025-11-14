@@ -22,7 +22,7 @@
 static const char *TAG = "AS5047U_Velocity";
 
 extern "C" void app_main(void) {
-  ESP_LOGI(TAG, "AS5047U Velocity Reading Example");
+  ESP_LOGI(TAG, "as5047u::AS5047U Velocity Reading Example");
   ESP_LOGI(TAG, "=================================");
 
   // Configure SPI bus
@@ -42,9 +42,9 @@ extern "C" void app_main(void) {
   }
 
   // Create encoder instance
-  as5047u::Encoder encoder(*bus, FrameFormat::SPI_24);
+  as5047u::AS5047U encoder(*bus, FrameFormat::SPI_24);
 
-  ESP_LOGI(TAG, "AS5047U encoder initialized");
+  ESP_LOGI(TAG, "as5047u::AS5047U encoder initialized");
   ESP_LOGI(TAG, "Starting velocity reading loop...");
 
   // Main reading loop

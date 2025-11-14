@@ -1,6 +1,6 @@
 /**
  * @file Esp32As5047uBus.cpp
- * @brief ESP32 SPI transport implementation for AS5047U driver
+ * @brief ESP32 SPI transport implementation for as5047u::AS5047U driver
  */
 
 #include "Esp32As5047uBus.hpp"
