@@ -1,5 +1,5 @@
-warning: ignoring unsupported tag 'PAGE_OUTLINE_PANEL' at line 1765, file /tmp/doxyfile.eBB1GD
-warning: Tag 'DOT_TRANSPARENT' at line 2788 of file '/tmp/doxyfile.eBB1GD' has become obsolete.
+warning: ignoring unsupported tag 'PAGE_OUTLINE_PANEL' at line 1765, file /tmp/doxyfile.TV3TIk
+warning: Tag 'DOT_TRANSPARENT' at line 2788 of file '/tmp/doxyfile.TV3TIk' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/AS5047U_REGISTERS.hpp:2: warning: the name 'as5047u_registers.hpp' supplied as the argument in the \file statement is not an input file
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/AS5047U_types.hpp:2: warning: the name 'as5047u_types.hpp' supplied as the argument in the \file statement is not an input file

@@ -269,10 +269,10 @@
   <li><strong>Implementation</strong>: <a href="../src/AS5047U.cpp"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp</code></a></li>
   <li><strong>Registers</strong>: <a href="../inc/AS5047U_REGISTERS.hpp"><code class="language-plaintext highlighter-rouge">inc/AS5047U_REGISTERS.hpp</code></a></li>
 </ul>
-<h2 id="core-classes">
+<h2 id="core-class">
   
   
-    <a href="#core-classes" class="anchor-heading" aria-labelledby="core-classes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Core Classes
+    <a href="#core-class" class="anchor-heading" aria-labelledby="core-class"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Core Class
   
   
 </h2>
@@ -288,10 +288,9 @@
 
 <p>Main driver class for interfacing with the AS5047U magnetic encoder.</p>
 
-<p><strong>Template Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">SpiType</code>: Type implementing <code class="language-plaintext highlighter-rouge">as5047u::SpiInterface&lt;SpiType&gt;</code></li>
-</ul>
+<p><strong>Template Parameter</strong>: <code class="language-plaintext highlighter-rouge">SpiType</code> - Type implementing <code class="language-plaintext highlighter-rouge">as5047u::SpiInterface&lt;SpiType&gt;</code></p>
+
+<p><strong>Location</strong>: <a href="../inc/as5047u.hpp#L78"><code class="language-plaintext highlighter-rouge">inc/as5047u.hpp#L78</code></a></p>
 
 <p><strong>Constructor:</strong></p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -299,19 +298,6 @@
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 
 <p><strong>Location</strong>: <a href="../inc/as5047u.hpp#L91"><code class="language-plaintext highlighter-rouge">inc/as5047u.hpp#L91</code></a></p>
-
-<p><strong>Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">bus</code>: Reference to SPI interface implementation</li>
-  <li><code class="language-plaintext highlighter-rouge">format</code>: SPI frame format (SPI_16, SPI_24, or SPI_32)</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="n">MySpi</span> <span class="n">spi</span><span class="p">;</span>
-<span class="n">as5047u</span><span class="o">::</span><span class="n">AS5047U</span> <span class="nf">encoder</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span> <span class="n">FrameFormat</span><span class="o">::</span><span class="n">SPI_24</span><span class="p">);</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
 <h2 id="methods">
   
   
@@ -328,33 +314,23 @@
   
 </h3>
     
-<h4 id="setframeformat">
-  
-  
-    <a href="#setframeformat" class="anchor-heading" aria-labelledby="setframeformat"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">SetFrameFormat()</code>
-  
-  
-</h4>
-    
 
-<p>Set the SPI frame format at runtime.</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="n">SetFrameFormat</span><span class="p">(</span><span class="n">FrameFormat</span> <span class="n">format</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L16"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L16</code></a></p>
-
-<p><strong>Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">format</code>: Frame format (SPI_16, SPI_24, or SPI_32)</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="n">encoder</span><span class="p">.</span><span class="n">SetFrameFormat</span><span class="p">(</span><span class="n">FrameFormat</span><span class="o">::</span><span class="n">SPI_24</span><span class="p">);</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Signature</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetFrameFormat()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">void SetFrameFormat(FrameFormat format) noexcept</code></td>
+      <td><a href="../src/AS5047U.cpp#L16"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L16</code></a></td>
+    </tr>
+  </tbody>
+</table></div>
 <h3 id="angle-reading">
   
   
@@ -363,77 +339,28 @@
   
 </h3>
     
-<h4 id="getangle">
-  
-  
-    <a href="#getangle" class="anchor-heading" aria-labelledby="getangle"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">GetAngle()</code>
-  
-  
-</h4>
-    
 
-<p>Read the 14-bit absolute angle with dynamic compensation (DAEC active).</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="kt">uint16_t</span> <span class="n">GetAngle</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L33"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L33</code></a></p>
-
-<p><strong>Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">retries</code>: Number of retries on CRC/framing error (default: 0)</li>
-</ul>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li>14-bit angle value (0-16383), where 0 = 0° and 16383 = 360°</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="kt">uint16_t</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">();</span>
-<span class="kt">float</span> <span class="n">angle_deg</span> <span class="o">=</span> <span class="n">angle</span> <span class="o">*</span> <span class="mf">360.0</span><span class="n">f</span> <span class="o">/</span> <span class="mf">16384.0</span><span class="n">f</span><span class="p">;</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>See also:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">GetRawAngle()</code> - Read angle without DAEC</li>
-</ul><hr />
-<h4 id="getrawangle">
-  
-  
-    <a href="#getrawangle" class="anchor-heading" aria-labelledby="getrawangle"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">GetRawAngle()</code>
-  
-  
-</h4>
-    
-
-<p>Read the 14-bit absolute angle without dynamic compensation (raw angle).</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="kt">uint16_t</span> <span class="n">GetRawAngle</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L48"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L48</code></a></p>
-
-<p><strong>Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">retries</code>: Number of retries on CRC/framing error (default: 0)</li>
-</ul>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li>14-bit raw angle value (0-16383)</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">uint16_t</span> <span class="n">raw_angle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetRawAngle</span><span class="p">();</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Signature</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetAngle()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">uint16_t GetAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/AS5047U.cpp#L33"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L33</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetRawAngle()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">uint16_t GetRawAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/AS5047U.cpp#L48"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L48</code></a></td>
+    </tr>
+  </tbody>
+</table></div>
 <h3 id="velocity-reading">
   
   
@@ -442,98 +369,38 @@
   
 </h3>
     
-<h4 id="getvelocity">
-  
-  
-    <a href="#getvelocity" class="anchor-heading" aria-labelledby="getvelocity"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">GetVelocity()</code>
-  
-  
-</h4>
-    
 
-<p>Read the current rotational velocity (signed 14-bit).</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="kt">int16_t</span> <span class="n">GetVelocity</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L63"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L63</code></a></p>
-
-<p><strong>Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">retries</code>: Number of retries on CRC/framing error (default: 0)</li>
-</ul>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li>Signed 14-bit velocity in LSB units</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">int16_t</span> <span class="n">vel</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocity</span><span class="p">();</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>See also:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">GetVelocityDegPerSec()</code> - Velocity in degrees/second</li>
-  <li><code class="language-plaintext highlighter-rouge">GetVelocityRPM()</code> - Velocity in RPM</li>
-</ul><hr />
-<h4 id="getvelocitydegpersec">
-  
-  
-    <a href="#getvelocitydegpersec" class="anchor-heading" aria-labelledby="getvelocitydegpersec"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">GetVelocityDegPerSec()</code>
-  
-  
-</h4>
-    
-
-<p>Get rotational velocity in degrees per second.</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="kt">float</span> <span class="n">GetVelocityDegPerSec</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L79"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L79</code></a></p>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li>Velocity in degrees/second</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">float</span> <span class="n">vel_dps</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocityDegPerSec</span><span class="p">();</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
-<h4 id="getvelocityrpm">
-  
-  
-    <a href="#getvelocityrpm" class="anchor-heading" aria-labelledby="getvelocityrpm"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">GetVelocityRPM()</code>
-  
-  
-</h4>
-    
-
-<p>Get rotational velocity in revolutions per minute.</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="kt">float</span> <span class="n">GetVelocityRPM</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L89"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L89</code></a></p>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li>Velocity in RPM</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">float</span> <span class="n">vel_rpm</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocityRPM</span><span class="p">();</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Signature</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetVelocity()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">int16_t GetVelocity(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/AS5047U.cpp#L63"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L63</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetVelocityDegPerSec()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">float GetVelocityDegPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/AS5047U.cpp#L79"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L79</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetVelocityRadPerSec()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">float GetVelocityRadPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/AS5047U.cpp#L84"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L84</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetVelocityRPM()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">float GetVelocityRPM(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/AS5047U.cpp#L89"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L89</code></a></td>
+    </tr>
+  </tbody>
+</table></div>
 <h3 id="diagnostics">
   
   
@@ -542,157 +409,48 @@
   
 </h3>
     
-<h4 id="getagc">
-  
-  
-    <a href="#getagc" class="anchor-heading" aria-labelledby="getagc"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">GetAGC()</code>
-  
-  
-</h4>
-    
 
-<p>Read the current Automatic Gain Control (AGC) value.</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="kt">uint8_t</span> <span class="n">GetAGC</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L94"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L94</code></a></p>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li>AGC value (0-255), where 0 = minimum gain, 255 = maximum gain</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="kt">uint8_t</span> <span class="n">agc</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAGC</span><span class="p">();</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">agc</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">agc</span> <span class="o">==</span> <span class="mi">255</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// AGC at limit - check magnet placement</span>
-<span class="p">}</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
-<h4 id="getmagnitude">
-  
-  
-    <a href="#getmagnitude" class="anchor-heading" aria-labelledby="getmagnitude"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">GetMagnitude()</code>
-  
-  
-</h4>
-    
-
-<p>Read the current magnetic field magnitude.</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="kt">uint16_t</span> <span class="n">GetMagnitude</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L109"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L109</code></a></p>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li>Magnetic field magnitude (0-16383)</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">uint16_t</span> <span class="n">mag</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetMagnitude</span><span class="p">();</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
-<h4 id="geterrorflags">
-  
-  
-    <a href="#geterrorflags" class="anchor-heading" aria-labelledby="geterrorflags"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">GetErrorFlags()</code>
-  
-  
-</h4>
-    
-
-<p>Read and clear error/status flags.</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="kt">uint16_t</span> <span class="n">GetErrorFlags</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L124"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L124</code></a></p>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li>16-bit error flag register. All flags clear after read.</li>
-</ul>
-
-<p><strong>Error Flags:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">AS5047U_Error::AgcWarning</code> - AGC at limit</li>
-  <li><code class="language-plaintext highlighter-rouge">AS5047U_Error::MagHalf</code> - Magnetic field half of regulated value</li>
-  <li><code class="language-plaintext highlighter-rouge">AS5047U_Error::CrcError</code> - CRC error during SPI communication</li>
-  <li><code class="language-plaintext highlighter-rouge">AS5047U_Error::FramingError</code> - SPI framing error</li>
-  <li>See <code class="language-plaintext highlighter-rouge">AS5047U_Error</code> enum for all flags</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="kt">uint16_t</span> <span class="n">errors</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetErrorFlags</span><span class="p">();</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">errors</span> <span class="o">&amp;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint16_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">AS5047U_Error</span><span class="o">::</span><span class="n">CrcError</span><span class="p">))</span> <span class="p">{</span>
-    <span class="c1">// Handle CRC error</span>
-<span class="p">}</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
-<h4 id="getstickyerrorflags">
-  
-  
-    <a href="#getstickyerrorflags" class="anchor-heading" aria-labelledby="getstickyerrorflags"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">GetStickyErrorFlags()</code>
-  
-  
-</h4>
-    
-
-<p>Read sticky error flags (not cleared on read).</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="n">AS5047U_Error</span> <span class="n">GetStickyErrorFlags</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../inc/as5047u.hpp"><code class="language-plaintext highlighter-rouge">inc/as5047u.hpp#L[line]</code></a></p>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">AS5047U_Error</code> enum with sticky error flags</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="n">AS5047U_Error</span> <span class="n">errors</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetStickyErrorFlags</span><span class="p">();</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
-<h4 id="dumpstatus">
-  
-  
-    <a href="#dumpstatus" class="anchor-heading" aria-labelledby="dumpstatus"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">DumpStatus()</code>
-  
-  
-</h4>
-    
-
-<p>Print formatted status and diagnostics using printf.</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="n">DumpStatus</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L597"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L597</code></a></p>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="n">encoder</span><span class="p">.</span><span class="n">DumpStatus</span><span class="p">();</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Signature</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetAGC()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">uint8_t GetAGC(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/AS5047U.cpp#L94"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L94</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetMagnitude()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">uint16_t GetMagnitude(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/AS5047U.cpp#L109"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L109</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetErrorFlags()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">uint16_t GetErrorFlags(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/AS5047U.cpp#L124"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L124</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetStickyErrorFlags()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">AS5047U_Error GetStickyErrorFlags() const</code></td>
+      <td><a href="../inc/as5047u.hpp#L384"><code class="language-plaintext highlighter-rouge">inc/as5047u.hpp#L384</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DumpStatus()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">void DumpStatus() const</code></td>
+      <td><a href="../src/AS5047U.cpp#L597"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L597</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetDiagnostics()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">AS5047U_REG::DIA GetDiagnostics() const</code></td>
+      <td><a href="../src/AS5047U.cpp#L393"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L393</code></a></td>
+    </tr>
+  </tbody>
+</table></div>
 <h3 id="configuration">
   
   
@@ -701,392 +459,97 @@
   
 </h3>
     
-<h4 id="setzeroposition">
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Signature</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetZeroPosition()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">uint16_t GetZeroPosition(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/AS5047U.cpp#L135"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L135</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetZeroPosition()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool SetZeroPosition(uint16_t angle_lsb, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../src/AS5047U.cpp#L162"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L162</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetDirection()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool SetDirection(bool clockwise, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../inc/as5047u.hpp#L214"><code class="language-plaintext highlighter-rouge">inc/as5047u.hpp#L214</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetABIResolution()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool SetABIResolution(uint8_t resolution_bits, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../src/AS5047U.cpp#L171"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L171</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetUVWPolePairs()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool SetUVWPolePairs(uint8_t pairs, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../src/AS5047U.cpp#L179"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L179</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetIndexPulseLength()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool SetIndexPulseLength(uint8_t lsb_len, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../src/AS5047U.cpp#L187"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L187</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ConfigureInterface()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../src/AS5047U.cpp#L205"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L205</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetDynamicAngleCompensation()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool SetDynamicAngleCompensation(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../src/AS5047U.cpp#L225"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L225</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetAdaptiveFilter()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool SetAdaptiveFilter(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../src/AS5047U.cpp#L232"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L232</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetFilterParameters()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../src/AS5047U.cpp#L239"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L239</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Set150CTemperatureMode()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool Set150CTemperatureMode(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../src/AS5047U.cpp#L250"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L250</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetHysteresis()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool SetHysteresis(AS5047U_REG::SETTINGS3::Hysteresis hysteresis, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../src/AS5047U.cpp#L315"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L315</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetHysteresis()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">AS5047U_REG::SETTINGS3::Hysteresis GetHysteresis() const</code></td>
+      <td><a href="../src/AS5047U.cpp#L322"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L322</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetAngleOutputSource()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool SetAngleOutputSource(AS5047U_REG::SETTINGS2::AngleOutputSource source, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../src/AS5047U.cpp#L333"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L333</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetAngleOutputSource()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">AS5047U_REG::SETTINGS2::AngleOutputSource GetAngleOutputSource() const</code></td>
+      <td><a href="../src/AS5047U.cpp#L340"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L340</code></a></td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="otp-programming">
   
   
-    <a href="#setzeroposition" class="anchor-heading" aria-labelledby="setzeroposition"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">SetZeroPosition()</code>
-  
-  
-</h4>
-    
-
-<p>Set a new zero reference position (soft offset).</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="nf">SetZeroPosition</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">angle_lsb</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">);</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L162"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L162</code></a></p>
-
-<p><strong>Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">angle_lsb</code>: 14-bit angle value that should be treated as 0°</li>
-  <li><code class="language-plaintext highlighter-rouge">retries</code>: Number of retries on CRC/framing error</li>
-</ul>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">true</code> if register write succeeded</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="kt">uint16_t</span> <span class="n">current_angle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">();</span>
-<span class="n">encoder</span><span class="p">.</span><span class="n">SetZeroPosition</span><span class="p">(</span><span class="n">current_angle</span><span class="p">);</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
-<h4 id="getzeroposition">
-  
-  
-    <a href="#getzeroposition" class="anchor-heading" aria-labelledby="getzeroposition"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">GetZeroPosition()</code>
-  
-  
-</h4>
-    
-
-<p>Get the currently configured zero position offset.</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="kt">uint16_t</span> <span class="n">GetZeroPosition</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L135"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L135</code></a></p>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li>Current zero position in LSB (0-16383)</li>
-</ul><hr />
-<h4 id="setdirection">
-  
-  
-    <a href="#setdirection" class="anchor-heading" aria-labelledby="setdirection"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">SetDirection()</code>
-  
-  
-</h4>
-    
-
-<p>Define the rotation direction for increasing angle.</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="nf">SetDirection</span><span class="p">(</span><span class="kt">bool</span> <span class="n">clockwise</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">);</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../inc/as5047u.hpp#L214"><code class="language-plaintext highlighter-rouge">inc/as5047u.hpp#L214</code></a></p>
-
-<p><strong>Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">clockwise</code>: If true, clockwise rotation yields increasing angle</li>
-  <li><code class="language-plaintext highlighter-rouge">retries</code>: Number of retries on CRC/framing error</li>
-</ul>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">true</code> if register write succeeded</li>
-</ul><hr />
-<h4 id="setabiresolution">
-  
-  
-    <a href="#setabiresolution" class="anchor-heading" aria-labelledby="setabiresolution"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">SetABIResolution()</code>
-  
-  
-</h4>
-    
-
-<p>Set the ABI (incremental encoder) resolution.</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="nf">SetABIResolution</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">resolution_bits</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">);</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L171"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L171</code></a></p>
-
-<p><strong>Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">resolution_bits</code>: Resolution in bits (10-14 bits)</li>
-  <li><code class="language-plaintext highlighter-rouge">retries</code>: Number of retries on CRC/framing error</li>
-</ul>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">true</code> if register write succeeded</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="n">encoder</span><span class="p">.</span><span class="n">SetABIResolution</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>  <span class="c1">// 12-bit = 4096 PPR</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
-<h4 id="setuvwpolepairs">
-  
-  
-    <a href="#setuvwpolepairs" class="anchor-heading" aria-labelledby="setuvwpolepairs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">SetUVWPolePairs()</code>
-  
-  
-</h4>
-    
-
-<p>Set the number of pole pairs for UVW commutation outputs.</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="nf">SetUVWPolePairs</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">pairs</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">);</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L179"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L179</code></a></p>
-
-<p><strong>Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">pairs</code>: Number of pole pairs (1-7)</li>
-  <li><code class="language-plaintext highlighter-rouge">retries</code>: Number of retries on CRC/framing error</li>
-</ul>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">true</code> if register write succeeded</li>
-</ul><hr />
-<h4 id="configureinterface">
-  
-  
-    <a href="#configureinterface" class="anchor-heading" aria-labelledby="configureinterface"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">ConfigureInterface()</code>
-  
-  
-</h4>
-    
-
-<p>Configure interface outputs (ABI, UVW) and PWM output.</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="nf">ConfigureInterface</span><span class="p">(</span><span class="kt">bool</span> <span class="n">abi</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">uvw</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">pwm</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">);</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L205"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L205</code></a></p>
-
-<p><strong>Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">abi</code>: Enable ABI (A, B, I) outputs</li>
-  <li><code class="language-plaintext highlighter-rouge">uvw</code>: Enable UVW commutation outputs</li>
-  <li><code class="language-plaintext highlighter-rouge">pwm</code>: Enable PWM output</li>
-  <li><code class="language-plaintext highlighter-rouge">retries</code>: Number of retries on CRC/framing error</li>
-</ul>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">true</code> if register write succeeded</li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="n">encoder</span><span class="p">.</span><span class="n">ConfigureInterface</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>  <span class="c1">// ABI only</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
-<h4 id="setdynamicanglecompensation">
-  
-  
-    <a href="#setdynamicanglecompensation" class="anchor-heading" aria-labelledby="setdynamicanglecompensation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">SetDynamicAngleCompensation()</code>
-  
-  
-</h4>
-    
-
-<p>Enable/disable Dynamic Angle Error Compensation (DAEC).</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="nf">SetDynamicAngleCompensation</span><span class="p">(</span><span class="kt">bool</span> <span class="n">enable</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">);</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L225"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L225</code></a></p>
-
-<p><strong>Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">enable</code>: Enable DAEC if true</li>
-  <li><code class="language-plaintext highlighter-rouge">retries</code>: Number of retries on CRC/framing error</li>
-</ul>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">true</code> if register write succeeded</li>
-</ul><hr />
-<h4 id="setadaptivefilter">
-  
-  
-    <a href="#setadaptivefilter" class="anchor-heading" aria-labelledby="setadaptivefilter"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">SetAdaptiveFilter()</code>
-  
-  
-</h4>
-    
-
-<p>Enable/disable the adaptive filter (Dynamic Filter System).</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="nf">SetAdaptiveFilter</span><span class="p">(</span><span class="kt">bool</span> <span class="n">enable</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">);</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L232"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L232</code></a></p>
-
-<p><strong>Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">enable</code>: Enable adaptive filter if true</li>
-  <li><code class="language-plaintext highlighter-rouge">retries</code>: Number of retries on CRC/framing error</li>
-</ul>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">true</code> if register write succeeded</li>
-</ul><hr />
-<h4 id="setfilterparameters">
-  
-  
-    <a href="#setfilterparameters" class="anchor-heading" aria-labelledby="setfilterparameters"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">SetFilterParameters()</code>
-  
-  
-</h4>
-    
-
-<p>Set adaptive filter parameters (K_min and K_max).</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="nf">SetFilterParameters</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">k_min</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">k_max</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">AS5047U_CFG</span><span class="o">::</span><span class="n">CRC_RETRIES</span><span class="p">);</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L239"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L239</code></a></p>
-
-<p><strong>Parameters:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">k_min</code>: Minimum filter strength (0-15)</li>
-  <li><code class="language-plaintext highlighter-rouge">k_max</code>: Maximum filter strength (0-15)</li>
-  <li><code class="language-plaintext highlighter-rouge">retries</code>: Number of retries on CRC/framing error</li>
-</ul>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">true</code> if register write succeeded</li>
-</ul><hr />
-<h4 id="programotp">
-  
-  
-    <a href="#programotp" class="anchor-heading" aria-labelledby="programotp"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">ProgramOTP()</code>
-  
-  
-</h4>
-    
-
-<p>Permanently program current settings into OTP memory.</p>
-
-<p><strong>Signature:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="nf">ProgramOTP</span><span class="p">();</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-
-<p><strong>Location</strong>: <a href="../src/AS5047U.cpp#L257"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L257</code></a></p>
-
-<p><strong>Returns:</strong></p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">true</code> if programming and verification succeeded</li>
-</ul>
-
-<p><strong>Warning</strong>: OTP can be programmed only once. Ensure proper supply voltage and desired configuration before use.</p>
-
-<p><strong>Example:</strong></p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="rouge-code"><pre><span class="c1">// Configure all settings first</span>
-<span class="n">encoder</span><span class="p">.</span><span class="n">SetZeroPosition</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="n">encoder</span><span class="p">.</span><span class="n">SetDirection</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
-<span class="c1">// ... other settings</span>
-
-<span class="c1">// Program to OTP</span>
-<span class="kt">bool</span> <span class="n">success</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">ProgramOTP</span><span class="p">();</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
-<h2 id="types">
-  
-  
-    <a href="#types" class="anchor-heading" aria-labelledby="types"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Types
-  
-  
-</h2>
-    
-<h3 id="frameformat">
-  
-  
-    <a href="#frameformat" class="anchor-heading" aria-labelledby="frameformat"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">FrameFormat</code>
-  
-  
-</h3>
-    
-
-<p>SPI frame format enumeration.</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-</pre></td><td class="rouge-code"><pre><span class="k">enum</span> <span class="k">class</span> <span class="nc">FrameFormat</span> <span class="o">:</span> <span class="kt">uint8_t</span> <span class="p">{</span>
-    <span class="n">SPI_16</span><span class="p">,</span>  <span class="c1">// 16-bit frames (no CRC)</span>
-    <span class="n">SPI_24</span><span class="p">,</span>  <span class="c1">// 24-bit frames (with CRC)</span>
-    <span class="n">SPI_32</span>   <span class="c1">// 32-bit frames (with CRC + pad)</span>
-<span class="p">};</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-<h3 id="as5047u_error">
-  
-  
-    <a href="#as5047u_error" class="anchor-heading" aria-labelledby="as5047u_error"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">AS5047U_Error</code>
-  
-  
-</h3>
-    
-
-<p>Error flag enumeration.</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-</pre></td><td class="rouge-code"><pre><span class="k">enum</span> <span class="k">class</span> <span class="nc">AS5047U_Error</span> <span class="o">:</span> <span class="kt">uint16_t</span> <span class="p">{</span>
-    <span class="n">None</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">AgcWarning</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">MagHalf</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="n">CrcError</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span><span class="p">,</span>
-    <span class="n">FramingError</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">,</span>
-    <span class="c1">// ... other flags</span>
-<span class="p">};</span>
-</pre></td></tr></tbody></table></div></code></pre></div></div>
-<h2 id="error-handling">
-  
-  
-    <a href="#error-handling" class="anchor-heading" aria-labelledby="error-handling"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Error Handling
-  
-  
-</h2>
-    
-
-<p>The driver uses return values and error flags for error handling:</p>
-
-<ul>
-  <li><strong>Configuration methods</strong> return <code class="language-plaintext highlighter-rouge">bool</code> (true = success, false = failure)</li>
-  <li><strong>Reading methods</strong> return values directly; check error flags separately</li>
-  <li><strong>CRC errors</strong> can be retried by passing <code class="language-plaintext highlighter-rouge">retries</code> parameter</li>
-  <li><strong>Error flags</strong> are available via <code class="language-plaintext highlighter-rouge">GetErrorFlags()</code> or <code class="language-plaintext highlighter-rouge">GetStickyErrorFlags()</code></li>
-</ul>
-<h3 id="error-codes">
-  
-  
-    <a href="#error-codes" class="anchor-heading" aria-labelledby="error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Error Codes
+    <a href="#otp-programming" class="anchor-heading" aria-labelledby="otp-programming"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> OTP Programming
   
   
 </h3>
@@ -1095,36 +558,129 @@
 <div class="table-wrapper"><table>
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Name</th>
-      <th>Description</th>
+      <th>Method</th>
+      <th>Signature</th>
+      <th>Location</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">AgcWarning</code></td>
-      <td>AGC Warning</td>
-      <td>AGC reached minimum (0) or maximum (255) value</td>
+      <td><code class="language-plaintext highlighter-rouge">ProgramOTP()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool ProgramOTP()</code></td>
+      <td><a href="../src/AS5047U.cpp#L257"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L257</code></a></td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="utility">
+  
+  
+    <a href="#utility" class="anchor-heading" aria-labelledby="utility"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Utility
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Signature</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetPad()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">void SetPad(uint8_t pad) noexcept</code></td>
+      <td><a href="../src/AS5047U.cpp#L302"><code class="language-plaintext highlighter-rouge">src/AS5047U.cpp#L302</code></a></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">MagHalf</code></td>
-      <td>Magnitude Half</td>
-      <td>Magnetic field is half of regulated value</td>
+      <td><code class="language-plaintext highlighter-rouge">ComputeCRC8()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">static constexpr uint8_t ComputeCRC8(uint16_t data16)</code></td>
+      <td><a href="../inc/as5047u.hpp#L96"><code class="language-plaintext highlighter-rouge">inc/as5047u.hpp#L96</code></a></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">CrcError</code></td>
-      <td>CRC Error</td>
-      <td>CRC error during SPI communication</td>
+      <td><code class="language-plaintext highlighter-rouge">ReadReg()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">template&lt;typename RegT&gt; RegT ReadReg() const</code></td>
+      <td><a href="../inc/as5047u.hpp#L360"><code class="language-plaintext highlighter-rouge">inc/as5047u.hpp#L360</code></a></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">FramingError</code></td>
-      <td>Framing Error</td>
-      <td>SPI framing error</td>
+      <td><code class="language-plaintext highlighter-rouge">WriteReg()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">template&lt;typename RegT&gt; bool WriteReg(const RegT&amp; reg, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../inc/as5047u.hpp#L376"><code class="language-plaintext highlighter-rouge">inc/as5047u.hpp#L376</code></a></td>
+    </tr>
+  </tbody>
+</table></div>
+<h2 id="types">
+  
+  
+    <a href="#types" class="anchor-heading" aria-labelledby="types"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Types
+  
+  
+</h2>
+    
+<h3 id="enumerations">
+  
+  
+    <a href="#enumerations" class="anchor-heading" aria-labelledby="enumerations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Enumerations
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Values</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FrameFormat</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SPI_16</code>, <code class="language-plaintext highlighter-rouge">SPI_24</code>, <code class="language-plaintext highlighter-rouge">SPI_32</code></td>
+      <td><a href="../inc/as5047u_types.hpp#L15"><code class="language-plaintext highlighter-rouge">inc/as5047u_types.hpp#L15</code></a></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">CommandError</code></td>
-      <td>Command Error</td>
-      <td>Invalid SPI command received</td>
+      <td><code class="language-plaintext highlighter-rouge">AS5047U_Error</code></td>
+      <td><code class="language-plaintext highlighter-rouge">None</code>, <code class="language-plaintext highlighter-rouge">AgcWarning</code>, <code class="language-plaintext highlighter-rouge">MagHalf</code>, <code class="language-plaintext highlighter-rouge">CrcError</code>, <code class="language-plaintext highlighter-rouge">FramingError</code>, <code class="language-plaintext highlighter-rouge">CommandError</code>, <code class="language-plaintext highlighter-rouge">WatchdogError</code>, <code class="language-plaintext highlighter-rouge">OffCompError</code>, <code class="language-plaintext highlighter-rouge">CordicOverflow</code></td>
+      <td><a href="../inc/as5047u.hpp#L32"><code class="language-plaintext highlighter-rouge">inc/as5047u.hpp#L32</code></a></td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="structures">
+  
+  
+    <a href="#structures" class="anchor-heading" aria-labelledby="structures"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Structures
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AS5047U_REG::DIA</code></td>
+      <td>Diagnostic register structure</td>
+      <td><a href="../inc/AS5047U_REGISTERS.hpp"><code class="language-plaintext highlighter-rouge">inc/AS5047U_REGISTERS.hpp</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AS5047U_REG::SETTINGS2::AngleOutputSource</code></td>
+      <td>Angle output source enumeration</td>
+      <td><a href="../inc/AS5047U_REGISTERS.hpp"><code class="language-plaintext highlighter-rouge">inc/AS5047U_REGISTERS.hpp</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AS5047U_REG::SETTINGS3::Hysteresis</code></td>
+      <td>Hysteresis enumeration</td>
+      <td><a href="../inc/AS5047U_REGISTERS.hpp"><code class="language-plaintext highlighter-rouge">inc/AS5047U_REGISTERS.hpp</code></a></td>
     </tr>
   </tbody>
 </table></div><hr />
