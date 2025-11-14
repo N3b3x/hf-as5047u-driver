@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['rad_5fper_5flsb_0',['RAD_PER_LSB',['../structAS5047U_1_1Velocity.html#af8991e7ad82182a303caa1f558312f4e',1,'AS5047U::Velocity']]],
+  ['rad_5fper_5flsb_0',['RAD_PER_LSB',['../structAS5047U_1_1Velocity.html#a509acc9467b3b178a0438792231c5ce9',1,'AS5047U::Velocity']]],
   ['reserved_1',['reserved',['../structAS5047U__REG_1_1NOP.html#ac4d2f2d479d493defe3327121024f8e3',1,'AS5047U_REG::NOP']]],
   ['reserved_5f1_2',['reserved_1',['../structAS5047U__REG_1_1PROG.html#ae9be666da98f60b0df1a2ad085b6999b',1,'AS5047U_REG::PROG']]],
   ['reserved_5f11_5f15_3',['reserved_11_15',['../structAS5047U__REG_1_1ERRFL.html#ad7fd93cd3f4ac61b4995702ce1cf5890',1,'AS5047U_REG::ERRFL']]],
@@ -13,5 +13,5 @@ var searchData=
   ['reserved_5f7_5f15_10',['reserved_7_15',['../structAS5047U__REG_1_1ECC__Checksum.html#a99d83d2176b057035f498fe7cc6c74cd',1,'AS5047U_REG::ECC_Checksum']]],
   ['reserved_5f8_5f15_11',['reserved_8_15',['../structAS5047U__REG_1_1PROG.html#a5e65ea7a076dd2cede8bfeb5af07fc83',1,'AS5047U_REG::PROG::reserved_8_15'],['../structAS5047U__REG_1_1AGC.html#ac0504c816c6715308864630e271f7b43',1,'AS5047U_REG::AGC::reserved_8_15'],['../structAS5047U__REG_1_1DISABLE.html#a1d58c33b139b3a99062c05112f1e596c',1,'AS5047U_REG::DISABLE::reserved_8_15'],['../structAS5047U__REG_1_1ZPOSM.html#a7903f81d034ebc96ea09533efd87551b',1,'AS5047U_REG::ZPOSM::reserved_8_15'],['../structAS5047U__REG_1_1ZPOSL.html#ae84f543b597a3db597694a20d3052d95',1,'AS5047U_REG::ZPOSL::reserved_8_15'],['../structAS5047U__REG_1_1SETTINGS1.html#aec1f5fdbcb4db4dafab2bef6b586ac05',1,'AS5047U_REG::SETTINGS1::reserved_8_15'],['../structAS5047U__REG_1_1SETTINGS2.html#a15e44b98bcff914fe14744979c6dc95d',1,'AS5047U_REG::SETTINGS2::reserved_8_15'],['../structAS5047U__REG_1_1SETTINGS3.html#ae52377bb882d10715391cf39623759b5',1,'AS5047U_REG::SETTINGS3::reserved_8_15'],['../structAS5047U__REG_1_1ECC.html#aa437227046508f2ea2dd1341fe4954b2',1,'AS5047U_REG::ECC::reserved_8_15']]],
   ['results_12',['results',['../structTestTaskContext.html#a1c97680bd267a35637278ea10a3fae0e',1,'TestTaskContext']]],
-  ['rpm_5fper_5flsb_13',['RPM_PER_LSB',['../structAS5047U_1_1Velocity.html#a8836213096705c6155883cb37109dcf4',1,'AS5047U::Velocity']]]
+  ['rpm_5fper_5flsb_13',['RPM_PER_LSB',['../structAS5047U_1_1Velocity.html#a07e049251b7f074f4d100a7843d80ad7',1,'AS5047U::Velocity']]]
 ];

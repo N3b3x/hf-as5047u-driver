@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['writereg_0',['writeReg',['../classAS5047U.html#a93b9d2f1d68bb693dadd69f83a469b97',1,'AS5047U']]]
+  ['writereg_0',['writeReg',['../classAS5047U.html#a3b4a3b2806cfd411fb1bdf94b8a70894',1,'AS5047U']]]
 ];

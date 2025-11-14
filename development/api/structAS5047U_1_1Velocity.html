@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HF-AS5047U Driver: AS5047U::Velocity Struct Reference</title>
+<title>HF-AS5047U Driver: AS5047U&lt; SpiType &gt;::Velocity Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -97,7 +97,7 @@ $(function(){initNavTree('structAS5047U_1_1Velocity.html',''); initResizable(); 
   <div class="summary">
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="structAS5047U_1_1Velocity-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">AS5047U::Velocity Struct Reference</div></div>
+  <div class="headertitle"><div class="title">AS5047U&lt; SpiType &gt;::Velocity Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -108,27 +108,30 @@ $(function(){initNavTree('structAS5047U_1_1Velocity.html',''); initResizable(); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a45b2c026ac32a835ee61084e2b9f2d24" id="r_a45b2c026ac32a835ee61084e2b9f2d24"><td class="memItemLeft" align="right" valign="top">static constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45b2c026ac32a835ee61084e2b9f2d24">DEG_PER_LSB</a> = 24.141</td></tr>
-<tr class="separator:a45b2c026ac32a835ee61084e2b9f2d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8991e7ad82182a303caa1f558312f4e" id="r_af8991e7ad82182a303caa1f558312f4e"><td class="memItemLeft" align="right" valign="top">static constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8991e7ad82182a303caa1f558312f4e">RAD_PER_LSB</a> = <a class="el" href="#a45b2c026ac32a835ee61084e2b9f2d24">DEG_PER_LSB</a> * M_PI / 180.0</td></tr>
-<tr class="separator:af8991e7ad82182a303caa1f558312f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8836213096705c6155883cb37109dcf4" id="r_a8836213096705c6155883cb37109dcf4"><td class="memItemLeft" align="right" valign="top">static constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8836213096705c6155883cb37109dcf4">RPM_PER_LSB</a> = <a class="el" href="#a45b2c026ac32a835ee61084e2b9f2d24">DEG_PER_LSB</a> * (60.0 / 360.0)</td></tr>
-<tr class="separator:a8836213096705c6155883cb37109dcf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a3940b5b70e8da798f16602f7693187" id="r_a9a3940b5b70e8da798f16602f7693187"><td class="memItemLeft" align="right" valign="top">static constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a3940b5b70e8da798f16602f7693187">DEG_PER_LSB</a> = 24.141</td></tr>
+<tr class="separator:a9a3940b5b70e8da798f16602f7693187"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a509acc9467b3b178a0438792231c5ce9" id="r_a509acc9467b3b178a0438792231c5ce9"><td class="memItemLeft" align="right" valign="top">static constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a509acc9467b3b178a0438792231c5ce9">RAD_PER_LSB</a> = <a class="el" href="#a9a3940b5b70e8da798f16602f7693187">DEG_PER_LSB</a> * M_PI / 180.0</td></tr>
+<tr class="separator:a509acc9467b3b178a0438792231c5ce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07e049251b7f074f4d100a7843d80ad7" id="r_a07e049251b7f074f4d100a7843d80ad7"><td class="memItemLeft" align="right" valign="top">static constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07e049251b7f074f4d100a7843d80ad7">RPM_PER_LSB</a> = <a class="el" href="#a9a3940b5b70e8da798f16602f7693187">DEG_PER_LSB</a> * (60.0 / 360.0)</td></tr>
+<tr class="separator:a07e049251b7f074f4d100a7843d80ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Helper constants and methods for velocity unit conversions. </p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename SpiType&gt;<br />
+struct AS5047U&lt; SpiType &gt;::Velocity</div><p>Helper constants and methods for velocity unit conversions. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="a45b2c026ac32a835ee61084e2b9f2d24" name="a45b2c026ac32a835ee61084e2b9f2d24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45b2c026ac32a835ee61084e2b9f2d24">&#9670;&#160;</a></span>DEG_PER_LSB</h2>
+<a id="a9a3940b5b70e8da798f16602f7693187" name="a9a3940b5b70e8da798f16602f7693187"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a3940b5b70e8da798f16602f7693187">&#9670;&#160;</a></span>DEG_PER_LSB</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr double AS5047U::Velocity::DEG_PER_LSB = 24.141</td>
+          <td class="memname">constexpr double <a class="el" href="classAS5047U.html">AS5047U</a>&lt; SpiType &gt;::Velocity::DEG_PER_LSB = 24.141</td>
         </tr>
       </table>
   </td>
@@ -140,17 +143,19 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af8991e7ad82182a303caa1f558312f4e" name="af8991e7ad82182a303caa1f558312f4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8991e7ad82182a303caa1f558312f4e">&#9670;&#160;</a></span>RAD_PER_LSB</h2>
+<a id="a509acc9467b3b178a0438792231c5ce9" name="a509acc9467b3b178a0438792231c5ce9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a509acc9467b3b178a0438792231c5ce9">&#9670;&#160;</a></span>RAD_PER_LSB</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr double AS5047U::Velocity::RAD_PER_LSB = <a class="el" href="#a45b2c026ac32a835ee61084e2b9f2d24">DEG_PER_LSB</a> * M_PI / 180.0</td>
+          <td class="memname">constexpr double <a class="el" href="classAS5047U.html">AS5047U</a>&lt; SpiType &gt;::Velocity::RAD_PER_LSB = <a class="el" href="#a9a3940b5b70e8da798f16602f7693187">DEG_PER_LSB</a> * M_PI / 180.0</td>
         </tr>
       </table>
   </td>
@@ -162,17 +167,19 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a8836213096705c6155883cb37109dcf4" name="a8836213096705c6155883cb37109dcf4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8836213096705c6155883cb37109dcf4">&#9670;&#160;</a></span>RPM_PER_LSB</h2>
+<a id="a07e049251b7f074f4d100a7843d80ad7" name="a07e049251b7f074f4d100a7843d80ad7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07e049251b7f074f4d100a7843d80ad7">&#9670;&#160;</a></span>RPM_PER_LSB</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr double AS5047U::Velocity::RPM_PER_LSB = <a class="el" href="#a45b2c026ac32a835ee61084e2b9f2d24">DEG_PER_LSB</a> * (60.0 / 360.0)</td>
+          <td class="memname">constexpr double <a class="el" href="classAS5047U.html">AS5047U</a>&lt; SpiType &gt;::Velocity::RPM_PER_LSB = <a class="el" href="#a9a3940b5b70e8da798f16602f7693187">DEG_PER_LSB</a> * (60.0 / 360.0)</td>
         </tr>
       </table>
   </td>

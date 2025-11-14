@@ -1,9 +1,10 @@
 <map id="src/AS5047U.cpp" name="src/AS5047U.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="535,5,666,31"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="469,5,599,31"/>
 <area shape="rect" id="Node000002" href="$AS5047U_8hpp.html" title="Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21)." alt="" coords="462,79,606,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="592,33,556,70,552,67,588,29"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="530,31,528,65,523,65,524,31"/>
 <area shape="rect" id="Node000013" title=" " alt="" coords="630,79,705,104"/>
-<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="614,29,649,67,645,70,610,33"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="557,28,635,70,632,74,554,33"/>
+<area shape="poly" id="edge16_Node000002_Node000001" title=" " alt="" coords="538,78,540,44,545,45,544,79"/>
 <area shape="rect" id="Node000003" href="$AS5047U__REGISTERS_8hpp.html" title="Register definitions for the AS5047U Rotary Position Sensor." alt="" coords="5,225,193,251"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="462,99,343,116,277,132,214,154,163,185,122,218,119,214,160,180,212,150,275,127,342,111,461,94"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="491,299,558,324"/>
