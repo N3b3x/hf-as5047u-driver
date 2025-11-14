@@ -1,0 +1,30 @@
+<map id="examples/esp32/main/full_features_example.cpp" name="examples/esp32/main/full_features_example.cpp">
+<area shape="rect" id="Node000001" title="Comprehensive example demonstrating all as5047u::AS5047U features." alt="" coords="365,5,564,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,174,89,199"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="366,38,261,57,206,74,154,96,105,129,68,166,64,162,102,125,151,91,204,69,259,52,365,32"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="389,93,540,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="467,46,467,79,462,79,462,46"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="565,93,682,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="504,43,589,85,587,90,501,48"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="114,174,191,199"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="365,40,251,62,204,77,173,95,163,110,157,126,153,161,148,160,152,125,158,107,170,91,201,72,250,56,365,35"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="706,93,773,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="531,43,693,89,692,94,530,48"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="797,93,961,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="564,43,806,88,805,93,563,48"/>
+<area shape="rect" id="Node000008" href="$esp32__as5047u__bus_8hpp.html" title="ESP32 SPI transport implementation for AS5047U driver." alt="" coords="183,93,365,119"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="420,48,316,91,314,86,418,43"/>
+<area shape="poly" id="edge13_Node000008_Node000002" title=" " alt="" coords="242,121,94,172,92,167,240,116"/>
+<area shape="poly" id="edge15_Node000008_Node000005" title=" " alt="" coords="258,121,183,169,180,164,255,117"/>
+<area shape="rect" id="Node000009" href="$as5047u__spi__interface_8hpp.html" title="CRTP&#45;based SPI bus interface for AS5047U driver." alt="" coords="514,167,655,207"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="320,116,501,162,500,167,319,121"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="651,255,718,280"/>
+<area shape="poly" id="edge14_Node000008_Node000011" title=" " alt="" coords="365,116,555,141,632,154,669,164,681,182,688,202,690,240,685,241,683,203,676,184,666,169,631,159,554,146,365,121"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="215,174,319,199"/>
+<area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="276,119,272,160,267,160,270,119"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="343,174,490,199"/>
+<area shape="poly" id="edge12_Node000008_Node000013" title=" " alt="" coords="296,117,385,165,383,170,294,121"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="549,255,620,280"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="587,207,587,241,582,241,582,207"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="611,205,660,244,657,248,607,209"/>
+</map>

@@ -1,0 +1,19 @@
+<map id="inc/as5047u_spi_interface.hpp" name="inc/as5047u_spi_interface.hpp">
+<area shape="rect" id="Node000001" title="CRTP&#45;based SPI bus interface for AS5047U driver." alt="" coords="589,5,807,31"/>
+<area shape="rect" id="Node000002" href="$esp32__as5047u__bus_8hpp.html" title="ESP32 SPI transport implementation for AS5047U driver." alt="" coords="515,79,700,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="676,42,631,81,627,76,673,38"/>
+<area shape="rect" id="Node000009" href="$AS5047U_8hpp.html" title="Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21)." alt="" coords="724,86,856,111"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="724,38,778,84,775,88,720,42"/>
+<area shape="rect" id="Node000003" href="$basic__angle__reading__example_8cpp.html" title="Basic angle reading example with diagnostics." alt="" coords="5,167,172,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="501,116,351,139,185,169,173,172,172,167,184,164,350,133,501,111"/>
+<area shape="rect" id="Node000004" href="$configuration__example_8cpp.html" title="Configuration example with ABI, UVW, and PWM setup." alt="" coords="197,174,399,214"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="533,125,361,176,360,171,531,120"/>
+<area shape="rect" id="Node000005" href="$driver__integration__test_8cpp.html" title="Comprehensive Integration Test Suite for as5047u::AS5047U Driver." alt="" coords="424,167,591,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="579,130,537,169,534,165,575,126"/>
+<area shape="rect" id="Node000006" href="$esp32__as5047u__bus_8cpp.html" title="ESP32 SPI transport implementation for as5047u::AS5047U driver." alt="" coords="615,174,799,214"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="639,126,689,172,685,176,636,130"/>
+<area shape="rect" id="Node000007" href="$full__features__example_8cpp.html" title="Comprehensive example demonstrating all as5047u::AS5047U features." alt="" coords="824,174,1023,214"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="685,120,860,171,859,177,683,125"/>
+<area shape="rect" id="Node000008" href="$velocity__reading__example_8cpp.html" title="Velocity reading example with unit conversions." alt="" coords="1047,174,1272,214"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="714,116,877,139,1036,164,1074,171,1073,177,1035,169,876,145,713,121"/>
+</map>

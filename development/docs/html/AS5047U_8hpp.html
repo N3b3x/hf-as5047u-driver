@@ -143,7 +143,7 @@ $(function(){initNavTree('AS5047U_8hpp.html',''); initResizable(); });
 
 <p>Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21).  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="AS5047U__Bus_8hpp_source.html">AS5047U_Bus.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="as5047u__spi__interface_8hpp_source.html">as5047u_spi_interface.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="AS5047U__REGISTERS_8hpp_source.html">AS5047U_REGISTERS.hpp</a>&quot;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;array&gt;</code><br />
@@ -159,12 +159,7 @@ $(function(){initNavTree('AS5047U_8hpp.html',''); initResizable(); });
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for AS5047U.hpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="AS5047U_8hpp__incl.svg" width="1298" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="AS5047U_8hpp__dep__incl.svg" width="1291" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="AS5047U_8hpp__incl.svg" width="1738" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="AS5047U_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -211,7 +206,7 @@ Enumerations</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21). </p>
 <p>This driver provides hardware-agnostic access to the AS5047U sensor over SPI, supporting 16-bit, 24-bit, and 32-bit SPI frame formats. It implements all major features described in the AS5047U datasheet, including absolute angle readout with/without DAEC, velocity measurement, AGC and magnetic field diagnostics, ABI/UVW/PWM interface configuration, error/status flag handling, full OTP programming sequence, dynamic angle error compensation, adaptive filtering, and CRC calculation.</p>
-<p>The design uses a virtual <code>spiBus</code> interface to abstract SPI communication, so it can run on any platform. It assumes the <code>spiBus</code> implementation handles synchronization for thread safety. This driver is optimized for clarity and extensibility and has no direct hardware dependencies. </p>
+<p>The design uses a CRTP-based <code>SpiInterface</code> interface to abstract SPI communication, so it can run on any platform. It assumes the <code>spiBus</code> implementation handles synchronization for thread safety. This driver is optimized for clarity and extensibility and has no direct hardware dependencies. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="acfbfd1b6f3b51f7a790ae86416b3df4a" name="acfbfd1b6f3b51f7a790ae86416b3df4a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acfbfd1b6f3b51f7a790ae86416b3df4a">&#9670;&#160;</a></span>AS5047U_HEADER_INCLUDED</h2>

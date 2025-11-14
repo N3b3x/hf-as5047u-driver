@@ -17,11 +17,11 @@ var hierarchy =
     [ "AS5047U_REG::SETTINGS2", "structAS5047U__REG_1_1SETTINGS2.html", null ],
     [ "AS5047U_REG::SETTINGS3", "structAS5047U__REG_1_1SETTINGS3.html", null ],
     [ "AS5047U_REG::SINDATA", "structAS5047U__REG_1_1SINDATA.html", null ],
-    [ "as5047u::spiBus< Derived >", "classas5047u_1_1spiBus.html", null ],
-    [ "as5047u::spiBus< Esp32As5047uBus >", "classas5047u_1_1spiBus.html", [
+    [ "Esp32As5047uBus::SPIConfig", "structEsp32As5047uBus_1_1SPIConfig.html", null ],
+    [ "as5047u::SpiInterface< Derived >", "classas5047u_1_1SpiInterface.html", null ],
+    [ "as5047u::SpiInterface< Esp32As5047uBus >", "classas5047u_1_1SpiInterface.html", [
       [ "Esp32As5047uBus", "classEsp32As5047uBus.html", null ]
     ] ],
-    [ "Esp32As5047uBus::SPIConfig", "structEsp32As5047uBus_1_1SPIConfig.html", null ],
     [ "TestResults", "structTestResults.html", null ],
     [ "TestTaskContext", "structTestTaskContext.html", null ],
     [ "AS5047U_REG::VEL", "structAS5047U__REG_1_1VEL.html", null ],

@@ -9,6 +9,6 @@ var searchData=
   ['testtaskcontext_6',['TestTaskContext',['../structTestTaskContext.html',1,'']]],
   ['total_5fexecution_5ftime_5fus_7',['total_execution_time_us',['../structTestResults.html#a7eddc258a4288ac5f0a36a1008c9d014',1,'TestResults']]],
   ['total_5ftests_8',['total_tests',['../structTestResults.html#afe20b168a13950ffca7296c0c56d4359',1,'TestResults']]],
-  ['transfer_9',['transfer',['../classas5047u_1_1spiBus.html#a9d2c32c8b79c4ee544eb10fdb6444498',1,'as5047u::spiBus::transfer()'],['../classEsp32As5047uBus.html#abfad1f87da4cd8e24de6a8f80c18e776',1,'Esp32As5047uBus::transfer()']]],
+  ['transfer_9',['transfer',['../classas5047u_1_1SpiInterface.html#aafdd971e247401dd58852d6d0d65c979',1,'as5047u::SpiInterface::transfer()'],['../classEsp32As5047uBus.html#abfad1f87da4cd8e24de6a8f80c18e776',1,'Esp32As5047uBus::transfer()']]],
   ['tristate_10',['Tristate',['../structAS5047U__REG_1_1DISABLE.html#a0b0f8cfb593348630f6c272a0e4e2e7ca1e12ce0c312e7dd542b46ed8e35a8902',1,'AS5047U_REG::DISABLE::Tristate'],['../structAS5047U__REG_1_1DISABLE.html#ab4c532c4b7ab8568f78b98aebebe50bca1e12ce0c312e7dd542b46ed8e35a8902',1,'AS5047U_REG::DISABLE::Tristate']]]
 ];

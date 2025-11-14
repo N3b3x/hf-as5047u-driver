@@ -5,5 +5,5 @@ var searchData=
   ['vel_2',['VEL',['../structAS5047U__REG_1_1VEL.html',1,'AS5047U_REG']]],
   ['vel_5fvalue_3',['VEL_value',['../structAS5047U__REG_1_1VEL.html#aea0a509f1e086364445a105df1173ff7',1,'AS5047U_REG::VEL']]],
   ['velocity_4',['Velocity',['../structas5047u_1_1AS5047U_1_1Velocity.html',1,'as5047u::AS5047U']]],
-  ['velocityreadingexample_2ecpp_5',['VelocityReadingExample.cpp',['../VelocityReadingExample_8cpp.html',1,'']]]
+  ['velocity_5freading_5fexample_2ecpp_5',['velocity_reading_example.cpp',['../velocity__reading__example_8cpp.html',1,'']]]
 ];

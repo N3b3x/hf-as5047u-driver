@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Type definitions for the AS5047U driver.">
+<g id="a_Node000001"><a xlink:title=" ">
 <polygon fill="#999999" stroke="#666666" points="131,-74 0,-74 0,-55 131,-55 131,-74"/>
 <text text-anchor="middle" x="65.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">inc/AS5047U_types.hpp</text>
 </a>

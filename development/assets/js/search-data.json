@@ -8,7 +8,7 @@
   },"1": {
     "doc": "HardFOC AS5047U Driver",
     "title": "✨ Key Features",
-    "content": ". | 🧩 Cross-platform spiBus interface | 📐 Modern C++20 API | 📝 Examples for Arduino, ESP32 and STM32 | 🧪 Unit tests for reliability | . ",
+    "content": ". | 🧩 Cross-platform SpiInterface interface | 📐 Modern C++20 API | 📝 Examples for Arduino, ESP32 and STM32 | 🧪 Unit tests for reliability | . ",
     "url": "/hf-as5047u-driver/development/#-key-features",
     
     "relUrl": "/#-key-features"
@@ -22,14 +22,14 @@
   },"3": {
     "doc": "HardFOC AS5047U Driver",
     "title": "🏗️ Library Architecture",
-    "content": "This library exposes a single AS5047U class that wraps all sensor functionality in a clear, type‑safe API. Key components include: . | AS5047U class – high level interface | Register definitions in AS5047U_REGISTERS.hpp | FrameFormat enum to select 16/24/32‑bit SPI frames | spiBus interface – abstract SPI layer for platform independence | . ",
+    "content": "This library exposes a single AS5047U class that wraps all sensor functionality in a clear, type‑safe API. Key components include: . | AS5047U class – high level interface | Register definitions in AS5047U_REGISTERS.hpp | FrameFormat enum to select 16/24/32‑bit SPI frames | SpiInterface interface – abstract SPI layer for platform independence | . ",
     "url": "/hf-as5047u-driver/development/#%EF%B8%8F-library-architecture",
     
     "relUrl": "/#️-library-architecture"
   },"4": {
     "doc": "HardFOC AS5047U Driver",
     "title": "SPI Bus Abstraction",
-    "content": "Applications implement the virtual spiBus interface and plug it into the driver: . | 1 2 3 4 5 . | class spiBus { public: virtual ~spiBus() = default; virtual void transfer(const uint8_t* tx, uint8_t* rx, size_t len) = 0; }; . | . The driver itself contains no hardware specifics – simply implement transfer() for your platform. ",
+    "content": "Applications implement the SpiInterface interface and plug it into the driver: . | 1 2 3 4 5 6 7 . | class MySpiInterface : public as5047u::SpiInterface&lt;MySpiInterface&gt; { public: // CRTP implementation - implement required methods void Transfer(const uint8_t* tx, uint8_t* rx, size_t len) { // Your SPI transfer implementation } }; . | . The driver itself contains no hardware specifics – simply implement the required methods for your platform. ",
     "url": "/hf-as5047u-driver/development/#spi-bus-abstraction",
     
     "relUrl": "/#spi-bus-abstraction"
@@ -43,21 +43,21 @@
   },"6": {
     "doc": "HardFOC AS5047U Driver",
     "title": "ESP-IDF",
-    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 . | class ESPBus : public AS5047U::spiBus { spi_device_handle_t dev; public: ESPBus(spi_device_handle_t handle) : dev(handle) {} void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override { spi_transaction_t t = {}; t.tx_buffer = tx; t.rx_buffer = rx; t.length = len * 8; spi_device_transmit(dev, &amp;t); } }; . | . ",
+    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 . | class ESPBus : public as5047u::SpiInterface&lt;ESPBus&gt; { spi_device_handle_t dev; public: ESPBus(spi_device_handle_t handle) : dev(handle) {} void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override { spi_transaction_t t = {}; t.tx_buffer = tx; t.rx_buffer = rx; t.length = len * 8; spi_device_transmit(dev, &amp;t); } }; . | . ",
     "url": "/hf-as5047u-driver/development/#esp-idf",
     
     "relUrl": "/#esp-idf"
   },"7": {
     "doc": "HardFOC AS5047U Driver",
     "title": "STM32 HAL",
-    "content": "| 1 2 3 4 5 6 7 8 9 . | class STM32Bus : public AS5047U::spiBus { SPI_HandleTypeDef* hspi; public: STM32Bus(SPI_HandleTypeDef * handle) : hspi(handle) {} void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override { HAL_SPI_TransmitReceive(hspi, (uint8_t*)tx, rx, len, HAL_MAX_DELAY); } }; . | . ",
+    "content": "| 1 2 3 4 5 6 7 8 9 . | class STM32Bus : public as5047u::SpiInterface&lt;STM32Bus&gt; { SPI_HandleTypeDef* hspi; public: STM32Bus(SPI_HandleTypeDef * handle) : hspi(handle) {} void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override { HAL_SPI_TransmitReceive(hspi, (uint8_t*)tx, rx, len, HAL_MAX_DELAY); } }; . | . ",
     "url": "/hf-as5047u-driver/development/#stm32-hal",
     
     "relUrl": "/#stm32-hal"
   },"8": {
     "doc": "HardFOC AS5047U Driver",
     "title": "Arduino",
-    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 . | class ArduinoBus : public AS5047U::spiBus { public: void transfer(const uint8_t *tx, uint8_t *rx, size_t len) override { SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE1)); digitalWrite(CS_PIN, LOW); for (size_t i = 0; i &lt; len; ++i) { uint8_t out = tx ? tx[i] : 0; uint8_t in = SPI.transfer(out); if (rx) rx[i] = in; } digitalWrite(CS_PIN, HIGH); SPI.endTransaction(); } } ; . | . ",
+    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 . | class ArduinoBus : public as5047u::SpiInterface&lt;ArduinoBus&gt; { public: void transfer(const uint8_t *tx, uint8_t *rx, size_t len) override { SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE1)); digitalWrite(CS_PIN, LOW); for (size_t i = 0; i &lt; len; ++i) { uint8_t out = tx ? tx[i] : 0; uint8_t in = SPI.transfer(out); if (rx) rx[i] = in; } digitalWrite(CS_PIN, HIGH); SPI.endTransaction(); } } ; . | . ",
     "url": "/hf-as5047u-driver/development/#arduino",
     
     "relUrl": "/#arduino"
@@ -78,7 +78,7 @@
   },"11": {
     "doc": "HardFOC AS5047U Driver",
     "title": "🔧 Installation",
-    "content": ". | 📥 Copy AS5047U.hpp, AS5047U.cpp and AS5047U_REGISTERS.hpp into your project | 🔌 Implement the spiBus interface for your platform | ➕ #include \"AS5047U.hpp\" | 🛠️ Compile with a C++20 compiler | 🏗️ Optionally build with the provided Makefile . | Override compiler flags on the command line | Configure default options via Kconfig or AS5047U_config.hpp | . | . ",
+    "content": ". | 📥 Copy AS5047U.hpp, AS5047U.cpp and AS5047U_REGISTERS.hpp into your project | 🔌 Implement the SpiInterface interface for your platform | ➕ #include \"AS5047U.hpp\" | 🛠️ Compile with a C++20 compiler | 🏗️ Optionally build with the provided Makefile . | Override compiler flags on the command line | Configure default options via Kconfig or AS5047U_config.hpp | . | . ",
     "url": "/hf-as5047u-driver/development/#-installation",
     
     "relUrl": "/#-installation"
@@ -99,7 +99,7 @@
   },"14": {
     "doc": "HardFOC AS5047U Driver",
     "title": "📟 API Summary",
-    "content": "Click on any function name to jump directly to its implementation in the source code. | Function | Description |———-|————-| AS5047U(spiBus &amp;bus, FrameFormat format) | Constructor (SPI interface and frame format) | void SetFrameFormat(FrameFormat format) | Set SPI frame format (16/24/32-bit mode) | uint16_t GetAngle(uint8_t retries=0) | Read 14-bit compensated absolute angle | uint16_t GetRawAngle(uint8_t retries=0) | Read 14-bit raw absolute angle | int16_t GetVelocity(uint8_t retries=0) | Read signed 14-bit velocity (LSB units) | float GetVelocityDegPerSec(uint8_t retries=0) | Velocity in degrees/sec | float GetVelocityRadPerSec(uint8_t retries=0) | Velocity in radians/sec | float GetVelocityRPM(uint8_t retries=0) | Velocity in revolutions per minute (RPM) | uint8_t GetAGC(uint8_t retries=0) | Read AGC (0–255) value | uint16_t GetMagnitude(uint8_t retries=0) | Read magnetic field magnitude (0–16383) | uint16_t GetErrorFlags(uint8_t retries=0) | Read and clear error/status flags | void DumpStatus() const | Print formatted status/diagnostics | uint16_t GetZeroPosition(uint8_t retries=0) const | Get current zero offset | bool SetZeroPosition(uint16_t angle_lsb, uint8_t retries=0) | Set new zero offset | bool SetDirection(bool clockwise, uint8_t retries=0) | Set rotation direction (CW or CCW) | bool SetABIResolution(uint8_t resolution_bits, uint8_t retries=0) | Set ABI output resolution (10–14 bits) | bool SetUVWPolePairs(uint8_t pairs, uint8_t retries=0) | Set UVW pole pairs (1–7) | bool SetIndexPulseLength(uint8_t lsb_len, uint8_t retries=0) | Set ABI index pulse width | bool ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=0) | Enable/disable ABI, UVW, PWM | bool SetDynamicAngleCompensation(bool enable, uint8_t retries=0) | Enable/disable DAEC | bool SetAdaptiveFilter(bool enable, uint8_t retries=0) | Enable/disable adaptive filter (DFS) | bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries=0) | Set DFS filter parameters | bool Set150CTemperatureMode(bool enable, uint8_t retries=0) | Enable 150°C (high-temp mode) | bool ProgramOTP() | Program current settings into OTP (one-time) | void SetPad(uint8_t pad) | Set pad byte for 32-bit SPI frames | bool SetHysteresis(SETTINGS3::Hysteresis hysteresis, uint8_t retries=0) | Set incremental hysteresis level | SETTINGS3::Hysteresis GetHysteresis() const | Get current hysteresis setting | bool SetAngleOutputSource(SETTINGS2::AngleOutputSource source, uint8_t retries=0) | Select angle output source (comp/raw) | SETTINGS2::AngleOutputSource GetAngleOutputSource() const | Get selected angle output source | AS5047U_REG::DIA GetDiagnostics() const | Read full diagnostic register (DIA) | — . ",
+    "content": "Click on any function name to jump directly to its implementation in the source code. | Function | Description |———-|————-| AS5047U(SpiInterface &amp;bus, FrameFormat format) | Constructor (SPI interface and frame format) | void SetFrameFormat(FrameFormat format) | Set SPI frame format (16/24/32-bit mode) | uint16_t GetAngle(uint8_t retries=0) | Read 14-bit compensated absolute angle | uint16_t GetRawAngle(uint8_t retries=0) | Read 14-bit raw absolute angle | int16_t GetVelocity(uint8_t retries=0) | Read signed 14-bit velocity (LSB units) | float GetVelocityDegPerSec(uint8_t retries=0) | Velocity in degrees/sec | float GetVelocityRadPerSec(uint8_t retries=0) | Velocity in radians/sec | float GetVelocityRPM(uint8_t retries=0) | Velocity in revolutions per minute (RPM) | uint8_t GetAGC(uint8_t retries=0) | Read AGC (0–255) value | uint16_t GetMagnitude(uint8_t retries=0) | Read magnetic field magnitude (0–16383) | uint16_t GetErrorFlags(uint8_t retries=0) | Read and clear error/status flags | void DumpStatus() const | Print formatted status/diagnostics | uint16_t GetZeroPosition(uint8_t retries=0) const | Get current zero offset | bool SetZeroPosition(uint16_t angle_lsb, uint8_t retries=0) | Set new zero offset | bool SetDirection(bool clockwise, uint8_t retries=0) | Set rotation direction (CW or CCW) | bool SetABIResolution(uint8_t resolution_bits, uint8_t retries=0) | Set ABI output resolution (10–14 bits) | bool SetUVWPolePairs(uint8_t pairs, uint8_t retries=0) | Set UVW pole pairs (1–7) | bool SetIndexPulseLength(uint8_t lsb_len, uint8_t retries=0) | Set ABI index pulse width | bool ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=0) | Enable/disable ABI, UVW, PWM | bool SetDynamicAngleCompensation(bool enable, uint8_t retries=0) | Enable/disable DAEC | bool SetAdaptiveFilter(bool enable, uint8_t retries=0) | Enable/disable adaptive filter (DFS) | bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries=0) | Set DFS filter parameters | bool Set150CTemperatureMode(bool enable, uint8_t retries=0) | Enable 150°C (high-temp mode) | bool ProgramOTP() | Program current settings into OTP (one-time) | void SetPad(uint8_t pad) | Set pad byte for 32-bit SPI frames | bool SetHysteresis(SETTINGS3::Hysteresis hysteresis, uint8_t retries=0) | Set incremental hysteresis level | SETTINGS3::Hysteresis GetHysteresis() const | Get current hysteresis setting | bool SetAngleOutputSource(SETTINGS2::AngleOutputSource source, uint8_t retries=0) | Select angle output source (comp/raw) | SETTINGS2::AngleOutputSource GetAngleOutputSource() const | Get selected angle output source | AS5047U_REG::DIA GetDiagnostics() const | Read full diagnostic register (DIA) | — . ",
     "url": "/hf-as5047u-driver/development/#-api-summary",
     
     "relUrl": "/#-api-summary"
@@ -225,7 +225,7 @@
   },"32": {
     "doc": "🎮 Running the Examples",
     "title": "ESP32 (ESP-IDF)",
-    "content": ". | 📂 Copy examples/es32_basic_interface into an ESP-IDF project | 🔧 Implement an spiBus using ESP-IDF SPI API | 🚀 Build and flash using idf.py flash monitor | 1 . | Angle: 90.0 deg . | . | . ",
+    "content": ". | 📂 Copy examples/es32_basic_interface into an ESP-IDF project | 🔧 Implement a SpiInterface using ESP-IDF SPI API | 🚀 Build and flash using idf.py flash monitor | 1 . | Angle: 90.0 deg . | . | . ",
     "url": "/hf-as5047u-driver/development/docs/examples/#esp32-esp-idf",
     
     "relUrl": "/docs/examples/#esp32-esp-idf"
@@ -323,7 +323,7 @@
   },"46": {
     "doc": "📚 Using the Library",
     "title": "1. Provide a SPI Bus Implementation",
-    "content": "The driver uses a small spiBus interface. Implement the transfer() method for your platform. Example for Arduino: . | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 . | class ArduinoBus : public spiBus { public: ArduinoBus(SPIClass&amp; spi, uint8_t cs) : spi_(spi), csPin_(cs) { pinMode(csPin_, OUTPUT); digitalWrite(csPin_, HIGH); } void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override { digitalWrite(csPin_, LOW); for (size_t i = 0; i &lt; len; ++i) { uint8_t out = tx ? tx[i] : 0x00; uint8_t in = spi_.transfer(out); if (rx) rx[i] = in; } digitalWrite(csPin_, HIGH); } private: SPIClass &amp; spi_; uint8_t csPin_; }; . | . | 1 2 3 . | ##2. Create the Driver Pass your bus implementation and desired frame format to the constructor : . | . ```cpp ArduinoBus bus(SPI, CS_PIN); // platform SPI wrapper AS5047U encoder(bus, FrameFormat::SPI_24); // use 24-bit frames . | 1 2 3 4 5 6 7 . | ##3. Read Data Call the API methods to access sensor data : ```cpp uint16_t angle = encoder.GetAngle(); uint8_t agc = encoder.GetAGC(); . | . | 1 . | Typical output when printing the values might look like : . | . ``` Angle : 16384 AGC : 128 . | 1 2 3 4 5 . | You can also read velocity in degrees per second : ```cpp float velDeg = encoder.GetVelocityDegPerSec(); // velocity in deg/s . | . Which might print something like Velocity: 30.5 deg/s. Refer to the API summary for the full list of methods. ⬅️ Previous: Building and Testing | Back to Documentation Index | Next: Running the Examples ➡️ . ",
+    "content": "The driver uses a small SpiInterface interface. Implement the transfer() method for your platform. Example for Arduino: . | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 . | class ArduinoBus : public as5047u::SpiInterface&lt;ArduinoBus&gt; { public: ArduinoBus(SPIClass&amp; spi, uint8_t cs) : spi_(spi), csPin_(cs) { pinMode(csPin_, OUTPUT); digitalWrite(csPin_, HIGH); } void transfer(const uint8_t* tx, uint8_t* rx, size_t len) override { digitalWrite(csPin_, LOW); for (size_t i = 0; i &lt; len; ++i) { uint8_t out = tx ? tx[i] : 0x00; uint8_t in = spi_.transfer(out); if (rx) rx[i] = in; } digitalWrite(csPin_, HIGH); } private: SPIClass &amp; spi_; uint8_t csPin_; }; . | . | 1 2 3 . | ##2. Create the Driver Pass your bus implementation and desired frame format to the constructor : . | . ```cpp ArduinoBus bus(SPI, CS_PIN); // platform SPI wrapper AS5047U encoder(bus, FrameFormat::SPI_24); // use 24-bit frames . | 1 2 3 4 5 6 7 . | ##3. Read Data Call the API methods to access sensor data : ```cpp uint16_t angle = encoder.GetAngle(); uint8_t agc = encoder.GetAGC(); . | . | 1 . | Typical output when printing the values might look like : . | . ``` Angle : 16384 AGC : 128 . | 1 2 3 4 5 . | You can also read velocity in degrees per second : ```cpp float velDeg = encoder.GetVelocityDegPerSec(); // velocity in deg/s . | . Which might print something like Velocity: 30.5 deg/s. Refer to the API summary for the full list of methods. ⬅️ Previous: Building and Testing | Back to Documentation Index | Next: Running the Examples ➡️ . ",
     "url": "/hf-as5047u-driver/development/docs/usage/#1-provide-a-spi-bus-implementation",
     
     "relUrl": "/docs/usage/#1-provide-a-spi-bus-implementation"

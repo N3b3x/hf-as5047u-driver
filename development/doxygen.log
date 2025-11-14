@@ -1,6 +1,8 @@
-warning: ignoring unsupported tag 'PAGE_OUTLINE_PANEL' at line 1765, file /tmp/doxyfile.XA0t0L
-warning: Tag 'DOT_TRANSPARENT' at line 2788 of file '/tmp/doxyfile.XA0t0L' has become obsolete.
+warning: ignoring unsupported tag 'PAGE_OUTLINE_PANEL' at line 1765, file /tmp/doxyfile.FuTOMT
+warning: Tag 'DOT_TRANSPARENT' at line 2788 of file '/tmp/doxyfile.FuTOMT' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/AS5047U_REGISTERS.hpp:2: warning: the name 'as5047u_registers.hpp' supplied as the argument in the \file statement is not an input file
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/AS5047U_types.hpp:2: warning: the name 'as5047u_types.hpp' supplied as the argument in the \file statement is not an input file
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/main/TestFramework.h:383: warning: The following parameter of print_test_section_footer(const char *tag, const char *section_name, bool enabled=true) is not documented:
   parameter 'tag'
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/main/TestFramework.h:357: warning: The following parameter of print_test_section_header(const char *tag, const char *section_name, bool enabled=true) is not documented:
@@ -10,7 +12,6 @@ warning: Tag 'DOT_TRANSPARENT' at line 2788 of file '/tmp/doxyfile.XA0t0L' has b
   parameter 'tag'
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/main/TestFramework.h:321: warning: The following parameter of print_test_summary(const TestResults &test_results, const char *test_suite_name, const char *tag) is not documented:
   parameter 'tag'
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/AS5047U_REGISTERS.hpp:28: warning: Found unknown command '@license'
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/AS5047U.hpp:237: warning: The following parameter of as5047u::AS5047U::ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
   parameter 'retries'
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/AS5047U.hpp:267: warning: The following parameter of as5047u::AS5047U::Set150CTemperatureMode(bool enable, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:

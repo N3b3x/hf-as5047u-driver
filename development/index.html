@@ -279,7 +279,7 @@ Interactive guides, examples, and step-by-step tutorials</p>
 </h3>
     
 <ul>
-  <li>🧩 Cross-platform <code class="language-plaintext highlighter-rouge">spiBus</code> interface</li>
+  <li>🧩 Cross-platform <code class="language-plaintext highlighter-rouge">SpiInterface</code> interface</li>
   <li>📐 Modern C++20 API</li>
   <li>📝 Examples for Arduino, ESP32 and STM32</li>
   <li>🧪 Unit tests for reliability</li>
@@ -317,7 +317,7 @@ Interactive guides, examples, and step-by-step tutorials</p>
   <li><strong><code class="language-plaintext highlighter-rouge">AS5047U</code> class</strong> – high level interface</li>
   <li><strong>Register definitions</strong> in <code class="language-plaintext highlighter-rouge">AS5047U_REGISTERS.hpp</code></li>
   <li><strong><code class="language-plaintext highlighter-rouge">FrameFormat</code> enum</strong> to select 16/24/32‑bit SPI frames</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">spiBus</code> interface</strong> – abstract SPI layer for platform independence</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">SpiInterface</code> interface</strong> – abstract SPI layer for platform independence</li>
 </ul>
 <h3 id="spi-bus-abstraction">
   
@@ -327,21 +327,25 @@ Interactive guides, examples, and step-by-step tutorials</p>
   
 </h3>
     
-<p>Applications implement the virtual <code class="language-plaintext highlighter-rouge">spiBus</code> interface and plug it into the driver:</p>
+<p>Applications implement the <code class="language-plaintext highlighter-rouge">SpiInterface</code> interface and plug it into the driver:</p>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
 5
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">spiBus</span> <span class="p">{</span>
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">MySpiInterface</span> <span class="o">:</span> <span class="k">public</span> <span class="n">as5047u</span><span class="o">::</span><span class="n">SpiInterface</span><span class="o">&lt;</span><span class="n">MySpiInterface</span><span class="o">&gt;</span> <span class="p">{</span>
 <span class="nl">public:</span>
-  <span class="k">virtual</span> <span class="o">~</span><span class="n">spiBus</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
-  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// CRTP implementation - implement required methods</span>
+  <span class="kt">void</span> <span class="n">Transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Your SPI transfer implementation</span>
+  <span class="p">}</span>
 <span class="p">};</span>
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 
-<p>The driver itself contains no hardware specifics – simply implement <code class="language-plaintext highlighter-rouge">transfer()</code> for your platform.</p>
+<p>The driver itself contains no hardware specifics – simply implement the required methods for your platform.</p>
 <h2 id="-platform-integration">
   
   
@@ -371,7 +375,7 @@ Interactive guides, examples, and step-by-step tutorials</p>
 11
 12
 13
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">ESPBus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">AS5047U</span><span class="o">::</span><span class="n">spiBus</span> <span class="p">{</span>
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">ESPBus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">as5047u</span><span class="o">::</span><span class="n">SpiInterface</span><span class="o">&lt;</span><span class="n">ESPBus</span><span class="o">&gt;</span> <span class="p">{</span>
   <span class="n">spi_device_handle_t</span> <span class="n">dev</span><span class="p">;</span>
 
 <span class="nl">public:</span>
@@ -402,7 +406,7 @@ Interactive guides, examples, and step-by-step tutorials</p>
 7
 8
 9
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">STM32Bus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">AS5047U</span><span class="o">::</span><span class="n">spiBus</span> <span class="p">{</span>
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">STM32Bus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">as5047u</span><span class="o">::</span><span class="n">SpiInterface</span><span class="o">&lt;</span><span class="n">STM32Bus</span><span class="o">&gt;</span> <span class="p">{</span>
   <span class="n">SPI_HandleTypeDef</span><span class="o">*</span> <span class="n">hspi</span><span class="p">;</span>
 
 <span class="nl">public:</span>
@@ -436,7 +440,7 @@ Interactive guides, examples, and step-by-step tutorials</p>
 14
 15
 16
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">ArduinoBus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">AS5047U</span><span class="o">::</span><span class="n">spiBus</span> <span class="p">{</span>
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">ArduinoBus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">as5047u</span><span class="o">::</span><span class="n">SpiInterface</span><span class="o">&lt;</span><span class="n">ArduinoBus</span><span class="o">&gt;</span> <span class="p">{</span>
 <span class="nl">public:</span>
     <span class="kt">void</span> <span class="n">transfer</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">tx</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">rx</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
         <span class="n">SPI</span><span class="p">.</span><span class="n">beginTransaction</span><span class="p">(</span><span class="n">SPISettings</span><span class="p">(</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">MSBFIRST</span><span class="p">,</span> <span class="n">SPI_MODE1</span><span class="p">));</span>
@@ -504,7 +508,7 @@ Interactive guides, examples, and step-by-step tutorials</p>
     
 <ul>
   <li>📥 Copy <code class="language-plaintext highlighter-rouge">AS5047U.hpp</code>, <code class="language-plaintext highlighter-rouge">AS5047U.cpp</code> and <code class="language-plaintext highlighter-rouge">AS5047U_REGISTERS.hpp</code> into your project</li>
-  <li>🔌 Implement the <code class="language-plaintext highlighter-rouge">spiBus</code> interface for your platform</li>
+  <li>🔌 Implement the <code class="language-plaintext highlighter-rouge">SpiInterface</code> interface for your platform</li>
   <li>➕ <code class="language-plaintext highlighter-rouge">#include "AS5047U.hpp"</code></li>
   <li>🛠️ Compile with a <strong>C++20</strong> compiler</li>
   <li>🏗️ Optionally build with the provided <code class="language-plaintext highlighter-rouge">Makefile</code>
@@ -580,7 +584,7 @@ set <code class="language-plaintext highlighter-rouge">AS5047U_CFG::DEFAULT_FRAM
 
 <p>| Function | Description |
 |———-|————-|
-| <a href="inc/AS5047U.hpp#L91"><code class="language-plaintext highlighter-rouge">AS5047U(spiBus &amp;bus, FrameFormat format)</code></a> | Constructor (SPI interface and frame format) |
+| <a href="inc/AS5047U.hpp#L91"><code class="language-plaintext highlighter-rouge">AS5047U(SpiInterface &amp;bus, FrameFormat format)</code></a> | Constructor (SPI interface and frame format) |
 | <a href="src/AS5047U.cpp#L16"><code class="language-plaintext highlighter-rouge">void SetFrameFormat(FrameFormat format)</code></a> | Set SPI frame format (16/24/32-bit mode) |
 | <a href="src/AS5047U.cpp#L33"><code class="language-plaintext highlighter-rouge">uint16_t GetAngle(uint8_t retries=0)</code></a> | Read 14-bit compensated absolute angle |
 | <a href="src/AS5047U.cpp#L48"><code class="language-plaintext highlighter-rouge">uint16_t GetRawAngle(uint8_t retries=0)</code></a> | Read 14-bit raw absolute angle |

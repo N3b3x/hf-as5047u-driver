@@ -281,7 +281,7 @@
 </h2>
     
 
-<p>The driver uses a small <code class="language-plaintext highlighter-rouge">spiBus</code> interface. Implement the <code class="language-plaintext highlighter-rouge">transfer()</code> method for your platform. Example for Arduino:</p>
+<p>The driver uses a small <code class="language-plaintext highlighter-rouge">SpiInterface</code> interface. Implement the <code class="language-plaintext highlighter-rouge">transfer()</code> method for your platform. Example for Arduino:</p>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -304,7 +304,7 @@
 19
 20
 21
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">ArduinoBus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">spiBus</span> <span class="p">{</span>
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">ArduinoBus</span> <span class="o">:</span> <span class="k">public</span> <span class="n">as5047u</span><span class="o">::</span><span class="n">SpiInterface</span><span class="o">&lt;</span><span class="n">ArduinoBus</span><span class="o">&gt;</span> <span class="p">{</span>
 <span class="nl">public:</span>
   <span class="n">ArduinoBus</span><span class="p">(</span><span class="n">SPIClass</span><span class="o">&amp;</span> <span class="n">spi</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">cs</span><span class="p">)</span> <span class="o">:</span> <span class="n">spi_</span><span class="p">(</span><span class="n">spi</span><span class="p">),</span> <span class="n">csPin_</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">pinMode</span><span class="p">(</span><span class="n">csPin_</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
