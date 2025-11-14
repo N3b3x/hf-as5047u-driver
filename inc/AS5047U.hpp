@@ -10,14 +10,14 @@
  * full OTP programming sequence, dynamic angle error compensation, adaptive
  * filtering, and CRC calculation.
  *
- * The design uses a virtual `spiBus` interface to abstract SPI communication,
+ * The design uses a CRTP-based `SpiInterface` interface to abstract SPI communication,
  * so it can run on any platform. It assumes the `spiBus` implementation handles
  * synchronization for thread safety. This driver is optimized for clarity and
  * extensibility and has no direct hardware dependencies.
  */
 
 #pragma once
-#include "AS5047U_Bus.hpp"
+#include "as5047u_spi_interface.hpp"
 #include "AS5047U_REGISTERS.hpp"
 #include <algorithm>
 #include <array>
@@ -66,11 +66,11 @@ namespace as5047u {
  * diagnostics, configuring outputs (ABI, UVW, PWM), handling error flags, and
  * performing OTP programming for permanent configuration storage.
  *
- * @tparam SpiType The SPI bus type (must inherit from as5047u::spiBus<SpiType>)
+ * @tparam SpiType The SPI bus type (must inherit from as5047u::SpiInterface<SpiType>)
  *
  * @note The driver uses CRTP-based SPI interface for zero virtual call
  * overhead. SPI implementations should inherit from
- * as5047u::spiBus<DerivedType>
+ * as5047u::SpiInterface<DerivedType>
  *
  * @note C++17 CTAD allows automatic type deduction:
  *       AS5047U encoder(bus, format); // Type deduced automatically

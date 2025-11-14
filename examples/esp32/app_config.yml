@@ -25,13 +25,13 @@ apps:
     description: >
       Comprehensive driver integration test suite
       (no hardware required)
-    source_file: "DriverIntegrationTest.cpp"
+    source_file: "driver_integration_test.cpp"
     category: "test"
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
     featured: true
-    documentation: "docs/README_DRIVER_INTEGRATION_TEST.md"
+    documentation: "docs/readme_driver_integration_test.md"
     test_sections:
       - "INITIALIZATION_TESTS"
       - "ANGLE_READING_TESTS"
@@ -56,7 +56,7 @@ apps:
   # --------------------------------------------------------------------------
   basic_angle_reading:
     description: "Basic angle reading example with diagnostics"
-    source_file: "BasicAngleReadingExample.cpp"
+    source_file: "basic_angle_reading_example.cpp"
     category: "example"
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
@@ -75,7 +75,7 @@ apps:
   # --------------------------------------------------------------------------
   velocity_reading:
     description: "Velocity reading example with unit conversions"
-    source_file: "VelocityReadingExample.cpp"
+    source_file: "velocity_reading_example.cpp"
     category: "example"
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
@@ -92,7 +92,7 @@ apps:
   # --------------------------------------------------------------------------
   configuration_example:
     description: "Configuration example with ABI, UVW, and PWM setup"
-    source_file: "ConfigurationExample.cpp"
+    source_file: "configuration_example.cpp"
     category: "example"
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
@@ -111,7 +111,7 @@ apps:
   # --------------------------------------------------------------------------
   full_features:
     description: "Comprehensive example demonstrating all AS5047U features"
-    source_file: "FullFeaturesExample.cpp"
+    source_file: "full_features_example.cpp"
     category: "example"
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]

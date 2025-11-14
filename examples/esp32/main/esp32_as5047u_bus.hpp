@@ -1,8 +1,8 @@
 /**
- * @file Esp32As5047uBus.hpp
+ * @file esp32_as5047u_bus.hpp
  * @brief ESP32 SPI transport implementation for AS5047U driver
  *
- * This file provides the ESP32-specific implementation of the AS5047U::spiBus
+ * This file provides the ESP32-specific implementation of the as5047u::SpiInterface
  * interface for communicating with AS5047U magnetic encoder over SPI.
  *
  * @author N3b3x
@@ -12,7 +12,7 @@
 
 #pragma once
 
-#include "../../../inc/AS5047U_Bus.hpp"
+#include "../../../inc/as5047u_spi_interface.hpp"
 #include "driver/gpio.h"
 #include "driver/spi_master.h"
 #include "esp_log.h"
@@ -23,11 +23,11 @@
  * @class Esp32As5047uBus
  * @brief ESP32 SPI transport implementation for AS5047U driver
  *
- * This class implements the as5047u::spiBus interface using ESP-IDF's SPI
+ * This class implements the as5047u::SpiInterface interface using ESP-IDF's SPI
  * driver with CRTP pattern. It supports configurable SPI pins, frequency, and
  * chip select.
  */
-class Esp32As5047uBus : public as5047u::spiBus<Esp32As5047uBus> {
+class Esp32As5047uBus : public as5047u::SpiInterface<Esp32As5047uBus> {
 public:
   /**
    * @brief SPI configuration structure

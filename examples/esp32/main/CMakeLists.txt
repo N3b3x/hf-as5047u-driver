@@ -97,7 +97,7 @@ set(COMPONENT_REQUIRES_LIST
 list(APPEND COMPONENT_REQUIRES_LIST spi_flash)
 
 idf_component_register(
-    SRCS "${MAIN_SOURCE}" "Esp32As5047uBus.cpp"
+    SRCS "${MAIN_SOURCE}" "esp32_as5047u_bus.cpp"
     INCLUDE_DIRS "." "${INC_BASE_PATH}"
     REQUIRES ${COMPONENT_REQUIRES_LIST}
 )

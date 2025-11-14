@@ -23,7 +23,7 @@ Hardware Agnostic AS5047U library - as used in the HardFOC-V1 controller
 
 **HF-AS5047U** is a portable C++20 driver for the **AS5047U** magnetic encoder from ams. It delivers fast 14‑bit absolute angle readings over SPI, optional CRC protection and advanced features like Dynamic Angle Error Compensation (DAEC) and an adaptive Dynamic Filter System (DFS™). The sensor can also output incremental (A/B/I) and 3‑phase commutation (UVW) signals or a PWM encoded angle, making it a drop‑in replacement for optical encoders in high-performance motor control and robotics.
 ### ✨ Key Features
-- 🧩 Cross-platform `spiBus` interface
+- 🧩 Cross-platform `SpiInterface` interface
 - 📐 Modern C++20 API
 - 📝 Examples for Arduino, ESP32 and STM32
 - 🧪 Unit tests for reliability
@@ -47,26 +47,28 @@ This library exposes a single `AS5047U` class that wraps all sensor functionalit
 * **`AS5047U` class** – high level interface
 * **Register definitions** in `AS5047U_REGISTERS.hpp`
 * **`FrameFormat` enum** to select 16/24/32‑bit SPI frames
-* **`spiBus` interface** – abstract SPI layer for platform independence
+* **`SpiInterface` interface** – abstract SPI layer for platform independence
 
 ### SPI Bus Abstraction
-Applications implement the virtual `spiBus` interface and plug it into the driver:
+Applications implement the `SpiInterface` interface and plug it into the driver:
 
 ```cpp
-class spiBus {
+class MySpiInterface : public as5047u::SpiInterface<MySpiInterface> {
 public:
-  virtual ~spiBus() = default;
-  virtual void transfer(const uint8_t* tx, uint8_t* rx, size_t len) = 0;
+  // CRTP implementation - implement required methods
+  void Transfer(const uint8_t* tx, uint8_t* rx, size_t len) {
+    // Your SPI transfer implementation
+  }
 };
 ```
 
-The driver itself contains no hardware specifics – simply implement `transfer()` for your platform.
+The driver itself contains no hardware specifics – simply implement the required methods for your platform.
 
 ## 🔌 Platform Integration
 
 ### ESP-IDF
 ```cpp
-class ESPBus : public AS5047U::spiBus {
+class ESPBus : public as5047u::SpiInterface<ESPBus> {
   spi_device_handle_t dev;
 
 public:
@@ -83,7 +85,7 @@ public:
 
 ### STM32 HAL
 ```cpp
-class STM32Bus : public AS5047U::spiBus {
+class STM32Bus : public as5047u::SpiInterface<STM32Bus> {
   SPI_HandleTypeDef* hspi;
 
 public:
@@ -96,7 +98,7 @@ public:
 
 ### Arduino
 ```cpp
-class ArduinoBus : public AS5047U::spiBus {
+class ArduinoBus : public as5047u::SpiInterface<ArduinoBus> {
 public:
     void transfer(const uint8_t *tx, uint8_t *rx, size_t len) override {
         SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE1));
@@ -139,7 +141,7 @@ Detailed step‑by‑step guides (with example command output) are available in 
 
 ## 🔧 Installation
 - 📥 Copy `AS5047U.hpp`, `AS5047U.cpp` and `AS5047U_REGISTERS.hpp` into your project
-- 🔌 Implement the `spiBus` interface for your platform
+- 🔌 Implement the `SpiInterface` interface for your platform
 - ➕ `#include "AS5047U.hpp"`
 - 🛠️ Compile with a **C++20** compiler
 - 🏗️ Optionally build with the provided `Makefile`
@@ -191,7 +193,7 @@ Click on any function name to jump directly to its implementation in the source 
 
 | Function | Description |
 |----------|-------------|
-| [`AS5047U(spiBus &bus, FrameFormat format)`](inc/AS5047U.hpp#L91) | Constructor (SPI interface and frame format) |
+| [`AS5047U(SpiInterface &bus, FrameFormat format)`](inc/AS5047U.hpp#L91) | Constructor (SPI interface and frame format) |
 | [`void SetFrameFormat(FrameFormat format)`](src/AS5047U.cpp#L16) | Set SPI frame format (16/24/32-bit mode) |
 | [`uint16_t GetAngle(uint8_t retries=0)`](src/AS5047U.cpp#L33) | Read 14-bit compensated absolute angle |
 | [`uint16_t GetRawAngle(uint8_t retries=0)`](src/AS5047U.cpp#L48) | Read 14-bit raw absolute angle |

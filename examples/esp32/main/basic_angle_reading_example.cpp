@@ -1,5 +1,5 @@
 /**
- * @file BasicAngleReadingExample.cpp
+ * @file basic_angle_reading_example.cpp
  * @brief Basic angle reading example with diagnostics
  *
  * This example demonstrates:
@@ -18,8 +18,8 @@
 #include <memory>
 #include <stdio.h>
 
-#include "../../../inc/AS5047U.hpp"
-#include "Esp32As5047uBus.hpp"
+#include "../../../inc/as5047u.hpp"
+#include "esp32_as5047u_bus.hpp"
 
 static const char* TAG = "AS5047U_Basic";
 

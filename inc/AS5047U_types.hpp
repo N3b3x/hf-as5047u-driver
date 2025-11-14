@@ -1,9 +1,9 @@
 /**
- * @file AS5047U_types.hpp
+ * @file as5047u_types.hpp
  * @brief Type definitions for the AS5047U driver.
  *
- * This header contains type definitions that are shared between AS5047U.hpp
- * and AS5047U_config.hpp to avoid circular dependencies.
+ * This header contains type definitions that are shared between as5047u.hpp
+ * and as5047u_config.hpp to avoid circular dependencies.
  */
 
 #pragma once

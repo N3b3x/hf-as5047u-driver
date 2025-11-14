@@ -1,9 +1,9 @@
 /**
- * @file Esp32As5047uBus.cpp
+ * @file esp32_as5047u_bus.cpp
  * @brief ESP32 SPI transport implementation for as5047u::AS5047U driver
  */
 
-#include "Esp32As5047uBus.hpp"
+#include "esp32_as5047u_bus.hpp"
 #include "esp_err.h"
 
 Esp32As5047uBus::Esp32As5047uBus(const SPIConfig& config) : config_(config) {}

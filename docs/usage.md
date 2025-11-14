@@ -13,10 +13,10 @@ This document shows how to integrate `HF-AS5047U` into your own project.
 
 ## 1. Provide a SPI Bus Implementation
 
-The driver uses a small `spiBus` interface. Implement the `transfer()` method for your platform. Example for Arduino:
+The driver uses a small `SpiInterface` interface. Implement the `transfer()` method for your platform. Example for Arduino:
 
 ```cpp
-class ArduinoBus : public spiBus {
+class ArduinoBus : public as5047u::SpiInterface<ArduinoBus> {
 public:
   ArduinoBus(SPIClass& spi, uint8_t cs) : spi_(spi), csPin_(cs) {
     pinMode(csPin_, OUTPUT);

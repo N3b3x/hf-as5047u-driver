@@ -1,5 +1,5 @@
 /**
- * @file AS5047U_Bus.hpp
+ * @file as5047u_spi_interface.hpp
  * @brief CRTP-based SPI bus interface for AS5047U driver
  *
  * This header defines the hardware-agnostic SPI bus interface using the
@@ -26,7 +26,7 @@ namespace as5047u {
  *
  * Example usage:
  * @code
- * class MySPI : public as5047u::spiBus<MySPI> {
+ * class MySPI : public as5047u::SpiInterface<MySPI> {
  * public:
  *   void transfer(const uint8_t* tx, uint8_t* rx, std::size_t len) {
  *     // Platform-specific SPI implementation
@@ -36,7 +36,7 @@ namespace as5047u {
  *
  * @tparam Derived The derived class type (CRTP pattern)
  */
-template <typename Derived> class spiBus {
+template <typename Derived> class SpiInterface {
 public:
   /**
    * @brief Perform a full-duplex SPI data transfer.
@@ -59,21 +59,21 @@ protected:
   /**
    * @brief Protected constructor to prevent direct instantiation
    */
-  spiBus() = default;
+  SpiInterface() = default;
 
   // Prevent copying
-  spiBus(const spiBus &) = delete;
-  spiBus &operator=(const spiBus &) = delete;
+  SpiInterface(const SpiInterface &) = delete;
+  SpiInterface &operator=(const SpiInterface &) = delete;
 
   // Allow moving
-  spiBus(spiBus &&) = default;
-  spiBus &operator=(spiBus &&) = default;
+  SpiInterface(SpiInterface &&) = default;
+  SpiInterface &operator=(SpiInterface &&) = default;
 
   /**
    * @brief Protected destructor
    * @note Derived classes can have public destructors
    */
-  ~spiBus() = default;
+  ~SpiInterface() = default;
 };
 
 } // namespace as5047u

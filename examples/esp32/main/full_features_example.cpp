@@ -1,5 +1,5 @@
 /**
- * @file FullFeaturesExample.cpp
+ * @file full_features_example.cpp
  * @brief Comprehensive example demonstrating all as5047u::AS5047U features
  *
  * This example demonstrates:
@@ -19,8 +19,8 @@
 #include <memory>
 #include <stdio.h>
 
-#include "../../../inc/AS5047U.hpp"
-#include "Esp32As5047uBus.hpp"
+#include "../../../inc/as5047u.hpp"
+#include "esp32_as5047u_bus.hpp"
 
 static const char* TAG = "AS5047U_Full";
 

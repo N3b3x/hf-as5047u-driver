@@ -1,5 +1,5 @@
 /**
- * @file ConfigurationExample.cpp
+ * @file configuration_example.cpp
  * @brief Configuration example with ABI, UVW, and PWM setup
  *
  * This example demonstrates:
@@ -18,8 +18,8 @@
 #include <memory>
 #include <stdio.h>
 
-#include "../../../inc/AS5047U.hpp"
-#include "Esp32As5047uBus.hpp"
+#include "../../../inc/as5047u.hpp"
+#include "esp32_as5047u_bus.hpp"
 
 static const char* TAG = "AS5047U_Config";
 

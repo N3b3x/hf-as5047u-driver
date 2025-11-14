@@ -2,9 +2,9 @@
 #define AS5047U_IMPL
 
 #ifdef AS5047U_HEADER_INCLUDED
-#include "../inc/AS5047U.hpp"
+#include "../inc/as5047u.hpp"
 #else
-#include "../inc/AS5047U.hpp"
+#include "../inc/as5047u.hpp"
 #endif
 
 #include <iomanip> // for std::hex and formatting

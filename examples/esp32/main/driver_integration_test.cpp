@@ -1,5 +1,5 @@
 /**
- * @file DriverIntegrationTest.cpp
+ * @file driver_integration_test.cpp
  * @brief Comprehensive Integration Test Suite for as5047u::AS5047U Driver
  *
  * This is a complete integration test suite that tests all functionality
@@ -26,8 +26,8 @@
 #include <memory>
 #include <stdio.h>
 
-#include "../../../inc/AS5047U.hpp"
-#include "Esp32As5047uBus.hpp"
+#include "../../../inc/as5047u.hpp"
+#include "esp32_as5047u_bus.hpp"
 #include "TestFramework.h"
 
 static const char* TAG = "AS5047U_Test";

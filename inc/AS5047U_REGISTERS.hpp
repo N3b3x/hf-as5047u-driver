@@ -1,5 +1,5 @@
 /**
- * @file AS5047U_REGISTERS.hpp
+ * @file as5047u_registers.hpp
  * @brief Register definitions for the AS5047U Rotary Position Sensor.
  *
  * @details This file provides structured register definitions for the AS5047U magnetic position

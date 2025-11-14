@@ -25,7 +25,7 @@ Example projects for Arduino, ESP32 (ESP-IDF) and STM32 are provided in the `exa
 ## ESP32 (ESP-IDF)
 
 - 📂 Copy `examples/es32_basic_interface` into an ESP-IDF project
-- 🔧 Implement an `spiBus` using ESP-IDF SPI API
+- 🔧 Implement a `SpiInterface` using ESP-IDF SPI API
 - 🚀 Build and flash using `idf.py flash monitor`
   ```
   Angle: 90.0 deg
