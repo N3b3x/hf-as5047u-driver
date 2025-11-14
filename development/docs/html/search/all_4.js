@@ -11,5 +11,6 @@ var searchData=
   ['errfl_8',['ERRFL',['../structAS5047U__REG_1_1ERRFL.html',1,'AS5047U_REG']]],
   ['esp32_5fas5047u_5fbus_2ecpp_9',['esp32_as5047u_bus.cpp',['../esp32__as5047u__bus_8cpp.html',1,'']]],
   ['esp32_5fas5047u_5fbus_2ehpp_10',['esp32_as5047u_bus.hpp',['../esp32__as5047u__bus_8hpp.html',1,'']]],
-  ['esp32as5047ubus_11',['Esp32As5047uBus',['../classEsp32As5047uBus.html',1,'Esp32As5047uBus'],['../classEsp32As5047uBus.html#a1b10e4979fb46d3e01d937469e454645',1,'Esp32As5047uBus::Esp32As5047uBus()'],['../classEsp32As5047uBus.html#a2cac4af138fd741af6542bfe66adf42c',1,'Esp32As5047uBus::Esp32As5047uBus(const SPIConfig &amp;config)']]]
+  ['esp32as5047ubus_11',['Esp32As5047uBus',['../classEsp32As5047uBus.html',1,'Esp32As5047uBus'],['../classEsp32As5047uBus.html#a1b10e4979fb46d3e01d937469e454645',1,'Esp32As5047uBus::Esp32As5047uBus()'],['../classEsp32As5047uBus.html#a2cac4af138fd741af6542bfe66adf42c',1,'Esp32As5047uBus::Esp32As5047uBus(const SPIConfig &amp;config)']]],
+  ['examples_12',['📊 Examples',['../index.html#autotoc_md7',1,'']]]
 ];

@@ -25,19 +25,17 @@
 var NAVTREE =
 [
   [ "HF-AS5047U Driver", "index.html", [
+    [ "📚 Table of Contents", "index.html#autotoc_md1", null ],
+    [ "📦 Overview", "index.html#autotoc_md2", null ],
+    [ "✨ Features", "index.html#autotoc_md3", null ],
+    [ "🚀 Quick Start", "index.html#autotoc_md4", null ],
+    [ "🔧 Installation", "index.html#autotoc_md5", null ],
+    [ "📖 API Reference", "index.html#autotoc_md6", null ],
+    [ "📊 Examples", "index.html#autotoc_md7", null ],
+    [ "📚 Documentation", "index.html#autotoc_md8", null ],
+    [ "🤝 Contributing", "index.html#autotoc_md9", null ],
+    [ "📄 License", "index.html#autotoc_md10", null ],
     [ "Namespaces", "namespaces.html", [
-      [ "📦 Overview", "index.html#autotoc_md0", [
-        [ "✨ Key Features", "index.html#autotoc_md1", null ]
-      ] ],
-      [ "🚀 Sensor Highlights", "index.html#autotoc_md2", null ],
-      [ "📂 Project Structure", "index.html#autotoc_md3", null ],
-      [ "📖 Documentation", "index.html#autotoc_md4", null ],
-      [ "🧠 Quick Start", "index.html#autotoc_md5", null ],
-      [ "⚙️ Configuration", "index.html#autotoc_md6", null ],
-      [ "📟 API Summary", "index.html#autotoc_md7", null ],
-      [ "🤝 Contributing", "index.html#autotoc_md8", null ],
-      [ "🙌 Acknowledgments", "index.html#autotoc_md9", null ],
-      [ "💬 Support", "index.html#autotoc_md10", null ],
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],

@@ -22,7 +22,6 @@ var searchData=
   ['progotp_19',['PROGOTP',['../structAS5047U__REG_1_1PROG.html#a8e9283172b5c89d67886a70cbd1a2537',1,'AS5047U_REG::PROG']]],
   ['programotp_20',['ProgramOTP',['../classas5047u_1_1AS5047U.html#a1504911ea2390169d567f6be695f4d7e',1,'as5047u::AS5047U']]],
   ['progver_21',['PROGVER',['../structAS5047U__REG_1_1PROG.html#ac0d15ae70a506d95c33e68b9cbd5fee0',1,'AS5047U_REG::PROG']]],
-  ['project_20structure_22',['📂 Project Structure',['../index.html#autotoc_md3',1,'']]],
-  ['pwmmode_23',['PWMMode',['../structAS5047U__REG_1_1SETTINGS2.html#ad5a8628f490aa8772e556985e13981f1',1,'AS5047U_REG::SETTINGS2']]],
-  ['pwmon_24',['PWMon',['../structAS5047U__REG_1_1SETTINGS2.html#a42ee084c9da12e449d195c141032375c',1,'AS5047U_REG::SETTINGS2']]]
+  ['pwmmode_22',['PWMMode',['../structAS5047U__REG_1_1SETTINGS2.html#ad5a8628f490aa8772e556985e13981f1',1,'AS5047U_REG::SETTINGS2']]],
+  ['pwmon_23',['PWMon',['../structAS5047U__REG_1_1SETTINGS2.html#a42ee084c9da12e449d195c141032375c',1,'AS5047U_REG::SETTINGS2']]]
 ];
