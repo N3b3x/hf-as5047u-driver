@@ -1,10 +1,10 @@
 /**
  * @file DriverIntegrationTest.cpp
  * @brief Comprehensive Integration Test Suite for AS5047U Driver
- * 
+ *
  * This is a complete integration test suite that tests all functionality
  * of the AS5047U driver.
- * 
+ *
  * Test Categories:
  * - Initialization Tests
  * - Angle Reading Tests
@@ -13,24 +13,24 @@
  * - Configuration Tests
  * - Frame Format Tests
  * - Error Handling Tests
- * 
+ *
  * @author N3b3x
  * @date 2025
  * @version 1.0.0
  */
 
-#include <stdio.h>
-#include <memory>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "esp_log.h"
 #include "esp_system.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include <memory>
+#include <stdio.h>
 
 #include "../../../inc/AS5047U.hpp"
 #include "Esp32As5047uBus.hpp"
 #include "TestFramework.h"
 
-static const char* TAG = "AS5047U_Test";
+static const char *TAG = "AS5047U_Test";
 
 //=============================================================================
 // TEST CONFIGURATION
@@ -53,7 +53,7 @@ static constexpr bool ENABLE_ERROR_HANDLING_TESTS = true;
 TestResults g_test_results;
 
 static std::unique_ptr<Esp32As5047uBus> g_bus;
-static std::unique_ptr<AS5047U> g_encoder;
+static std::unique_ptr<as5047u::Encoder> g_encoder;
 
 //=============================================================================
 // TEST HELPER FUNCTIONS
@@ -63,37 +63,39 @@ static std::unique_ptr<AS5047U> g_encoder;
  * @brief Create and initialize test SPI bus
  */
 static bool create_test_bus() noexcept {
-    Esp32As5047uBus::SPIConfig config;
-    config.miso_pin = GPIO_NUM_2;
-    config.mosi_pin = GPIO_NUM_7;
-    config.sclk_pin = GPIO_NUM_6;
-    config.cs_pin = GPIO_NUM_10;
-    config.frequency = 4000000;
-    config.mode = 1;
+  Esp32As5047uBus::SPIConfig config;
+  config.miso_pin = GPIO_NUM_2;
+  config.mosi_pin = GPIO_NUM_7;
+  config.sclk_pin = GPIO_NUM_6;
+  config.cs_pin = GPIO_NUM_10;
+  config.frequency = 4000000;
+  config.mode = 1;
 
-    g_bus = std::make_unique<Esp32As5047uBus>(config);
-    
-    if (!g_bus->initialize()) {
-        ESP_LOGE(TAG, "Failed to initialize SPI bus");
-        return false;
-    }
+  g_bus = std::make_unique<Esp32As5047uBus>(config);
 
-    return true;
+  if (!g_bus->initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize SPI bus");
+    return false;
+  }
+
+  return true;
 }
 
 /**
  * @brief Create and initialize test encoder
  */
-static bool create_test_encoder(FrameFormat format = FrameFormat::SPI_24) noexcept {
-    if (!g_bus) {
-        ESP_LOGE(TAG, "SPI bus not initialized");
-        return false;
-    }
+static bool
+create_test_encoder(FrameFormat format = FrameFormat::SPI_24) noexcept {
+  if (!g_bus) {
+    ESP_LOGE(TAG, "SPI bus not initialized");
+    return false;
+  }
 
-    g_encoder = std::make_unique<AS5047U>(*g_bus, format);
+  g_encoder = std::make_unique<as5047u::Encoder>(*g_bus, format);
 
-    ESP_LOGI(TAG, "AS5047U encoder created with frame format: %d", static_cast<int>(format));
-    return true;
+  ESP_LOGI(TAG, "AS5047U encoder created with frame format: %d",
+           static_cast<int>(format));
+  return true;
 }
 
 //=============================================================================
@@ -101,20 +103,20 @@ static bool create_test_encoder(FrameFormat format = FrameFormat::SPI_24) noexce
 //=============================================================================
 
 static bool test_initialization() noexcept {
-    ESP_LOGI(TAG, "Testing initialization...");
-    
-    if (!create_test_bus()) {
-        ESP_LOGE(TAG, "Failed to create SPI bus");
-        return false;
-    }
+  ESP_LOGI(TAG, "Testing initialization...");
 
-    if (!create_test_encoder()) {
-        ESP_LOGE(TAG, "Failed to create encoder");
-        return false;
-    }
+  if (!create_test_bus()) {
+    ESP_LOGE(TAG, "Failed to create SPI bus");
+    return false;
+  }
 
-    ESP_LOGI(TAG, "Initialization test passed");
-    return true;
+  if (!create_test_encoder()) {
+    ESP_LOGE(TAG, "Failed to create encoder");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Initialization test passed");
+  return true;
 }
 
 //=============================================================================
@@ -122,39 +124,42 @@ static bool test_initialization() noexcept {
 //=============================================================================
 
 static bool test_angle_reading() noexcept {
-    ESP_LOGI(TAG, "Testing angle reading...");
-    
-    if (!g_encoder) {
-        ESP_LOGE(TAG, "Encoder not initialized");
-        return false;
-    }
+  ESP_LOGI(TAG, "Testing angle reading...");
 
-    uint16_t angle = g_encoder->getAngle();
-    ESP_LOGI(TAG, "Angle (compensated): %u (%.2f°)", angle, angle * 360.0 / 16384.0);
+  if (!g_encoder) {
+    ESP_LOGE(TAG, "Encoder not initialized");
+    return false;
+  }
 
-    uint16_t raw_angle = g_encoder->getRawAngle();
-    ESP_LOGI(TAG, "Angle (raw): %u (%.2f°)", raw_angle, raw_angle * 360.0 / 16384.0);
+  uint16_t angle = g_encoder->getAngle();
+  ESP_LOGI(TAG, "Angle (compensated): %u (%.2f°)", angle,
+           angle * 360.0 / 16384.0);
 
-    ESP_LOGI(TAG, "Angle reading test passed");
-    return true;
+  uint16_t raw_angle = g_encoder->getRawAngle();
+  ESP_LOGI(TAG, "Angle (raw): %u (%.2f°)", raw_angle,
+           raw_angle * 360.0 / 16384.0);
+
+  ESP_LOGI(TAG, "Angle reading test passed");
+  return true;
 }
 
 static bool test_angle_multiple_reads() noexcept {
-    ESP_LOGI(TAG, "Testing multiple angle reads...");
-    
-    if (!g_encoder) {
-        ESP_LOGE(TAG, "Encoder not initialized");
-        return false;
-    }
+  ESP_LOGI(TAG, "Testing multiple angle reads...");
 
-    for (int i = 0; i < 10; ++i) {
-        uint16_t angle = g_encoder->getAngle();
-        ESP_LOGI(TAG, "Read %d: Angle = %u (%.2f°)", i + 1, angle, angle * 360.0 / 16384.0);
-        vTaskDelay(pdMS_TO_TICKS(100));
-    }
+  if (!g_encoder) {
+    ESP_LOGE(TAG, "Encoder not initialized");
+    return false;
+  }
 
-    ESP_LOGI(TAG, "Multiple angle reads test passed");
-    return true;
+  for (int i = 0; i < 10; ++i) {
+    uint16_t angle = g_encoder->getAngle();
+    ESP_LOGI(TAG, "Read %d: Angle = %u (%.2f°)", i + 1, angle,
+             angle * 360.0 / 16384.0);
+    vTaskDelay(pdMS_TO_TICKS(100));
+  }
+
+  ESP_LOGI(TAG, "Multiple angle reads test passed");
+  return true;
 }
 
 //=============================================================================
@@ -162,27 +167,27 @@ static bool test_angle_multiple_reads() noexcept {
 //=============================================================================
 
 static bool test_velocity_reading() noexcept {
-    ESP_LOGI(TAG, "Testing velocity reading...");
-    
-    if (!g_encoder) {
-        ESP_LOGE(TAG, "Encoder not initialized");
-        return false;
-    }
+  ESP_LOGI(TAG, "Testing velocity reading...");
 
-    int16_t velocity = g_encoder->getVelocity();
-    ESP_LOGI(TAG, "Velocity (LSB): %d", velocity);
+  if (!g_encoder) {
+    ESP_LOGE(TAG, "Encoder not initialized");
+    return false;
+  }
 
-    double vel_deg = g_encoder->getVelocityDegPerSec();
-    ESP_LOGI(TAG, "Velocity: %.2f deg/s", vel_deg);
+  int16_t velocity = g_encoder->getVelocity();
+  ESP_LOGI(TAG, "Velocity (LSB): %d", velocity);
 
-    double vel_rad = g_encoder->getVelocityRadPerSec();
-    ESP_LOGI(TAG, "Velocity: %.2f rad/s", vel_rad);
+  double vel_deg = g_encoder->getVelocityDegPerSec();
+  ESP_LOGI(TAG, "Velocity: %.2f deg/s", vel_deg);
 
-    double vel_rpm = g_encoder->getVelocityRPM();
-    ESP_LOGI(TAG, "Velocity: %.2f RPM", vel_rpm);
+  double vel_rad = g_encoder->getVelocityRadPerSec();
+  ESP_LOGI(TAG, "Velocity: %.2f rad/s", vel_rad);
 
-    ESP_LOGI(TAG, "Velocity reading test passed");
-    return true;
+  double vel_rpm = g_encoder->getVelocityRPM();
+  ESP_LOGI(TAG, "Velocity: %.2f RPM", vel_rpm);
+
+  ESP_LOGI(TAG, "Velocity reading test passed");
+  return true;
 }
 
 //=============================================================================
@@ -190,29 +195,30 @@ static bool test_velocity_reading() noexcept {
 //=============================================================================
 
 static bool test_diagnostics() noexcept {
-    ESP_LOGI(TAG, "Testing diagnostics...");
-    
-    if (!g_encoder) {
-        ESP_LOGE(TAG, "Encoder not initialized");
-        return false;
-    }
+  ESP_LOGI(TAG, "Testing diagnostics...");
 
-    uint8_t agc = g_encoder->getAGC();
-    ESP_LOGI(TAG, "AGC: %u", agc);
+  if (!g_encoder) {
+    ESP_LOGE(TAG, "Encoder not initialized");
+    return false;
+  }
 
-    uint16_t magnitude = g_encoder->getMagnitude();
-    ESP_LOGI(TAG, "Magnitude: %u", magnitude);
+  uint8_t agc = g_encoder->getAGC();
+  ESP_LOGI(TAG, "AGC: %u", agc);
 
-    uint16_t error_flags = g_encoder->getErrorFlags();
-    ESP_LOGI(TAG, "Error flags: 0x%04X", error_flags);
+  uint16_t magnitude = g_encoder->getMagnitude();
+  ESP_LOGI(TAG, "Magnitude: %u", magnitude);
 
-    AS5047U_Error sticky_errors = g_encoder->getStickyErrorFlags();
-    if (sticky_errors != AS5047U_Error::None) {
-        ESP_LOGW(TAG, "Sticky errors: 0x%04X", static_cast<uint16_t>(sticky_errors));
-    }
+  uint16_t error_flags = g_encoder->getErrorFlags();
+  ESP_LOGI(TAG, "Error flags: 0x%04X", error_flags);
 
-    ESP_LOGI(TAG, "Diagnostics test passed");
-    return true;
+  AS5047U_Error sticky_errors = g_encoder->getStickyErrorFlags();
+  if (sticky_errors != AS5047U_Error::None) {
+    ESP_LOGW(TAG, "Sticky errors: 0x%04X",
+             static_cast<uint16_t>(sticky_errors));
+  }
+
+  ESP_LOGI(TAG, "Diagnostics test passed");
+  return true;
 }
 
 //=============================================================================
@@ -220,32 +226,32 @@ static bool test_diagnostics() noexcept {
 //=============================================================================
 
 static bool test_zero_position() noexcept {
-    ESP_LOGI(TAG, "Testing zero position configuration...");
-    
-    if (!g_encoder) {
-        ESP_LOGE(TAG, "Encoder not initialized");
-        return false;
-    }
+  ESP_LOGI(TAG, "Testing zero position configuration...");
 
-    uint16_t current_zero = g_encoder->getZeroPosition();
-    ESP_LOGI(TAG, "Current zero position: %u", current_zero);
+  if (!g_encoder) {
+    ESP_LOGE(TAG, "Encoder not initialized");
+    return false;
+  }
 
-    // Try setting a new zero position (test only, don't actually change)
-    ESP_LOGI(TAG, "Zero position configuration test passed (read-only test)");
-    return true;
+  uint16_t current_zero = g_encoder->getZeroPosition();
+  ESP_LOGI(TAG, "Current zero position: %u", current_zero);
+
+  // Try setting a new zero position (test only, don't actually change)
+  ESP_LOGI(TAG, "Zero position configuration test passed (read-only test)");
+  return true;
 }
 
 static bool test_direction() noexcept {
-    ESP_LOGI(TAG, "Testing direction configuration...");
-    
-    if (!g_encoder) {
-        ESP_LOGE(TAG, "Encoder not initialized");
-        return false;
-    }
+  ESP_LOGI(TAG, "Testing direction configuration...");
 
-    // Test setting direction (test only)
-    ESP_LOGI(TAG, "Direction configuration test passed (API verified)");
-    return true;
+  if (!g_encoder) {
+    ESP_LOGE(TAG, "Encoder not initialized");
+    return false;
+  }
+
+  // Test setting direction (test only)
+  ESP_LOGI(TAG, "Direction configuration test passed (API verified)");
+  return true;
 }
 
 //=============================================================================
@@ -253,51 +259,54 @@ static bool test_direction() noexcept {
 //=============================================================================
 
 static bool test_frame_format_16() noexcept {
-    ESP_LOGI(TAG, "Testing 16-bit frame format...");
-    
-    if (!g_bus) {
-        ESP_LOGE(TAG, "SPI bus not initialized");
-        return false;
-    }
+  ESP_LOGI(TAG, "Testing 16-bit frame format...");
 
-    auto encoder_16 = std::make_unique<AS5047U>(*g_bus, FrameFormat::SPI_16);
-    uint16_t angle = encoder_16->getAngle();
-    ESP_LOGI(TAG, "16-bit frame format: Angle = %u", angle);
+  if (!g_bus) {
+    ESP_LOGE(TAG, "SPI bus not initialized");
+    return false;
+  }
 
-    ESP_LOGI(TAG, "16-bit frame format test passed");
-    return true;
+  auto encoder_16 =
+      std::make_unique<as5047u::Encoder>(*g_bus, FrameFormat::SPI_16);
+  uint16_t angle = encoder_16->getAngle();
+  ESP_LOGI(TAG, "16-bit frame format: Angle = %u", angle);
+
+  ESP_LOGI(TAG, "16-bit frame format test passed");
+  return true;
 }
 
 static bool test_frame_format_24() noexcept {
-    ESP_LOGI(TAG, "Testing 24-bit frame format...");
-    
-    if (!g_bus) {
-        ESP_LOGE(TAG, "SPI bus not initialized");
-        return false;
-    }
+  ESP_LOGI(TAG, "Testing 24-bit frame format...");
 
-    auto encoder_24 = std::make_unique<AS5047U>(*g_bus, FrameFormat::SPI_24);
-    uint16_t angle = encoder_24->getAngle();
-    ESP_LOGI(TAG, "24-bit frame format: Angle = %u", angle);
+  if (!g_bus) {
+    ESP_LOGE(TAG, "SPI bus not initialized");
+    return false;
+  }
 
-    ESP_LOGI(TAG, "24-bit frame format test passed");
-    return true;
+  auto encoder_24 =
+      std::make_unique<as5047u::Encoder>(*g_bus, FrameFormat::SPI_24);
+  uint16_t angle = encoder_24->getAngle();
+  ESP_LOGI(TAG, "24-bit frame format: Angle = %u", angle);
+
+  ESP_LOGI(TAG, "24-bit frame format test passed");
+  return true;
 }
 
 static bool test_frame_format_32() noexcept {
-    ESP_LOGI(TAG, "Testing 32-bit frame format...");
-    
-    if (!g_bus) {
-        ESP_LOGE(TAG, "SPI bus not initialized");
-        return false;
-    }
+  ESP_LOGI(TAG, "Testing 32-bit frame format...");
 
-    auto encoder_32 = std::make_unique<AS5047U>(*g_bus, FrameFormat::SPI_32);
-    uint16_t angle = encoder_32->getAngle();
-    ESP_LOGI(TAG, "32-bit frame format: Angle = %u", angle);
+  if (!g_bus) {
+    ESP_LOGE(TAG, "SPI bus not initialized");
+    return false;
+  }
 
-    ESP_LOGI(TAG, "32-bit frame format test passed");
-    return true;
+  auto encoder_32 =
+      std::make_unique<as5047u::Encoder>(*g_bus, FrameFormat::SPI_32);
+  uint16_t angle = encoder_32->getAngle();
+  ESP_LOGI(TAG, "32-bit frame format: Angle = %u", angle);
+
+  ESP_LOGI(TAG, "32-bit frame format test passed");
+  return true;
 }
 
 //=============================================================================
@@ -305,23 +314,23 @@ static bool test_frame_format_32() noexcept {
 //=============================================================================
 
 static bool test_error_handling() noexcept {
-    ESP_LOGI(TAG, "Testing error handling...");
-    
-    if (!g_encoder) {
-        ESP_LOGE(TAG, "Encoder not initialized");
-        return false;
-    }
+  ESP_LOGI(TAG, "Testing error handling...");
 
-    // Test error flag reading
-    uint16_t error_flags = g_encoder->getErrorFlags();
-    ESP_LOGI(TAG, "Error flags: 0x%04X", error_flags);
+  if (!g_encoder) {
+    ESP_LOGE(TAG, "Encoder not initialized");
+    return false;
+  }
 
-    // Test sticky error flags
-    AS5047U_Error sticky = g_encoder->getStickyErrorFlags();
-    ESP_LOGI(TAG, "Sticky errors: 0x%04X", static_cast<uint16_t>(sticky));
+  // Test error flag reading
+  uint16_t error_flags = g_encoder->getErrorFlags();
+  ESP_LOGI(TAG, "Error flags: 0x%04X", error_flags);
 
-    ESP_LOGI(TAG, "Error handling test passed");
-    return true;
+  // Test sticky error flags
+  AS5047U_Error sticky = g_encoder->getStickyErrorFlags();
+  ESP_LOGI(TAG, "Sticky errors: 0x%04X", static_cast<uint16_t>(sticky));
+
+  ESP_LOGI(TAG, "Error handling test passed");
+  return true;
 }
 
 //=============================================================================
@@ -329,63 +338,67 @@ static bool test_error_handling() noexcept {
 //=============================================================================
 
 extern "C" void app_main(void) {
-    ESP_LOGI(TAG, "");
-    ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
-    ESP_LOGI(TAG, "║                  AS5047U Driver Integration Test Suite                        ║");
-    ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
-    ESP_LOGI(TAG, "");
+  ESP_LOGI(TAG, "");
+  ESP_LOGI(TAG, "╔═════════════════════════════════════════════════════════════"
+                "═════════════════╗");
+  ESP_LOGI(TAG, "║                  AS5047U Driver Integration Test Suite      "
+                "                  ║");
+  ESP_LOGI(TAG, "╚═════════════════════════════════════════════════════════════"
+                "═════════════════╝");
+  ESP_LOGI(TAG, "");
 
-    print_test_section_status(TAG, "AS5047U");
+  print_test_section_status(TAG, "AS5047U");
 
-    // Initialize test framework
-    init_test_progress_indicator();
+  // Initialize test framework
+  init_test_progress_indicator();
 
-    // Run test sections
-    RUN_TEST_SECTION_IF_ENABLED(ENABLE_INITIALIZATION_TESTS, "INITIALIZATION TESTS",
-        RUN_TEST_IN_TASK("test_initialization", test_initialization, 8192, 5);
-    );
+  // Run test sections
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_INITIALIZATION_TESTS, "INITIALIZATION TESTS",
+      RUN_TEST_IN_TASK("test_initialization", test_initialization, 8192, 5););
 
-    RUN_TEST_SECTION_IF_ENABLED(ENABLE_ANGLE_READING_TESTS, "ANGLE READING TESTS",
-        RUN_TEST_IN_TASK("test_angle_reading", test_angle_reading, 8192, 5);
-        RUN_TEST_IN_TASK("test_angle_multiple_reads", test_angle_multiple_reads, 8192, 5);
-    );
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ANGLE_READING_TESTS, "ANGLE READING TESTS",
+      RUN_TEST_IN_TASK("test_angle_reading", test_angle_reading, 8192, 5);
+      RUN_TEST_IN_TASK("test_angle_multiple_reads", test_angle_multiple_reads,
+                       8192, 5););
 
-    RUN_TEST_SECTION_IF_ENABLED(ENABLE_VELOCITY_READING_TESTS, "VELOCITY READING TESTS",
-        RUN_TEST_IN_TASK("test_velocity_reading", test_velocity_reading, 8192, 5);
-    );
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_VELOCITY_READING_TESTS, "VELOCITY READING TESTS",
+      RUN_TEST_IN_TASK("test_velocity_reading", test_velocity_reading, 8192,
+                       5););
 
-    RUN_TEST_SECTION_IF_ENABLED(ENABLE_DIAGNOSTICS_TESTS, "DIAGNOSTICS TESTS",
-        RUN_TEST_IN_TASK("test_diagnostics", test_diagnostics, 8192, 5);
-    );
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_DIAGNOSTICS_TESTS, "DIAGNOSTICS TESTS",
+      RUN_TEST_IN_TASK("test_diagnostics", test_diagnostics, 8192, 5););
 
-    RUN_TEST_SECTION_IF_ENABLED(ENABLE_CONFIGURATION_TESTS, "CONFIGURATION TESTS",
-        RUN_TEST_IN_TASK("test_zero_position", test_zero_position, 8192, 5);
-        RUN_TEST_IN_TASK("test_direction", test_direction, 8192, 5);
-    );
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CONFIGURATION_TESTS, "CONFIGURATION TESTS",
+      RUN_TEST_IN_TASK("test_zero_position", test_zero_position, 8192, 5);
+      RUN_TEST_IN_TASK("test_direction", test_direction, 8192, 5););
 
-    RUN_TEST_SECTION_IF_ENABLED(ENABLE_FRAME_FORMAT_TESTS, "FRAME FORMAT TESTS",
-        RUN_TEST_IN_TASK("test_frame_format_16", test_frame_format_16, 8192, 5);
-        RUN_TEST_IN_TASK("test_frame_format_24", test_frame_format_24, 8192, 5);
-        RUN_TEST_IN_TASK("test_frame_format_32", test_frame_format_32, 8192, 5);
-    );
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_FRAME_FORMAT_TESTS, "FRAME FORMAT TESTS",
+      RUN_TEST_IN_TASK("test_frame_format_16", test_frame_format_16, 8192, 5);
+      RUN_TEST_IN_TASK("test_frame_format_24", test_frame_format_24, 8192, 5);
+      RUN_TEST_IN_TASK("test_frame_format_32", test_frame_format_32, 8192, 5););
 
-    RUN_TEST_SECTION_IF_ENABLED(ENABLE_ERROR_HANDLING_TESTS, "ERROR HANDLING TESTS",
-        RUN_TEST_IN_TASK("test_error_handling", test_error_handling, 8192, 5);
-    );
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ERROR_HANDLING_TESTS, "ERROR HANDLING TESTS",
+      RUN_TEST_IN_TASK("test_error_handling", test_error_handling, 8192, 5););
 
-    // Print test summary
-    print_test_summary(g_test_results, "AS5047U", TAG);
+  // Print test summary
+  print_test_summary(g_test_results, "AS5047U", TAG);
 
-    // Blink GPIO14 to indicate completion
-    output_section_indicator(5);
+  // Blink GPIO14 to indicate completion
+  output_section_indicator(5);
 
-    // Cleanup
-    cleanup_test_progress_indicator();
+  // Cleanup
+  cleanup_test_progress_indicator();
 
-    ESP_LOGI(TAG, "Test suite completed");
+  ESP_LOGI(TAG, "Test suite completed");
 
-    while (true) {
-        vTaskDelay(pdMS_TO_TICKS(10000));
-    }
+  while (true) {
+    vTaskDelay(pdMS_TO_TICKS(10000));
+  }
 }
-
