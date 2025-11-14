@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['esp32as5047ubus_2ecpp_0',['Esp32As5047uBus.cpp',['../Esp32As5047uBus_8cpp.html',1,'']]],
-  ['esp32as5047ubus_2ehpp_1',['Esp32As5047uBus.hpp',['../Esp32As5047uBus_8hpp.html',1,'']]]
+  ['esp32_5fas5047u_5fbus_2ecpp_0',['esp32_as5047u_bus.cpp',['../esp32__as5047u__bus_8cpp.html',1,'']]],
+  ['esp32_5fas5047u_5fbus_2ehpp_1',['esp32_as5047u_bus.hpp',['../esp32__as5047u__bus_8hpp.html',1,'']]]
 ];

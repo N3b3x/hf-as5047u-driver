@@ -269,11 +269,11 @@ class as5047u::AS5047U&lt; SpiType &gt;</div><p><a class="el" href="classas5047u
 <p>Provides high-level access to sensor features: reading angle (with or without DAEC compensation), reading rotation velocity, retrieving AGC and magnitude diagnostics, configuring outputs (ABI, UVW, PWM), handling error flags, and performing OTP programming for permanent configuration storage.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">SpiType</td><td>The SPI bus type (must inherit from as5047u::spiBus&lt;SpiType&gt;)</td></tr>
+    <tr><td class="paramname">SpiType</td><td>The SPI bus type (must inherit from as5047u::SpiInterface&lt;SpiType&gt;)</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>The driver uses CRTP-based SPI interface for zero virtual call overhead. SPI implementations should inherit from as5047u::spiBus&lt;DerivedType&gt;</dd>
+<dl class="section note"><dt>Note</dt><dd>The driver uses CRTP-based SPI interface for zero virtual call overhead. SPI implementations should inherit from as5047u::SpiInterface&lt;DerivedType&gt;</dd>
 <dd>
 C++17 CTAD allows automatic type deduction: <a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> encoder(bus, format); // Type deduced automatically </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
