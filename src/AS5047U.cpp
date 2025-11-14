@@ -37,8 +37,9 @@ uint16_t AS5047U<SpiType>::GetAngle(uint8_t retries) const {
   for (uint8_t i = 0; i <= retries; ++i) {
     val = this->template ReadReg<AS5047U_REG::ANGLECOM>().bits.ANGLECOM_value;
     auto err = GetStickyErrorFlags();
-    if (!(static_cast<uint16_t>(err) & retryMask))
+    if ((static_cast<uint16_t>(err) & retryMask) == 0U) {
       break;
+    }
   }
   return val;
 }
@@ -51,8 +52,9 @@ uint16_t AS5047U<SpiType>::GetRawAngle(uint8_t retries) const {
   for (uint8_t i = 0; i <= retries; ++i) {
     val = this->template ReadReg<AS5047U_REG::ANGLEUNC>().bits.ANGLEUNC_value;
     auto err = GetStickyErrorFlags();
-    if (!(static_cast<uint16_t>(err) & retryMask))
+    if ((static_cast<uint16_t>(err) & retryMask) == 0U) {
       break;
+    }
   }
   return val;
 }
@@ -66,8 +68,9 @@ int16_t AS5047U<SpiType>::GetVelocity(uint8_t retries) const {
     auto v = this->template ReadReg<AS5047U_REG::VEL>().bits.VEL_value;
     val = static_cast<int16_t>((static_cast<int16_t>(v << 2)) >> 2);
     auto err = GetStickyErrorFlags();
-    if (!(static_cast<uint16_t>(err) & retryMask))
+    if ((static_cast<uint16_t>(err) & retryMask) == 0U) {
       break;
+    }
   }
   return val;
 }
@@ -95,8 +98,9 @@ uint8_t AS5047U<SpiType>::GetAGC(uint8_t retries) const {
   for (uint8_t i = 0; i <= retries; ++i) {
     val = this->template ReadReg<AS5047U_REG::AGC>().bits.AGC_value;
     auto err = GetStickyErrorFlags();
-    if (!(static_cast<uint16_t>(err) & retryMask))
+    if ((static_cast<uint16_t>(err) & retryMask) == 0U) {
       break;
+    }
   }
   return val;
 }
@@ -109,8 +113,9 @@ uint16_t AS5047U<SpiType>::GetMagnitude(uint8_t retries) const {
   for (uint8_t i = 0; i <= retries; ++i) {
     val = this->template ReadReg<AS5047U_REG::MAG>().bits.MAG_value;
     auto err = GetStickyErrorFlags();
-    if (!(static_cast<uint16_t>(err) & retryMask))
+    if ((static_cast<uint16_t>(err) & retryMask) == 0U) {
       break;
+    }
   }
   return val;
 }
@@ -120,8 +125,9 @@ uint16_t AS5047U<SpiType>::GetErrorFlags(uint8_t retries) const {
   uint16_t val = 0;
   for (uint8_t i = 0; i <= retries; ++i) {
     val = this->template ReadReg<AS5047U_REG::ERRFL>().value;
-    if (val == 0)
+    if (val == 0U) {
       break;
+    }
   }
   return val;
 }
@@ -137,16 +143,18 @@ uint16_t AS5047U<SpiType>::GetZeroPosition(uint8_t retries) const {
   for (uint8_t i = 0; i <= retries; ++i) {
     m = this->template ReadReg<AS5047U_REG::ZPOSM>().bits.ZPOSM_bits;
     auto err = GetStickyErrorFlags();
-    if (!(static_cast<uint16_t>(err) & retryMask))
+    if ((static_cast<uint16_t>(err) & retryMask) == 0U) {
       break;
+    }
   }
 
   // Then read ZPOSL with retries
   for (uint8_t i = 0; i <= retries; ++i) {
     l = this->template ReadReg<AS5047U_REG::ZPOSL>().bits.ZPOSL_bits;
     auto err = GetStickyErrorFlags();
-    if (!(static_cast<uint16_t>(err) & retryMask))
+    if ((static_cast<uint16_t>(err) & retryMask) == 0U) {
       break;
+    }
   }
 
   return static_cast<uint16_t>((m << 6) | l);

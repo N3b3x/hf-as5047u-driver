@@ -139,9 +139,9 @@ public:
 
   /** @brief Helper constants and methods for velocity unit conversions. */
   struct Velocity {
-    static constexpr float DEG_PER_LSB = 24.141f;
-    static constexpr float RAD_PER_LSB = DEG_PER_LSB * M_PI / 180.0f;
-    static constexpr float RPM_PER_LSB = DEG_PER_LSB * (60.0f / 360.0f);
+    static constexpr float DEG_PER_LSB = 24.141F;
+    static constexpr float RAD_PER_LSB = DEG_PER_LSB * M_PI / 180.0F;
+    static constexpr float RPM_PER_LSB = DEG_PER_LSB * (60.0F / 360.0F);
   };
 
   /** @brief Get rotational velocity in degrees per second.

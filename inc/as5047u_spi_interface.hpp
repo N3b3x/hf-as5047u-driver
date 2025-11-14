@@ -55,15 +55,15 @@ public:
     return static_cast<Derived *>(this)->transfer(tx, rx, len);
   }
 
+  // Prevent copying
+  SpiInterface(const SpiInterface &) = delete;
+  SpiInterface &operator=(const SpiInterface &) = delete;
+
 protected:
   /**
    * @brief Protected constructor to prevent direct instantiation
    */
   SpiInterface() = default;
-
-  // Prevent copying
-  SpiInterface(const SpiInterface &) = delete;
-  SpiInterface &operator=(const SpiInterface &) = delete;
 
   // Allow moving
   SpiInterface(SpiInterface &&) = default;
