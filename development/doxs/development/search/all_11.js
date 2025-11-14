@@ -24,7 +24,7 @@ var searchData=
   ['spi_5f32_21',['SPI_32',['../AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a367bc64c294b2a6476209c2d855171b5',1,'AS5047U_types.hpp']]],
   ['spi_5fcnt_22',['SPI_cnt',['../structAS5047U__REG_1_1DIA.html#a530346c236a0a1a3f13ddd011d4ab34c',1,'AS5047U_REG::DIA']]],
   ['spiconfig_23',['SPIConfig',['../structEsp32As5047uBus_1_1SPIConfig.html',1,'Esp32As5047uBus']]],
-  ['spiinterface_24',['SpiInterface',['../classas5047u_1_1SpiInterface.html',1,'as5047u::SpiInterface&lt; Derived &gt;'],['../classas5047u_1_1SpiInterface.html#a1c4aec20d704a271ff056ecfd6fc3ea7',1,'as5047u::SpiInterface::SpiInterface()=default'],['../classas5047u_1_1SpiInterface.html#a41e724c8421c08fd43576c1dddd7ff98',1,'as5047u::SpiInterface::SpiInterface(const SpiInterface &amp;)=delete'],['../classas5047u_1_1SpiInterface.html#a54fbeb1a16a6802873a6e3272c996d54',1,'as5047u::SpiInterface::SpiInterface(SpiInterface &amp;&amp;)=default']]],
+  ['spiinterface_24',['SpiInterface',['../classas5047u_1_1SpiInterface.html',1,'as5047u::SpiInterface&lt; Derived &gt;'],['../classas5047u_1_1SpiInterface.html#a41e724c8421c08fd43576c1dddd7ff98',1,'as5047u::SpiInterface::SpiInterface(const SpiInterface &amp;)=delete'],['../classas5047u_1_1SpiInterface.html#a1c4aec20d704a271ff056ecfd6fc3ea7',1,'as5047u::SpiInterface::SpiInterface()=default'],['../classas5047u_1_1SpiInterface.html#a54fbeb1a16a6802873a6e3272c996d54',1,'as5047u::SpiInterface::SpiInterface(SpiInterface &amp;&amp;)=default']]],
   ['spiinterface_3c_20esp32as5047ubus_20_3e_25',['SpiInterface&lt; Esp32As5047uBus &gt;',['../classas5047u_1_1SpiInterface.html',1,'as5047u']]],
   ['start_26',['🚀 Quick Start',['../index.html#autotoc_md4',1,'']]]
 ];
