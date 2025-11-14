@@ -1,7 +1,7 @@
 var searchData=
 [
   ['failed_5ftests_0',['failed_tests',['../structTestResults.html#a0acef46f38f27f0fbb8fa822bb218b3a',1,'TestResults']]],
-  ['features_1',['✨ Key Features',['../index.html#autotoc_md3',1,'']]],
+  ['features_1',['✨ Key Features',['../index.html#autotoc_md1',1,'']]],
   ['filter_5fdisable_2',['FILTER_disable',['../structAS5047U__REG_1_1DISABLE.html#ad012f583e95c4b88e11ea4b657a51f96',1,'AS5047U_REG::DISABLE']]],
   ['filtermode_3',['FilterMode',['../structAS5047U__REG_1_1DISABLE.html#a4246c7cfe013d2fda89d131267aab6de',1,'AS5047U_REG::DISABLE']]],
   ['flip_5ftest_5fprogress_5findicator_4',['flip_test_progress_indicator',['../TestFramework_8h.html#a7bb80345e5681c19686df292fa897daf',1,'TestFramework.h']]],
