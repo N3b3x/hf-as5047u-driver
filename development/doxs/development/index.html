@@ -135,7 +135,7 @@ $(function(){initNavTree('index.html',''); initResizable(); });
   <div class="headertitle"><div class="title">HF-AS5047U </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a>Hardware Agnostic <a class="el" href="classAS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> library - as used in the HardFOC-V1 controller</p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a>Hardware Agnostic AS5047U library - as used in the HardFOC-V1 controller</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 AS5047U – C++ Driver Library</h1>
 <p><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3" style="pointer-events: none;" class="inline"/> <a href="https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml"><img src="https://github.com/n3b3x/hf-as5047u-driver/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main" alt="CI Build" style="pointer-events: none;" class="inline"/></a></p>
@@ -144,7 +144,7 @@ AS5047U – C++ Driver Library</h1>
 <blockquote class="doxtable">
 <p>&zwj;<b>📖 <a href="https://n3b3x.github.io/hf-as5047u-driver/">📚🌐 Live Complete Documentation</a></b> - Interactive guides, examples, and step-by-step tutorials </p>
 </blockquote>
-<p><b>HF-AS5047U</b> is a portable C++20 driver for the <b><a class="el" href="classAS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a></b> magnetic encoder from ams. It delivers fast 14‑bit absolute angle readings over SPI, optional CRC protection and advanced features like Dynamic Angle Error Compensation (DAEC) and an adaptive Dynamic Filter System (DFS™). The sensor can also output incremental (A/B/I) and 3‑phase commutation (UVW) signals or a PWM encoded angle, making it a drop‑in replacement for optical encoders in high-performance motor control and robotics. </p>
+<p><b>HF-AS5047U</b> is a portable C++20 driver for the <b>AS5047U</b> magnetic encoder from ams. It delivers fast 14‑bit absolute angle readings over SPI, optional CRC protection and advanced features like Dynamic Angle Error Compensation (DAEC) and an adaptive Dynamic Filter System (DFS™). The sensor can also output incremental (A/B/I) and 3‑phase commutation (UVW) signals or a PWM encoded angle, making it a drop‑in replacement for optical encoders in high-performance motor control and robotics. </p>
 <h3><a class="anchor" id="autotoc_md3"></a>
 ✨ Key Features</h3>
 <ul>
@@ -185,7 +185,7 @@ AS5047U – C++ Driver Library</h1>
 <h2><a class="anchor" id="autotoc_md7"></a>
 🧠 Quick Start</h2>
 <div class="fragment"><div class="line"><span class="comment">// Instantiate the driver with your platform&#39;s SPI bus</span></div>
-<div class="line"><a class="code hl_class" href="classAS5047U.html">AS5047U</a> encoder(bus, <a class="code hl_enumvalue" href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5">FrameFormat::SPI_24</a>); <span class="comment">// driver using 24-bit frames</span></div>
+<div class="line">AS5047U encoder(bus, <a class="code hl_enumvalue" href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5">FrameFormat::SPI_24</a>); <span class="comment">// driver using 24-bit frames</span></div>
 <div class="line"> </div>
 <div class="line">uint16_t angle = encoder.getAngle();        <span class="comment">// compensated angle</span></div>
 <div class="line">uint16_t rawAngle = encoder.getRawAngle();  <span class="comment">// raw angle without DAEC</span></div>
@@ -196,7 +196,6 @@ AS5047U – C++ Driver Library</h1>
 <div class="line">uint16_t mag = encoder.getMagnitude();      <span class="comment">// magnetic magnitude</span></div>
 <div class="line">uint16_t errors = encoder.getErrorFlags();  <span class="comment">// current error flags</span></div>
 <div class="ttc" id="aAS5047U__types_8hpp_html_a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5"><div class="ttname"><a href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5">FrameFormat::SPI_24</a></div><div class="ttdeci">@ SPI_24</div></div>
-<div class="ttc" id="aclassAS5047U_html"><div class="ttname"><a href="classAS5047U.html">AS5047U</a></div><div class="ttdoc">AS5047U magnetic rotary sensor driver class.</div><div class="ttdef"><b>Definition</b> AS5047U.hpp:65</div></div>
 </div><!-- fragment --><p>Configure outputs: </p><div class="fragment"><div class="line">encoder.setZeroPosition(8192);            <span class="comment">// set zero electrical angle</span></div>
 <div class="line">encoder.setDirection(<span class="keyword">false</span>);              <span class="comment">// counter-clockwise = positive</span></div>
 <div class="line">encoder.setABIResolution(12);             <span class="comment">// 12-bit incremental output</span></div>
@@ -213,7 +212,7 @@ AS5047U – C++ Driver Library</h1>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Function   </th><th class="markdownTableHeadNone">Description    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="classAS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U(spiBus &amp;bus, FrameFormat fmt)</a>   </td><td class="markdownTableBodyNone">Constructor (SPI interface and frame format)    </td></tr>
+<td class="markdownTableBodyNone">AS5047U(spiBus &amp;bus, FrameFormat fmt)   </td><td class="markdownTableBodyNone">Constructor (SPI interface and frame format)    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">void setFrameFormat(FrameFormat fmt)   </td><td class="markdownTableBodyNone">Set SPI frame format (16/24/32-bit mode)    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -286,7 +285,7 @@ AS5047U – C++ Driver Library</h1>
 <p>Developed for the HardFOC-V1 controller.</p><ul>
 <li>Developed by <b>Nebiyu Tadesse</b>, 2025.</li>
 <li>Based on the official <a href="https://ams-osram.com/products/sensor-solutions/position-sensors/ams-as5047u-high-resolution-rotary-position-sensor">AS5047U Datasheet</a> by ASM ASRAM.</li>
-<li>Inspired by embedded needs for a reliable, testable <a class="el" href="classAS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> library.</li>
+<li>Inspired by embedded needs for a reliable, testable AS5047U library.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md12"></a>
 💬 Support</h2>

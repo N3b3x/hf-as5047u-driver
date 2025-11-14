@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['readreg_0',['readReg',['../classAS5047U.html#a1db9c399c3d6d0d99cbdb9758a7b823c',1,'AS5047U']]]
+  ['readreg_0',['readReg',['../classas5047u_1_1Encoder.html#ae1a24aca912a66dfcdc9a54accd44a6c',1,'as5047u::Encoder']]]
 ];

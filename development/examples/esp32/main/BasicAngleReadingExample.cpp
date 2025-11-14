@@ -1,73 +1,72 @@
 /**
  * @file BasicAngleReadingExample.cpp
  * @brief Basic angle reading example with diagnostics
- * 
+ *
  * This example demonstrates:
  * - Basic initialization
  * - Angle reading in LSB and degrees
  * - AGC and magnitude diagnostics
  * - Error flag monitoring
- * 
+ *
  * @author N3b3x
  * @date 2025
  */
 
-#include <stdio.h>
-#include <memory>
+#include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "esp_log.h"
+#include <memory>
+#include <stdio.h>
 
 #include "../../../inc/AS5047U.hpp"
 #include "Esp32As5047uBus.hpp"
 
-static const char* TAG = "AS5047U_Basic";
+static const char *TAG = "AS5047U_Basic";
 
 extern "C" void app_main(void) {
-    ESP_LOGI(TAG, "AS5047U Basic Angle Reading Example");
-    ESP_LOGI(TAG, "===================================");
+  ESP_LOGI(TAG, "AS5047U Basic Angle Reading Example");
+  ESP_LOGI(TAG, "===================================");
 
-    // Configure SPI bus
-    Esp32As5047uBus::SPIConfig config;
-    config.miso_pin = GPIO_NUM_2;
-    config.mosi_pin = GPIO_NUM_7;
-    config.sclk_pin = GPIO_NUM_6;
-    config.cs_pin = GPIO_NUM_10;
-    config.frequency = 4000000;
-    config.mode = 1;
+  // Configure SPI bus
+  Esp32As5047uBus::SPIConfig config;
+  config.miso_pin = GPIO_NUM_2;
+  config.mosi_pin = GPIO_NUM_7;
+  config.sclk_pin = GPIO_NUM_6;
+  config.cs_pin = GPIO_NUM_10;
+  config.frequency = 4000000;
+  config.mode = 1;
 
-    auto bus = std::make_unique<Esp32As5047uBus>(config);
-    
-    if (!bus->initialize()) {
-        ESP_LOGE(TAG, "Failed to initialize SPI bus");
-        return;
+  auto bus = std::make_unique<Esp32As5047uBus>(config);
+
+  if (!bus->initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize SPI bus");
+    return;
+  }
+
+  // Create encoder instance (24-bit frame format with CRC)
+  as5047u::Encoder encoder(*bus, FrameFormat::SPI_24);
+
+  ESP_LOGI(TAG, "AS5047U encoder initialized");
+  ESP_LOGI(TAG, "Starting angle reading loop...");
+
+  // Main reading loop
+  while (true) {
+    // Read angle
+    uint16_t angle = encoder.getAngle();
+    double angle_deg = angle * 360.0 / 16384.0;
+    ESP_LOGI(TAG, "Angle: %u (%.2f°)", angle, angle_deg);
+
+    // Read diagnostics
+    uint8_t agc = encoder.getAGC();
+    uint16_t mag = encoder.getMagnitude();
+    ESP_LOGI(TAG, "AGC: %u, Magnitude: %u", agc, mag);
+
+    // Check for errors
+    AS5047U_Error errors = encoder.getStickyErrorFlags();
+    if (errors != AS5047U_Error::None) {
+      ESP_LOGW(TAG, "Errors detected: 0x%04X", static_cast<uint16_t>(errors));
     }
 
-    // Create encoder instance (24-bit frame format with CRC)
-    AS5047U encoder(*bus, FrameFormat::SPI_24);
-
-    ESP_LOGI(TAG, "AS5047U encoder initialized");
-    ESP_LOGI(TAG, "Starting angle reading loop...");
-
-    // Main reading loop
-    while (true) {
-        // Read angle
-        uint16_t angle = encoder.getAngle();
-        double angle_deg = angle * 360.0 / 16384.0;
-        ESP_LOGI(TAG, "Angle: %u (%.2f°)", angle, angle_deg);
-
-        // Read diagnostics
-        uint8_t agc = encoder.getAGC();
-        uint16_t mag = encoder.getMagnitude();
-        ESP_LOGI(TAG, "AGC: %u, Magnitude: %u", agc, mag);
-
-        // Check for errors
-        AS5047U_Error errors = encoder.getStickyErrorFlags();
-        if (errors != AS5047U_Error::None) {
-            ESP_LOGW(TAG, "Errors detected: 0x%04X", static_cast<uint16_t>(errors));
-        }
-
-        vTaskDelay(pdMS_TO_TICKS(100));
-    }
+    vTaskDelay(pdMS_TO_TICKS(100));
+  }
 }
-

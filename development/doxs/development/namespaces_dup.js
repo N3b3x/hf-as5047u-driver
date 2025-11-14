@@ -1,5 +1,6 @@
 var namespaces_dup =
 [
+    [ "as5047u", "namespaceas5047u.html", "namespaceas5047u" ],
     [ "AS5047U_CFG", "namespaceAS5047U__CFG.html", [
       [ "CRC_RETRIES", "namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65", null ],
       [ "DEFAULT_FRAME_FORMAT", "namespaceAS5047U__CFG.html#a169d05b4070af344342ea2d1d314d933", null ]

@@ -4,6 +4,6 @@ var searchData=
   ['vdd_5fmode_1',['VDD_mode',['../structAS5047U__REG_1_1DIA.html#ad06c3c44643323c37a6006fd52c8aa28',1,'AS5047U_REG::DIA']]],
   ['vel_2',['VEL',['../structAS5047U__REG_1_1VEL.html',1,'AS5047U_REG']]],
   ['vel_5fvalue_3',['VEL_value',['../structAS5047U__REG_1_1VEL.html#aea0a509f1e086364445a105df1173ff7',1,'AS5047U_REG::VEL']]],
-  ['velocity_4',['Velocity',['../structAS5047U_1_1Velocity.html',1,'AS5047U']]],
+  ['velocity_4',['Velocity',['../structas5047u_1_1Encoder_1_1Velocity.html',1,'as5047u::Encoder']]],
   ['velocityreadingexample_2ecpp_5',['VelocityReadingExample.cpp',['../VelocityReadingExample_8cpp.html',1,'']]]
 ];
