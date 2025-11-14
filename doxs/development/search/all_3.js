@@ -4,7 +4,7 @@ var searchData=
   ['data_5fselect_1',['Data_select',['../structAS5047U__REG_1_1SETTINGS2.html#a1cad7c1e42b53001061154800d760060',1,'AS5047U_REG::SETTINGS2']]],
   ['decimal_2',['Decimal',['../structAS5047U__REG_1_1SETTINGS2.html#a2eb243d2f86ae9c4bbc5d0aaac4a5947a937504f318f04eaf0f1d701df4c4d7f3',1,'AS5047U_REG::SETTINGS2']]],
   ['default_5fframe_5fformat_3',['DEFAULT_FRAME_FORMAT',['../namespaceAS5047U__CFG.html#a169d05b4070af344342ea2d1d314d933',1,'AS5047U_CFG']]],
-  ['deg_5fper_5flsb_4',['DEG_PER_LSB',['../structAS5047U_1_1Velocity.html#a45b2c026ac32a835ee61084e2b9f2d24',1,'AS5047U::Velocity']]],
+  ['deg_5fper_5flsb_4',['DEG_PER_LSB',['../structAS5047U_1_1Velocity.html#a9a3940b5b70e8da798f16602f7693187',1,'AS5047U::Velocity']]],
   ['deinitialize_5',['deinitialize',['../classEsp32As5047uBus.html#a048d19fcf187ba980af6e2a35876d2b9',1,'Esp32As5047uBus']]],
   ['dia_6',['DIA',['../structAS5047U__REG_1_1DIA.html',1,'AS5047U_REG']]],
   ['dia1_5fen_7',['Dia1_en',['../structAS5047U__REG_1_1ZPOSL.html#a9cf5e495c2de187923afd7a971e87482',1,'AS5047U_REG::ZPOSL']]],
@@ -17,6 +17,6 @@ var searchData=
   ['documentation_14',['📖 Documentation',['../index.html#autotoc_md6',1,'']]],
   ['driver_20library_15',['AS5047U – C++ Driver Library',['../index.html#autotoc_md1',1,'']]],
   ['driverintegrationtest_2ecpp_16',['DriverIntegrationTest.cpp',['../DriverIntegrationTest_8cpp.html',1,'']]],
-  ['dumpstatus_17',['dumpStatus',['../classAS5047U.html#ab4fa5a6e248b49bf053b35d09f5d62b5',1,'AS5047U']]],
+  ['dumpstatus_17',['dumpStatus',['../classAS5047U.html#abd7062b0c3874704098008bf5ddc7859',1,'AS5047U']]],
   ['dynamiccompensation_18',['DynamicCompensation',['../structAS5047U__REG_1_1SETTINGS2.html#ab066f94f4ae8fcce3710aaefde0ee3a4',1,'AS5047U_REG::SETTINGS2']]]
 ];
