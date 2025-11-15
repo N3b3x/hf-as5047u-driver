@@ -159,7 +159,7 @@ This guide helps you diagnose and resolve common issues when using the AS5047U d
 **Error: "Undefined reference"**
 
 **Solution:**
-- Verify you're linking the driver source file (`AS5047U.cpp`)
+- Verify you're linking the driver source file (`as5047u.cpp`)
 - Check include paths are correct
 - Ensure C++20 standard is enabled: `-std=c++20`
 

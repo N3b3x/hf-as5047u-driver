@@ -16,7 +16,7 @@ AS5047U Configuration
 
 ### Configuration Header
 
-You can also configure the driver by editing `inc/AS5047U_config.hpp`:
+You can also configure the driver by editing `inc/as5047u_config.hpp`:
 
 ```cpp
 namespace AS5047U_CFG {

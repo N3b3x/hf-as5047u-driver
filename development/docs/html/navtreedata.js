@@ -68,7 +68,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"AS5047U_8cpp.html",
+"TestFramework_8h.html",
 "structAS5047U__REG_1_1ANGLEUNC.html#ac8dbd17df86cdd467cf847bf8b96d457",
 "structAS5047U__REG_1_1SETTINGS2.html#a2a14ce03eaef7871e72f1c5a038dd36b"
 ];

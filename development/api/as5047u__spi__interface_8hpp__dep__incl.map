@@ -1,19 +1,27 @@
 <map id="inc/as5047u_spi_interface.hpp" name="inc/as5047u_spi_interface.hpp">
-<area shape="rect" id="Node000001" title="CRTP&#45;based SPI bus interface for AS5047U driver." alt="" coords="589,5,807,31"/>
-<area shape="rect" id="Node000002" href="$esp32__as5047u__bus_8hpp.html" title="ESP32 SPI transport implementation for AS5047U driver." alt="" coords="515,79,700,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="676,42,631,81,627,76,673,38"/>
-<area shape="rect" id="Node000009" href="$AS5047U_8hpp.html" title="Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21)." alt="" coords="724,86,856,111"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="724,38,778,84,775,88,720,42"/>
-<area shape="rect" id="Node000003" href="$basic__angle__reading__example_8cpp.html" title="Basic angle reading example with diagnostics." alt="" coords="5,167,172,221"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="501,116,351,139,185,169,173,172,172,167,184,164,350,133,501,111"/>
-<area shape="rect" id="Node000004" href="$configuration__example_8cpp.html" title="Configuration example with ABI, UVW, and PWM setup." alt="" coords="197,174,399,214"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="533,125,361,176,360,171,531,120"/>
-<area shape="rect" id="Node000005" href="$driver__integration__test_8cpp.html" title="Comprehensive Integration Test Suite for as5047u::AS5047U Driver." alt="" coords="424,167,591,221"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="579,130,537,169,534,165,575,126"/>
-<area shape="rect" id="Node000006" href="$esp32__as5047u__bus_8cpp.html" title="ESP32 SPI transport implementation for as5047u::AS5047U driver." alt="" coords="615,174,799,214"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="639,126,689,172,685,176,636,130"/>
-<area shape="rect" id="Node000007" href="$full__features__example_8cpp.html" title="Comprehensive example demonstrating all as5047u::AS5047U features." alt="" coords="824,174,1023,214"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="685,120,860,171,859,177,683,125"/>
-<area shape="rect" id="Node000008" href="$velocity__reading__example_8cpp.html" title="Velocity reading example with unit conversions." alt="" coords="1047,174,1272,214"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="714,116,877,139,1036,164,1074,171,1073,177,1035,169,876,145,713,121"/>
+<area shape="rect" id="Node000001" title="CRTP&#45;based SPI bus interface for AS5047U driver." alt="" coords="721,5,940,31"/>
+<area shape="rect" id="Node000002" href="$esp32__as5047u__bus_8hpp.html" title="ESP32 SPI transport implementation for AS5047U driver." alt="" coords="647,79,833,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="809,42,764,81,760,76,805,38"/>
+<area shape="rect" id="Node000009" href="$as5047u_8hpp.html" title="Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21)." alt="" coords="876,86,1004,111"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="860,37,925,84,922,88,857,41"/>
+<area shape="rect" id="Node000003" href="$basic__angle__reading__example_8cpp.html" title="Basic angle reading example with diagnostics." alt="" coords="877,167,1043,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="798,121,899,164,897,169,796,126"/>
+<area shape="rect" id="Node000004" href="$configuration__example_8cpp.html" title="Configuration example with ABI, UVW, and PWM setup." alt="" coords="1068,174,1271,214"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="845,119,1057,164,1089,171,1088,176,1055,169,843,124"/>
+<area shape="rect" id="Node000005" href="$driver__integration__test_8cpp.html" title="Comprehensive Integration Test Suite for as5047u::AS5047U Driver." alt="" coords="214,167,381,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="634,121,393,169,381,172,380,167,391,164,633,115"/>
+<area shape="rect" id="Node000006" href="$esp32__as5047u__bus_8cpp.html" title="ESP32 SPI transport implementation for as5047u::AS5047U driver." alt="" coords="5,174,189,214"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="634,112,433,134,202,169,168,176,167,171,201,164,432,129,633,107"/>
+<area shape="rect" id="Node000007" href="$full__features__example_8cpp.html" title="Comprehensive example demonstrating all as5047u::AS5047U features." alt="" coords="405,174,603,214"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="681,126,553,176,551,171,679,121"/>
+<area shape="rect" id="Node000008" href="$velocity__reading__example_8cpp.html" title="Velocity reading example with unit conversions." alt="" coords="627,174,853,214"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="743,132,743,174,737,174,737,132"/>
+<area shape="poly" id="edge9_Node000009_Node000003" title=" " alt="" coords="948,124,957,166,952,167,943,125"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="982,114,1124,172,1122,176,980,119"/>
+<area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="873,117,844,121,717,136,618,142,519,150,392,169,381,172,380,166,392,164,518,145,617,137,717,131,844,116,872,111"/>
+<area shape="poly" id="edge12_Node000009_Node000007" title=" " alt="" coords="869,117,615,169,583,177,582,171,614,164,868,111"/>
+<area shape="poly" id="edge13_Node000009_Node000008" title=" " alt="" coords="904,120,781,176,779,172,902,115"/>
+<area shape="rect" id="Node000010" href="$as5047u_8cpp.html" title=" " alt="" coords="1295,181,1422,207"/>
+<area shape="poly" id="edge14_Node000009_Node000010" title=" " alt="" coords="1018,111,1138,133,1271,164,1318,179,1317,184,1270,169,1137,139,1017,116"/>
+<area shape="poly" id="edge15_Node000010_Node000009" title=" " alt="" coords="1326,179,1294,169,1138,134,1004,111,1005,106,1139,129,1295,164,1328,174"/>
 </map>

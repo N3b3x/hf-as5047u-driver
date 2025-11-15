@@ -314,11 +314,11 @@
 </pre></td><td class="rouge-code"><pre>inc/
   ├── as5047u.hpp
   ├── as5047u_spi_interface.hpp
-  ├── AS5047U_REGISTERS.hpp
-  ├── AS5047U_types.hpp
-  └── AS5047U_config.hpp
+  ├── as5047u_registers.hpp
+  ├── as5047u_types.hpp
+  └── as5047u_config.hpp
 src/
-  └── AS5047U.cpp
+  └── as5047u.cpp
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 <h2 id="integration-methods">
   
@@ -393,7 +393,7 @@ src/
   </li>
   <li>Compile with C++20 support:
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>g++ <span class="nt">-std</span><span class="o">=</span>c++20 <span class="nt">-I</span> inc/ your_code.cpp src/AS5047U.cpp
+</pre></td><td class="rouge-code"><pre>g++ <span class="nt">-std</span><span class="o">=</span>c++20 <span class="nt">-I</span> inc/ your_code.cpp src/as5047u.cpp
 </pre></td></tr></tbody></table></div></code></pre></div>    </div>
   </li>
 </ol>
@@ -412,7 +412,7 @@ src/
 2
 3
 </pre></td><td class="rouge-code"><pre><span class="nb">cd </span>tests
-g++ <span class="nt">-std</span><span class="o">=</span>c++20 <span class="nt">-I</span> ../inc ../src/AS5047U.cpp test_as5047u.cpp <span class="nt">-o</span> <span class="nb">test</span>
+g++ <span class="nt">-std</span><span class="o">=</span>c++20 <span class="nt">-I</span> ../inc ../src/as5047u.cpp test_as5047u.cpp <span class="nt">-o</span> <span class="nb">test</span>
 ./test
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 
@@ -439,7 +439,7 @@ g++ <span class="nt">-std</span><span class="o">=</span>c++20 <span class="nt">-
   </li>
   <li>Compile a simple test:
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>g++ <span class="nt">-std</span><span class="o">=</span>c++20 <span class="nt">-I</span> inc/ <span class="nt">-c</span> src/AS5047U.cpp <span class="nt">-o</span> test.o
+</pre></td><td class="rouge-code"><pre>g++ <span class="nt">-std</span><span class="o">=</span>c++20 <span class="nt">-I</span> inc/ <span class="nt">-c</span> src/as5047u.cpp <span class="nt">-o</span> test.o
 </pre></td></tr></tbody></table></div></code></pre></div>    </div>
   </li>
   <li>If compilation succeeds, the library is properly installed.</li>

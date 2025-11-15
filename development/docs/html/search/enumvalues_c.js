@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['p2ramerror_0',['P2ramError',['../AS5047U_8hpp.html#a65e970630e302a2ffedf003f59fe4df5a53cbc84d331cf258b9ae6a3f35d5955d',1,'AS5047U.hpp']]],
-  ['p2ramwarning_1',['P2ramWarning',['../AS5047U_8hpp.html#a65e970630e302a2ffedf003f59fe4df5a1a337c46ab073e6ff4d23b87e1abcef3',1,'AS5047U.hpp']]],
+  ['p2ramerror_0',['P2ramError',['../as5047u_8hpp.html#a65e970630e302a2ffedf003f59fe4df5a53cbc84d331cf258b9ae6a3f35d5955d',1,'as5047u.hpp']]],
+  ['p2ramwarning_1',['P2ramWarning',['../as5047u_8hpp.html#a65e970630e302a2ffedf003f59fe4df5a1a337c46ab073e6ff4d23b87e1abcef3',1,'as5047u.hpp']]],
   ['pp1_2',['PP1',['../structAS5047U__REG_1_1SETTINGS3.html#a011bfba50dbb2544e2f6766cad602184aefdcbe14bd6fa90d0558ac31578ee027',1,'AS5047U_REG::SETTINGS3']]],
   ['pp2_3',['PP2',['../structAS5047U__REG_1_1SETTINGS3.html#a011bfba50dbb2544e2f6766cad602184ac502b27c1ea35ecc503fe1a2f4b181f7',1,'AS5047U_REG::SETTINGS3']]],
   ['pp3_4',['PP3',['../structAS5047U__REG_1_1SETTINGS3.html#a011bfba50dbb2544e2f6766cad602184a444f7957d12277415b09a936da214a28',1,'AS5047U_REG::SETTINGS3']]],

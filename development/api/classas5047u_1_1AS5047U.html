@@ -144,7 +144,7 @@ $(function(){initNavTree('classas5047u_1_1AS5047U.html',''); initResizable(); })
 <p><a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> magnetic rotary sensor driver class.  
  <a href="#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="AS5047U_8hpp_source.html">AS5047U.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="as5047u_8hpp_source.html">as5047u.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -154,12 +154,12 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1381ab5d9830a9decdbbdf87f0804cf4" id="r_a1381ab5d9830a9decdbbdf87f0804cf4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1381ab5d9830a9decdbbdf87f0804cf4">AS5047U</a> (SpiType &amp;bus, <a class="el" href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532">FrameFormat</a> format=<a class="el" href="namespaceAS5047U__CFG.html#a169d05b4070af344342ea2d1d314d933">AS5047U_CFG::DEFAULT_FRAME_FORMAT</a>) noexcept</td></tr>
+<tr class="memitem:a1381ab5d9830a9decdbbdf87f0804cf4" id="r_a1381ab5d9830a9decdbbdf87f0804cf4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1381ab5d9830a9decdbbdf87f0804cf4">AS5047U</a> (SpiType &amp;bus, <a class="el" href="as5047u__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532">FrameFormat</a> format=<a class="el" href="namespaceAS5047U__CFG.html#a169d05b4070af344342ea2d1d314d933">AS5047U_CFG::DEFAULT_FRAME_FORMAT</a>) noexcept</td></tr>
 <tr class="memdesc:a1381ab5d9830a9decdbbdf87f0804cf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> encoder driver.  <br /></td></tr>
 <tr class="separator:a1381ab5d9830a9decdbbdf87f0804cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ac088dcd0b2f4fbb63ea155c935645f" id="r_a0ac088dcd0b2f4fbb63ea155c935645f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ac088dcd0b2f4fbb63ea155c935645f">~AS5047U</a> ()=default</td></tr>
 <tr class="separator:a0ac088dcd0b2f4fbb63ea155c935645f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ee91c5e53c1f72e5ceee22630813b93" id="r_a5ee91c5e53c1f72e5ceee22630813b93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ee91c5e53c1f72e5ceee22630813b93">SetFrameFormat</a> (<a class="el" href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532">FrameFormat</a> format) noexcept</td></tr>
+<tr class="memitem:a5ee91c5e53c1f72e5ceee22630813b93" id="r_a5ee91c5e53c1f72e5ceee22630813b93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ee91c5e53c1f72e5ceee22630813b93">SetFrameFormat</a> (<a class="el" href="as5047u__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532">FrameFormat</a> format) noexcept</td></tr>
 <tr class="memdesc:a5ee91c5e53c1f72e5ceee22630813b93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the SPI frame format (16, 24, or 32-bit).  <br /></td></tr>
 <tr class="separator:a5ee91c5e53c1f72e5ceee22630813b93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b90fcf2e216c5131f3a9d9dcdfeb183" id="r_a4b90fcf2e216c5131f3a9d9dcdfeb183"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b90fcf2e216c5131f3a9d9dcdfeb183">GetAngle</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
@@ -254,7 +254,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a72bcd5b246749f0d5c714c6b7b65e5b5"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a72bcd5b246749f0d5c714c6b7b65e5b5">WriteReg</a> (const RegT &amp;reg, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
 <tr class="memdesc:a72bcd5b246749f0d5c714c6b7b65e5b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes data to a specified register in the <a class="el" href="classas5047u_1_1AS5047U.html" title="AS5047U magnetic rotary sensor driver class.">AS5047U</a> sensor.  <br /></td></tr>
 <tr class="separator:a72bcd5b246749f0d5c714c6b7b65e5b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7433479a5ef780f6eb96a86eca5afff" id="r_ac7433479a5ef780f6eb96a86eca5afff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="AS5047U_8hpp.html#a65e970630e302a2ffedf003f59fe4df5">AS5047U_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7433479a5ef780f6eb96a86eca5afff">GetStickyErrorFlags</a> () const</td></tr>
+<tr class="memitem:ac7433479a5ef780f6eb96a86eca5afff" id="r_ac7433479a5ef780f6eb96a86eca5afff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="as5047u_8hpp.html#a65e970630e302a2ffedf003f59fe4df5">AS5047U_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7433479a5ef780f6eb96a86eca5afff">GetStickyErrorFlags</a> () const</td></tr>
 <tr class="memdesc:ac7433479a5ef780f6eb96a86eca5afff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve and clear the accumulated sticky error flags.  <br /></td></tr>
 <tr class="separator:ac7433479a5ef780f6eb96a86eca5afff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -296,7 +296,7 @@ template&lt;typename SpiType &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532">FrameFormat</a></td>          <td class="paramname"><span class="paramname"><em>format</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a169d05b4070af344342ea2d1d314d933">AS5047U_CFG::DEFAULT_FRAME_FORMAT</a></span></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="as5047u__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532">FrameFormat</a></td>          <td class="paramname"><span class="paramname"><em>format</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a169d05b4070af344342ea2d1d314d933">AS5047U_CFG::DEFAULT_FRAME_FORMAT</a></span></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -658,7 +658,7 @@ template&lt;typename SpiType &gt; </div>
 template&lt;typename SpiType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="AS5047U_8hpp.html#a65e970630e302a2ffedf003f59fe4df5">AS5047U_Error</a> <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::GetStickyErrorFlags </td>
+          <td class="memname"><a class="el" href="as5047u_8hpp.html#a65e970630e302a2ffedf003f59fe4df5">AS5047U_Error</a> <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::GetStickyErrorFlags </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -1110,7 +1110,7 @@ template&lt;typename SpiType &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::SetFrameFormat </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532">FrameFormat</a></td>          <td class="paramname"><span class="paramname"><em>format</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="as5047u__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532">FrameFormat</a></td>          <td class="paramname"><span class="paramname"><em>format</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1346,8 +1346,8 @@ template&lt;typename RegT &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>inc/<a class="el" href="AS5047U_8hpp_source.html">AS5047U.hpp</a></li>
-<li>src/<a class="el" href="AS5047U_8cpp_source.html">AS5047U.cpp</a></li>
+<li>inc/<a class="el" href="as5047u_8hpp_source.html">as5047u.hpp</a></li>
+<li>src/<a class="el" href="as5047u_8cpp_source.html">as5047u.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
