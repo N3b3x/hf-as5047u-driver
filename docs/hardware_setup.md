@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🔌 Hardware Setup"
+description: "Hardware wiring and connection guide for AS5047U magnetic encoder"
+nav_order: 3
+parent: "📚 Documentation"
+permalink: /docs/hardware_setup/
+---
+
 # Hardware Setup
 
 This guide covers the physical connections and hardware requirements for the AS5047U magnetic encoder chip.
