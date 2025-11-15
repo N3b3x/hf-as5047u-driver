@@ -1,5 +1,5 @@
 /**
- * @file AS5047U.hpp
+ * @file as5047u.hpp
  * @brief Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21).
  *
  * This driver provides hardware-agnostic access to the AS5047U sensor over SPI,
@@ -431,5 +431,5 @@ inline bool AS5047U<SpiType>::SetDirection(bool clockwise, uint8_t retries) {
 
 // Include template implementation
 #define AS5047U_HEADER_INCLUDED
-#include "../src/AS5047U.cpp"
+#include "../src/as5047u.cpp"
 #undef AS5047U_HEADER_INCLUDED

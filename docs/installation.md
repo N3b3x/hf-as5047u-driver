@@ -27,11 +27,11 @@ Copy the following files into your project:
 inc/
   ├── as5047u.hpp
   ├── as5047u_spi_interface.hpp
-  ├── AS5047U_REGISTERS.hpp
-  ├── AS5047U_types.hpp
-  └── AS5047U_config.hpp
+  ├── as5047u_registers.hpp
+  ├── as5047u_types.hpp
+  └── as5047u_config.hpp
 src/
-  └── AS5047U.cpp
+  └── as5047u.cpp
 ```
 
 ## Integration Methods
@@ -71,7 +71,7 @@ idf_component_register(
    ```
 4. Compile with C++20 support:
    ```bash
-   g++ -std=c++20 -I inc/ your_code.cpp src/AS5047U.cpp
+   g++ -std=c++20 -I inc/ your_code.cpp src/as5047u.cpp
    ```
 
 ## Running Unit Tests
@@ -80,7 +80,7 @@ The library includes unit tests. To run them:
 
 ```bash
 cd tests
-g++ -std=c++20 -I ../inc ../src/AS5047U.cpp test_as5047u.cpp -o test
+g++ -std=c++20 -I ../inc ../src/as5047u.cpp test_as5047u.cpp -o test
 ./test
 ```
 
@@ -100,7 +100,7 @@ To verify the installation:
 
 2. Compile a simple test:
    ```bash
-   g++ -std=c++20 -I inc/ -c src/AS5047U.cpp -o test.o
+   g++ -std=c++20 -I inc/ -c src/as5047u.cpp -o test.o
    ```
 
 3. If compilation succeeds, the library is properly installed.

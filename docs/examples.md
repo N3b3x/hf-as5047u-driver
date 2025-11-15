@@ -352,7 +352,7 @@ idf.py build flash monitor
 For other platforms, implement the SPI interface and compile with C++20 support:
 
 ```bash
-g++ -std=c++20 -I inc/ your_code.cpp src/AS5047U.cpp
+g++ -std=c++20 -I inc/ your_code.cpp src/as5047u.cpp
 ```
 
 ## Next Steps
