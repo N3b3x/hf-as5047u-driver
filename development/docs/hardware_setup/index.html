@@ -15,9 +15,10 @@
   
 
     .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
     
-    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(1)) > a,
-    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(3)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li a {
       background-image: none;
     }
 
@@ -26,14 +27,16 @@
       background-image: none;
     }
 
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > a {
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > a {
       font-weight: 600;
       text-decoration: none;
     }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
-    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > button svg {
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > button svg {
       transform: rotate(-90deg);
     }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
-    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
       display: block;
     }
   </style>
@@ -53,21 +56,21 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>📚 Documentation | HardFOC AS5047U Driver - development</title>
+<title>🔌 Hardware Setup | HardFOC AS5047U Driver - development</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="📚 Documentation" />
+<meta property="og:title" content="🔌 Hardware Setup" />
 <meta name="author" content="N3b3x" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Complete documentation for the HardFOC AS5047U Driver" />
-<meta property="og:description" content="Complete documentation for the HardFOC AS5047U Driver" />
-<link rel="canonical" href="https://n3b3x.github.io/hf-as5047u-driver/development/docs/" />
-<meta property="og:url" content="https://n3b3x.github.io/hf-as5047u-driver/development/docs/" />
+<meta name="description" content="Hardware wiring and connection guide for AS5047U magnetic encoder" />
+<meta property="og:description" content="Hardware wiring and connection guide for AS5047U magnetic encoder" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-as5047u-driver/development/docs/hardware_setup/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-as5047u-driver/development/docs/hardware_setup/" />
 <meta property="og:site_name" content="HardFOC AS5047U Driver - development" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="📚 Documentation" />
+<meta property="twitter:title" content="🔌 Hardware Setup" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Complete documentation for the HardFOC AS5047U Driver","headline":"📚 Documentation","url":"https://n3b3x.github.io/hf-as5047u-driver/development/docs/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Hardware wiring and connection guide for AS5047U magnetic encoder","headline":"🔌 Hardware Setup","url":"https://n3b3x.github.io/hf-as5047u-driver/development/docs/hardware_setup/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -250,7 +253,8 @@
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
     <li class="breadcrumb-nav-list-item"><a href="/hf-as5047u-driver/development/">HardFOC AS5047U Driver</a></li>
-    <li class="breadcrumb-nav-list-item"><span>📚 Documentation</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-as5047u-driver/development/docs/">📚 Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><span>🔌 Hardware Setup</span></li>
   </ol>
 </nav>
 
@@ -258,153 +262,345 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 id="hf-as5047u-documentation">
+            <h1 id="hardware-setup">
   
   
-    <a href="#hf-as5047u-documentation" class="anchor-heading" aria-labelledby="hf-as5047u-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> HF-AS5047U Documentation
+    <a href="#hardware-setup" class="anchor-heading" aria-labelledby="hardware-setup"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hardware Setup
   
   
 </h1>
     
 
-<p>Welcome! This directory contains step-by-step guides for installing, building, and using the <strong>HF-AS5047U</strong> library.</p>
-<h2 id="-documentation-structure">
+<p>This guide covers the physical connections and hardware requirements for the AS5047U magnetic encoder chip.</p>
+<h2 id="pin-connections">
   
   
-    <a href="#-documentation-structure" class="anchor-heading" aria-labelledby="-documentation-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📚 Documentation Structure
-  
-  
-</h2>
-    
-<h3 id="getting-started">
-  
-  
-    <a href="#getting-started" class="anchor-heading" aria-labelledby="getting-started"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Getting Started</strong>
-  
-  
-</h3>
-    
-
-<ol>
-  <li><strong><a href="/hf-as5047u-driver/development/docs/installation/">🛠️ Installation</a></strong> – Prerequisites and how to obtain the source</li>
-  <li><strong><a href="/hf-as5047u-driver/development/docs/quickstart/">⚡ Quick Start</a></strong> – Minimal working example to get you running</li>
-  <li><strong><a href="/hf-as5047u-driver/development/docs/hardware_setup/">🔌 Hardware Setup</a></strong> – Wiring diagrams and pin connections</li>
-</ol>
-<h3 id="integration">
-  
-  
-    <a href="#integration" class="anchor-heading" aria-labelledby="integration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Integration</strong>
-  
-  
-</h3>
-    
-
-<ol>
-  <li><strong><a href="/hf-as5047u-driver/development/docs/platform_integration/">🔧 Platform Integration</a></strong> – Implement the CRTP SPI interface for your platform</li>
-  <li><strong><a href="/hf-as5047u-driver/development/docs/configuration/">⚙️ Configuration</a></strong> – Configuration options and settings</li>
-</ol>
-<h3 id="reference">
-  
-  
-    <a href="#reference" class="anchor-heading" aria-labelledby="reference"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Reference</strong>
-  
-  
-</h3>
-    
-
-<ol>
-  <li><strong><a href="/hf-as5047u-driver/development/docs/api_reference/">📖 API Reference</a></strong> – Complete API documentation</li>
-  <li><strong><a href="/hf-as5047u-driver/development/docs/examples/">💡 Examples</a></strong> – Detailed example walkthroughs</li>
-</ol>
-<h3 id="troubleshooting">
-  
-  
-    <a href="#troubleshooting" class="anchor-heading" aria-labelledby="troubleshooting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Troubleshooting</strong>
-  
-  
-</h3>
-    
-
-<ol>
-  <li><strong><a href="/hf-as5047u-driver/development/docs/troubleshooting/">🐛 Troubleshooting</a></strong> – Common issues and solutions</li>
-</ol><hr />
-<h2 id="-quick-start-path">
-  
-  
-    <a href="#-quick-start-path" class="anchor-heading" aria-labelledby="-quick-start-path"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🚀 Quick Start Path
+    <a href="#pin-connections" class="anchor-heading" aria-labelledby="pin-connections"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pin Connections
   
   
 </h2>
     
-
-<p><strong>New to AS5047U?</strong> Follow this recommended path:</p>
-
-<ol>
-  <li>Start with <strong><a href="/hf-as5047u-driver/development/docs/installation/">Installation</a></strong> to prepare your environment</li>
-  <li>Follow <strong><a href="/hf-as5047u-driver/development/docs/hardware_setup/">Hardware Setup</a></strong> to wire your hardware</li>
-  <li>Read <strong><a href="/hf-as5047u-driver/development/docs/quickstart/">Quick Start</a></strong> for a minimal working example</li>
-  <li>Check <strong><a href="/hf-as5047u-driver/development/docs/platform_integration/">Platform Integration</a></strong> to implement the SPI interface</li>
-  <li>Explore <strong><a href="/hf-as5047u-driver/development/docs/examples/">Examples</a></strong> for more advanced usage</li>
-</ol><hr />
-<h2 id="-need-help">
+<h3 id="basic-spi-connections">
   
   
-    <a href="#-need-help" class="anchor-heading" aria-labelledby="-need-help"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 💡 Need Help?
+    <a href="#basic-spi-connections" class="anchor-heading" aria-labelledby="basic-spi-connections"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Basic SPI Connections
+  
+  
+</h3>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>MCU              AS5047U
+─────────────────────────
+3.3V      ────── VDD
+GND       ────── GND
+SCK       ────── CLK
+MOSI      ────── MISO (note: AS5047U uses MISO for both directions)
+MISO      ────── MOSI
+CS        ────── CSn
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="pin-descriptions">
+  
+  
+    <a href="#pin-descriptions" class="anchor-heading" aria-labelledby="pin-descriptions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pin Descriptions
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Pin</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Required</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VDD</td>
+      <td>Power</td>
+      <td>3.3V power supply (2.7V - 3.6V)</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>GND</td>
+      <td>Ground</td>
+      <td>Ground reference</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>CLK</td>
+      <td>Clock</td>
+      <td>SPI clock line</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>MISO</td>
+      <td>Master In</td>
+      <td>SPI data input (MCU receives)</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>MOSI</td>
+      <td>Master Out</td>
+      <td>SPI data output (MCU transmits)</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>CSn</td>
+      <td>Chip Select</td>
+      <td>SPI chip select (active low)</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>PROG</td>
+      <td>Program</td>
+      <td>OTP programming enable (optional)</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><strong>Note</strong>: The AS5047U uses a unique SPI configuration where MISO and MOSI are swapped compared to standard SPI. The MCU’s MOSI connects to the AS5047U’s MISO pin, and the MCU’s MISO connects to the AS5047U’s MOSI pin.</p>
+<h2 id="power-requirements">
+  
+  
+    <a href="#power-requirements" class="anchor-heading" aria-labelledby="power-requirements"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Power Requirements
   
   
 </h2>
     
 
 <ul>
-  <li><strong>🐛 Found a bug?</strong> Check the <a href="/hf-as5047u-driver/development/docs/troubleshooting/">Troubleshooting</a> guide</li>
-  <li><strong>❓ Have questions?</strong> Review the <a href="/hf-as5047u-driver/development/docs/api_reference/">API Reference</a></li>
-  <li><strong>📝 Want to contribute?</strong> See the contributing guidelines in the main README</li>
+  <li><strong>Supply Voltage</strong>: 2.7V - 3.6V (3.3V typical)</li>
+  <li><strong>Current Consumption</strong>: 6.5 mA typical, 10 mA maximum</li>
+  <li><strong>Power Supply</strong>: Clean 3.3V supply with decoupling capacitor (100nF ceramic + 10µF tantalum recommended)</li>
+</ul>
+<h2 id="spi-configuration">
+  
+  
+    <a href="#spi-configuration" class="anchor-heading" aria-labelledby="spi-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> SPI Configuration
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>Mode</strong>: SPI Mode 1 (CPOL=0, CPHA=1) or Mode 3 (CPOL=1, CPHA=1)</li>
+  <li><strong>Speed</strong>: Up to 10 MHz (4 MHz recommended for reliability)</li>
+  <li><strong>Bit Order</strong>: MSB first</li>
+  <li><strong>CS Polarity</strong>: Active low (CSn)</li>
+  <li><strong>Frame Formats</strong>: 16-bit, 24-bit (with CRC), or 32-bit (with CRC)</li>
+</ul>
+<h2 id="magnetic-setup">
+  
+  
+    <a href="#magnetic-setup" class="anchor-heading" aria-labelledby="magnetic-setup"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Magnetic Setup
+  
+  
+</h2>
+    
+
+<p>The AS5047U requires a diametrically magnetized magnet positioned above the sensor:</p>
+
+<ul>
+  <li><strong>Magnet Type</strong>: Diametrically magnetized (2-pole) magnet</li>
+  <li><strong>Magnet Diameter</strong>: 6-12 mm recommended</li>
+  <li><strong>Air Gap</strong>: 0.5 - 3.0 mm (1.0 mm typical)</li>
+  <li><strong>Alignment</strong>: Centered above the sensor die</li>
+  <li><strong>Field Strength</strong>: 30-100 mT at the sensor surface</li>
+</ul>
+<h2 id="physical-layout-recommendations">
+  
+  
+    <a href="#physical-layout-recommendations" class="anchor-heading" aria-labelledby="physical-layout-recommendations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Physical Layout Recommendations
+  
+  
+</h2>
+    
+
+<ul>
+  <li>Keep SPI traces short (&lt; 10cm recommended)</li>
+  <li>Use ground plane for noise reduction</li>
+  <li>Place decoupling capacitors (100nF ceramic + 10µF tantalum) close to VDD pin</li>
+  <li>Route clock and data lines away from noise sources</li>
+  <li>Keep magnet away from ferromagnetic materials</li>
+  <li>Avoid stray magnetic fields from motors or other sources</li>
+</ul>
+<h2 id="example-wiring-diagram">
+  
+  
+    <a href="#example-wiring-diagram" class="anchor-heading" aria-labelledby="example-wiring-diagram"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Example Wiring Diagram
+  
+  
+</h2>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>                    AS5047U
+                    ┌─────────┐
+        3.3V ───────┤ VDD     │
+        GND  ───────┤ GND     │
+        SCK  ───────┤ CLK     │
+        MOSI ───────┤ MISO    │
+        MISO ───────┤ MOSI    │
+        CS   ───────┤ CSn     │
+                    └─────────┘
+                      │
+                      │ (air gap 0.5-3mm)
+                      ▼
+                  ┌───────┐
+                  │ Magnet│
+                  │ (6-12mm)│
+                  └───────┘
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="incremental-output-pins-abi">
+  
+  
+    <a href="#incremental-output-pins-abi" class="anchor-heading" aria-labelledby="incremental-output-pins-abi"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Incremental Output Pins (ABI)
+  
+  
+</h2>
+    
+
+<p>If using ABI incremental outputs:</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Pin</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>A</td>
+      <td>Incremental encoder A output</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>B</td>
+      <td>Incremental encoder B output</td>
+    </tr>
+    <tr>
+      <td>I</td>
+      <td>I</td>
+      <td>Index pulse output</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2 id="commutation-output-pins-uvw">
+  
+  
+    <a href="#commutation-output-pins-uvw" class="anchor-heading" aria-labelledby="commutation-output-pins-uvw"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Commutation Output Pins (UVW)
+  
+  
+</h2>
+    
+
+<p>If using UVW commutation outputs:</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Pin</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>U</td>
+      <td>U</td>
+      <td>Commutation U output</td>
+    </tr>
+    <tr>
+      <td>V</td>
+      <td>V</td>
+      <td>Commutation V output</td>
+    </tr>
+    <tr>
+      <td>W</td>
+      <td>W</td>
+      <td>Commutation W output</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2 id="pwm-output">
+  
+  
+    <a href="#pwm-output" class="anchor-heading" aria-labelledby="pwm-output"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> PWM Output
+  
+  
+</h2>
+    
+
+<p>If using PWM output:</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Pin</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PWM</td>
+      <td>PWM</td>
+      <td>PWM-encoded angle output (on W or I pin depending on configuration)</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2 id="next-steps">
+  
+  
+    <a href="#next-steps" class="anchor-heading" aria-labelledby="next-steps"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Next Steps
+  
+  
+</h2>
+    
+
+<ul>
+  <li>Verify connections with a multimeter</li>
+  <li>Proceed to <a href="/hf-as5047u-driver/development/docs/quickstart/">Quick Start</a> to test the connection</li>
+  <li>Review <a href="/hf-as5047u-driver/development/docs/platform_integration/">Platform Integration</a> for software setup</li>
 </ul><hr />
 
 <p><strong>Navigation</strong>
-➡️ <a href="/hf-as5047u-driver/development/docs/installation/">Installation</a></p>
+⬅️ <a href="/hf-as5047u-driver/development/docs/quickstart/">Quick Start</a> | <a href="/hf-as5047u-driver/development/docs/platform_integration/">Next: Platform Integration ➡️</a> | <a href="/hf-as5047u-driver/development/docs/">Back to Index</a></p>
 
           
 
           
-            <hr>
-<h2 class="text-delta">Table of contents</h2>
-
-<ul>
-  
-  <li>
-    <a href="/hf-as5047u-driver/development/docs/installation/">🛠️ Installation</a>
-  </li>
-  
-  <li>
-    <a href="/hf-as5047u-driver/development/docs/quickstart/">⚡ Quick Start</a>
-  </li>
-  
-  <li>
-    <a href="/hf-as5047u-driver/development/docs/hardware_setup/">🔌 Hardware Setup</a>
-  </li>
-  
-  <li>
-    <a href="/hf-as5047u-driver/development/docs/platform_integration/">🔧 Platform Integration</a>
-  </li>
-  
-  <li>
-    <a href="/hf-as5047u-driver/development/docs/configuration/">⚙️ Configuration</a>
-  </li>
-  
-  <li>
-    <a href="/hf-as5047u-driver/development/docs/api_reference/">📖 API Reference</a>
-  </li>
-  
-  <li>
-    <a href="/hf-as5047u-driver/development/docs/examples/">💡 Examples</a>
-  </li>
-  
-  <li>
-    <a href="/hf-as5047u-driver/development/docs/troubleshooting/">🐛 Troubleshooting</a>
-  </li>
-  
-</ul>
+            
           
         </main>
         
