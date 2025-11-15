@@ -175,7 +175,7 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 </ul>
 <h1><a class="anchor" id="autotoc_md4"></a>
 🚀 Quick Start</h1>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;as5047u.hpp&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="as5047u_8hpp.html">as5047u.hpp</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// 1. Implement the SPI interface (see platform_integration.md)</span></div>
 <div class="line"><span class="keyword">class </span>MySpi : <span class="keyword">public</span> <a class="code hl_class" href="classas5047u_1_1SpiInterface.html">as5047u::SpiInterface</a>&lt;MySpi&gt; {</div>
@@ -187,7 +187,7 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line"> </div>
 <div class="line"><span class="comment">// 2. Create driver instance</span></div>
 <div class="line">MySpi spi;</div>
-<div class="line"><a class="code hl_class" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a> encoder(spi, <a class="code hl_enumvalue" href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5">FrameFormat::SPI_24</a>); <span class="comment">// 24-bit frames with CRC</span></div>
+<div class="line"><a class="code hl_class" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a> encoder(spi, <a class="code hl_enumvalue" href="as5047u__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5">FrameFormat::SPI_24</a>); <span class="comment">// 24-bit frames with CRC</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// 3. Read angle</span></div>
 <div class="line">uint16_t angle = encoder.GetAngle();             <span class="comment">// compensated angle</span></div>
@@ -199,8 +199,9 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line">uint8_t agc = encoder.GetAGC();            <span class="comment">// automatic gain control</span></div>
 <div class="line">uint16_t mag = encoder.GetMagnitude();     <span class="comment">// magnetic magnitude</span></div>
 <div class="line">uint16_t errors = encoder.GetErrorFlags(); <span class="comment">// current error flags</span></div>
-<div class="ttc" id="aAS5047U__types_8hpp_html_a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5"><div class="ttname"><a href="AS5047U__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5">FrameFormat::SPI_24</a></div><div class="ttdeci">@ SPI_24</div></div>
-<div class="ttc" id="aclassas5047u_1_1AS5047U_html"><div class="ttname"><a href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a></div><div class="ttdoc">AS5047U magnetic rotary sensor driver class.</div><div class="ttdef"><b>Definition</b> AS5047U.hpp:79</div></div>
+<div class="ttc" id="aas5047u_8hpp_html"><div class="ttname"><a href="as5047u_8hpp.html">as5047u.hpp</a></div><div class="ttdoc">Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21).</div></div>
+<div class="ttc" id="aas5047u__types_8hpp_html_a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5"><div class="ttname"><a href="as5047u__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5">FrameFormat::SPI_24</a></div><div class="ttdeci">@ SPI_24</div></div>
+<div class="ttc" id="aclassas5047u_1_1AS5047U_html"><div class="ttname"><a href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a></div><div class="ttdoc">AS5047U magnetic rotary sensor driver class.</div><div class="ttdef"><b>Definition</b> as5047u.hpp:79</div></div>
 <div class="ttc" id="aclassas5047u_1_1SpiInterface_html"><div class="ttname"><a href="classas5047u_1_1SpiInterface.html">as5047u::SpiInterface</a></div><div class="ttdoc">CRTP-based template interface for SPI bus operations.</div><div class="ttdef"><b>Definition</b> as5047u_spi_interface.hpp:39</div></div>
 <div class="ttc" id="aclassas5047u_1_1SpiInterface_html_aafdd971e247401dd58852d6d0d65c979"><div class="ttname"><a href="classas5047u_1_1SpiInterface.html#aafdd971e247401dd58852d6d0d65c979">as5047u::SpiInterface::transfer</a></div><div class="ttdeci">void transfer(const uint8_t *tx, uint8_t *rx, std::size_t len)</div><div class="ttdoc">Perform a full-duplex SPI data transfer.</div><div class="ttdef"><b>Definition</b> as5047u_spi_interface.hpp:54</div></div>
 </div><!-- fragment --><p>For detailed setup, see Installation and Quick Start Guide.</p>
@@ -209,7 +210,7 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 <ol type="1">
 <li><b>Clone or copy</b> the driver files into your project</li>
 <li><b>Implement the SPI interface</b> for your platform (see Platform Integration)</li>
-<li><b>Include the header</b> in your code: <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;as5047u.hpp&quot;</span></div>
+<li><b>Include the header</b> in your code: <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="as5047u_8hpp.html">as5047u.hpp</a>&quot;</span></div>
 </div><!-- fragment --></li>
 <li>Compile with a <b>C++20</b> or newer compiler</li>
 </ol>
