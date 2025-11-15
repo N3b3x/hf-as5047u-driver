@@ -18,7 +18,7 @@
 
 #pragma once
 #include "as5047u_spi_interface.hpp"
-#include "AS5047U_REGISTERS.hpp"
+#include "as5047u_registers.hpp"
 #include <algorithm>
 #include <array>
 #include <atomic>
@@ -46,12 +46,12 @@ enum class AS5047U_Error : uint16_t {
 // -----------------------------------------------------------------------------
 // Type definitions
 // -----------------------------------------------------------------------------
-#include "AS5047U_types.hpp" // For FrameFormat enum
+#include "as5047u_types.hpp" // For FrameFormat enum
 
 // -----------------------------------------------------------------------------
 // Default configuration values
 // -----------------------------------------------------------------------------
-#include "AS5047U_config.hpp" // defines AS5047U_CFG namespace with defaults
+#include "as5047u_config.hpp" // defines AS5047U_CFG namespace with defaults
 
 // -----------------------------------------------------------------------------
 // as5047u Namespace
