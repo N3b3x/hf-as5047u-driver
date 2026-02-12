@@ -1,21 +1,8 @@
 /**
  * @file as5047u.hpp
- * @brief Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21).
- *
- * This driver provides hardware-agnostic access to the AS5047U sensor over SPI,
- * supporting 16-bit, 24-bit, and 32-bit SPI frame formats. It implements all
- * major features described in the AS5047U datasheet, including absolute angle
- * readout with/without DAEC, velocity measurement, AGC and magnetic field
- * diagnostics, ABI/UVW/PWM interface configuration, error/status flag handling,
- * full OTP programming sequence, dynamic angle error compensation, adaptive
- * filtering, and CRC calculation.
- *
- * The design uses a CRTP-based `SpiInterface` interface to abstract SPI communication,
- * so it can run on any platform. It assumes the `spiBus` implementation handles
- * synchronization for thread safety. This driver is optimized for clarity and
- * extensibility and has no direct hardware dependencies.
+ * @brief Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21)
+ * @copyright Copyright (c) 2024-2025 HardFOC. All rights reserved.
  */
-
 #pragma once
 #include "as5047u_spi_interface.hpp"
 #include "as5047u_registers.hpp"
@@ -431,5 +418,6 @@ inline bool AS5047U<SpiType>::SetDirection(bool clockwise, uint8_t retries) {
 
 // Include template implementation
 #define AS5047U_HEADER_INCLUDED
-#include "../src/as5047u.cpp"
+// NOLINTNEXTLINE(bugprone-suspicious-include) - Intentional: template implementation file
+#include "../src/as5047u.ipp"
 #undef AS5047U_HEADER_INCLUDED

@@ -1,3 +1,8 @@
+/**
+ * @file as5047u.ipp
+ * @brief Template implementation of AS5047U driver methods
+ * @copyright Copyright (c) 2024-2025 HardFOC. All rights reserved.
+ */
 #ifndef AS5047U_IMPL
 #define AS5047U_IMPL
 
@@ -412,8 +417,9 @@ uint16_t AS5047U<SpiType>::rawReadRegister(uint16_t address) const {
     // Send read command
     spi_.transfer(tx, rx, 2);
 
-    // Send NOP to receive register data
-    const uint8_t tx_nop[2] = {0x00, 0x00};
+    // Send Read NOP to receive register data (bit14=1 for read, addr=0x0000)
+    // Note: 16-bit frames only support read operations per the datasheet.
+    const uint8_t tx_nop[2] = {0x40, 0x00};
     uint8_t rx_data[2];
     spi_.transfer(tx_nop, rx_data, 2);
 
@@ -496,30 +502,18 @@ bool AS5047U<SpiType>::writeRegister(uint16_t address, uint16_t value, uint8_t r
   bool success = false;
   uint16_t err_mask = static_cast<uint16_t>(AS5047U_Error::CrcError) |
                       static_cast<uint16_t>(AS5047U_Error::FramingError);
+
+  // The AS5047U datasheet specifies 16-bit frames for read operations only.
+  // Writes require 24-bit or 32-bit frames (which include CRC). If the current
+  // frame format is SPI_16, temporarily promote to SPI_24 for the write, then
+  // restore. This ensures writes always reach the IC correctly.
+  FrameFormat active_format = this->frame_format_;
+  if (active_format == FrameFormat::SPI_16) {
+    active_format = FrameFormat::SPI_24;
+  }
+
   for (uint8_t attempt = 0; attempt <= retries; ++attempt) {
-    if (this->frame_format_ == FrameFormat::SPI_16) {
-      // ---- 16-bit write (two frames) ----
-      // First frame: send address
-      uint16_t cmd = static_cast<uint16_t>(address & 0x3FFF); // bit14=0 for write
-      uint8_t tx[2] = {static_cast<uint8_t>(cmd >> 8), static_cast<uint8_t>(cmd & 0xFF)};
-      uint8_t rx_dummy[2];
-      spi_.transfer(tx, rx_dummy, 2);
-
-      // Second frame: send data payload
-      uint16_t data_frame = value & 0x3FFF;
-      tx[0] = static_cast<uint8_t>(data_frame >> 8);
-      tx[1] = static_cast<uint8_t>(data_frame & 0xFF);
-      uint8_t rx_data_resp[2];
-      spi_.transfer(tx, rx_data_resp, 2);
-
-      // Check for errors from previous command
-      auto err = this->template ReadReg<AS5047U_REG::ERRFL>().value;
-      if (!(err & err_mask)) {
-        success = true;
-        break;
-      }
-      updateStickyErrors(err);
-    } else if (this->frame_format_ == FrameFormat::SPI_24) {
+    if (active_format == FrameFormat::SPI_24) {
       // ---- 24-bit write with CRC ----
       // First frame: send address with CRC
       uint16_t cmd_payload = static_cast<uint16_t>(address & 0x3FFF);
@@ -544,7 +538,7 @@ bool AS5047U<SpiType>::writeRegister(uint16_t address, uint16_t value, uint8_t r
         break;
       }
       updateStickyErrors(err);
-    } else if (this->frame_format_ == FrameFormat::SPI_32) {
+    } else if (active_format == FrameFormat::SPI_32) {
       // ---- 32-bit write with CRC and pad byte ----
       // First frame: send address with CRC and pad
       uint16_t cmd_payload = static_cast<uint16_t>(address & 0x3FFF);

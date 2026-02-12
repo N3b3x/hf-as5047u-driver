@@ -29,7 +29,12 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "==============================");
 
   // Create SPI bus using centralized test config
-  auto bus = CreateEsp32As5047uBus();
+  auto bus = CreateEsp32As5047uSpiBus();
+
+  if (!bus) {
+    ESP_LOGE(TAG, "Failed to create SPI bus");
+    return;
+  }
 
   if (!bus->initialize()) {
     ESP_LOGE(TAG, "Failed to initialize SPI bus");

@@ -118,8 +118,7 @@ For complete API documentation, see [docs/api_reference.md](docs/api_reference.m
 
 ## 📊 Examples
 
-For ESP32 examples, see the [examples/esp32](examples/esp32/) directory.
-Additional examples for other platforms are available in the [examples](examples/) directory.
+For ESP32 examples and integration tests, see the [examples/esp32](examples/esp32/) directory.
 
 Detailed example walkthroughs are available in [docs/examples.md](docs/examples.md).
 

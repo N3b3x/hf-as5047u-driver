@@ -1,33 +1,8 @@
 /**
  * @file as5047u_registers.hpp
- * @brief Register definitions for the AS5047U Rotary Position Sensor.
- *
- * @details This file provides structured register definitions for the AS5047U magnetic position
- * sensor, including both volatile (runtime) registers and non-volatile (OTP) registers. Each
- * register is defined as a struct with its address, full register value access, and bit-field
- * access through a union.
- *
- * The AS5047U is a 14-bit on-axis magnetic rotary position sensor with incremental (ABI) and
- * commutation (UVW) interfaces. It features field-programmable OTP memory for custom configuration
- * and dynamic angle error compensation (DAEC).
- *
- * Key features accessible through these registers:
- * - 14-bit absolute position measurement (0-16383 counts per revolution)
- * - Configurable incremental encoder output (ABI interface)
- * - Configurable commutation signals output (UVW interface)
- * - Dynamic angle error compensation
- * - Configurable PWM output
- * - Programmable zero position
- * - Error flags and diagnostics
- *
- * The register definitions include both the raw register addresses and structured bit fields
- * for easier programmatic access.
- *
- * @author Nebiyu Tadesse
- * @copyright Copyright (c) 2025 Nebiyu Tadesse
- * @license GNU GPL v3 or later
+ * @brief Register definitions for the AS5047U Rotary Position Sensor
+ * @copyright Copyright (c) 2024-2025 HardFOC. All rights reserved.
  */
-
 #pragma once
 #include <cstdint>
 
@@ -763,7 +738,7 @@ static_assert(sizeof(SETTINGS3) == 2, "SETTINGS3 must be 2 bytes");
  *
  * @details This register holds the Error-Correcting Code (ECC) for the OTP registers. To protect
  * the custom settings, set ECC_en=1 and then program the ECC_chsum with the correct checksum before
- * burning OTP. The 7-bit ECC checksum must be computed (read from address 0x00D1/ECC_s mirror after
+ * burning OTP. The 7-bit ECC checksum must be computed (read from address 0x3FD0/ECC_Checksum after
  * enabling ECC) and written here prior to final OTP programming.
  */
 struct ECC {

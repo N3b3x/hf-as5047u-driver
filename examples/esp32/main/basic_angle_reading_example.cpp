@@ -25,13 +25,13 @@
 // Forward declaration of a detailed diagnostics routine that
 // exercises the low-level register API and verifies that
 // configuration writes can be read back correctly.
-static void run_diagnostics(as5047u::AS5047U<Esp32As5047uBus>& encoder);
+static void run_diagnostics(as5047u::AS5047U<Esp32As5047uSpiBus>& encoder);
 
 static const char* TAG = "AS5047U_Basic";
 
 extern "C" void app_main(void) {
   // Enable verbose logging for SPI transactions
-  esp_log_level_set("Esp32As5047uBus", ESP_LOG_DEBUG);
+  esp_log_level_set("Esp32As5047uSpiBus", ESP_LOG_DEBUG);
   
   ESP_LOGI(TAG, "as5047u::AS5047U Basic Angle Reading Example");
   ESP_LOGI(TAG, "===================================");
@@ -41,7 +41,7 @@ extern "C" void app_main(void) {
   // hardware configuration in one place. The factory function uses:
   // - SPIPins::MISO, MOSI, SCLK, CS from test config
   // - SPIParams::FREQUENCY, MODE, etc. from test config
-  auto bus = CreateEsp32As5047uBus();
+  auto bus = CreateEsp32As5047uSpiBus();
   
   if (!bus) {
     ESP_LOGE(TAG, "Failed to create SPI bus");
@@ -91,7 +91,7 @@ extern "C" void app_main(void) {
 }
 
 // Check if SPI communication is actually working by verifying chip responses
-static bool check_spi_communication_health(as5047u::AS5047U<Esp32As5047uBus>& encoder) {
+static bool check_spi_communication_health(as5047u::AS5047U<Esp32As5047uSpiBus>& encoder) {
   ESP_LOGI(TAG, "Checking SPI communication health...");
   
   bool healthy = true;
@@ -149,7 +149,7 @@ static bool check_spi_communication_health(as5047u::AS5047U<Esp32As5047uBus>& en
 // Detailed diagnostics: read core registers, toggle a few configuration bits,
 // and read them back so we can verify that SPI writes are actually sticking
 // and that we are not just seeing a stuck-low MISO line.
-static void run_diagnostics(as5047u::AS5047U<Esp32As5047uBus>& encoder) {
+static void run_diagnostics(as5047u::AS5047U<Esp32As5047uSpiBus>& encoder) {
   ESP_LOGI(TAG, "Running AS5047U diagnostics and configuration verification...");
 
   // 0) First check if SPI communication is working at all

@@ -1,11 +1,8 @@
 /**
  * @file as5047u_types.hpp
- * @brief Type definitions for the AS5047U driver.
- *
- * This header contains type definitions that are shared between as5047u.hpp
- * and as5047u_config.hpp to avoid circular dependencies.
+ * @brief Type definitions for the AS5047U driver
+ * @copyright Copyright (c) 2024-2025 HardFOC. All rights reserved.
  */
-
 #pragma once
 #include <cstdint>
 

@@ -83,20 +83,24 @@ idf_component_register(
    g++ -std=c++20 -I inc/ your_code.cpp src/as5047u.cpp
    ```
 
-## Running Unit Tests
+## Running Integration Tests
 
-The library includes unit tests. To run them:
+The driver includes a comprehensive integration test suite that runs on ESP32 hardware.
+See [examples/esp32](../examples/esp32/) for the full test and example applications.
 
 ```bash
-cd tests
-g++ -std=c++20 -I ../inc ../src/as5047u.cpp test_as5047u.cpp -o test
-./test
+cd examples/esp32
+
+# Build the integration test suite
+./scripts/build_app.sh driver_integration_test Release
+
+# Flash and monitor
+./scripts/flash_app.sh driver_integration_test Release
+idf.py monitor
 ```
 
-Expected output:
-```
-All tests passed.
-```
+The test suite validates all driver APIs including angle reading, velocity,
+diagnostics, configuration, frame format switching, and error handling.
 
 ## Verification
 

@@ -24,14 +24,14 @@
 #include <memory>
 
 /**
- * @class Esp32As5047uBus
+ * @class Esp32As5047uSpiBus
  * @brief ESP32 SPI transport implementation for AS5047U driver
  *
  * This class implements the as5047u::SpiInterface interface using ESP-IDF's SPI
  * driver with CRTP pattern. It supports configurable SPI pins, frequency, and
  * chip select.
  */
-class Esp32As5047uBus : public as5047u::SpiInterface<Esp32As5047uBus> {
+class Esp32As5047uSpiBus : public as5047u::SpiInterface<Esp32As5047uSpiBus> {
 public:
   /**
    * @brief SPI configuration structure
@@ -39,7 +39,7 @@ public:
   /**
    * @brief SPI configuration structure
    * 
-   * @note For standard usage, use CreateEsp32As5047uBus() factory function
+   * @note For standard usage, use CreateEsp32As5047uSpiBus() factory function
    *       which pulls configuration from esp32_as5047u_test_config.hpp.
    *       Only create SPIConfig manually if you need custom pin assignments.
    */
@@ -61,15 +61,15 @@ public:
    * 
    * @param config SPI configuration parameters (must be fully specified)
    * 
-   * @note For standard usage, prefer CreateEsp32As5047uBus() factory function
+   * @note For standard usage, prefer CreateEsp32As5047uSpiBus() factory function
    *       which uses configuration from esp32_as5047u_test_config.hpp
    */
-  explicit Esp32As5047uBus(const SPIConfig &config) : config_(config) {}
+  explicit Esp32As5047uSpiBus(const SPIConfig &config) : config_(config) {}
 
   /**
    * @brief Destructor - cleans up SPI resources
    */
-  ~Esp32As5047uBus() { deinitialize(); }
+  ~Esp32As5047uSpiBus() { deinitialize(); }
 
   /**
    * @brief Perform a full-duplex SPI data transfer
@@ -157,7 +157,7 @@ private:
   SPIConfig config_;                         ///< SPI configuration
   spi_device_handle_t spi_device_ = nullptr; ///< SPI device handle
   bool initialized_ = false;                 ///< Initialization state
-  static constexpr const char *TAG = "Esp32As5047uBus"; ///< Logging tag
+  static constexpr const char *TAG = "Esp32As5047uSpiBus"; ///< Logging tag
 
   /**
    * @brief Initialize SPI bus
@@ -203,7 +203,7 @@ private:
     // If you see CS/MOSI/MISO but no SCLK on GPIO%d:
     // - Ensure SPI frequency > 0 (addSPIDevice checks this).
     // - On ESP32-C6, GPIO12 is USB-JTAG; use another pin or disable USB-JTAG.
-    // - If SPI2 is used elsewhere, try SPI3_HOST in CreateEsp32As5047uBus().
+    // - If SPI2 is used elsewhere, try SPI3_HOST in CreateEsp32As5047uSpiBus().
     // - Confirm no other driver (e.g. PSRAM, display) has claimed this GPIO.
     ESP_LOGI(TAG, "SCLK pin GPIO%d is driven by SPI%d; freq=%lu Hz",
              config_.sclk_pin, config_.host, (unsigned long)config_.frequency);
@@ -255,17 +255,17 @@ private:
 };
 
 /**
- * @brief Factory function to create a configured Esp32As5047uBus instance
+ * @brief Factory function to create a configured Esp32As5047uSpiBus instance
  *
- * Creates an Esp32As5047uBus using pin and parameter values from
+ * Creates an Esp32As5047uSpiBus using pin and parameter values from
  * AS5047U_TestConfig namespace (esp32_as5047u_test_config.hpp).
  *
- * @return std::unique_ptr<Esp32As5047uBus> Configured SPI bus interface
+ * @return std::unique_ptr<Esp32As5047uSpiBus> Configured SPI bus interface
  */
-inline auto CreateEsp32As5047uBus() noexcept -> std::unique_ptr<Esp32As5047uBus> {
+inline auto CreateEsp32As5047uSpiBus() noexcept -> std::unique_ptr<Esp32As5047uSpiBus> {
   using namespace AS5047U_TestConfig;
 
-  Esp32As5047uBus::SPIConfig config;
+  Esp32As5047uSpiBus::SPIConfig config;
 
   // SPI pins and host from esp32_as5047u_test_config.hpp
   config.host = (SPIParams::SPI_HOST_ID == 3) ? SPI3_HOST : SPI2_HOST;
@@ -281,5 +281,5 @@ inline auto CreateEsp32As5047uBus() noexcept -> std::unique_ptr<Esp32As5047uBus>
   config.cs_ena_pretrans = SPIParams::CS_ENA_PRETRANS;
   config.cs_ena_posttrans = SPIParams::CS_ENA_POSTTRANS;
 
-  return std::make_unique<Esp32As5047uBus>(config);
+  return std::make_unique<Esp32As5047uSpiBus>(config);
 }

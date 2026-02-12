@@ -19,21 +19,16 @@ message(STATUS "Source Root: ${SRC_ROOT}")
 # =============================================================================
 # Source File Discovery and Validation
 # =============================================================================
-# Driver has implementation in src/as5047u.cpp
-set(DRIVER_SRCS
-    "${SRC_ROOT}/as5047u.cpp"
-)
+# Driver is header-only: implementation is in src/as5047u.ipp (included by inc/as5047u.hpp).
+# No separate .cpp to compile; template is instantiated by the main application.
+set(DRIVER_SRCS "")
 
-# Check which source files actually exist and add them
-set(EXISTING_SRCS "")
-foreach(src_file ${DRIVER_SRCS})
-    if(EXISTS "${src_file}")
-        list(APPEND EXISTING_SRCS "${src_file}")
-        message(STATUS "Found source: ${src_file}")
-    else()
-        message(WARNING "Source file not found: ${src_file}")
-    endif()
-endforeach()
+# Optional: if a non-header implementation file is added later, discover it here
+if(EXISTS "${SRC_ROOT}/as5047u.cpp")
+    list(APPEND DRIVER_SRCS "${SRC_ROOT}/as5047u.cpp")
+    message(STATUS "Found driver source: ${SRC_ROOT}/as5047u.cpp")
+endif()
+set(EXISTING_SRCS ${DRIVER_SRCS})
 
 # =============================================================================
 # Include Directories Configuration
@@ -65,5 +60,6 @@ idf_component_register(
 # =============================================================================
 # Compiler Configuration
 # =============================================================================
-# Set C++ standard (driver uses C++17; main may use C++20)
-target_compile_features(${COMPONENT_LIB} PRIVATE cxx_std_17)
+# Header-only component becomes an INTERFACE library when SRCS is empty.
+# Use INTERFACE so that targets linking this component get C++17.
+target_compile_features(${COMPONENT_LIB} INTERFACE cxx_std_17)

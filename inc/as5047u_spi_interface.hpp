@@ -1,11 +1,8 @@
 /**
  * @file as5047u_spi_interface.hpp
  * @brief CRTP-based SPI bus interface for AS5047U driver
- *
- * This header defines the hardware-agnostic SPI bus interface using the
- * Curiously Recurring Template Pattern (CRTP) for compile-time polymorphism.
+ * @copyright Copyright (c) 2024-2025 HardFOC. All rights reserved.
  */
-
 #pragma once
 #include <cstddef>
 #include <cstdint>

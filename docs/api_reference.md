@@ -112,7 +112,7 @@ explicit AS5047U(SpiType& bus, FrameFormat format = AS5047U_CFG::DEFAULT_FRAME_F
 | Type | Values | Location |
 |------|--------|----------|
 | `FrameFormat` | `SPI_16`, `SPI_24`, `SPI_32` | [`inc/as5047u_types.hpp#L15`](../inc/as5047u_types.hpp#L15) |
-| `AS5047U_Error` | `None`, `AgcWarning`, `MagHalf`, `CrcError`, `FramingError`, `CommandError`, `WatchdogError`, `OffCompError`, `CordicOverflow` | [`inc/as5047u.hpp#L32`](../inc/as5047u.hpp#L32) |
+| `AS5047U_Error` | `None`, `AgcWarning`, `MagHalf`, `P2ramWarning`, `P2ramError`, `FramingError`, `CommandError`, `CrcError`, `WatchdogError`, `OffCompError`, `CordicOverflow` | [`inc/as5047u.hpp#L32`](../inc/as5047u.hpp#L32) |
 
 ### Structures
 

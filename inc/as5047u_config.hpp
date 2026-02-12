@@ -1,3 +1,8 @@
+/**
+ * @file as5047u_config.hpp
+ * @brief Compile-time configuration options for the AS5047U driver
+ * @copyright Copyright (c) 2024-2025 HardFOC. All rights reserved.
+ */
 #pragma once
 #include <cstdint>
 
