@@ -163,11 +163,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1b10e4979fb46d3e01d937469e454645" id="r_a1b10e4979fb46d3e01d937469e454645"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b10e4979fb46d3e01d937469e454645">Esp32As5047uBus</a> ()</td></tr>
-<tr class="memdesc:a1b10e4979fb46d3e01d937469e454645"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with default SPI configuration.  <br /></td></tr>
-<tr class="separator:a1b10e4979fb46d3e01d937469e454645"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cac4af138fd741af6542bfe66adf42c" id="r_a2cac4af138fd741af6542bfe66adf42c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cac4af138fd741af6542bfe66adf42c">Esp32As5047uBus</a> (const <a class="el" href="structEsp32As5047uBus_1_1SPIConfig.html">SPIConfig</a> &amp;config)</td></tr>
-<tr class="memdesc:a2cac4af138fd741af6542bfe66adf42c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with custom SPI configuration.  <br /></td></tr>
+<tr class="memdesc:a2cac4af138fd741af6542bfe66adf42c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with SPI configuration.  <br /></td></tr>
 <tr class="separator:a2cac4af138fd741af6542bfe66adf42c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5df6c3824de4fe4cf7247e79d814835" id="r_ac5df6c3824de4fe4cf7247e79d814835"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5df6c3824de4fe4cf7247e79d814835">~Esp32As5047uBus</a> ()</td></tr>
 <tr class="memdesc:ac5df6c3824de4fe4cf7247e79d814835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor - cleans up SPI resources.  <br /></td></tr>
@@ -214,35 +211,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>ESP32 SPI transport implementation for AS5047U driver. </p>
 <p>This class implements the <a class="el" href="classas5047u_1_1SpiInterface.html" title="CRTP-based template interface for SPI bus operations.">as5047u::SpiInterface</a> interface using ESP-IDF's SPI driver with CRTP pattern. It supports configurable SPI pins, frequency, and chip select. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a1b10e4979fb46d3e01d937469e454645" name="a1b10e4979fb46d3e01d937469e454645"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b10e4979fb46d3e01d937469e454645">&#9670;&#160;</a></span>Esp32As5047uBus() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Esp32As5047uBus::Esp32As5047uBus </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Constructor with default SPI configuration. </p>
-
-</div>
-</div>
 <a id="a2cac4af138fd741af6542bfe66adf42c" name="a2cac4af138fd741af6542bfe66adf42c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cac4af138fd741af6542bfe66adf42c">&#9670;&#160;</a></span>Esp32As5047uBus() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cac4af138fd741af6542bfe66adf42c">&#9670;&#160;</a></span>Esp32As5047uBus()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -264,13 +234,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructor with custom SPI configuration. </p>
+<p>Constructor with SPI configuration. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">config</td><td>SPI configuration parameters </td></tr>
+    <tr><td class="paramname">config</td><td>SPI configuration parameters (must be fully specified)</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>For standard usage, prefer <a class="el" href="esp32__as5047u__bus_8hpp.html#af5c9afb4f88172de229d1c4396913664" title="Factory function to create a configured Esp32As5047uBus instance.">CreateEsp32As5047uBus()</a> factory function which uses configuration from <a class="el" href="esp32__as5047u__test__config_8hpp.html" title="Hardware configuration for AS5047U driver on ESP32-C6.">esp32_as5047u_test_config.hpp</a> </dd></dl>
 
 </div>
 </div>
