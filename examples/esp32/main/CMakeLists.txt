@@ -80,9 +80,9 @@ set(MAIN_REQUIRES
 # Component Registration
 # =============================================================================
 # Register the main component with ESP-IDF build system
-# Single app source (from build_app.sh) plus shared ESP32 bus implementation
+# Single app source (from build_app.sh); ESP32 bus implementation is header-only
 idf_component_register(
-    SRCS "${APP_SOURCE_FILE}" "esp32_as5047u_bus.cpp"
+    SRCS "${APP_SOURCE_FILE}"
     INCLUDE_DIRS ${MAIN_INCLUDE_DIRS}
     REQUIRES ${MAIN_REQUIRES}
 )
