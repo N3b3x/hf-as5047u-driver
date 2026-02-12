@@ -20,6 +20,7 @@
 #include "driver/spi_master.h"
 #include "esp_log.h"
 #include <cstdint>
+#include <cstring>
 #include <memory>
 
 /**
@@ -35,28 +36,33 @@ public:
   /**
    * @brief SPI configuration structure
    */
+  /**
+   * @brief SPI configuration structure
+   * 
+   * @note For standard usage, use CreateEsp32As5047uBus() factory function
+   *       which pulls configuration from esp32_as5047u_test_config.hpp.
+   *       Only create SPIConfig manually if you need custom pin assignments.
+   */
   struct SPIConfig {
-    spi_host_device_t host = SPI2_HOST; ///< SPI host (SPI2_HOST for ESP32-S3)
-    gpio_num_t miso_pin = GPIO_NUM_13;   ///< MISO pin (default GPIO13)
-    gpio_num_t mosi_pin = GPIO_NUM_11;   ///< MOSI pin (default GPIO11)
-    gpio_num_t sclk_pin = GPIO_NUM_12;   ///< SCLK pin (default GPIO12)
-    gpio_num_t cs_pin = GPIO_NUM_10;    ///< CS pin (default GPIO10)
-    uint32_t frequency = 4000000;       ///< SPI frequency in Hz (default 4MHz)
-    uint8_t mode = 1;       ///< SPI mode (default 1: CPOL=0, CPHA=1)
-    uint8_t queue_size = 1; ///< Transaction queue size
-    uint8_t cs_ena_pretrans =
-        1; ///< CS asserted N clock cycles before transaction
-    uint8_t cs_ena_posttrans = 1; ///< CS held N clock cycles after transaction
+    spi_host_device_t host;      ///< SPI host (e.g., SPI2_HOST for ESP32-S3)
+    gpio_num_t miso_pin;         ///< MISO pin (Master In Slave Out)
+    gpio_num_t mosi_pin;         ///< MOSI pin (Master Out Slave In)
+    gpio_num_t sclk_pin;         ///< SCLK pin (SPI Clock)
+    gpio_num_t cs_pin;           ///< CS pin (Chip Select, active low)
+    uint32_t frequency;          ///< SPI frequency in Hz (max 10MHz for AS5047U)
+    uint8_t mode;                ///< SPI mode (must be 1: CPOL=0, CPHA=1 for AS5047U)
+    uint8_t queue_size;         ///< Transaction queue size
+    uint8_t cs_ena_pretrans;     ///< CS asserted N clock cycles before transaction
+    uint8_t cs_ena_posttrans;    ///< CS held N clock cycles after transaction
   };
 
   /**
-   * @brief Constructor with default SPI configuration
-   */
-  Esp32As5047uBus() : Esp32As5047uBus(SPIConfig{}) {}
-
-  /**
-   * @brief Constructor with custom SPI configuration
-   * @param config SPI configuration parameters
+   * @brief Constructor with SPI configuration
+   * 
+   * @param config SPI configuration parameters (must be fully specified)
+   * 
+   * @note For standard usage, prefer CreateEsp32As5047uBus() factory function
+   *       which uses configuration from esp32_as5047u_test_config.hpp
    */
   explicit Esp32As5047uBus(const SPIConfig &config) : config_(config) {}
 
@@ -158,6 +164,20 @@ private:
    * @return true if successful, false otherwise
    */
   bool initializeSPI() {
+    // Verify pin numbers are valid before configuring
+    if (config_.sclk_pin < 0 || config_.sclk_pin > 48) {
+      ESP_LOGE(TAG, "Invalid SCLK pin: %d", config_.sclk_pin);
+      return false;
+    }
+    if (config_.mosi_pin < 0 || config_.mosi_pin > 48) {
+      ESP_LOGE(TAG, "Invalid MOSI pin: %d", config_.mosi_pin);
+      return false;
+    }
+    if (config_.miso_pin < 0 || config_.miso_pin > 48) {
+      ESP_LOGE(TAG, "Invalid MISO pin: %d", config_.miso_pin);
+      return false;
+    }
+    
     spi_bus_config_t buscfg = {};
     buscfg.mosi_io_num = config_.mosi_pin;
     buscfg.miso_io_num = config_.miso_pin;
@@ -165,15 +185,28 @@ private:
     buscfg.quadwp_io_num = -1;
     buscfg.quadhd_io_num = -1;
     buscfg.max_transfer_sz = 64;
+    buscfg.flags = SPICOMMON_BUSFLAG_MASTER;
+
+    ESP_LOGI(TAG, "Initializing SPI bus: MISO=GPIO%d, MOSI=GPIO%d, SCLK=GPIO%d, Host=%d",
+             config_.miso_pin, config_.mosi_pin, config_.sclk_pin, config_.host);
 
     esp_err_t ret = spi_bus_initialize(config_.host, &buscfg, SPI_DMA_CH_AUTO);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to initialize SPI bus: %s", esp_err_to_name(ret));
+      ESP_LOGE(TAG, "Check: SCLK pin GPIO%d is not used by another peripheral", config_.sclk_pin);
       return false;
     }
 
-    ESP_LOGI(TAG, "SPI bus configured: MISO=%d, MOSI=%d, SCLK=%d, Host=%d",
-             config_.miso_pin, config_.mosi_pin, config_.sclk_pin, config_.host);
+    ESP_LOGI(TAG, "SPI bus initialized successfully: MISO=GPIO%d, MOSI=GPIO%d, SCLK=GPIO%d",
+             config_.miso_pin, config_.mosi_pin, config_.sclk_pin);
+    
+    // If you see CS/MOSI/MISO but no SCLK on GPIO%d:
+    // - Ensure SPI frequency > 0 (addSPIDevice checks this).
+    // - On ESP32-C6, GPIO12 is USB-JTAG; use another pin or disable USB-JTAG.
+    // - If SPI2 is used elsewhere, try SPI3_HOST in CreateEsp32As5047uBus().
+    // - Confirm no other driver (e.g. PSRAM, display) has claimed this GPIO.
+    ESP_LOGI(TAG, "SCLK pin GPIO%d is driven by SPI%d; freq=%lu Hz",
+             config_.sclk_pin, config_.host, (unsigned long)config_.frequency);
 
     return true;
   }
@@ -183,22 +216,38 @@ private:
    * @return true if successful, false otherwise
    */
   bool addSPIDevice() {
+    if (config_.frequency == 0) {
+      ESP_LOGE(TAG, "SPI frequency is 0 - SCLK will not run. Set SPIParams::FREQUENCY > 0 (e.g. 4000000)");
+      return false;
+    }
     spi_device_interface_config_t devcfg = {};
+    devcfg.command_bits = 0;
+    devcfg.address_bits = 0;
+    devcfg.dummy_bits = 0;
     devcfg.clock_speed_hz = config_.frequency;
     devcfg.mode = config_.mode;
+    devcfg.duty_cycle_pos = 128;  // 50% duty cycle
     devcfg.spics_io_num = config_.cs_pin;
     devcfg.queue_size = config_.queue_size;
     devcfg.cs_ena_pretrans = config_.cs_ena_pretrans;
     devcfg.cs_ena_posttrans = config_.cs_ena_posttrans;
-    devcfg.flags = 0;
+    devcfg.flags = 0;  // No special flags
+    devcfg.input_delay_ns = 0;
+    devcfg.pre_cb = nullptr;
+    devcfg.post_cb = nullptr;
+
+    ESP_LOGI(TAG, "Adding SPI device: CS=GPIO%d, Freq=%lu Hz, Mode=%d, SCLK=GPIO%d",
+             config_.cs_pin, config_.frequency, config_.mode, config_.sclk_pin);
 
     esp_err_t ret = spi_bus_add_device(config_.host, &devcfg, &spi_device_);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to add SPI device: %s", esp_err_to_name(ret));
+      ESP_LOGE(TAG, "Check: CS pin GPIO%d and SCLK pin GPIO%d are not used elsewhere",
+               config_.cs_pin, config_.sclk_pin);
       return false;
     }
 
-    ESP_LOGI(TAG, "SPI device added: CS=%d, Freq=%lu Hz, Mode=%d",
+    ESP_LOGI(TAG, "SPI device added successfully: CS=GPIO%d, Freq=%lu Hz, Mode=%d",
              config_.cs_pin, config_.frequency, config_.mode);
 
     return true;
@@ -218,8 +267,8 @@ inline auto CreateEsp32As5047uBus() noexcept -> std::unique_ptr<Esp32As5047uBus>
 
   Esp32As5047uBus::SPIConfig config;
 
-  // SPI pins from esp32_as5047u_test_config.hpp
-  config.host = SPI2_HOST;
+  // SPI pins and host from esp32_as5047u_test_config.hpp
+  config.host = (SPIParams::SPI_HOST_ID == 3) ? SPI3_HOST : SPI2_HOST;
   config.miso_pin = static_cast<gpio_num_t>(SPIPins::MISO);
   config.mosi_pin = static_cast<gpio_num_t>(SPIPins::MOSI);
   config.sclk_pin = static_cast<gpio_num_t>(SPIPins::SCLK);

@@ -30,19 +30,23 @@ static void run_diagnostics(as5047u::AS5047U<Esp32As5047uBus>& encoder);
 static const char* TAG = "AS5047U_Basic";
 
 extern "C" void app_main(void) {
+  // Enable verbose logging for SPI transactions
+  esp_log_level_set("Esp32As5047uBus", ESP_LOG_DEBUG);
+  
   ESP_LOGI(TAG, "as5047u::AS5047U Basic Angle Reading Example");
   ESP_LOGI(TAG, "===================================");
 
-  // Configure SPI bus
-  Esp32As5047uBus::SPIConfig config;
-  config.miso_pin = GPIO_NUM_2;
-  config.mosi_pin = GPIO_NUM_7;
-  config.sclk_pin = GPIO_NUM_6;
-  config.cs_pin = GPIO_NUM_10;
-  config.frequency = 4000000;
-  config.mode = 1;
-
-  auto bus = std::make_unique<Esp32As5047uBus>(config);
+  // Create SPI bus using centralized configuration from esp32_as5047u_test_config.hpp
+  // This ensures consistency across all examples and makes it easy to change
+  // hardware configuration in one place. The factory function uses:
+  // - SPIPins::MISO, MOSI, SCLK, CS from test config
+  // - SPIParams::FREQUENCY, MODE, etc. from test config
+  auto bus = CreateEsp32As5047uBus();
+  
+  if (!bus) {
+    ESP_LOGE(TAG, "Failed to create SPI bus");
+    return;
+  }
 
   if (!bus->initialize()) {
     ESP_LOGE(TAG, "Failed to initialize SPI bus");
@@ -59,6 +63,7 @@ extern "C" void app_main(void) {
   vTaskDelay(pdMS_TO_TICKS(20));
 
   // Run a one-shot diagnostics and configuration verification pass.
+  // This includes SPI communication health check
   run_diagnostics(encoder);
 
   ESP_LOGI(TAG, "Starting angle reading loop...");
@@ -85,11 +90,74 @@ extern "C" void app_main(void) {
   }
 }
 
+// Check if SPI communication is actually working by verifying chip responses
+static bool check_spi_communication_health(as5047u::AS5047U<Esp32As5047uBus>& encoder) {
+  ESP_LOGI(TAG, "Checking SPI communication health...");
+  
+  bool healthy = true;
+  
+  // Test 1: ERRFL should clear after read (self-clearing register)
+  // If chip is responding, first read may have value, second should be 0x0000
+  auto errfl1 = encoder.ReadReg<AS5047U_REG::ERRFL>();
+  vTaskDelay(pdMS_TO_TICKS(1)); // Small delay
+  auto errfl2 = encoder.ReadReg<AS5047U_REG::ERRFL>();
+  ESP_LOGI(TAG, "ERRFL test: first=0x%04X, second=0x%04X (should clear)", errfl1.value, errfl2.value);
+  
+  // Test 2: DIA register should have VDD_mode bit set if chip is powered
+  // Even if chip is uninitialized, VDD_mode should indicate power state
+  auto dia = encoder.ReadReg<AS5047U_REG::DIA>();
+  ESP_LOGI(TAG, "DIA register: 0x%04X (VDD_mode=%u)", dia.value, dia.bits.VDD_mode);
+  
+  if (dia.value == 0x0000 && errfl1.value == 0x0000 && errfl2.value == 0x0000) {
+    ESP_LOGE(TAG, "⚠️  CRITICAL: All registers read 0x0000 - likely hardware issue!");
+    ESP_LOGE(TAG, "   Possible causes:");
+    ESP_LOGE(TAG, "   1. MISO line not connected or stuck low");
+    ESP_LOGE(TAG, "   2. CS (chip select) pin not connected");
+    ESP_LOGE(TAG, "   3. Chip not powered (check VDD/VDD3V3)");
+    ESP_LOGE(TAG, "   4. Wrong SPI pins configured");
+    healthy = false;
+  }
+  
+  // Test 3: Check for FramingError or CommandError in ERRFL
+  // These would indicate SPI communication problems
+  if (errfl1.value != 0x0000) {
+    if (errfl1.bits.Framing_error) {
+      ESP_LOGW(TAG, "⚠️  FramingError detected - SPI frame alignment issue");
+      healthy = false;
+    }
+    if (errfl1.bits.Command_error) {
+      ESP_LOGW(TAG, "⚠️  CommandError detected - invalid SPI command");
+      healthy = false;
+    }
+  }
+  
+  // Test 4: DIA.VDD_mode should be set if chip is powered (0=3.3V mode, 1=5V mode)
+  // If it's 0 and all other bits are 0, chip might not be responding
+  if (dia.value == 0x0000) {
+    ESP_LOGW(TAG, "⚠️  DIA register is 0x0000 - chip may not be powered or responding");
+  }
+  
+  if (healthy) {
+    ESP_LOGI(TAG, "✅ SPI communication appears healthy");
+  } else {
+    ESP_LOGE(TAG, "❌ SPI communication health check FAILED");
+  }
+  
+  return healthy;
+}
+
 // Detailed diagnostics: read core registers, toggle a few configuration bits,
 // and read them back so we can verify that SPI writes are actually sticking
 // and that we are not just seeing a stuck-low MISO line.
 static void run_diagnostics(as5047u::AS5047U<Esp32As5047uBus>& encoder) {
   ESP_LOGI(TAG, "Running AS5047U diagnostics and configuration verification...");
+
+  // 0) First check if SPI communication is working at all
+  bool comm_ok = check_spi_communication_health(encoder);
+  if (!comm_ok) {
+    ESP_LOGE(TAG, "SPI communication health check failed - skipping further diagnostics");
+    return;
+  }
 
   // 1) Dump comprehensive status using the driver's helper.
   encoder.DumpStatus();
@@ -127,12 +195,20 @@ static void run_diagnostics(as5047u::AS5047U<Esp32As5047uBus>& encoder) {
   s2_test.bits.NOISESET ^= 1u;
   s2_test.bits.PWMon ^= 1u;
   bool s2_write_ok = encoder.WriteReg(s2_test);
+  vTaskDelay(pdMS_TO_TICKS(1)); // Small delay for write to complete
   auto s2_after = encoder.ReadReg<AS5047U_REG::SETTINGS2>();
   ESP_LOGI(TAG,
            "SETTINGS2 test write ok=%d, written=0x%04X, read-back=0x%04X "
            "(NOISESET=%u PWMon=%u)",
            s2_write_ok ? 1 : 0, s2_test.value, s2_after.value, s2_after.bits.NOISESET,
            s2_after.bits.PWMon);
+  
+  // CRITICAL CHECK: If write reports success but read-back doesn't match, SPI isn't working
+  if (s2_write_ok && s2_after.value != s2_test.value) {
+    ESP_LOGE(TAG, "❌ CRITICAL: Write reported success but read-back doesn't match!");
+    ESP_LOGE(TAG, "   This indicates SPI writes are not reaching the chip.");
+    ESP_LOGE(TAG, "   Check: CS pin connection, chip power, SPI wiring");
+  }
 
   // Restore original SETTINGS2.
   if (!encoder.WriteReg(s2_orig)) {
@@ -147,12 +223,19 @@ static void run_diagnostics(as5047u::AS5047U<Esp32As5047uBus>& encoder) {
   dis_test.bits.ABI_off ^= 1u;
   dis_test.bits.UVW_off ^= 1u;
   bool dis_write_ok = encoder.WriteReg(dis_test);
+  vTaskDelay(pdMS_TO_TICKS(1)); // Small delay for write to complete
   auto dis_after = encoder.ReadReg<AS5047U_REG::DISABLE>();
   ESP_LOGI(TAG,
            "DISABLE test write ok=%d, written=0x%04X, read-back=0x%04X "
            "(ABI_off=%u UVW_off=%u)",
            dis_write_ok ? 1 : 0, dis_test.value, dis_after.value, dis_after.bits.ABI_off,
            dis_after.bits.UVW_off);
+  
+  // CRITICAL CHECK: If write reports success but read-back doesn't match, SPI isn't working
+  if (dis_write_ok && dis_after.value != dis_test.value) {
+    ESP_LOGE(TAG, "❌ CRITICAL: DISABLE write reported success but read-back doesn't match!");
+    ESP_LOGE(TAG, "   This confirms SPI writes are not reaching the chip.");
+  }
 
   // Restore original DISABLE.
   if (!encoder.WriteReg(dis_orig)) {
