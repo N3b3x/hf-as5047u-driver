@@ -82,7 +82,7 @@ struct ControlPins {
  * At 4MHz: 1 cycle = 250ns, so 2 cycles = 500ns (above 350ns minimum)
  */
 struct SPIParams {
-    static constexpr uint32_t FREQUENCY = 4000000;    ///< 4MHz SPI frequency (conservative default)
+    static constexpr uint32_t FREQUENCY = 1000000;    ///< 4MHz SPI frequency (conservative default)
     static constexpr uint8_t MODE = 1;                ///< SPI Mode 1 (CPOL=0, CPHA=1)
     static constexpr uint8_t QUEUE_SIZE = 1;          ///< Transaction queue size
     static constexpr uint8_t CS_ENA_PRETRANS = 1;     ///< CS asserted N clock cycles before transaction
