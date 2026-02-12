@@ -1,12 +1,12 @@
-# AS5047U ESP32-C6 Examples
+# AS5047U ESP32 Examples (ESP32-S3)
 
-This directory contains comprehensive examples demonstrating the AS5047U driver on ESP32-C6 platform.
+This directory contains comprehensive examples demonstrating the AS5047U driver on ESP32-S3 (configured like the PCAL95555 driver examples).
 
 ## 🎯 Overview
 
-The ESP32-C6 examples showcase real-world usage of the AS5047U magnetic encoder with:
+The ESP32-S3 examples showcase real-world usage of the AS5047U magnetic encoder with:
 
-- **Hardware-specific HAL** implementation for ESP32-C6
+- **Hardware-specific HAL** implementation for ESP32-S3
 - **Multiple example applications** covering different use cases
 - **Automated build system** with configurable app types
 - **Comprehensive documentation** for each example
@@ -14,13 +14,13 @@ The ESP32-C6 examples showcase real-world usage of the AS5047U magnetic encoder 
 
 ## 🔧 Hardware Requirements
 
-### ESP32-C6 Development Board
-- ESP32-C6-DevKitC-1 or compatible
+### ESP32-S3 Development Board
+- ESP32-S3-DevKitC-1 or compatible
 - USB-C cable for programming and power
 
 ### AS5047U Connections
 
-| AS5047U Pin | ESP32-C6 GPIO | Function |
+| AS5047U Pin | ESP32-S3 GPIO | Function |
 |-------------|---------------|----------|
 | MISO | GPIO2 | SPI Data In |
 | MOSI | GPIO7 | SPI Data Out |
@@ -61,7 +61,7 @@ cd hf-as5047u-driver/examples/esp32
 # Build driver integration test (default)
 ./scripts/build_app.sh driver_integration_test Release
 
-# Flash to ESP32-C6
+# Flash to ESP32-S3
 ./scripts/flash_app.sh driver_integration_test Release
 
 # Monitor output

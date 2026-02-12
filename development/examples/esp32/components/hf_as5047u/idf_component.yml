@@ -7,6 +7,7 @@ maintainers:
 targets:
   - esp32
   - esp32c6
+  - esp32s3
 url: https://ams-osram.com/products/sensor-solutions/position-sensors/ams-as5047u-high-resolution-rotary-position-sensor
 repository: https://github.com/N3b3x/hf-as5047u-driver
 issues: https://github.com/N3b3x/hf-as5047u-driver/issues

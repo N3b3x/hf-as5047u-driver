@@ -13,7 +13,7 @@ version: "1.0"
 metadata:
   project: "ESP32 AS5047U Driver Examples"
   default_app: "driver_integration_test"
-  target: "esp32c6"
+  target: "esp32s3"
   idf_versions: ["release/v5.5", "release/v5.4"]
   build_types: [["Debug", "Release"], ["Debug"]]
 
