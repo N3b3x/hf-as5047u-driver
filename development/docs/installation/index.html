@@ -416,29 +416,38 @@ src/
 </pre></td></tr></tbody></table></div></code></pre></div>    </div>
   </li>
 </ol>
-<h2 id="running-unit-tests">
+<h2 id="running-integration-tests">
   
   
-    <a href="#running-unit-tests" class="anchor-heading" aria-labelledby="running-unit-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Running Unit Tests
+    <a href="#running-integration-tests" class="anchor-heading" aria-labelledby="running-integration-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Running Integration Tests
   
   
 </h2>
     
 
-<p>The library includes unit tests. To run them:</p>
+<p>The driver includes a comprehensive integration test suite that runs on ESP32 hardware.
+See <a href="../examples/esp32/">examples/esp32</a> for the full test and example applications.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
-</pre></td><td class="rouge-code"><pre><span class="nb">cd </span>tests
-g++ <span class="nt">-std</span><span class="o">=</span>c++20 <span class="nt">-I</span> ../inc ../src/as5047u.cpp test_as5047u.cpp <span class="nt">-o</span> <span class="nb">test</span>
-./test
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="nb">cd </span>examples/esp32
+
+<span class="c"># Build the integration test suite</span>
+./scripts/build_app.sh driver_integration_test Release
+
+<span class="c"># Flash and monitor</span>
+./scripts/flash_app.sh driver_integration_test Release
+idf.py monitor
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 
-<p>Expected output:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>All tests passed.
-</pre></td></tr></tbody></table></div></code></pre></div></div>
+<p>The test suite validates all driver APIs including angle reading, velocity,
+diagnostics, configuration, frame format switching, and error handling.</p>
 <h2 id="verification">
   
   

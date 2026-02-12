@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Compile&#45;time configuration options for the AS5047U driver.">
 <polygon fill="#999999" stroke="#666666" points="131,-129 0,-129 0,-110 131,-110 131,-129"/>
 <text text-anchor="middle" x="65.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">inc/as5047u_config.hpp</text>
 </a>

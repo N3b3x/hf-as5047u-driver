@@ -310,24 +310,24 @@
   <thead>
     <tr>
       <th>AS5047U Pin</th>
-      <th>ESP32-S3 GPIO</th>
+      <th>ESP32 GPIO</th>
       <th>Function</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>MISO</td>
-      <td>GPIO2</td>
+      <td>GPIO13</td>
       <td>SPI Data In</td>
     </tr>
     <tr>
       <td>MOSI</td>
-      <td>GPIO7</td>
+      <td>GPIO11</td>
       <td>SPI Data Out</td>
     </tr>
     <tr>
       <td>SCLK</td>
-      <td>GPIO6</td>
+      <td>GPIO12</td>
       <td>SPI Clock</td>
     </tr>
     <tr>
@@ -348,7 +348,7 @@
   </tbody>
 </table></div>
 
-<p><strong>Note:</strong> The default SPI configuration uses mode 1 (CPOL=0, CPHA=1) at 4MHz.</p>
+<p><strong>Note:</strong> The default SPI configuration uses mode 1 (CPOL=0, CPHA=1) at 1MHz. Pin assignments are defined in <code class="language-plaintext highlighter-rouge">main/esp32_as5047u_test_config.hpp</code> and can be changed there.</p>
 <h2 id="-quick-start">
   
   
@@ -461,7 +461,7 @@ idf.py monitor
   <li>FreeRTOS task-based test execution</li>
   <li>GPIO14 progress indicator</li>
   <li>Automatic pass/fail tracking</li>
-  <li>No actual hardware required (driver test only)</li>
+  <li>Hardware required for full SPI validation</li>
 </ul>
 
 <p><strong>Build:</strong></p>
@@ -677,16 +677,10 @@ idf.py monitor
 2
 3
 4
-5
-6
-7
-</pre></td><td class="rouge-code"><pre><span class="n">Esp32As5047uBus</span><span class="o">::</span><span class="n">SPIConfig</span> <span class="n">config</span><span class="p">;</span>
-<span class="n">config</span><span class="p">.</span><span class="n">miso_pin</span> <span class="o">=</span> <span class="n">GPIO_NUM_2</span><span class="p">;</span>      <span class="c1">// MISO pin</span>
-<span class="n">config</span><span class="p">.</span><span class="n">mosi_pin</span> <span class="o">=</span> <span class="n">GPIO_NUM_7</span><span class="p">;</span>      <span class="c1">// MOSI pin</span>
-<span class="n">config</span><span class="p">.</span><span class="n">sclk_pin</span> <span class="o">=</span> <span class="n">GPIO_NUM_6</span><span class="p">;</span>      <span class="c1">// SCLK pin</span>
-<span class="n">config</span><span class="p">.</span><span class="n">cs_pin</span> <span class="o">=</span> <span class="n">GPIO_NUM_10</span><span class="p">;</span>       <span class="c1">// CS pin</span>
-<span class="n">config</span><span class="p">.</span><span class="n">frequency</span> <span class="o">=</span> <span class="mi">4000000</span><span class="p">;</span>        <span class="c1">// SPI frequency (4MHz)</span>
-<span class="n">config</span><span class="p">.</span><span class="n">mode</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>                   <span class="c1">// SPI mode (1: CPOL=0, CPHA=1)</span>
+</pre></td><td class="rouge-code"><pre><span class="c1">// Default pins from esp32_as5047u_test_config.hpp:</span>
+<span class="c1">// MISO = GPIO13, MOSI = GPIO11, SCLK = GPIO12, CS = GPIO10</span>
+<span class="c1">// Frequency = 1MHz, Mode = 1 (CPOL=0, CPHA=1)</span>
+<span class="k">auto</span> <span class="n">bus</span> <span class="o">=</span> <span class="n">CreateEsp32As5047uSpiBus</span><span class="p">();</span>
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 <h3 id="pin-configuration">
   
@@ -708,23 +702,23 @@ idf.py monitor
   <tbody>
     <tr>
       <td>SPI MISO</td>
-      <td>GPIO2</td>
-      <td>Can be changed in code</td>
+      <td>GPIO13</td>
+      <td>Configured in <code class="language-plaintext highlighter-rouge">esp32_as5047u_test_config.hpp</code></td>
     </tr>
     <tr>
       <td>SPI MOSI</td>
-      <td>GPIO7</td>
-      <td>Can be changed in code</td>
+      <td>GPIO11</td>
+      <td>Configured in <code class="language-plaintext highlighter-rouge">esp32_as5047u_test_config.hpp</code></td>
     </tr>
     <tr>
       <td>SPI SCLK</td>
-      <td>GPIO6</td>
-      <td>Can be changed in code</td>
+      <td>GPIO12</td>
+      <td>Configured in <code class="language-plaintext highlighter-rouge">esp32_as5047u_test_config.hpp</code></td>
     </tr>
     <tr>
       <td>SPI CS</td>
       <td>GPIO10</td>
-      <td>Can be changed in code</td>
+      <td>Configured in <code class="language-plaintext highlighter-rouge">esp32_as5047u_test_config.hpp</code></td>
     </tr>
     <tr>
       <td>Test Progress</td>
@@ -762,10 +756,12 @@ idf.py monitor
 
 <ul>
   <li><a href="/hf-as5047u-driver/development/">Main Driver README</a></li>
-  <li><a href="../../docs/setup.md">Setup Guide</a></li>
-  <li><a href="../../docs/usage.md">Usage Guide</a></li>
+  <li><a href="/hf-as5047u-driver/development/docs/installation/">Installation Guide</a></li>
+  <li><a href="/hf-as5047u-driver/development/docs/quickstart/">Quick Start Guide</a></li>
+  <li><a href="/hf-as5047u-driver/development/docs/hardware_setup/">Hardware Setup</a></li>
+  <li><a href="/hf-as5047u-driver/development/docs/platform_integration/">Platform Integration</a></li>
   <li><a href="/hf-as5047u-driver/development/docs/examples/">Examples Guide</a></li>
-  <li><a href="../../docs/building.md">Building Guide</a></li>
+  <li><a href="/hf-as5047u-driver/development/docs/api_reference/">API Reference</a></li>
 </ul>
 <h2 id="-troubleshooting">
   

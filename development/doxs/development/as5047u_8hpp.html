@@ -141,7 +141,7 @@ $(function(){initNavTree('as5047u_8hpp.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 
-<p>Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21).  
+<p>Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21)  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="as5047u__spi__interface_8hpp_source.html">as5047u_spi_interface.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="as5047u__registers_8hpp_source.html">as5047u_registers.hpp</a>&quot;</code><br />
@@ -155,16 +155,16 @@ $(function(){initNavTree('as5047u_8hpp.html',''); initResizable(); });
 <code>#include &lt;functional&gt;</code><br />
 <code>#include &quot;<a class="el" href="as5047u__types_8hpp_source.html">as5047u_types.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="as5047u__config_8hpp_source.html">as5047u_config.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="as5047u_8cpp_source.html">../src/as5047u.cpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="as5047u_8ipp_source.html">../src/as5047u.ipp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for as5047u.hpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="as5047u_8hpp__incl.svg" width="1347" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="as5047u_8hpp__incl.svg" width="1344" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="as5047u_8hpp__dep__incl.svg" width="1219" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="as5047u_8hpp__dep__incl.svg" width="1216" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="as5047u_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -209,9 +209,8 @@ Enumerations</h2></td></tr>
 <tr class="separator:a65e970630e302a2ffedf003f59fe4df5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21). </p>
-<p>This driver provides hardware-agnostic access to the AS5047U sensor over SPI, supporting 16-bit, 24-bit, and 32-bit SPI frame formats. It implements all major features described in the AS5047U datasheet, including absolute angle readout with/without DAEC, velocity measurement, AGC and magnetic field diagnostics, ABI/UVW/PWM interface configuration, error/status flag handling, full OTP programming sequence, dynamic angle error compensation, adaptive filtering, and CRC calculation.</p>
-<p>The design uses a CRTP-based <code>SpiInterface</code> interface to abstract SPI communication, so it can run on any platform. It assumes the <code>spiBus</code> implementation handles synchronization for thread safety. This driver is optimized for clarity and extensibility and has no direct hardware dependencies. </p>
+<div class="textblock"><p>Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21) </p>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024-2025 HardFOC. All rights reserved. </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="acfbfd1b6f3b51f7a790ae86416b3df4a" name="acfbfd1b6f3b51f7a790ae86416b3df4a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acfbfd1b6f3b51f7a790ae86416b3df4a">&#9670;&#160;</a></span>AS5047U_HEADER_INCLUDED</h2>

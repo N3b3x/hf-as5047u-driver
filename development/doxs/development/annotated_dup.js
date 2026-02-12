@@ -37,7 +37,7 @@ var annotated_dup =
       [ "TestConfig", "structAS5047U__TestConfig_1_1TestConfig.html", null ],
       [ "Timing", "structAS5047U__TestConfig_1_1Timing.html", null ]
     ] ],
-    [ "Esp32As5047uBus", "classEsp32As5047uBus.html", "classEsp32As5047uBus" ],
+    [ "Esp32As5047uSpiBus", "classEsp32As5047uSpiBus.html", "classEsp32As5047uSpiBus" ],
     [ "TestResults", "structTestResults.html", "structTestResults" ],
     [ "TestTaskContext", "structTestTaskContext.html", "structTestTaskContext" ]
 ];

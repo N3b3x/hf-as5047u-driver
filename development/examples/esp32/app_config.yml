@@ -24,7 +24,7 @@ apps:
   driver_integration_test:
     description: >
       Comprehensive driver integration test suite
-      (no hardware required)
+      (hardware required for full validation)
     source_file: "driver_integration_test.cpp"
     category: "test"
     idf_versions: ["release/v5.5"]
@@ -49,7 +49,7 @@ apps:
       - "FreeRTOS task-based test execution"
       - "GPIO14 progress indicator"
       - "Automatic pass/fail tracking"
-      - "No actual hardware required (driver test only)"
+      - "Hardware required for full SPI validation"
 
   # --------------------------------------------------------------------------
   # Basic Angle Reading Example
@@ -91,7 +91,7 @@ apps:
   # Configuration Example
   # --------------------------------------------------------------------------
   configuration_example:
-    description: "Configuration example with ABI, UVW, and PWM setup"
+    description: "Configuration example with ABI, UVW, zero position, and direction setup"
     source_file: "configuration_example.cpp"
     category: "example"
     idf_versions: ["release/v5.5"]
@@ -102,7 +102,6 @@ apps:
     features:
       - "ABI output configuration"
       - "UVW commutation setup"
-      - "PWM output configuration"
       - "Zero position and direction setting"
       - "Real hardware testing"
 
@@ -110,7 +109,7 @@ apps:
   # Full Features Example
   # --------------------------------------------------------------------------
   full_features:
-    description: "Comprehensive example demonstrating all AS5047U features"
+    description: "Comprehensive example demonstrating core AS5047U features"
     source_file: "full_features_example.cpp"
     category: "example"
     idf_versions: ["release/v5.5"]
@@ -119,11 +118,10 @@ apps:
     featured: true
     hardware_required: true
     features:
-      - "All sensor features enabled"
+      - "All sensor reading features"
       - "Angle, velocity, diagnostics"
-      - "ABI, UVW, PWM configuration"
-      - "DAEC and filter settings"
-      - "OTP programming"
+      - "ABI, UVW configuration"
+      - "DAEC and adaptive filter settings"
       - "Real hardware testing"
 
 # ============================================================================

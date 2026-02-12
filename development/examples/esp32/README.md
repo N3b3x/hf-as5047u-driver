@@ -20,16 +20,16 @@ The ESP32-S3 examples showcase real-world usage of the AS5047U magnetic encoder 
 
 ### AS5047U Connections
 
-| AS5047U Pin | ESP32-S3 GPIO | Function |
-|-------------|---------------|----------|
-| MISO | GPIO2 | SPI Data In |
-| MOSI | GPIO7 | SPI Data Out |
-| SCLK | GPIO6 | SPI Clock |
+| AS5047U Pin | ESP32 GPIO | Function |
+|-------------|------------|----------|
+| MISO | GPIO13 | SPI Data In |
+| MOSI | GPIO11 | SPI Data Out |
+| SCLK | GPIO12 | SPI Clock |
 | CS | GPIO10 | Chip Select |
 | VDD | 3.3V | Logic Supply |
 | GND | GND | Ground |
 
-**Note:** The default SPI configuration uses mode 1 (CPOL=0, CPHA=1) at 4MHz.
+**Note:** The default SPI configuration uses mode 1 (CPOL=0, CPHA=1) at 1MHz. Pin assignments are defined in `main/esp32_as5047u_test_config.hpp` and can be changed there.
 
 ## 🚀 Quick Start
 
@@ -82,7 +82,7 @@ idf.py monitor
 - FreeRTOS task-based test execution
 - GPIO14 progress indicator
 - Automatic pass/fail tracking
-- No actual hardware required (driver test only)
+- Hardware required for full SPI validation
 
 **Build:**
 ```bash
@@ -195,23 +195,20 @@ All test examples use a standardized test framework with:
 The default SPI configuration can be modified in the example files:
 
 ```cpp
-Esp32As5047uBus::SPIConfig config;
-config.miso_pin = GPIO_NUM_2;      // MISO pin
-config.mosi_pin = GPIO_NUM_7;      // MOSI pin
-config.sclk_pin = GPIO_NUM_6;      // SCLK pin
-config.cs_pin = GPIO_NUM_10;       // CS pin
-config.frequency = 4000000;        // SPI frequency (4MHz)
-config.mode = 1;                   // SPI mode (1: CPOL=0, CPHA=1)
+// Default pins from esp32_as5047u_test_config.hpp:
+// MISO = GPIO13, MOSI = GPIO11, SCLK = GPIO12, CS = GPIO10
+// Frequency = 1MHz, Mode = 1 (CPOL=0, CPHA=1)
+auto bus = CreateEsp32As5047uSpiBus();
 ```
 
 ### Pin Configuration
 
 | Function | Default GPIO | Notes |
 |----------|-------------|-------|
-| SPI MISO | GPIO2 | Can be changed in code |
-| SPI MOSI | GPIO7 | Can be changed in code |
-| SPI SCLK | GPIO6 | Can be changed in code |
-| SPI CS | GPIO10 | Can be changed in code |
+| SPI MISO | GPIO13 | Configured in `esp32_as5047u_test_config.hpp` |
+| SPI MOSI | GPIO11 | Configured in `esp32_as5047u_test_config.hpp` |
+| SPI SCLK | GPIO12 | Configured in `esp32_as5047u_test_config.hpp` |
+| SPI CS | GPIO10 | Configured in `esp32_as5047u_test_config.hpp` |
 | Test Progress | GPIO14 | Used by test framework |
 
 ### Frame Formats
@@ -227,10 +224,12 @@ The AS5047U supports three SPI frame formats:
 For more detailed documentation, see:
 
 - [Main Driver README](../../README.md)
-- [Setup Guide](../../docs/setup.md)
-- [Usage Guide](../../docs/usage.md)
+- [Installation Guide](../../docs/installation.md)
+- [Quick Start Guide](../../docs/quickstart.md)
+- [Hardware Setup](../../docs/hardware_setup.md)
+- [Platform Integration](../../docs/platform_integration.md)
 - [Examples Guide](../../docs/examples.md)
-- [Building Guide](../../docs/building.md)
+- [API Reference](../../docs/api_reference.md)
 
 ## 🐛 Troubleshooting
 

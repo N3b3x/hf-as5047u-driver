@@ -5,7 +5,7 @@ var searchData=
   ['getagc_2',['GetAGC',['../classas5047u_1_1AS5047U.html#afeef2fe3e619ddb7fc1dd60c00a7faf4',1,'as5047u::AS5047U']]],
   ['getangle_3',['GetAngle',['../classas5047u_1_1AS5047U.html#a4b90fcf2e216c5131f3a9d9dcdfeb183',1,'as5047u::AS5047U']]],
   ['getangleoutputsource_4',['GetAngleOutputSource',['../classas5047u_1_1AS5047U.html#a462f687e1c59f66298912fd59fe62c53',1,'as5047u::AS5047U']]],
-  ['getconfig_5',['getConfig',['../classEsp32As5047uBus.html#afb90652f20af944575f5d0a2c8612e9f',1,'Esp32As5047uBus']]],
+  ['getconfig_5',['getConfig',['../classEsp32As5047uSpiBus.html#a514bdf11b05f97b9a044c53a75924e8e',1,'Esp32As5047uSpiBus']]],
   ['getdiagnostics_6',['GetDiagnostics',['../classas5047u_1_1AS5047U.html#acd336fa5933930e1dddfaaf4f1bfa63c',1,'as5047u::AS5047U']]],
   ['geterrorflags_7',['GetErrorFlags',['../classas5047u_1_1AS5047U.html#a2d09b3ebefe1e09b0a070884e97c8503',1,'as5047u::AS5047U']]],
   ['gethysteresis_8',['GetHysteresis',['../classas5047u_1_1AS5047U.html#a2102a17ade8779933b98f2daaede5d27',1,'as5047u::AS5047U']]],

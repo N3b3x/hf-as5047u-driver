@@ -53,8 +53,8 @@ static constexpr bool ENABLE_ERROR_HANDLING_TESTS = true;
 // Global test results instance (required by TestFramework.h)
 TestResults g_test_results;
 
-static std::unique_ptr<Esp32As5047uBus> g_bus;
-static std::unique_ptr<as5047u::AS5047U<Esp32As5047uBus>> g_encoder;
+static std::unique_ptr<Esp32As5047uSpiBus> g_bus;
+static std::unique_ptr<as5047u::AS5047U<Esp32As5047uSpiBus>> g_encoder;
 
 //=============================================================================
 // TEST HELPER FUNCTIONS
@@ -65,7 +65,12 @@ static std::unique_ptr<as5047u::AS5047U<Esp32As5047uBus>> g_encoder;
  */
 static bool create_test_bus() noexcept {
   // Create SPI bus using centralized test config
-  g_bus = CreateEsp32As5047uBus();
+  g_bus = CreateEsp32As5047uSpiBus();
+
+  if (!g_bus) {
+    ESP_LOGE(TAG, "Failed to create SPI bus");
+    return false;
+  }
 
   if (!g_bus->initialize()) {
     ESP_LOGE(TAG, "Failed to initialize SPI bus");
@@ -84,7 +89,7 @@ static bool create_test_encoder(FrameFormat format = FrameFormat::SPI_24) noexce
     return false;
   }
 
-  g_encoder = std::make_unique<as5047u::AS5047U<Esp32As5047uBus>>(*g_bus, format);
+  g_encoder = std::make_unique<as5047u::AS5047U<Esp32As5047uSpiBus>>(*g_bus, format);
 
   ESP_LOGI(TAG, "as5047u::AS5047U encoder created with frame format: %d", static_cast<int>(format));
   return true;
@@ -221,11 +226,31 @@ static bool test_zero_position() noexcept {
     return false;
   }
 
-  uint16_t current_zero = g_encoder->GetZeroPosition();
-  ESP_LOGI(TAG, "Current zero position: %u", current_zero);
+  // Save the original zero position
+  uint16_t original_zero = g_encoder->GetZeroPosition();
+  ESP_LOGI(TAG, "Original zero position: %u", original_zero);
 
-  // Try setting a new zero position (test only, don't actually change)
-  ESP_LOGI(TAG, "Zero position configuration test passed (read-only test)");
+  // Write a test value and verify read-back
+  uint16_t test_zero = 4096; // ~90 degrees
+  bool write_ok = g_encoder->SetZeroPosition(test_zero);
+  ESP_LOGI(TAG, "SetZeroPosition(%u) returned: %s", test_zero, write_ok ? "OK" : "FAIL");
+
+  vTaskDelay(pdMS_TO_TICKS(1)); // Allow write to settle
+  uint16_t readback_zero = g_encoder->GetZeroPosition();
+  ESP_LOGI(TAG, "Read-back zero position: %u (expected %u)", readback_zero, test_zero);
+
+  // Restore original value
+  g_encoder->SetZeroPosition(original_zero);
+  vTaskDelay(pdMS_TO_TICKS(1));
+  uint16_t restored_zero = g_encoder->GetZeroPosition();
+  ESP_LOGI(TAG, "Restored zero position: %u (original %u)", restored_zero, original_zero);
+
+  if (!write_ok) {
+    ESP_LOGE(TAG, "SetZeroPosition write failed");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Zero position configuration test passed");
   return true;
 }
 
@@ -237,8 +262,37 @@ static bool test_direction() noexcept {
     return false;
   }
 
-  // Test setting direction (test only)
-  ESP_LOGI(TAG, "Direction configuration test passed (API verified)");
+  // Read SETTINGS2 to get original DIR bit
+  auto s2_orig = g_encoder->ReadReg<AS5047U_REG::SETTINGS2>();
+  uint8_t original_dir = s2_orig.bits.DIR;
+  ESP_LOGI(TAG, "Original direction (DIR bit): %u", original_dir);
+
+  // Set clockwise (DIR=0) and verify
+  bool ok_cw = g_encoder->SetDirection(true);
+  ESP_LOGI(TAG, "SetDirection(clockwise) returned: %s", ok_cw ? "OK" : "FAIL");
+
+  vTaskDelay(pdMS_TO_TICKS(1));
+  auto s2_cw = g_encoder->ReadReg<AS5047U_REG::SETTINGS2>();
+  ESP_LOGI(TAG, "DIR bit after clockwise: %u (expected 0)", s2_cw.bits.DIR);
+
+  // Set counter-clockwise (DIR=1) and verify
+  bool ok_ccw = g_encoder->SetDirection(false);
+  ESP_LOGI(TAG, "SetDirection(counter-clockwise) returned: %s", ok_ccw ? "OK" : "FAIL");
+
+  vTaskDelay(pdMS_TO_TICKS(1));
+  auto s2_ccw = g_encoder->ReadReg<AS5047U_REG::SETTINGS2>();
+  ESP_LOGI(TAG, "DIR bit after counter-clockwise: %u (expected 1)", s2_ccw.bits.DIR);
+
+  // Restore original direction
+  g_encoder->SetDirection(original_dir == 0);
+  vTaskDelay(pdMS_TO_TICKS(1));
+
+  if (!ok_cw || !ok_ccw) {
+    ESP_LOGE(TAG, "SetDirection write(s) failed");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Direction configuration test passed");
   return true;
 }
 
@@ -255,7 +309,7 @@ static bool test_frame_format_16() noexcept {
   }
 
   auto encoder_16 =
-      std::make_unique<as5047u::AS5047U<Esp32As5047uBus>>(*g_bus, FrameFormat::SPI_16);
+      std::make_unique<as5047u::AS5047U<Esp32As5047uSpiBus>>(*g_bus, FrameFormat::SPI_16);
   uint16_t angle = encoder_16->GetAngle();
   ESP_LOGI(TAG, "16-bit frame format: Angle = %u", angle);
 
@@ -272,7 +326,7 @@ static bool test_frame_format_24() noexcept {
   }
 
   auto encoder_24 =
-      std::make_unique<as5047u::AS5047U<Esp32As5047uBus>>(*g_bus, FrameFormat::SPI_24);
+      std::make_unique<as5047u::AS5047U<Esp32As5047uSpiBus>>(*g_bus, FrameFormat::SPI_24);
   uint16_t angle = encoder_24->GetAngle();
   ESP_LOGI(TAG, "24-bit frame format: Angle = %u", angle);
 
@@ -289,7 +343,7 @@ static bool test_frame_format_32() noexcept {
   }
 
   auto encoder_32 =
-      std::make_unique<as5047u::AS5047U<Esp32As5047uBus>>(*g_bus, FrameFormat::SPI_32);
+      std::make_unique<as5047u::AS5047U<Esp32As5047uSpiBus>>(*g_bus, FrameFormat::SPI_32);
   uint16_t angle = encoder_32->GetAngle();
   ESP_LOGI(TAG, "32-bit frame format: Angle = %u", angle);
 

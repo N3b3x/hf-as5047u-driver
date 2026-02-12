@@ -6,7 +6,7 @@ var searchData=
   ['default_5fframe_5fformat_3',['DEFAULT_FRAME_FORMAT',['../namespaceAS5047U__CFG.html#a169d05b4070af344342ea2d1d314d933',1,'AS5047U_CFG']]],
   ['deg_5fper_5flsb_4',['DEG_PER_LSB',['../structas5047u_1_1AS5047U_1_1Velocity.html#a1ff5cfb86f80b8577ed227f74e37b9a3',1,'as5047u::AS5047U::Velocity']]],
   ['degrees_5fper_5fcount_5',['DEGREES_PER_COUNT',['../structAS5047U__TestConfig_1_1EncoderSpecs.html#af656b09e6de4a82c849b4233096ff16a',1,'AS5047U_TestConfig::EncoderSpecs']]],
-  ['deinitialize_6',['deinitialize',['../classEsp32As5047uBus.html#a048d19fcf187ba980af6e2a35876d2b9',1,'Esp32As5047uBus']]],
+  ['deinitialize_6',['deinitialize',['../classEsp32As5047uSpiBus.html#aca37fdba658c3a3994804f53e3eff6ca',1,'Esp32As5047uSpiBus']]],
   ['dia_7',['DIA',['../structAS5047U__REG_1_1DIA.html',1,'AS5047U_REG']]],
   ['dia1_5fen_8',['Dia1_en',['../structAS5047U__REG_1_1ZPOSL.html#a9cf5e495c2de187923afd7a971e87482',1,'AS5047U_REG::ZPOSL']]],
   ['dia2_5fen_9',['Dia2_en',['../structAS5047U__REG_1_1ZPOSL.html#a8210f78cfdef87e3c4237669b8e77f0d',1,'AS5047U_REG::ZPOSL']]],

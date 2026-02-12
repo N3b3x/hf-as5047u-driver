@@ -4,5 +4,5 @@ var searchData=
   ['filter_5fdisable_1',['FILTER_disable',['../structAS5047U__REG_1_1DISABLE.html#ad012f583e95c4b88e11ea4b657a51f96',1,'AS5047U_REG::DISABLE']]],
   ['framing_5ferror_2',['Framing_error',['../structAS5047U__REG_1_1ERRFL.html#a4b10b7dd554cd14c452a406085ce0686',1,'AS5047U_REG::ERRFL']]],
   ['frequency_3',['FREQUENCY',['../structAS5047U__TestConfig_1_1SPIParams.html#a3b4b84aa0e809bff42b03c502c336b5d',1,'AS5047U_TestConfig::SPIParams']]],
-  ['frequency_4',['frequency',['../structEsp32As5047uBus_1_1SPIConfig.html#aa478a5dadd8e9569b8d375408c4ba94f',1,'Esp32As5047uBus::SPIConfig']]]
+  ['frequency_4',['frequency',['../structEsp32As5047uSpiBus_1_1SPIConfig.html#a7df44f9ecff82a3326fbc9fdc99ae0b9',1,'Esp32As5047uSpiBus::SPIConfig']]]
 ];
