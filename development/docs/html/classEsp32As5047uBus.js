@@ -1,7 +1,6 @@
 var classEsp32As5047uBus =
 [
     [ "SPIConfig", "structEsp32As5047uBus_1_1SPIConfig.html", "structEsp32As5047uBus_1_1SPIConfig" ],
-    [ "Esp32As5047uBus", "classEsp32As5047uBus.html#a1b10e4979fb46d3e01d937469e454645", null ],
     [ "Esp32As5047uBus", "classEsp32As5047uBus.html#a2cac4af138fd741af6542bfe66adf42c", null ],
     [ "~Esp32As5047uBus", "classEsp32As5047uBus.html#ac5df6c3824de4fe4cf7247e79d814835", null ],
     [ "deinitialize", "classEsp32As5047uBus.html#a048d19fcf187ba980af6e2a35876d2b9", null ],

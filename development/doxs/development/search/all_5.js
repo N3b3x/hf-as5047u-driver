@@ -8,7 +8,7 @@ var searchData=
   ['frameformat_5',['FrameFormat',['../as5047u__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532',1,'as5047u_types.hpp']]],
   ['framing_5ferror_6',['Framing_error',['../structAS5047U__REG_1_1ERRFL.html#a4b10b7dd554cd14c452a406085ce0686',1,'AS5047U_REG::ERRFL']]],
   ['framingerror_7',['FramingError',['../as5047u_8hpp.html#a65e970630e302a2ffedf003f59fe4df5ac2a32feb763cf02d22c6ea35051b7b43',1,'as5047u.hpp']]],
-  ['frequency_8',['frequency',['../structEsp32As5047uBus_1_1SPIConfig.html#aa478a5dadd8e9569b8d375408c4ba94f',1,'Esp32As5047uBus::SPIConfig']]],
-  ['frequency_9',['FREQUENCY',['../structAS5047U__TestConfig_1_1SPIParams.html#a3b4b84aa0e809bff42b03c502c336b5d',1,'AS5047U_TestConfig::SPIParams']]],
+  ['frequency_8',['FREQUENCY',['../structAS5047U__TestConfig_1_1SPIParams.html#a3b4b84aa0e809bff42b03c502c336b5d',1,'AS5047U_TestConfig::SPIParams']]],
+  ['frequency_9',['frequency',['../structEsp32As5047uBus_1_1SPIConfig.html#aa478a5dadd8e9569b8d375408c4ba94f',1,'Esp32As5047uBus::SPIConfig']]],
   ['full_5ffeatures_5fexample_2ecpp_10',['full_features_example.cpp',['../full__features__example_8cpp.html',1,'']]]
 ];

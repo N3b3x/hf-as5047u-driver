@@ -17,6 +17,6 @@ var searchData=
   ['esp32_5fas5047u_5fbus_2ehpp_14',['esp32_as5047u_bus.hpp',['../esp32__as5047u__bus_8hpp.html',1,'']]],
   ['esp32_5fas5047u_5fenable_5fdetailed_5fspi_5flogging_15',['ESP32_AS5047U_ENABLE_DETAILED_SPI_LOGGING',['../esp32__as5047u__test__config_8hpp.html#a8f76f3a50a8ae13f45e5a5f0e9c1908f',1,'esp32_as5047u_test_config.hpp']]],
   ['esp32_5fas5047u_5ftest_5fconfig_2ehpp_16',['esp32_as5047u_test_config.hpp',['../esp32__as5047u__test__config_8hpp.html',1,'']]],
-  ['esp32as5047ubus_17',['Esp32As5047uBus',['../classEsp32As5047uBus.html',1,'Esp32As5047uBus'],['../classEsp32As5047uBus.html#a1b10e4979fb46d3e01d937469e454645',1,'Esp32As5047uBus::Esp32As5047uBus()'],['../classEsp32As5047uBus.html#a2cac4af138fd741af6542bfe66adf42c',1,'Esp32As5047uBus::Esp32As5047uBus(const SPIConfig &amp;config)']]],
+  ['esp32as5047ubus_17',['Esp32As5047uBus',['../classEsp32As5047uBus.html',1,'Esp32As5047uBus'],['../classEsp32As5047uBus.html#a2cac4af138fd741af6542bfe66adf42c',1,'Esp32As5047uBus::Esp32As5047uBus()']]],
   ['examples_18',['📊 Examples',['../index.html#autotoc_md7',1,'']]]
 ];

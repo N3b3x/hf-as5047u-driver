@@ -159,8 +159,10 @@ Static Public Attributes</h2></td></tr>
 <tr class="memdesc:ae4b99c0317cdf5818c86319330c103ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">CS asserted N clock cycles before transaction.  <br /></td></tr>
 <tr class="separator:ae4b99c0317cdf5818c86319330c103ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46ab4643761a0e4887f202c4b9f384f8" id="r_a46ab4643761a0e4887f202c4b9f384f8"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46ab4643761a0e4887f202c4b9f384f8">CS_ENA_POSTTRANS</a> = 1</td></tr>
-<tr class="memdesc:a46ab4643761a0e4887f202c4b9f384f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">CS held N clock cycles after transaction.  <br /></td></tr>
 <tr class="separator:a46ab4643761a0e4887f202c4b9f384f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abad4437e52fcf804a9c4188d3101e6c2" id="r_abad4437e52fcf804a9c4188d3101e6c2"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abad4437e52fcf804a9c4188d3101e6c2">SPI_HOST_ID</a> = 2</td></tr>
+<tr class="memdesc:abad4437e52fcf804a9c4188d3101e6c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">SPI host: 2 = SPI2_HOST, 3 = SPI3_HOST. Try 3 if SCLK does not toggle on your board.  <br /></td></tr>
+<tr class="separator:abad4437e52fcf804a9c4188d3101e6c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>SPI Communication Parameters. </p>
@@ -193,8 +195,7 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>CS held N clock cycles after transaction. </p>
+<p>CS held N clock cycles after transaction </p>
 
 </div>
 </div>
@@ -291,6 +292,30 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Transaction queue size. </p>
+
+</div>
+</div>
+<a id="abad4437e52fcf804a9c4188d3101e6c2" name="abad4437e52fcf804a9c4188d3101e6c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abad4437e52fcf804a9c4188d3101e6c2">&#9670;&#160;</a></span>SPI_HOST_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint8_t AS5047U_TestConfig::SPIParams::SPI_HOST_ID = 2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>SPI host: 2 = SPI2_HOST, 3 = SPI3_HOST. Try 3 if SCLK does not toggle on your board. </p>
 
 </div>
 </div>

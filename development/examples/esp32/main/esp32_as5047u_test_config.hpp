@@ -45,10 +45,10 @@ namespace AS5047U_TestConfig {
  * Ensure your hardware matches these pin assignments or modify accordingly.
  */
 struct SPIPins {
-    static constexpr uint8_t MISO = 2;          ///< GPIO2 - SPI MISO (Master In Slave Out)
-    static constexpr uint8_t MOSI = 7;          ///< GPIO7 - SPI MOSI (Master Out Slave In)
-    static constexpr uint8_t SCLK = 6;          ///< GPIO6 - SPI Clock
-    static constexpr uint8_t CS   = 10;         ///< GPIO10 - Chip Select (active low)
+    static constexpr uint8_t MISO = 13;          ///< GPIO13 - SPI MISO (Master In Slave Out)
+    static constexpr uint8_t MOSI = 11;          ///< GPIO11 - SPI MOSI (Master Out Slave In)
+    static constexpr uint8_t SCLK = 12;          ///< GPIO12 - SPI Clock (SCLK)
+    static constexpr uint8_t CS   = 10;          ///< GPIO10 - Chip Select (active low)
 };
 
 /**
@@ -86,7 +86,9 @@ struct SPIParams {
     static constexpr uint8_t MODE = 1;                ///< SPI Mode 1 (CPOL=0, CPHA=1)
     static constexpr uint8_t QUEUE_SIZE = 1;          ///< Transaction queue size
     static constexpr uint8_t CS_ENA_PRETRANS = 1;     ///< CS asserted N clock cycles before transaction
-    static constexpr uint8_t CS_ENA_POSTTRANS = 1;    ///< CS held N clock cycles after transaction
+    static constexpr uint8_t CS_ENA_POSTTRANS = 1;   ///< CS held N clock cycles after transaction
+    /// SPI host: 2 = SPI2_HOST, 3 = SPI3_HOST. Try 3 if SCLK does not toggle on your board.
+    static constexpr uint8_t SPI_HOST_ID = 2;
 };
 
 /**
