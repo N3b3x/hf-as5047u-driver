@@ -33,7 +33,7 @@ public:
    * @brief SPI configuration structure
    */
   struct SPIConfig {
-    spi_host_device_t host = SPI2_HOST; ///< SPI host (SPI2_HOST for ESP32-C6)
+    spi_host_device_t host = SPI2_HOST; ///< SPI host (SPI2_HOST for ESP32-S3)
     gpio_num_t miso_pin = GPIO_NUM_2;   ///< MISO pin (default GPIO2)
     gpio_num_t mosi_pin = GPIO_NUM_7;   ///< MOSI pin (default GPIO7)
     gpio_num_t sclk_pin = GPIO_NUM_6;   ///< SCLK pin (default GPIO6)
