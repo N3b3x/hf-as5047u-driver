@@ -1,7 +1,7 @@
 var searchData=
 [
   ['sclk_0',['SCLK',['../structAS5047U__TestConfig_1_1SPIPins.html#ab4c2d40a8f64e4ef91b3bbeecbe609ec',1,'AS5047U_TestConfig::SPIPins']]],
-  ['sclk_5fpin_1',['sclk_pin',['../structEsp32As5047uBus_1_1SPIConfig.html#aa1b2b13dde4473e6c8e7247eb3b25a37',1,'Esp32As5047uBus::SPIConfig']]],
+  ['sclk_5fpin_1',['sclk_pin',['../structEsp32As5047uSpiBus_1_1SPIConfig.html#a19e22bf902d4aafabe862d0b7f80faed',1,'Esp32As5047uSpiBus::SPIConfig']]],
   ['set150ctemperaturemode_2',['Set150CTemperatureMode',['../classas5047u_1_1AS5047U.html#a784a20bb0526ce3b2e368312e7783912',1,'as5047u::AS5047U']]],
   ['setabiresolution_3',['SetABIResolution',['../classas5047u_1_1AS5047U.html#a5fe389d90c16d0c60e8ce2199200740b',1,'as5047u::AS5047U']]],
   ['setadaptivefilter_4',['SetAdaptiveFilter',['../classas5047u_1_1AS5047U.html#a08d24195dbdcc0fccf2a2c9699db659b',1,'as5047u::AS5047U']]],
@@ -25,9 +25,9 @@ var searchData=
   ['spi_5f32_22',['SPI_32',['../as5047u__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a367bc64c294b2a6476209c2d855171b5',1,'as5047u_types.hpp']]],
   ['spi_5fcnt_23',['SPI_cnt',['../structAS5047U__REG_1_1DIA.html#a530346c236a0a1a3f13ddd011d4ab34c',1,'AS5047U_REG::DIA']]],
   ['spi_5fhost_5fid_24',['SPI_HOST_ID',['../structAS5047U__TestConfig_1_1SPIParams.html#abad4437e52fcf804a9c4188d3101e6c2',1,'AS5047U_TestConfig::SPIParams']]],
-  ['spiconfig_25',['SPIConfig',['../structEsp32As5047uBus_1_1SPIConfig.html',1,'Esp32As5047uBus']]],
+  ['spiconfig_25',['SPIConfig',['../structEsp32As5047uSpiBus_1_1SPIConfig.html',1,'Esp32As5047uSpiBus']]],
   ['spiinterface_26',['SpiInterface',['../classas5047u_1_1SpiInterface.html',1,'as5047u::SpiInterface&lt; Derived &gt;'],['../classas5047u_1_1SpiInterface.html#a41e724c8421c08fd43576c1dddd7ff98',1,'as5047u::SpiInterface::SpiInterface(const SpiInterface &amp;)=delete'],['../classas5047u_1_1SpiInterface.html#a1c4aec20d704a271ff056ecfd6fc3ea7',1,'as5047u::SpiInterface::SpiInterface()=default'],['../classas5047u_1_1SpiInterface.html#a54fbeb1a16a6802873a6e3272c996d54',1,'as5047u::SpiInterface::SpiInterface(SpiInterface &amp;&amp;)=default']]],
-  ['spiinterface_3c_20esp32as5047ubus_20_3e_27',['SpiInterface&lt; Esp32As5047uBus &gt;',['../classas5047u_1_1SpiInterface.html',1,'as5047u']]],
+  ['spiinterface_3c_20esp32as5047uspibus_20_3e_27',['SpiInterface&lt; Esp32As5047uSpiBus &gt;',['../classas5047u_1_1SpiInterface.html',1,'as5047u']]],
   ['spiparams_28',['SPIParams',['../structAS5047U__TestConfig_1_1SPIParams.html',1,'AS5047U_TestConfig']]],
   ['spipins_29',['SPIPins',['../structAS5047U__TestConfig_1_1SPIPins.html',1,'AS5047U_TestConfig']]],
   ['start_30',['🚀 Quick Start',['../index.html#autotoc_md4',1,'']]],
