@@ -28,6 +28,7 @@
 
 #include "../../../inc/as5047u.hpp"
 #include "esp32_as5047u_bus.hpp"
+#include "esp32_as5047u_test_config.hpp"
 #include "TestFramework.h"
 
 static const char* TAG = "AS5047U_Test";
@@ -63,15 +64,8 @@ static std::unique_ptr<as5047u::AS5047U<Esp32As5047uBus>> g_encoder;
  * @brief Create and initialize test SPI bus
  */
 static bool create_test_bus() noexcept {
-  Esp32As5047uBus::SPIConfig config;
-  config.miso_pin = GPIO_NUM_2;
-  config.mosi_pin = GPIO_NUM_7;
-  config.sclk_pin = GPIO_NUM_6;
-  config.cs_pin = GPIO_NUM_10;
-  config.frequency = 4000000;
-  config.mode = 1;
-
-  g_bus = std::make_unique<Esp32As5047uBus>(config);
+  // Create SPI bus using centralized test config
+  g_bus = CreateEsp32As5047uBus();
 
   if (!g_bus->initialize()) {
     ESP_LOGE(TAG, "Failed to initialize SPI bus");

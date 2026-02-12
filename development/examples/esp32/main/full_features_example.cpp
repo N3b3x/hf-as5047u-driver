@@ -21,6 +21,7 @@
 
 #include "../../../inc/as5047u.hpp"
 #include "esp32_as5047u_bus.hpp"
+#include "esp32_as5047u_test_config.hpp"
 
 static const char* TAG = "AS5047U_Full";
 
@@ -28,16 +29,8 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "as5047u::AS5047U Full Features Example");
   ESP_LOGI(TAG, "=============================");
 
-  // Configure SPI bus
-  Esp32As5047uBus::SPIConfig config;
-  config.miso_pin = GPIO_NUM_2;
-  config.mosi_pin = GPIO_NUM_7;
-  config.sclk_pin = GPIO_NUM_6;
-  config.cs_pin = GPIO_NUM_10;
-  config.frequency = 4000000;
-  config.mode = 1;
-
-  auto bus = std::make_unique<Esp32As5047uBus>(config);
+  // Create SPI bus using centralized test config
+  auto bus = CreateEsp32As5047uBus();
 
   if (!bus->initialize()) {
     ESP_LOGE(TAG, "Failed to initialize SPI bus");

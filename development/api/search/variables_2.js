@@ -6,11 +6,16 @@ var searchData=
   ['completion_5fsemaphore_3',['completion_semaphore',['../structTestTaskContext.html#ab82bee11b198be2f2b4d6c908573ddb6',1,'TestTaskContext']]],
   ['cordic_5foverflow_4',['CORDIC_Overflow',['../structAS5047U__REG_1_1ERRFL.html#a08adcebf098e1ed046529d4c9cd76800',1,'AS5047U_REG::ERRFL']]],
   ['cordic_5foverflow_5fflag_5',['CORDIC_overflow_flag',['../structAS5047U__REG_1_1DIA.html#a819e6ca06c137af95ff9a335f74c3f36',1,'AS5047U_REG::DIA']]],
-  ['cosdata_6',['COSDATA',['../structAS5047U__REG_1_1COSDATA.html#abd769160598fd3b05c7273fe6a0b69f2',1,'AS5047U_REG::COSDATA']]],
-  ['cosoff_5ffin_7',['CosOff_fin',['../structAS5047U__REG_1_1DIA.html#a8ac9d706236de79070f9c1da7e4d64ab',1,'AS5047U_REG::DIA']]],
-  ['crc_5ferror_8',['CRC_error',['../structAS5047U__REG_1_1ERRFL.html#a118ddd3f160f21c516103a249260b8a3',1,'AS5047U_REG::ERRFL']]],
-  ['crc_5fretries_9',['CRC_RETRIES',['../namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65',1,'AS5047U_CFG']]],
-  ['cs_5fena_5fposttrans_10',['cs_ena_posttrans',['../structEsp32As5047uBus_1_1SPIConfig.html#a8a80583d4b0729c90b04713318f9dbac',1,'Esp32As5047uBus::SPIConfig']]],
-  ['cs_5fena_5fpretrans_11',['cs_ena_pretrans',['../structEsp32As5047uBus_1_1SPIConfig.html#ade58f1aa91f421f50418e17db52493b2',1,'Esp32As5047uBus::SPIConfig']]],
-  ['cs_5fpin_12',['cs_pin',['../structEsp32As5047uBus_1_1SPIConfig.html#ac493d61703ea17f00b449b69c0575de5',1,'Esp32As5047uBus::SPIConfig']]]
+  ['cordic_5foverflow_5flimit_6',['CORDIC_OVERFLOW_LIMIT',['../structAS5047U__TestConfig_1_1Diagnostics.html#a3e97b9ee0d3fd7cb0c92b58d66e5cd89',1,'AS5047U_TestConfig::Diagnostics']]],
+  ['cosdata_7',['COSDATA',['../structAS5047U__REG_1_1COSDATA.html#abd769160598fd3b05c7273fe6a0b69f2',1,'AS5047U_REG::COSDATA']]],
+  ['cosoff_5ffin_8',['CosOff_fin',['../structAS5047U__REG_1_1DIA.html#a8ac9d706236de79070f9c1da7e4d64ab',1,'AS5047U_REG::DIA']]],
+  ['counts_5fper_5frev_9',['COUNTS_PER_REV',['../structAS5047U__TestConfig_1_1EncoderSpecs.html#a698f09c6d497afbea106215a8707bc33',1,'AS5047U_TestConfig::EncoderSpecs']]],
+  ['crc_5ferror_10',['CRC_error',['../structAS5047U__REG_1_1ERRFL.html#a118ddd3f160f21c516103a249260b8a3',1,'AS5047U_REG::ERRFL']]],
+  ['crc_5fretries_11',['CRC_RETRIES',['../namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65',1,'AS5047U_CFG']]],
+  ['cs_12',['CS',['../structAS5047U__TestConfig_1_1SPIPins.html#a9635d8ea6ac2806cde08d5992220062b',1,'AS5047U_TestConfig::SPIPins']]],
+  ['cs_5fena_5fposttrans_13',['CS_ENA_POSTTRANS',['../structAS5047U__TestConfig_1_1SPIParams.html#a46ab4643761a0e4887f202c4b9f384f8',1,'AS5047U_TestConfig::SPIParams']]],
+  ['cs_5fena_5fposttrans_14',['cs_ena_posttrans',['../structEsp32As5047uBus_1_1SPIConfig.html#a8a80583d4b0729c90b04713318f9dbac',1,'Esp32As5047uBus::SPIConfig']]],
+  ['cs_5fena_5fpretrans_15',['cs_ena_pretrans',['../structEsp32As5047uBus_1_1SPIConfig.html#ade58f1aa91f421f50418e17db52493b2',1,'Esp32As5047uBus::SPIConfig']]],
+  ['cs_5fena_5fpretrans_16',['CS_ENA_PRETRANS',['../structAS5047U__TestConfig_1_1SPIParams.html#ae4b99c0317cdf5818c86319330c103ef',1,'AS5047U_TestConfig::SPIParams']]],
+  ['cs_5fpin_17',['cs_pin',['../structEsp32As5047uBus_1_1SPIConfig.html#ac493d61703ea17f00b449b69c0575de5',1,'Esp32As5047uBus::SPIConfig']]]
 ];
