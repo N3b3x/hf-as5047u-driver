@@ -1,17 +1,28 @@
 ---
 name: hf-as5047u-driver
 version: "1.0.0"
-description: Hardware-agnostic AS5047U driver component
+description: "Hardware-agnostic AS5047U high-resolution rotary position sensor driver"
+
 maintainers:
   - "HardFOC"
+license: "MIT"
+
+url: https://ams-osram.com/products/sensor-solutions/position-sensors/ams-as5047u-high-resolution-rotary-position-sensor
+repository: https://github.com/N3b3x/hf-as5047u-driver
+issues: https://github.com/N3b3x/hf-as5047u-driver/issues
+
 targets:
   - esp32
   - esp32c6
   - esp32s3
-url: https://ams-osram.com/products/sensor-solutions/position-sensors/ams-as5047u-high-resolution-rotary-position-sensor
-repository: https://github.com/N3b3x/hf-as5047u-driver
-issues: https://github.com/N3b3x/hf-as5047u-driver/issues
-include_dirs:
-  - ../../../src
-  - ../../../inc
-## Optional dependencies etc. But not required.
+
+dependencies:
+  idf: ">=5.0.0"
+
+tags:
+  - "as5047u"
+  - "encoder"
+  - "position-sensor"
+  - "driver"
+  - "spi"
+  - "hardware-agnostic"
