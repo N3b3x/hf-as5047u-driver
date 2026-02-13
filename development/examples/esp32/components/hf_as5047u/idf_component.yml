@@ -5,7 +5,7 @@ description: "Hardware-agnostic AS5047U high-resolution rotary position sensor d
 
 maintainers:
   - "HardFOC"
-license: "MIT"
+license: "GPL-3.0"
 
 url: https://ams-osram.com/products/sensor-solutions/position-sensors/ams-as5047u-high-resolution-rotary-position-sensor
 repository: https://github.com/N3b3x/hf-as5047u-driver
