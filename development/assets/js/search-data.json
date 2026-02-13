@@ -92,7 +92,7 @@
   },"13": {
     "doc": "📖 API Reference",
     "title": "Source Code",
-    "content": ". | Main Header: inc/as5047u.hpp | SPI Interface: inc/as5047u_spi_interface.hpp | Implementation: src/as5047u.cpp | Registers: inc/as5047u_registers.hpp | . ",
+    "content": ". | Main Header: inc/as5047u.hpp | SPI Interface: inc/as5047u_spi_interface.hpp | Implementation: src/as5047u.ipp | Registers: inc/as5047u_registers.hpp | . ",
     "url": "/hf-as5047u-driver/development/docs/api_reference/#source-code",
     
     "relUrl": "/docs/api_reference/#source-code"
@@ -120,49 +120,49 @@
   },"17": {
     "doc": "📖 API Reference",
     "title": "Frame Format",
-    "content": "| Method | Signature | Location | . | SetFrameFormat() | void SetFrameFormat(FrameFormat format) noexcept | src/as5047u.cpp#L16 | . ",
+    "content": "| Method | Signature | Location | . | SetFrameFormat() | void SetFrameFormat(FrameFormat format) noexcept | src/as5047u.ipp#L16 | . ",
     "url": "/hf-as5047u-driver/development/docs/api_reference/#frame-format",
     
     "relUrl": "/docs/api_reference/#frame-format"
   },"18": {
     "doc": "📖 API Reference",
     "title": "Angle Reading",
-    "content": "| Method | Signature | Location | . | GetAngle() | uint16_t GetAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.cpp#L33 | . | GetRawAngle() | uint16_t GetRawAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.cpp#L48 | . ",
+    "content": "| Method | Signature | Location | . | GetAngle() | uint16_t GetAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L33 | . | GetRawAngle() | uint16_t GetRawAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L48 | . ",
     "url": "/hf-as5047u-driver/development/docs/api_reference/#angle-reading",
     
     "relUrl": "/docs/api_reference/#angle-reading"
   },"19": {
     "doc": "📖 API Reference",
     "title": "Velocity Reading",
-    "content": "| Method | Signature | Location | . | GetVelocity() | int16_t GetVelocity(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.cpp#L63 | . | GetVelocityDegPerSec() | float GetVelocityDegPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.cpp#L79 | . | GetVelocityRadPerSec() | float GetVelocityRadPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.cpp#L84 | . | GetVelocityRPM() | float GetVelocityRPM(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.cpp#L89 | . ",
+    "content": "| Method | Signature | Location | . | GetVelocity() | int16_t GetVelocity(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L63 | . | GetVelocityDegPerSec() | float GetVelocityDegPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L79 | . | GetVelocityRadPerSec() | float GetVelocityRadPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L84 | . | GetVelocityRPM() | float GetVelocityRPM(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L89 | . ",
     "url": "/hf-as5047u-driver/development/docs/api_reference/#velocity-reading",
     
     "relUrl": "/docs/api_reference/#velocity-reading"
   },"20": {
     "doc": "📖 API Reference",
     "title": "Diagnostics",
-    "content": "| Method | Signature | Location | . | GetAGC() | uint8_t GetAGC(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.cpp#L94 | . | GetMagnitude() | uint16_t GetMagnitude(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.cpp#L109 | . | GetErrorFlags() | uint16_t GetErrorFlags(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.cpp#L124 | . | GetStickyErrorFlags() | AS5047U_Error GetStickyErrorFlags() const | inc/as5047u.hpp#L384 | . | DumpStatus() | void DumpStatus() const | src/as5047u.cpp#L597 | . | GetDiagnostics() | AS5047U_REG::DIA GetDiagnostics() const | src/as5047u.cpp#L393 | . ",
+    "content": "| Method | Signature | Location | . | GetAGC() | uint8_t GetAGC(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L94 | . | GetMagnitude() | uint16_t GetMagnitude(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L109 | . | GetErrorFlags() | uint16_t GetErrorFlags(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L124 | . | GetStickyErrorFlags() | AS5047U_Error GetStickyErrorFlags() const | inc/as5047u.hpp#L384 | . | DumpStatus() | void DumpStatus() const | src/as5047u.ipp#L597 | . | GetDiagnostics() | AS5047U_REG::DIA GetDiagnostics() const | src/as5047u.ipp#L393 | . ",
     "url": "/hf-as5047u-driver/development/docs/api_reference/#diagnostics",
     
     "relUrl": "/docs/api_reference/#diagnostics"
   },"21": {
     "doc": "📖 API Reference",
     "title": "Configuration",
-    "content": "| Method | Signature | Location | . | GetZeroPosition() | uint16_t GetZeroPosition(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.cpp#L135 | . | SetZeroPosition() | bool SetZeroPosition(uint16_t angle_lsb, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.cpp#L162 | . | SetDirection() | bool SetDirection(bool clockwise, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | inc/as5047u.hpp#L214 | . | SetABIResolution() | bool SetABIResolution(uint8_t resolution_bits, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.cpp#L171 | . | SetUVWPolePairs() | bool SetUVWPolePairs(uint8_t pairs, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.cpp#L179 | . | SetIndexPulseLength() | bool SetIndexPulseLength(uint8_t lsb_len, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.cpp#L187 | . | ConfigureInterface() | bool ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.cpp#L205 | . | SetDynamicAngleCompensation() | bool SetDynamicAngleCompensation(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.cpp#L225 | . | SetAdaptiveFilter() | bool SetAdaptiveFilter(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.cpp#L232 | . | SetFilterParameters() | bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.cpp#L239 | . | Set150CTemperatureMode() | bool Set150CTemperatureMode(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.cpp#L250 | . | SetHysteresis() | bool SetHysteresis(AS5047U_REG::SETTINGS3::Hysteresis hysteresis, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.cpp#L315 | . | GetHysteresis() | AS5047U_REG::SETTINGS3::Hysteresis GetHysteresis() const | src/as5047u.cpp#L322 | . | SetAngleOutputSource() | bool SetAngleOutputSource(AS5047U_REG::SETTINGS2::AngleOutputSource source, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.cpp#L333 | . | GetAngleOutputSource() | AS5047U_REG::SETTINGS2::AngleOutputSource GetAngleOutputSource() const | src/as5047u.cpp#L340 | . ",
+    "content": "| Method | Signature | Location | . | GetZeroPosition() | uint16_t GetZeroPosition(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L135 | . | SetZeroPosition() | bool SetZeroPosition(uint16_t angle_lsb, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.ipp#L162 | . | SetDirection() | bool SetDirection(bool clockwise, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | inc/as5047u.hpp#L214 | . | SetABIResolution() | bool SetABIResolution(uint8_t resolution_bits, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.ipp#L171 | . | SetUVWPolePairs() | bool SetUVWPolePairs(uint8_t pairs, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.ipp#L179 | . | SetIndexPulseLength() | bool SetIndexPulseLength(uint8_t lsb_len, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.ipp#L187 | . | ConfigureInterface() | bool ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.ipp#L205 | . | SetDynamicAngleCompensation() | bool SetDynamicAngleCompensation(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.ipp#L225 | . | SetAdaptiveFilter() | bool SetAdaptiveFilter(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.ipp#L232 | . | SetFilterParameters() | bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.ipp#L239 | . | Set150CTemperatureMode() | bool Set150CTemperatureMode(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.ipp#L250 | . | SetHysteresis() | bool SetHysteresis(AS5047U_REG::SETTINGS3::Hysteresis hysteresis, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.ipp#L315 | . | GetHysteresis() | AS5047U_REG::SETTINGS3::Hysteresis GetHysteresis() const | src/as5047u.ipp#L322 | . | SetAngleOutputSource() | bool SetAngleOutputSource(AS5047U_REG::SETTINGS2::AngleOutputSource source, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | src/as5047u.ipp#L333 | . | GetAngleOutputSource() | AS5047U_REG::SETTINGS2::AngleOutputSource GetAngleOutputSource() const | src/as5047u.ipp#L340 | . ",
     "url": "/hf-as5047u-driver/development/docs/api_reference/#configuration",
     
     "relUrl": "/docs/api_reference/#configuration"
   },"22": {
     "doc": "📖 API Reference",
     "title": "OTP Programming",
-    "content": "| Method | Signature | Location | . | ProgramOTP() | bool ProgramOTP() | src/as5047u.cpp#L257 | . ",
+    "content": "| Method | Signature | Location | . | ProgramOTP() | bool ProgramOTP() | src/as5047u.ipp#L257 | . ",
     "url": "/hf-as5047u-driver/development/docs/api_reference/#otp-programming",
     
     "relUrl": "/docs/api_reference/#otp-programming"
   },"23": {
     "doc": "📖 API Reference",
     "title": "Utility",
-    "content": "| Method | Signature | Location | . | SetPad() | void SetPad(uint8_t pad) noexcept | src/as5047u.cpp#L302 | . | ComputeCRC8() | static constexpr uint8_t ComputeCRC8(uint16_t data16) | inc/as5047u.hpp#L96 | . | ReadReg() | template&lt;typename RegT&gt; RegT ReadReg() const | inc/as5047u.hpp#L360 | . | WriteReg() | template&lt;typename RegT&gt; bool WriteReg(const RegT&amp; reg, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | inc/as5047u.hpp#L376 | . ",
+    "content": "| Method | Signature | Location | . | SetPad() | void SetPad(uint8_t pad) noexcept | src/as5047u.ipp#L302 | . | ComputeCRC8() | static constexpr uint8_t ComputeCRC8(uint16_t data16) | inc/as5047u.hpp#L96 | . | ReadReg() | template&lt;typename RegT&gt; RegT ReadReg() const | inc/as5047u.hpp#L360 | . | WriteReg() | template&lt;typename RegT&gt; bool WriteReg(const RegT&amp; reg, uint8_t retries = AS5047U_CFG::CRC_RETRIES) | inc/as5047u.hpp#L376 | . ",
     "url": "/hf-as5047u-driver/development/docs/api_reference/#utility",
     
     "relUrl": "/docs/api_reference/#utility"

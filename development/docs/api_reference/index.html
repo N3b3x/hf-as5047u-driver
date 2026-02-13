@@ -285,7 +285,7 @@
 <ul>
   <li><strong>Main Header</strong>: <a href="../inc/as5047u.hpp"><code class="language-plaintext highlighter-rouge">inc/as5047u.hpp</code></a></li>
   <li><strong>SPI Interface</strong>: <a href="../inc/as5047u_spi_interface.hpp"><code class="language-plaintext highlighter-rouge">inc/as5047u_spi_interface.hpp</code></a></li>
-  <li><strong>Implementation</strong>: <a href="../src/as5047u.cpp"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp</code></a></li>
+  <li><strong>Implementation</strong>: <a href="../src/as5047u.ipp"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp</code></a></li>
   <li><strong>Registers</strong>: <a href="../inc/as5047u_registers.hpp"><code class="language-plaintext highlighter-rouge">inc/as5047u_registers.hpp</code></a></li>
 </ul>
 <h2 id="core-class">
@@ -346,7 +346,7 @@
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetFrameFormat()</code></td>
       <td><code class="language-plaintext highlighter-rouge">void SetFrameFormat(FrameFormat format) noexcept</code></td>
-      <td><a href="../src/as5047u.cpp#L16"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L16</code></a></td>
+      <td><a href="../src/as5047u.ipp#L16"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L16</code></a></td>
     </tr>
   </tbody>
 </table></div>
@@ -371,12 +371,12 @@
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetAngle()</code></td>
       <td><code class="language-plaintext highlighter-rouge">uint16_t GetAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
-      <td><a href="../src/as5047u.cpp#L33"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L33</code></a></td>
+      <td><a href="../src/as5047u.ipp#L33"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L33</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetRawAngle()</code></td>
       <td><code class="language-plaintext highlighter-rouge">uint16_t GetRawAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
-      <td><a href="../src/as5047u.cpp#L48"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L48</code></a></td>
+      <td><a href="../src/as5047u.ipp#L48"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L48</code></a></td>
     </tr>
   </tbody>
 </table></div>
@@ -401,22 +401,22 @@
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetVelocity()</code></td>
       <td><code class="language-plaintext highlighter-rouge">int16_t GetVelocity(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
-      <td><a href="../src/as5047u.cpp#L63"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L63</code></a></td>
+      <td><a href="../src/as5047u.ipp#L63"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L63</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetVelocityDegPerSec()</code></td>
       <td><code class="language-plaintext highlighter-rouge">float GetVelocityDegPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
-      <td><a href="../src/as5047u.cpp#L79"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L79</code></a></td>
+      <td><a href="../src/as5047u.ipp#L79"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L79</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetVelocityRadPerSec()</code></td>
       <td><code class="language-plaintext highlighter-rouge">float GetVelocityRadPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
-      <td><a href="../src/as5047u.cpp#L84"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L84</code></a></td>
+      <td><a href="../src/as5047u.ipp#L84"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L84</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetVelocityRPM()</code></td>
       <td><code class="language-plaintext highlighter-rouge">float GetVelocityRPM(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
-      <td><a href="../src/as5047u.cpp#L89"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L89</code></a></td>
+      <td><a href="../src/as5047u.ipp#L89"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L89</code></a></td>
     </tr>
   </tbody>
 </table></div>
@@ -441,17 +441,17 @@
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetAGC()</code></td>
       <td><code class="language-plaintext highlighter-rouge">uint8_t GetAGC(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
-      <td><a href="../src/as5047u.cpp#L94"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L94</code></a></td>
+      <td><a href="../src/as5047u.ipp#L94"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L94</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetMagnitude()</code></td>
       <td><code class="language-plaintext highlighter-rouge">uint16_t GetMagnitude(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
-      <td><a href="../src/as5047u.cpp#L109"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L109</code></a></td>
+      <td><a href="../src/as5047u.ipp#L109"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L109</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetErrorFlags()</code></td>
       <td><code class="language-plaintext highlighter-rouge">uint16_t GetErrorFlags(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
-      <td><a href="../src/as5047u.cpp#L124"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L124</code></a></td>
+      <td><a href="../src/as5047u.ipp#L124"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L124</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetStickyErrorFlags()</code></td>
@@ -461,12 +461,12 @@
     <tr>
       <td><code class="language-plaintext highlighter-rouge">DumpStatus()</code></td>
       <td><code class="language-plaintext highlighter-rouge">void DumpStatus() const</code></td>
-      <td><a href="../src/as5047u.cpp#L597"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L597</code></a></td>
+      <td><a href="../src/as5047u.ipp#L597"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L597</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetDiagnostics()</code></td>
       <td><code class="language-plaintext highlighter-rouge">AS5047U_REG::DIA GetDiagnostics() const</code></td>
-      <td><a href="../src/as5047u.cpp#L393"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L393</code></a></td>
+      <td><a href="../src/as5047u.ipp#L393"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L393</code></a></td>
     </tr>
   </tbody>
 </table></div>
@@ -491,12 +491,12 @@
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetZeroPosition()</code></td>
       <td><code class="language-plaintext highlighter-rouge">uint16_t GetZeroPosition(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
-      <td><a href="../src/as5047u.cpp#L135"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L135</code></a></td>
+      <td><a href="../src/as5047u.ipp#L135"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L135</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetZeroPosition()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool SetZeroPosition(uint16_t angle_lsb, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
-      <td><a href="../src/as5047u.cpp#L162"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L162</code></a></td>
+      <td><a href="../src/as5047u.ipp#L162"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L162</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetDirection()</code></td>
@@ -506,62 +506,62 @@
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetABIResolution()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool SetABIResolution(uint8_t resolution_bits, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
-      <td><a href="../src/as5047u.cpp#L171"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L171</code></a></td>
+      <td><a href="../src/as5047u.ipp#L171"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L171</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetUVWPolePairs()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool SetUVWPolePairs(uint8_t pairs, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
-      <td><a href="../src/as5047u.cpp#L179"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L179</code></a></td>
+      <td><a href="../src/as5047u.ipp#L179"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L179</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetIndexPulseLength()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool SetIndexPulseLength(uint8_t lsb_len, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
-      <td><a href="../src/as5047u.cpp#L187"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L187</code></a></td>
+      <td><a href="../src/as5047u.ipp#L187"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L187</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">ConfigureInterface()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
-      <td><a href="../src/as5047u.cpp#L205"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L205</code></a></td>
+      <td><a href="../src/as5047u.ipp#L205"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L205</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetDynamicAngleCompensation()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool SetDynamicAngleCompensation(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
-      <td><a href="../src/as5047u.cpp#L225"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L225</code></a></td>
+      <td><a href="../src/as5047u.ipp#L225"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L225</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetAdaptiveFilter()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool SetAdaptiveFilter(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
-      <td><a href="../src/as5047u.cpp#L232"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L232</code></a></td>
+      <td><a href="../src/as5047u.ipp#L232"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L232</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetFilterParameters()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
-      <td><a href="../src/as5047u.cpp#L239"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L239</code></a></td>
+      <td><a href="../src/as5047u.ipp#L239"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L239</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">Set150CTemperatureMode()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool Set150CTemperatureMode(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
-      <td><a href="../src/as5047u.cpp#L250"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L250</code></a></td>
+      <td><a href="../src/as5047u.ipp#L250"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L250</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetHysteresis()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool SetHysteresis(AS5047U_REG::SETTINGS3::Hysteresis hysteresis, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
-      <td><a href="../src/as5047u.cpp#L315"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L315</code></a></td>
+      <td><a href="../src/as5047u.ipp#L315"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L315</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetHysteresis()</code></td>
       <td><code class="language-plaintext highlighter-rouge">AS5047U_REG::SETTINGS3::Hysteresis GetHysteresis() const</code></td>
-      <td><a href="../src/as5047u.cpp#L322"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L322</code></a></td>
+      <td><a href="../src/as5047u.ipp#L322"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L322</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetAngleOutputSource()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool SetAngleOutputSource(AS5047U_REG::SETTINGS2::AngleOutputSource source, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
-      <td><a href="../src/as5047u.cpp#L333"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L333</code></a></td>
+      <td><a href="../src/as5047u.ipp#L333"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L333</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetAngleOutputSource()</code></td>
       <td><code class="language-plaintext highlighter-rouge">AS5047U_REG::SETTINGS2::AngleOutputSource GetAngleOutputSource() const</code></td>
-      <td><a href="../src/as5047u.cpp#L340"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L340</code></a></td>
+      <td><a href="../src/as5047u.ipp#L340"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L340</code></a></td>
     </tr>
   </tbody>
 </table></div>
@@ -586,7 +586,7 @@
     <tr>
       <td><code class="language-plaintext highlighter-rouge">ProgramOTP()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool ProgramOTP()</code></td>
-      <td><a href="../src/as5047u.cpp#L257"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L257</code></a></td>
+      <td><a href="../src/as5047u.ipp#L257"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L257</code></a></td>
     </tr>
   </tbody>
 </table></div>
@@ -611,7 +611,7 @@
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetPad()</code></td>
       <td><code class="language-plaintext highlighter-rouge">void SetPad(uint8_t pad) noexcept</code></td>
-      <td><a href="../src/as5047u.cpp#L302"><code class="language-plaintext highlighter-rouge">src/as5047u.cpp#L302</code></a></td>
+      <td><a href="../src/as5047u.ipp#L302"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L302</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">ComputeCRC8()</code></td>
