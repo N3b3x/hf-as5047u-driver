@@ -531,12 +531,27 @@
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetAdaptiveFilter()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool SetAdaptiveFilter(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
-      <td><a href="../src/as5047u.ipp#L232"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L232</code></a></td>
+      <td><a href="../src/as5047u.ipp"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetFilterPreset()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool SetFilterPreset(FilterPreset preset, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
+      <td><a href="../src/as5047u.ipp"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">SetFilterParameters()</code></td>
       <td><code class="language-plaintext highlighter-rouge">bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries = AS5047U_CFG::CRC_RETRIES)</code></td>
-      <td><a href="../src/as5047u.ipp#L239"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L239</code></a></td>
+      <td><a href="../src/as5047u.ipp"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetAdaptiveFilterEnabled()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bool GetAdaptiveFilterEnabled(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/as5047u.ipp"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetFilterParameters()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">std::pair&lt;uint8_t, uint8_t&gt; GetFilterParameters(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/as5047u.ipp"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">Set150CTemperatureMode()</code></td>

@@ -219,9 +219,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a08d24195dbdcc0fccf2a2c9699db659b" id="r_a08d24195dbdcc0fccf2a2c9699db659b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08d24195dbdcc0fccf2a2c9699db659b">SetAdaptiveFilter</a> (bool enable, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
 <tr class="memdesc:a08d24195dbdcc0fccf2a2c9699db659b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable/disable the adaptive filter (Dynamic Filter System).  <br /></td></tr>
 <tr class="separator:a08d24195dbdcc0fccf2a2c9699db659b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a03ae38551bebfaab51fa92ca822156" id="r_a4a03ae38551bebfaab51fa92ca822156"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a03ae38551bebfaab51fa92ca822156">SetFilterPreset</a> (<a class="el" href="as5047u__types_8hpp.html#a386f750d67dbaea130f6a5a8c9a55aca">FilterPreset</a> preset, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
+<tr class="memdesc:a4a03ae38551bebfaab51fa92ca822156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set adaptive filter from a preset (easiest way to configure filter).  <br /></td></tr>
+<tr class="separator:a4a03ae38551bebfaab51fa92ca822156"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaeb4906e76f62338f6b113b015f19533" id="r_aaeb4906e76f62338f6b113b015f19533"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaeb4906e76f62338f6b113b015f19533">SetFilterParameters</a> (uint8_t k_min, uint8_t k_max, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
-<tr class="memdesc:aaeb4906e76f62338f6b113b015f19533"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set adaptive filter parameters (K_min and K_max, 3-bit each).  <br /></td></tr>
+<tr class="memdesc:aaeb4906e76f62338f6b113b015f19533"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set adaptive filter parameters (K_min and K_max as 3-bit register codes).  <br /></td></tr>
 <tr class="separator:aaeb4906e76f62338f6b113b015f19533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99e0ec7d2de785a76c7d0008c2648848" id="r_a99e0ec7d2de785a76c7d0008c2648848"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99e0ec7d2de785a76c7d0008c2648848">GetAdaptiveFilterEnabled</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:a99e0ec7d2de785a76c7d0008c2648848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read whether the adaptive filter is enabled.  <br /></td></tr>
+<tr class="separator:a99e0ec7d2de785a76c7d0008c2648848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9073d0f810802f6f4352a82f6c17251a" id="r_a9073d0f810802f6f4352a82f6c17251a"><td class="memItemLeft" align="right" valign="top">std::pair&lt; uint8_t, uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9073d0f810802f6f4352a82f6c17251a">GetFilterParameters</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:a9073d0f810802f6f4352a82f6c17251a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read current K_min and K_max register codes (0–7 each).  <br /></td></tr>
+<tr class="separator:a9073d0f810802f6f4352a82f6c17251a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a784a20bb0526ce3b2e368312e7783912" id="r_a784a20bb0526ce3b2e368312e7783912"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a784a20bb0526ce3b2e368312e7783912">Set150CTemperatureMode</a> (bool enable, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
 <tr class="memdesc:a784a20bb0526ce3b2e368312e7783912"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set temperature mode for 150°C operation (NOISESET bit).  <br /></td></tr>
 <tr class="separator:a784a20bb0526ce3b2e368312e7783912"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -443,6 +452,27 @@ template&lt;typename SpiType &gt; </div>
 
 </div>
 </div>
+<a id="a99e0ec7d2de785a76c7d0008c2648848" name="a99e0ec7d2de785a76c7d0008c2648848"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99e0ec7d2de785a76c7d0008c2648848">&#9670;&#160;</a></span>GetAdaptiveFilterEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::GetAdaptiveFilterEnabled </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read whether the adaptive filter is enabled. </p>
+
+</div>
+</div>
 <a id="afeef2fe3e619ddb7fc1dd60c00a7faf4" name="afeef2fe3e619ddb7fc1dd60c00a7faf4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afeef2fe3e619ddb7fc1dd60c00a7faf4">&#9670;&#160;</a></span>GetAGC()</h2>
 
@@ -568,6 +598,27 @@ template&lt;typename SpiType &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>16-bit error flag register (ERRFL). All flags clear after read. </dd></dl>
+
+</div>
+</div>
+<a id="a9073d0f810802f6f4352a82f6c17251a" name="a9073d0f810802f6f4352a82f6c17251a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9073d0f810802f6f4352a82f6c17251a">&#9670;&#160;</a></span>GetFilterParameters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; uint8_t, uint8_t &gt; <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::GetFilterParameters </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read current K_min and K_max register codes (0–7 each). </p>
 
 </div>
 </div>
@@ -1030,9 +1081,9 @@ template&lt;typename SpiType &gt; </div>
 </div><div class="memdoc">
 
 <p>Define the rotation direction for increasing angle. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Writes SETTINGS2 (0x0019) bit 2 (DIR) per datasheet Fig.47: 0 = CW default, 1 = invert direction. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">clockwise</td><td>If true, clockwise rotation yields increasing angle (DIR=0). If false, invert direction (DIR=1). </td></tr>
+    <tr><td class="paramname">clockwise</td><td>If true, clockwise yields increasing angle (DIR=0). If false, invert direction (DIR=1). </td></tr>
     <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
   </table>
   </dd>
@@ -1092,7 +1143,34 @@ template&lt;typename SpiType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Set adaptive filter parameters (K_min and K_max, 3-bit each). </p>
+<p>Set adaptive filter parameters (K_min and K_max as 3-bit register codes). </p>
+<p>Both arguments are 0–7 (register codes). See SETTINGS1::AdaptiveFilterKmin and AdaptiveFilterKmax for mapping to effective K (datasheet Figure 17). For a single effective K, use <a class="el" href="#a4a03ae38551bebfaab51fa92ca822156" title="Set adaptive filter from a preset (easiest way to configure filter).">SetFilterPreset()</a> instead. </p>
+
+</div>
+</div>
+<a id="a4a03ae38551bebfaab51fa92ca822156" name="a4a03ae38551bebfaab51fa92ca822156"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a03ae38551bebfaab51fa92ca822156">&#9670;&#160;</a></span>SetFilterPreset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::SetFilterPreset </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="as5047u__types_8hpp.html#a386f750d67dbaea130f6a5a8c9a55aca">FilterPreset</a></td>          <td class="paramname"><span class="paramname"><em>preset</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set adaptive filter from a preset (easiest way to configure filter). </p>
+<p>Enables the filter and sets K_min/K_max to match the preset. See FilterPreset and datasheet Figure 17 (velocity RMS noise vs K). </p>
 
 </div>
 </div>

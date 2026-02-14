@@ -1,5 +1,5 @@
-warning: ignoring unsupported tag 'PAGE_OUTLINE_PANEL' at line 1765, file /tmp/doxyfile.EsQF2M
-warning: Tag 'DOT_TRANSPARENT' at line 2788 of file '/tmp/doxyfile.EsQF2M' has become obsolete.
+warning: ignoring unsupported tag 'PAGE_OUTLINE_PANEL' at line 1765, file /tmp/doxyfile.hYyRmL
+warning: Tag 'DOT_TRANSPARENT' at line 2788 of file '/tmp/doxyfile.hYyRmL' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/main/TestFramework.h:383: warning: The following parameter of print_test_section_footer(const char *tag, const char *section_name, bool enabled=true) is not documented:
   parameter 'tag'
@@ -10,21 +10,21 @@ warning: Tag 'DOT_TRANSPARENT' at line 2788 of file '/tmp/doxyfile.EsQF2M' has b
   parameter 'tag'
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/examples/esp32/main/TestFramework.h:321: warning: The following parameter of print_test_summary(const TestResults &test_results, const char *test_suite_name, const char *tag) is not documented:
   parameter 'tag'
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:224: warning: The following parameter of as5047u::AS5047U::ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:228: warning: The following parameter of as5047u::AS5047U::ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
   parameter 'retries'
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:254: warning: The following parameter of as5047u::AS5047U::Set150CTemperatureMode(bool enable, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:280: warning: The following parameter of as5047u::AS5047U::Set150CTemperatureMode(bool enable, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
   parameter 'retries'
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:205: warning: The following parameter of as5047u::AS5047U::SetABIResolution(uint8_t resolution_bits, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:209: warning: The following parameter of as5047u::AS5047U::SetABIResolution(uint8_t resolution_bits, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
   parameter 'retries'
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:314: warning: The following parameter of as5047u::AS5047U::SetAngleOutputSource(AS5047U_REG::SETTINGS2::AngleOutputSource source, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:340: warning: The following parameter of as5047u::AS5047U::SetAngleOutputSource(AS5047U_REG::SETTINGS2::AngleOutputSource source, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
   parameter 'retries'
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:294: warning: The following parameter of as5047u::AS5047U::SetHysteresis(AS5047U_REG::SETTINGS3::Hysteresis hysteresis, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:320: warning: The following parameter of as5047u::AS5047U::SetHysteresis(AS5047U_REG::SETTINGS3::Hysteresis hysteresis, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
   parameter 'retries'
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:217: warning: The following parameter of as5047u::AS5047U::SetIndexPulseLength(uint8_t lsb_len, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:221: warning: The following parameter of as5047u::AS5047U::SetIndexPulseLength(uint8_t lsb_len, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
   parameter 'retries'
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:211: warning: The following parameter of as5047u::AS5047U::SetUVWPolePairs(uint8_t pairs, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:215: warning: The following parameter of as5047u::AS5047U::SetUVWPolePairs(uint8_t pairs, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
   parameter 'retries'
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:189: warning: The following parameter of as5047u::AS5047U::SetZeroPosition(uint16_t angle_lsb, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/inc/as5047u.hpp:190: warning: The following parameter of as5047u::AS5047U::SetZeroPosition(uint16_t angle_lsb, uint8_t retries=AS5047U_CFG::CRC_RETRIES) is not documented:
   parameter 'retries'
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:12: warning: unable to resolve reference to '-overview' for \ref command
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:13: warning: unable to resolve reference to '-features' for \ref command
@@ -39,6 +39,6 @@ warning: Tag 'DOT_TRANSPARENT' at line 2788 of file '/tmp/doxyfile.EsQF2M' has b
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:75: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/quickstart.md' for \ref command
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:80: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/platform_integration.md' for \ref command
 /home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:87: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/installation.md' for \ref command
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:110: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/api_reference.md' for \ref command
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:116: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/examples.md' for \ref command
-/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:120: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/index.md' for \ref command
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:113: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/api_reference.md' for \ref command
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:119: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/examples.md' for \ref command
+/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/README.md:123: warning: unable to resolve reference to '/home/runner/work/hf-as5047u-driver/hf-as5047u-driver/docs/index.md' for \ref command

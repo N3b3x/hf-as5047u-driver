@@ -196,7 +196,7 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a8f76f3a50a8ae13f45e5a5f0e9c1908f" id="r_a8f76f3a50a8ae13f45e5a5f0e9c1908f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f76f3a50a8ae13f45e5a5f0e9c1908f">ESP32_AS5047U_ENABLE_DETAILED_SPI_LOGGING</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memitem:a8f76f3a50a8ae13f45e5a5f0e9c1908f" id="r_a8f76f3a50a8ae13f45e5a5f0e9c1908f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f76f3a50a8ae13f45e5a5f0e9c1908f">ESP32_AS5047U_ENABLE_DETAILED_SPI_LOGGING</a>&#160;&#160;&#160;1</td></tr>
 <tr class="memdesc:a8f76f3a50a8ae13f45e5a5f0e9c1908f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable detailed SPI transaction logging.  <br /></td></tr>
 <tr class="separator:a8f76f3a50a8ae13f45e5a5f0e9c1908f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a689808d8305767825ff1e21cfb491bd4" id="r_a689808d8305767825ff1e21cfb491bd4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a689808d8305767825ff1e21cfb491bd4">AS5047U_VALIDATE_GPIO</a>(pin)&#160;&#160;&#160;    static_assert((pin) &gt;= 0 &amp;&amp; (pin) &lt; 30, &quot;Invalid GPIO pin number for ESP32-C6&quot;)</td></tr>
@@ -238,7 +238,7 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ESP32_AS5047U_ENABLE_DETAILED_SPI_LOGGING&#160;&#160;&#160;0</td>
+          <td class="memname">#define ESP32_AS5047U_ENABLE_DETAILED_SPI_LOGGING&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -250,7 +250,7 @@ Macros</h2></td></tr>
 <li>Parity and error flag checks</li>
 </ul>
 <p>When disabled (set to 0), only basic error logging is performed.</p>
-<p>Default: 0 (disabled) - Set to 1 to enable for debugging </p>
+<p>Default: 1 (enabled) for integration test - Set to 0 to reduce log noise </p>
 
 </div>
 </div>

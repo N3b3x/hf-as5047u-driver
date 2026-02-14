@@ -30,10 +30,10 @@
  * 
  * When disabled (set to 0), only basic error logging is performed.
  * 
- * Default: 0 (disabled) - Set to 1 to enable for debugging
+ * Default: 1 (enabled) for integration test - Set to 0 to reduce log noise
  */
 #ifndef ESP32_AS5047U_ENABLE_DETAILED_SPI_LOGGING
-#define ESP32_AS5047U_ENABLE_DETAILED_SPI_LOGGING 0
+#define ESP32_AS5047U_ENABLE_DETAILED_SPI_LOGGING 1
 #endif
 
 namespace AS5047U_TestConfig {

@@ -20,6 +20,7 @@
 #include "driver/spi_master.h"
 #include "esp_log.h"
 #include <cstdint>
+#include <cstdio>
 #include <cstring>
 #include <memory>
 
@@ -94,6 +95,27 @@ public:
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "SPI transfer failed: %s", esp_err_to_name(ret));
     }
+
+#if ESP32_AS5047U_ENABLE_DETAILED_SPI_LOGGING
+    // Log TX/RX frame per transfer for debugging (direction, zero position, etc.)
+    if (len > 0 && len <= 8) {
+      char buf[80];
+      int n = 0;
+      n += snprintf(buf + n, sizeof(buf) - n, "SPI[%zu] TX:", len);
+      for (std::size_t i = 0; i < len && n < (int)(sizeof(buf) - 4); ++i) {
+        n += snprintf(buf + n, sizeof(buf) - n, " %02X", tx ? tx[i] : 0u);
+      }
+      if (rx) {
+        n += snprintf(buf + n, sizeof(buf) - n, "  RX:");
+        for (std::size_t i = 0; i < len && n < (int)(sizeof(buf) - 4); ++i) {
+          n += snprintf(buf + n, sizeof(buf) - n, " %02X", rx[i]);
+        }
+      } else {
+        n += snprintf(buf + n, sizeof(buf) - n, "  RX: (none)");
+      }
+      ESP_LOGI(TAG, "%s", buf);
+    }
+#endif
   }
 
   /**
@@ -187,8 +209,9 @@ private:
     buscfg.max_transfer_sz = 64;
     buscfg.flags = SPICOMMON_BUSFLAG_MASTER;
 
-    ESP_LOGI(TAG, "Initializing SPI bus: MISO=GPIO%d, MOSI=GPIO%d, SCLK=GPIO%d, Host=%d",
-             config_.miso_pin, config_.mosi_pin, config_.sclk_pin, config_.host);
+    // ESP-IDF: SPI1_HOST=0, SPI2_HOST=1, SPI3_HOST=2. Log as SPI1/SPI2/SPI3 for clarity.
+    ESP_LOGI(TAG, "Initializing SPI bus: MISO=GPIO%d, MOSI=GPIO%d, SCLK=GPIO%d, Host=SPI%d",
+             config_.miso_pin, config_.mosi_pin, config_.sclk_pin, config_.host + 1);
 
     esp_err_t ret = spi_bus_initialize(config_.host, &buscfg, SPI_DMA_CH_AUTO);
     if (ret != ESP_OK) {
@@ -206,7 +229,7 @@ private:
     // - If SPI2 is used elsewhere, try SPI3_HOST in CreateEsp32As5047uSpiBus().
     // - Confirm no other driver (e.g. PSRAM, display) has claimed this GPIO.
     ESP_LOGI(TAG, "SCLK pin GPIO%d is driven by SPI%d; freq=%lu Hz",
-             config_.sclk_pin, config_.host, (unsigned long)config_.frequency);
+             config_.sclk_pin, config_.host + 1, (unsigned long)config_.frequency);
 
     return true;
   }
