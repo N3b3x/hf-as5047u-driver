@@ -661,9 +661,9 @@ $(function(){initNavTree('as5047u_8ipp_source.html',''); initResizable(); });
 <div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span><span class="comment">// ══════════════════════════════════════════════════════════════════════════════════════════</span></div>
 <div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span><span class="comment">//</span></div>
 <div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span><span class="comment">// SPI frame layout per AS5047U datasheet (DS000637):</span></div>
-<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span><span class="comment">// - 16-bit: Fig.20-22  MOSI [0,R,ADDR13:0]  MISO [ER,0,RDATA13:0]; data on next read (Fig.29).</span></div>
-<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span><span class="comment">// - 24-bit: Fig.23-25  Command/data bits 23:8 = payload for CRC; 7:0 = CRC. Init 0xC4, poly 0x1D, XOR 0xFF (Fig.31).</span></div>
-<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span><span class="comment">// - 32-bit: Fig.26-28  PAD in byte0 (MOSI) / byte3 (MISO); 32-bit MISO: B0=[ER,Err,Data13:8], B1=Data7:0, B2=CRC, B3=PAD; CRC over bits 31:16 (DS p.23).</span></div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span><span class="comment">// - 16-bit: Fig.20-22  MOSI bit14=R(1:Read), 13:0=ADDR; MISO bit15=ER, 14=0, 13:0=RDATA (Fig.21-22).</span></div>
+<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span><span class="comment">// - 24-bit: Fig.23-25  MOSI 22=RW, 21:8=ADDR, 7:0=CRC; MISO 23=ER, 22=Error, 21:8=DATA[13:0], 7:0=CRC (Fig.25). CRC Fig.31.</span></div>
+<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span><span class="comment">// - 32-bit: Fig.26-28  PAD in B0 (MOSI) / B3 (MISO); MISO B0=[ER,Err,Data13:8], B1=Data7:0, B2=CRC, B3=PAD (Fig.28).</span></div>
 <div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span><span class="comment">//</span></div>
 <div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span><span class="comment">// Low level register read without sticky error update.</span></div>
 <div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span><span class="comment">// DS: &quot;The data is transmitted on MISO with the *next* read command.&quot; So we always send</span></div>
@@ -800,119 +800,136 @@ $(function(){initNavTree('as5047u_8ipp_source.html',''); initResizable(); });
 <div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span>      uint8_t rx_data[3];</div>
 <div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span>      spi_.transfer(tx_data, rx_data, 3);  <span class="comment">// MISO here = old content (DS Fig.30)</span></div>
 <div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span> </div>
-<div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span>      <span class="comment">// NOP — MISO = new content of the written register</span></div>
-<div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span>      <span class="keyword">const</span> uint8_t tx_nop[3] = {<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(((nop_addr &gt;&gt; 8) &amp; 0x3F) | 0x40),</div>
-<div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span>                                 <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(nop_addr &amp; 0xFF), crc_nop};</div>
-<div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span>      uint8_t rx_nop[3];</div>
-<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>      spi_.transfer(tx_nop, rx_nop, 3);</div>
-<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>      uint16_t read_back = ((<span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(rx_nop[0]) &lt;&lt; 8) | rx_nop[1]) &amp; 0x3FFF;</div>
-<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span>      <span class="keywordflow">if</span> (read_back == expected) {</div>
-<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span>        success = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span>      }</div>
-<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>      updateStickyErrors(this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::ERRFL&gt;().value);</div>
-<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (active_format == <a class="code hl_enumvalue" href="as5047u__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a367bc64c294b2a6476209c2d855171b5">FrameFormat::SPI_32</a>) {</div>
-<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>      <span class="comment">// ---- 32-bit write: command, data, then NOP (MISO on NOP = new content) ----</span></div>
-<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>      uint16_t cmd_payload = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(address &amp; 0x3FFF);</div>
-<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>      uint8_t cmd_crc = ComputeCRC8(cmd_payload);</div>
-<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>      <span class="keyword">const</span> uint8_t tx_cmd[4] = {this-&gt;pad_byte_,</div>
-<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span>                                 <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>((address &gt;&gt; 8) &amp; 0x3F), <span class="comment">// bit6=0 for write</span></div>
-<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>                                 <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(address &amp; 0xFF), cmd_crc};</div>
-<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span>      uint8_t rx_cmd[4];</div>
-<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span>      spi_.transfer(tx_cmd, rx_cmd, 4);</div>
-<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span> </div>
-<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>      uint16_t data_payload = value &amp; 0x3FFF;</div>
-<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>      uint8_t data_crc = ComputeCRC8(data_payload);</div>
-<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span>      <span class="keyword">const</span> uint8_t tx_data[4] = {this-&gt;pad_byte_, <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>((data_payload &gt;&gt; 8) &amp; 0xFF),</div>
-<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>                                  <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(data_payload &amp; 0xFF), data_crc};</div>
-<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>      uint8_t rx_data[4];</div>
-<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span>      spi_.transfer(tx_data, rx_data, 4);  <span class="comment">// MISO here = old content (DS Fig.30)</span></div>
-<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span> </div>
-<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>      <span class="comment">// NOP — MISO = new content (Fig.28: Byte0/1 = Data, Byte2 = CRC, Byte3 = PAD)</span></div>
-<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span>      <span class="keyword">const</span> uint8_t tx_nop[4] = {this-&gt;pad_byte_,</div>
-<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>                                <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(((nop_addr &gt;&gt; 8) &amp; 0x3F) | 0x40),</div>
-<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>                                <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(nop_addr &amp; 0xFF), crc_nop};</div>
-<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>      uint8_t rx_nop[4];</div>
-<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>      spi_.transfer(tx_nop, rx_nop, 4);</div>
-<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>      uint16_t read_back = (<span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(rx_nop[0] &amp; 0x3Fu) &lt;&lt; 8) | rx_nop[1];</div>
-<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>      <span class="keywordflow">if</span> (read_back == expected) {</div>
-<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>        success = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>      }</div>
-<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>      updateStickyErrors(this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::ERRFL&gt;().value);</div>
-<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>    }</div>
-<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>  }</div>
-<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>  <span class="keywordflow">return</span> success;</div>
-<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>}</div>
-<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span> </div>
-<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span><span class="comment">// ════════════════════════════════════════════════════════════════════════════════════════════</span></div>
-<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span><span class="comment">//                       Public API: retry-enabled getters and status dump</span></div>
-<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span><span class="comment">// ════════════════════════════════════════════════════════════════════════════════════════════</span></div>
-<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span> </div>
-<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span><span class="comment">// Complete dumpStatus with full register dump</span></div>
-<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> SpiType&gt;</div>
-<div class="foldopen" id="foldopen00653" data-start="{" data-end="}">
-<div class="line"><a id="l00653" name="l00653"></a><span class="lineno"><a class="line" href="classas5047u_1_1AS5047U.html#a9a8e04fee8e3d807a007c081f3c81765">  653</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classas5047u_1_1AS5047U.html#a9a8e04fee8e3d807a007c081f3c81765">AS5047U&lt;SpiType&gt;::DumpStatus</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>  printf(<span class="stringliteral">&quot;\n=== AS5047U Comprehensive Status ===\n&quot;</span>);</div>
-<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>  <span class="comment">// Core measurements</span></div>
-<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>  printf(<span class="stringliteral">&quot;Angle (COM) : %u\n&quot;</span>, GetAngle());</div>
-<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>  printf(<span class="stringliteral">&quot;Angle (UNC) : %u\n&quot;</span>, GetRawAngle());</div>
-<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>  printf(<span class="stringliteral">&quot;Velocity    : %d counts (%.3f deg/s, %.3f rad/s, %.3f RPM)\n&quot;</span>, GetVelocity(),</div>
-<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>         GetVelocityDegPerSec(), GetVelocityRadPerSec(), GetVelocityRPM());</div>
-<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>  printf(<span class="stringliteral">&quot;AGC         : %u\n&quot;</span>, GetAGC());</div>
-<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span>  printf(<span class="stringliteral">&quot;Magnitude   : %u\n&quot;</span>, GetMagnitude());</div>
-<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>  <span class="comment">// Error flags</span></div>
-<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>  uint16_t err = GetErrorFlags();</div>
-<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>  printf(<span class="stringliteral">&quot;ERRFL       : 0x%04X\n&quot;</span>, err);</div>
-<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>  <span class="comment">// Diagnostic register bits</span></div>
-<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>  <span class="keyword">auto</span> dia = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::DIA&gt;();</div>
-<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>  printf(<span class="stringliteral">&quot;DIA (0x3FF5): 0x%04X\n&quot;</span>, dia.value);</div>
-<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>  printf(<span class="stringliteral">&quot;  VDD_mode         : %u\n&quot;</span>, dia.bits.VDD_mode);</div>
-<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>  printf(<span class="stringliteral">&quot;  LoopsFinished    : %u\n&quot;</span>, dia.bits.LoopsFinished);</div>
-<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>  printf(<span class="stringliteral">&quot;  CORDIC_overflow  : %u\n&quot;</span>, dia.bits.CORDIC_overflow_flag);</div>
-<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>  printf(<span class="stringliteral">&quot;  Comp_l           : %u\n&quot;</span>, dia.bits.Comp_l);</div>
-<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>  printf(<span class="stringliteral">&quot;  Comp_h           : %u\n&quot;</span>, dia.bits.Comp_h);</div>
-<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>  printf(<span class="stringliteral">&quot;  MagHalf_flag     : %u\n&quot;</span>, dia.bits.MagHalf_flag);</div>
-<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>  printf(<span class="stringliteral">&quot;  CosOff_fin       : %u\n&quot;</span>, dia.bits.CosOff_fin);</div>
-<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>  printf(<span class="stringliteral">&quot;  SinOff_fin       : %u\n&quot;</span>, dia.bits.SinOff_fin);</div>
-<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>  printf(<span class="stringliteral">&quot;  OffComp_finished : %u\n&quot;</span>, dia.bits.OffComp_finished);</div>
-<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>  printf(<span class="stringliteral">&quot;  AGC_finished     : %u\n&quot;</span>, dia.bits.AGC_finished);</div>
-<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>  printf(<span class="stringliteral">&quot;  SPI_cnt          : %u\n&quot;</span>, dia.bits.SPI_cnt);</div>
-<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>  <span class="comment">// Configuration registers</span></div>
-<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>  <span class="keyword">auto</span> dis = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::DISABLE&gt;();</div>
-<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>  printf(<span class="stringliteral">&quot;DISABLE (0x0015): 0x%04X UVW_off=%u ABI_off=%u FILTER_disable=%u\n&quot;</span>, dis.value,</div>
-<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>         dis.bits.UVW_off, dis.bits.ABI_off, dis.bits.FILTER_disable);</div>
-<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>  <span class="keyword">auto</span> s1 = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::SETTINGS1&gt;();</div>
-<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>  printf(<span class="stringliteral">&quot;SETTINGS1(0x0016): K_max=%u K_min=%u Dia3_en=%u Dia4_en=%u\n&quot;</span>, s1.bits.K_max,</div>
-<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>         s1.bits.K_min, s1.bits.Dia3_en, s1.bits.Dia4_en);</div>
-<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>  <span class="keyword">auto</span> s2 = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::SETTINGS2&gt;();</div>
-<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>  printf(<span class="stringliteral">&quot;SETTINGS2(0x0019): IWIDTH=%u NOISESET=%u DIR=%u UVW_ABI=%u &quot;</span></div>
-<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>         <span class="stringliteral">&quot;DAECDIS=%u ABI_DEC=%u &quot;</span></div>
-<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>         <span class="stringliteral">&quot;Data_select=%u PWMon=%u\n&quot;</span>,</div>
-<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>         s2.bits.IWIDTH, s2.bits.NOISESET, s2.bits.DIR, s2.bits.UVW_ABI, s2.bits.DAECDIS,</div>
-<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>         s2.bits.ABI_DEC, s2.bits.Data_select, s2.bits.PWMon);</div>
-<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>  <span class="keyword">auto</span> s3 = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::SETTINGS3&gt;();</div>
-<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>  printf(<span class="stringliteral">&quot;SETTINGS3(0x001A): UVWPP=%u HYS=%u ABIRES=%u\n&quot;</span>, s3.bits.UVWPP, s3.bits.HYS,</div>
-<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>         s3.bits.ABIRES);</div>
-<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>  <span class="comment">// Other registers</span></div>
-<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>  <span class="keyword">auto</span> sind = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::SINDATA&gt;();</div>
-<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>  printf(<span class="stringliteral">&quot;SINDATA(0x3FFA): %d\n&quot;</span>, sind.bits.SINDATA);</div>
-<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>  <span class="keyword">auto</span> eccsum = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::ECC_Checksum&gt;();</div>
-<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>  printf(<span class="stringliteral">&quot;ECC_Checksum(0x3FD0): %u\n&quot;</span>, eccsum.bits.ECC_s);</div>
-<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span>  <span class="keyword">auto</span> prog = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::PROG&gt;();</div>
-<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span>  printf(<span class="stringliteral">&quot;PROG(0x0003): PROGEN=%u PROGOTP=%u OTPREF=%u PROGVER=%u\n&quot;</span>, prog.bits.PROGEN,</div>
-<div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span>         prog.bits.PROGOTP, prog.bits.OTPREF, prog.bits.PROGVER);</div>
-<div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span>  <span class="comment">// Interface settings</span></div>
-<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>  printf(<span class="stringliteral">&quot;FrameFormat      : %u  PadByte=0x%02X\n&quot;</span>, <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(this-&gt;frame_format_),</div>
-<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>         this-&gt;pad_byte_);</div>
-<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>  printf(<span class="stringliteral">&quot;========================================\n\n&quot;</span>);</div>
-<div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>}</div>
+<div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span>      <span class="comment">// NOP — MISO = new content of the written register (third TX = response to write)</span></div>
+<div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span>      <span class="comment">// 24-bit MISO same layout as 32-bit: Byte0=[ER,Err,Data13:8], Byte1=Data7:0 → 14-bit = (B0&amp;0x3F)&lt;&lt;8|B1</span></div>
+<div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span>      <span class="keyword">const</span> uint8_t tx_nop[3] = {<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(((nop_addr &gt;&gt; 8) &amp; 0x3F) | 0x40),</div>
+<div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span>                                 <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(nop_addr &amp; 0xFF), crc_nop};</div>
+<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>      uint8_t rx_nop[3];</div>
+<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>      spi_.transfer(tx_nop, rx_nop, 3);</div>
+<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span>      uint16_t read_back = (<span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(rx_nop[0] &amp; 0x3Fu) &lt;&lt; 8) | rx_nop[1];</div>
+<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span>      <span class="keywordflow">if</span> (read_back == expected) {</div>
+<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>        success = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>      }</div>
+<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>      <span class="keyword">auto</span> errfl = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::ERRFL&gt;();</div>
+<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>      updateStickyErrors(errfl.value);</div>
+<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>      printf(<span class="stringliteral">&quot;AS5047U write verify failed: addr=0x%04X expected=0x%04X read_back=0x%04X &quot;</span></div>
+<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>             <span class="stringliteral">&quot;ERRFL=0x%04X (CRC_error=%u Framing_error=%u Command_error=%u)\n&quot;</span>,</div>
+<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>             <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(address), <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(expected),</div>
+<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span>             <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(read_back), <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(errfl.value),</div>
+<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>             <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(errfl.bits.CRC_error),</div>
+<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span>             <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(errfl.bits.Framing_error),</div>
+<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span>             <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(errfl.bits.Command_error));</div>
+<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (active_format == <a class="code hl_enumvalue" href="as5047u__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a367bc64c294b2a6476209c2d855171b5">FrameFormat::SPI_32</a>) {</div>
+<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>      <span class="comment">// ---- 32-bit write: command, data, then NOP (MISO on NOP = new content) ----</span></div>
+<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>      uint16_t cmd_payload = <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(address &amp; 0x3FFF);</div>
+<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span>      uint8_t cmd_crc = ComputeCRC8(cmd_payload);</div>
+<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>      <span class="keyword">const</span> uint8_t tx_cmd[4] = {this-&gt;pad_byte_,</div>
+<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>                                 <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>((address &gt;&gt; 8) &amp; 0x3F), <span class="comment">// bit6=0 for write</span></div>
+<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span>                                 <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(address &amp; 0xFF), cmd_crc};</div>
+<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span>      uint8_t rx_cmd[4];</div>
+<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>      spi_.transfer(tx_cmd, rx_cmd, 4);</div>
+<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span> </div>
+<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>      uint16_t data_payload = value &amp; 0x3FFF;</div>
+<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>      uint8_t data_crc = ComputeCRC8(data_payload);</div>
+<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>      <span class="keyword">const</span> uint8_t tx_data[4] = {this-&gt;pad_byte_, <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>((data_payload &gt;&gt; 8) &amp; 0xFF),</div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>                                  <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(data_payload &amp; 0xFF), data_crc};</div>
+<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>      uint8_t rx_data[4];</div>
+<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>      spi_.transfer(tx_data, rx_data, 4);  <span class="comment">// MISO here = old content (DS Fig.30)</span></div>
+<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span> </div>
+<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>      <span class="comment">// NOP — MISO = new content (Fig.28: Byte0/1 = Data, Byte2 = CRC, Byte3 = PAD)</span></div>
+<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>      <span class="keyword">const</span> uint8_t tx_nop[4] = {this-&gt;pad_byte_,</div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>                                <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(((nop_addr &gt;&gt; 8) &amp; 0x3F) | 0x40),</div>
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>                                <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(nop_addr &amp; 0xFF), crc_nop};</div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>      uint8_t rx_nop[4];</div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>      spi_.transfer(tx_nop, rx_nop, 4);</div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>      uint16_t read_back = (<span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>(rx_nop[0] &amp; 0x3Fu) &lt;&lt; 8) | rx_nop[1];</div>
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>      <span class="keywordflow">if</span> (read_back == expected) {</div>
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>        success = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>      }</div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>      <span class="keyword">auto</span> errfl = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::ERRFL&gt;();</div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>      updateStickyErrors(errfl.value);</div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>      printf(<span class="stringliteral">&quot;AS5047U write verify failed: addr=0x%04X expected=0x%04X read_back=0x%04X &quot;</span></div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>             <span class="stringliteral">&quot;ERRFL=0x%04X (CRC_error=%u Framing_error=%u Command_error=%u)\n&quot;</span>,</div>
+<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>             <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(address), <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(expected),</div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>             <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(read_back), <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(errfl.value),</div>
+<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>             <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(errfl.bits.CRC_error),</div>
+<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>             <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(errfl.bits.Framing_error),</div>
+<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>             <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span><span class="keyword">&gt;</span>(errfl.bits.Command_error));</div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>    }</div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>  }</div>
+<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span>  <span class="keywordflow">return</span> success;</div>
+<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>}</div>
+<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span> </div>
+<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span><span class="comment">// ════════════════════════════════════════════════════════════════════════════════════════════</span></div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span><span class="comment">//                       Public API: retry-enabled getters and status dump</span></div>
+<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span><span class="comment">// ════════════════════════════════════════════════════════════════════════════════════════════</span></div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span> </div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span><span class="comment">// Complete dumpStatus with full register dump</span></div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> SpiType&gt;</div>
+<div class="foldopen" id="foldopen00670" data-start="{" data-end="}">
+<div class="line"><a id="l00670" name="l00670"></a><span class="lineno"><a class="line" href="classas5047u_1_1AS5047U.html#a9a8e04fee8e3d807a007c081f3c81765">  670</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classas5047u_1_1AS5047U.html#a9a8e04fee8e3d807a007c081f3c81765">AS5047U&lt;SpiType&gt;::DumpStatus</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>  printf(<span class="stringliteral">&quot;\n=== AS5047U Comprehensive Status ===\n&quot;</span>);</div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>  <span class="comment">// Core measurements</span></div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>  printf(<span class="stringliteral">&quot;Angle (COM) : %u\n&quot;</span>, GetAngle());</div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>  printf(<span class="stringliteral">&quot;Angle (UNC) : %u\n&quot;</span>, GetRawAngle());</div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>  printf(<span class="stringliteral">&quot;Velocity    : %d counts (%.3f deg/s, %.3f rad/s, %.3f RPM)\n&quot;</span>, GetVelocity(),</div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>         GetVelocityDegPerSec(), GetVelocityRadPerSec(), GetVelocityRPM());</div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>  printf(<span class="stringliteral">&quot;AGC         : %u\n&quot;</span>, GetAGC());</div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>  printf(<span class="stringliteral">&quot;Magnitude   : %u\n&quot;</span>, GetMagnitude());</div>
+<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>  <span class="comment">// Error flags</span></div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>  uint16_t err = GetErrorFlags();</div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>  printf(<span class="stringliteral">&quot;ERRFL       : 0x%04X\n&quot;</span>, err);</div>
+<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>  <span class="comment">// Diagnostic register bits</span></div>
+<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>  <span class="keyword">auto</span> dia = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::DIA&gt;();</div>
+<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>  printf(<span class="stringliteral">&quot;DIA (0x3FF5): 0x%04X\n&quot;</span>, dia.value);</div>
+<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>  printf(<span class="stringliteral">&quot;  VDD_mode         : %u\n&quot;</span>, dia.bits.VDD_mode);</div>
+<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>  printf(<span class="stringliteral">&quot;  LoopsFinished    : %u\n&quot;</span>, dia.bits.LoopsFinished);</div>
+<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>  printf(<span class="stringliteral">&quot;  CORDIC_overflow  : %u\n&quot;</span>, dia.bits.CORDIC_overflow_flag);</div>
+<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>  printf(<span class="stringliteral">&quot;  Comp_l           : %u\n&quot;</span>, dia.bits.Comp_l);</div>
+<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>  printf(<span class="stringliteral">&quot;  Comp_h           : %u\n&quot;</span>, dia.bits.Comp_h);</div>
+<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>  printf(<span class="stringliteral">&quot;  MagHalf_flag     : %u\n&quot;</span>, dia.bits.MagHalf_flag);</div>
+<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>  printf(<span class="stringliteral">&quot;  CosOff_fin       : %u\n&quot;</span>, dia.bits.CosOff_fin);</div>
+<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>  printf(<span class="stringliteral">&quot;  SinOff_fin       : %u\n&quot;</span>, dia.bits.SinOff_fin);</div>
+<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>  printf(<span class="stringliteral">&quot;  OffComp_finished : %u\n&quot;</span>, dia.bits.OffComp_finished);</div>
+<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>  printf(<span class="stringliteral">&quot;  AGC_finished     : %u\n&quot;</span>, dia.bits.AGC_finished);</div>
+<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>  printf(<span class="stringliteral">&quot;  SPI_cnt          : %u\n&quot;</span>, dia.bits.SPI_cnt);</div>
+<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>  <span class="comment">// Configuration registers</span></div>
+<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>  <span class="keyword">auto</span> dis = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::DISABLE&gt;();</div>
+<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>  printf(<span class="stringliteral">&quot;DISABLE (0x0015): 0x%04X UVW_off=%u ABI_off=%u FILTER_disable=%u\n&quot;</span>, dis.value,</div>
+<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>         dis.bits.UVW_off, dis.bits.ABI_off, dis.bits.FILTER_disable);</div>
+<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span>  <span class="keyword">auto</span> s1 = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::SETTINGS1&gt;();</div>
+<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span>  printf(<span class="stringliteral">&quot;SETTINGS1(0x0016): K_max=%u K_min=%u Dia3_en=%u Dia4_en=%u\n&quot;</span>, s1.bits.K_max,</div>
+<div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span>         s1.bits.K_min, s1.bits.Dia3_en, s1.bits.Dia4_en);</div>
+<div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span>  <span class="keyword">auto</span> s2 = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::SETTINGS2&gt;();</div>
+<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>  printf(<span class="stringliteral">&quot;SETTINGS2(0x0019): IWIDTH=%u NOISESET=%u DIR=%u UVW_ABI=%u &quot;</span></div>
+<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>         <span class="stringliteral">&quot;DAECDIS=%u ABI_DEC=%u &quot;</span></div>
+<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>         <span class="stringliteral">&quot;Data_select=%u PWMon=%u\n&quot;</span>,</div>
+<div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>         s2.bits.IWIDTH, s2.bits.NOISESET, s2.bits.DIR, s2.bits.UVW_ABI, s2.bits.DAECDIS,</div>
+<div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>         s2.bits.ABI_DEC, s2.bits.Data_select, s2.bits.PWMon);</div>
+<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>  <span class="keyword">auto</span> s3 = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::SETTINGS3&gt;();</div>
+<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>  printf(<span class="stringliteral">&quot;SETTINGS3(0x001A): UVWPP=%u HYS=%u ABIRES=%u\n&quot;</span>, s3.bits.UVWPP, s3.bits.HYS,</div>
+<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>         s3.bits.ABIRES);</div>
+<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>  <span class="comment">// Other registers</span></div>
+<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span>  <span class="keyword">auto</span> sind = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::SINDATA&gt;();</div>
+<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span>  printf(<span class="stringliteral">&quot;SINDATA(0x3FFA): %d\n&quot;</span>, sind.bits.SINDATA);</div>
+<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span>  <span class="keyword">auto</span> eccsum = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::ECC_Checksum&gt;();</div>
+<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span>  printf(<span class="stringliteral">&quot;ECC_Checksum(0x3FD0): %u\n&quot;</span>, eccsum.bits.ECC_s);</div>
+<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span>  <span class="keyword">auto</span> prog = this-&gt;<span class="keyword">template</span> ReadReg&lt;AS5047U_REG::PROG&gt;();</div>
+<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span>  printf(<span class="stringliteral">&quot;PROG(0x0003): PROGEN=%u PROGOTP=%u OTPREF=%u PROGVER=%u\n&quot;</span>, prog.bits.PROGEN,</div>
+<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span>         prog.bits.PROGOTP, prog.bits.OTPREF, prog.bits.PROGVER);</div>
+<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span>  <span class="comment">// Interface settings</span></div>
+<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span>  printf(<span class="stringliteral">&quot;FrameFormat      : %u  PadByte=0x%02X\n&quot;</span>, <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(this-&gt;frame_format_),</div>
+<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span>         this-&gt;pad_byte_);</div>
+<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span>  printf(<span class="stringliteral">&quot;========================================\n\n&quot;</span>);</div>
+<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span>}</div>
 </div>
-<div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span> </div>
-<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>} <span class="comment">// namespace as5047u</span></div>
+<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span> </div>
+<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span>} <span class="comment">// namespace as5047u</span></div>
 </div>
-<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span> </div>
-<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span><span class="preprocessor">#endif </span><span class="comment">// AS5047U_IMPL</span></div>
+<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span> </div>
+<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span><span class="preprocessor">#endif </span><span class="comment">// AS5047U_IMPL</span></div>
 <div class="ttc" id="aas5047u_8hpp_html"><div class="ttname"><a href="as5047u_8hpp.html">as5047u.hpp</a></div><div class="ttdoc">Driver for AMS AS5047U Magnetic Rotary Position Sensor (C++21)</div></div>
 <div class="ttc" id="aas5047u_8hpp_html_a65e970630e302a2ffedf003f59fe4df5"><div class="ttname"><a href="as5047u_8hpp.html#a65e970630e302a2ffedf003f59fe4df5">AS5047U_Error</a></div><div class="ttdeci">AS5047U_Error</div><div class="ttdef"><b>Definition</b> as5047u.hpp:20</div></div>
 <div class="ttc" id="aas5047u_8hpp_html_a65e970630e302a2ffedf003f59fe4df5a03334d5ec52b9fbd5b6237e636ac6d50"><div class="ttname"><a href="as5047u_8hpp.html#a65e970630e302a2ffedf003f59fe4df5a03334d5ec52b9fbd5b6237e636ac6d50">AS5047U_Error::CommandError</a></div><div class="ttdeci">@ CommandError</div><div class="ttdoc">Invalid SPI command received.</div></div>
@@ -956,7 +973,7 @@ $(function(){initNavTree('as5047u_8ipp_source.html',''); initResizable(); });
 <div class="ttc" id="aclassas5047u_1_1AS5047U_html_a855172a526fcb4fe71dbfd8f0f88a889"><div class="ttname"><a href="classas5047u_1_1AS5047U.html#a855172a526fcb4fe71dbfd8f0f88a889">as5047u::AS5047U::SetHysteresis</a></div><div class="ttdeci">bool SetHysteresis(AS5047U_REG::SETTINGS3::Hysteresis hysteresis, uint8_t retries=AS5047U_CFG::CRC_RETRIES)</div><div class="ttdoc">Set incremental output hysteresis level.</div><div class="ttdef"><b>Definition</b> as5047u.ipp:426</div></div>
 <div class="ttc" id="aclassas5047u_1_1AS5047U_html_a9073d0f810802f6f4352a82f6c17251a"><div class="ttname"><a href="classas5047u_1_1AS5047U.html#a9073d0f810802f6f4352a82f6c17251a">as5047u::AS5047U::GetFilterParameters</a></div><div class="ttdeci">std::pair&lt; uint8_t, uint8_t &gt; GetFilterParameters(uint8_t retries=AS5047U_CFG::CRC_RETRIES) const</div><div class="ttdoc">Read current K_min and K_max register codes (0–7 each).</div><div class="ttdef"><b>Definition</b> as5047u.ipp:297</div></div>
 <div class="ttc" id="aclassas5047u_1_1AS5047U_html_a99e0ec7d2de785a76c7d0008c2648848"><div class="ttname"><a href="classas5047u_1_1AS5047U.html#a99e0ec7d2de785a76c7d0008c2648848">as5047u::AS5047U::GetAdaptiveFilterEnabled</a></div><div class="ttdeci">bool GetAdaptiveFilterEnabled(uint8_t retries=AS5047U_CFG::CRC_RETRIES) const</div><div class="ttdoc">Read whether the adaptive filter is enabled.</div><div class="ttdef"><b>Definition</b> as5047u.ipp:283</div></div>
-<div class="ttc" id="aclassas5047u_1_1AS5047U_html_a9a8e04fee8e3d807a007c081f3c81765"><div class="ttname"><a href="classas5047u_1_1AS5047U.html#a9a8e04fee8e3d807a007c081f3c81765">as5047u::AS5047U::DumpStatus</a></div><div class="ttdeci">void DumpStatus() const</div><div class="ttdoc">Dump formatted status and diagnostics using printf.</div><div class="ttdef"><b>Definition</b> as5047u.ipp:653</div></div>
+<div class="ttc" id="aclassas5047u_1_1AS5047U_html_a9a8e04fee8e3d807a007c081f3c81765"><div class="ttname"><a href="classas5047u_1_1AS5047U.html#a9a8e04fee8e3d807a007c081f3c81765">as5047u::AS5047U::DumpStatus</a></div><div class="ttdeci">void DumpStatus() const</div><div class="ttdoc">Dump formatted status and diagnostics using printf.</div><div class="ttdef"><b>Definition</b> as5047u.ipp:670</div></div>
 <div class="ttc" id="aclassas5047u_1_1AS5047U_html_aa0d2a1bee4ab7b53f4ee6b98d519337b"><div class="ttname"><a href="classas5047u_1_1AS5047U.html#aa0d2a1bee4ab7b53f4ee6b98d519337b">as5047u::AS5047U::SetZeroPosition</a></div><div class="ttdeci">bool SetZeroPosition(uint16_t angle_lsb, uint8_t retries=AS5047U_CFG::CRC_RETRIES)</div><div class="ttdoc">Set a new zero reference position (soft offset).</div><div class="ttdef"><b>Definition</b> as5047u.ipp:169</div></div>
 <div class="ttc" id="aclassas5047u_1_1AS5047U_html_aa8db7e8dca5ef0e0e53e6439c45310a2"><div class="ttname"><a href="classas5047u_1_1AS5047U.html#aa8db7e8dca5ef0e0e53e6439c45310a2">as5047u::AS5047U::SetAngleOutputSource</a></div><div class="ttdeci">bool SetAngleOutputSource(AS5047U_REG::SETTINGS2::AngleOutputSource source, uint8_t retries=AS5047U_CFG::CRC_RETRIES)</div><div class="ttdoc">Select which angle register (0x3FFF) is returned on reads.</div><div class="ttdef"><b>Definition</b> as5047u.ipp:440</div></div>
 <div class="ttc" id="aclassas5047u_1_1AS5047U_html_aaeb4906e76f62338f6b113b015f19533"><div class="ttname"><a href="classas5047u_1_1AS5047U.html#aaeb4906e76f62338f6b113b015f19533">as5047u::AS5047U::SetFilterParameters</a></div><div class="ttdeci">bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries=AS5047U_CFG::CRC_RETRIES)</div><div class="ttdoc">Set adaptive filter parameters (K_min and K_max as 3-bit register codes).</div><div class="ttdef"><b>Definition</b> as5047u.ipp:247</div></div>
