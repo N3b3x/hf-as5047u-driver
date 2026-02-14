@@ -69,8 +69,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "TestFramework_8h.html",
-"structAS5047U__REG_1_1AGC.html#a1de1d85338d024131e35b319c924d22f",
-"structAS5047U__REG_1_1SETTINGS1.html#ac3961a1497a2ebb991e134e5706ff415"
+"namespaceAS5047U__REG.html",
+"structAS5047U__REG_1_1SETTINGS1.html#a88cda91842f104287ef1f870c68f87efadc3d21f6a1a86c0514becc94da820a23"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

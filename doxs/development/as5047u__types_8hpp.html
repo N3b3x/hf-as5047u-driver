@@ -162,11 +162,50 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a6cd9dec52b39c355890e33ce6085c532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supported SPI frame formats for AS5047U communication.  <a href="#a6cd9dec52b39c355890e33ce6085c532">More...</a><br /></td></tr>
 <tr class="separator:a6cd9dec52b39c355890e33ce6085c532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a386f750d67dbaea130f6a5a8c9a55aca" id="r_a386f750d67dbaea130f6a5a8c9a55aca"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a386f750d67dbaea130f6a5a8c9a55aca">FilterPreset</a> : uint8_t { <a class="el" href="#a386f750d67dbaea130f6a5a8c9a55acaaf1ac4b8cf519841548f26e50bc4e2d78">LowNoise</a> = 0
+, <a class="el" href="#a386f750d67dbaea130f6a5a8c9a55acaac6589f5236c0c434d0c63dc5f9a856f2">Balanced</a>
+, <a class="el" href="#a386f750d67dbaea130f6a5a8c9a55acaaedcc81e309a2d85d8e2098e8e9b8b498">HighBandwidth</a>
+ }</td></tr>
+<tr class="memdesc:a386f750d67dbaea130f6a5a8c9a55aca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Presets for the adaptive velocity/angle filter (Dynamic Filter System).  <a href="#a386f750d67dbaea130f6a5a8c9a55aca">More...</a><br /></td></tr>
+<tr class="separator:a386f750d67dbaea130f6a5a8c9a55aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Type definitions for the AS5047U driver. </p>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024-2025 HardFOC. All rights reserved. </dd></dl>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a386f750d67dbaea130f6a5a8c9a55aca" name="a386f750d67dbaea130f6a5a8c9a55aca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a386f750d67dbaea130f6a5a8c9a55aca">&#9670;&#160;</a></span>FilterPreset</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a386f750d67dbaea130f6a5a8c9a55aca">FilterPreset</a> : uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Presets for the adaptive velocity/angle filter (Dynamic Filter System). </p>
+<p>Maps to datasheet Figure 17 "Angular Velocity Measurement Filter Parameters". Lower K = less noise at standstill, higher latency; higher K = more noise, faster response. Use SetFilterPreset() for one-call configuration. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a386f750d67dbaea130f6a5a8c9a55acaaf1ac4b8cf519841548f26e50bc4e2d78" name="a386f750d67dbaea130f6a5a8c9a55acaaf1ac4b8cf519841548f26e50bc4e2d78"></a>LowNoise&#160;</td><td class="fielddoc"><p>Minimum noise at standstill (~5.8 °/s RMS). Best for low-speed or static use. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a386f750d67dbaea130f6a5a8c9a55acaac6589f5236c0c434d0c63dc5f9a856f2" name="a386f750d67dbaea130f6a5a8c9a55acaac6589f5236c0c434d0c63dc5f9a856f2"></a>Balanced&#160;</td><td class="fielddoc"><p>Balanced noise vs response (~8–20 °/s). Good default for most applications. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a386f750d67dbaea130f6a5a8c9a55acaaedcc81e309a2d85d8e2098e8e9b8b498" name="a386f750d67dbaea130f6a5a8c9a55acaaedcc81e309a2d85d8e2098e8e9b8b498"></a>HighBandwidth&#160;</td><td class="fielddoc"><p>Maximum bandwidth, highest standstill noise (~245 °/s). Use when speed matters. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="a6cd9dec52b39c355890e33ce6085c532" name="a6cd9dec52b39c355890e33ce6085c532"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6cd9dec52b39c355890e33ce6085c532">&#9670;&#160;</a></span>FrameFormat</h2>
 
