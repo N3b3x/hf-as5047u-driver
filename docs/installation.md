@@ -100,7 +100,9 @@ idf.py monitor
 ```
 
 The test suite validates all driver APIs including angle reading, velocity,
-diagnostics, configuration, frame format switching, and error handling.
+diagnostics, configuration, frame format switching, and error handling. It also
+includes a **CRC verification** test that checks `ComputeCRC8()` against
+datasheet Fig. 31 (poly 0x1D, init 0xC4, xor 0xFF) using payloads from real SPI logs.
 
 ## Verification
 

@@ -56,6 +56,11 @@ as5047u::AS5047U encoder(spi, FrameFormat::SPI_32);
 
 **Recommendation**: Use `SPI_24` for most applications - it provides CRC protection with good throughput.
 
+**SPI read/write protocol (AS5047U datasheet):**  
+- **Read:** Send a read command (address with R=1), then a NOP. The **NOP response** on MISO is the data for the requested register.  
+- **Write:** Send write command (address), then write data, then NOP. The **NOP response** on MISO is the new content of the written register; the driver uses this to verify the write.  
+- 24-bit and 32-bit MISO frames follow datasheet Fig. 25 / Fig. 28: high bits = ER, Error; bits 21:8 (24-bit) or 29:16 (32-bit) = 14-bit data; low byte(s) = CRC (and PAD in 32-bit).
+
 ### Change Frame Format at Runtime
 
 ```cpp

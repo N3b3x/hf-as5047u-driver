@@ -221,6 +221,13 @@ This guide helps you diagnose and resolve common issues when using the AS5047U d
 3. **Retry**: Use `SetZeroPosition(angle, retries)` or `SetDirection(clockwise, retries)` with retries > 0.
 4. **Permanent programming**: For values that must survive power loss, use the OTP programming procedure (PROG register, PROGOTP, etc.) as described in the datasheet.
 
+**Write verification and diagnostic output:**  
+The driver verifies each register write by sending a NOP after the write data; the AS5047U returns the new register content on that NOP response (datasheet: “at the next command” MISO = new content). If the returned value does not match what was written, the write is reported as failed and the driver prints a diagnostic line to stdout, for example:
+
+`AS5047U write verify failed: addr=0x0016 expected=0x0040 read_back=0x0010 ERRFL=0x0000 (CRC_error=0 Framing_error=0 Command_error=0)`
+
+Use this to see whether CRC_error, Framing_error, or Command_error is set (ERRFL bits 6, 4, 5). If all are 0 and read_back still differs from expected, the NOP response may be delayed or from a different transaction; the register may still have been updated—read the register again to confirm. If the API returns false but a subsequent read shows the correct value, the write likely succeeded and the verify failed due to timing or pipeline behaviour.
+
 ---
 
 ## Software Issues
