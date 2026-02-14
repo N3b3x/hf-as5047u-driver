@@ -384,6 +384,59 @@ static bool test_frame_format_32() noexcept {
 }
 
 //=============================================================================
+// CRC VERIFICATION TEST (proves ComputeCRC8 matches log/datasheet)
+//=============================================================================
+// Uses payload+CRC pairs from actual SPI log (24/32-bit frames). DS Fig.31:
+// poly 0x1D, init 0xC4, final XOR 0xFF, bits 23:8 (24-bit) or 31:16 (32-bit MISO).
+
+static bool test_crc_verification() noexcept {
+  ESP_LOGI(TAG, "Verifying CRC (AS5047U Fig.31: poly 0x1D, init 0xC4, xor 0xFF)...");
+
+  using Encoder = as5047u::AS5047U<Esp32As5047uSpiBus>;
+
+  // Our TX from log: (payload_16bit, crc_we_sent)
+  struct {
+    uint16_t payload;
+    uint8_t expected_crc;
+    const char* desc;
+  } tx_cases[] = {
+      {0x4000, 0x1B, "NOP read"},
+      {0x4001, 0x06, "Read ERRFL"},
+      {0x7FF9, 0xF3, "Read 0x3FF9 (e.g. AGC)"},
+      {0x7FFF, 0xBD, "Read 0x3FFF (angle)"},
+      {0x0016, 0x72, "Write ZPOSM addr"},
+      {0x0040, 0xE2, "Write ZPOSM data 64"},
+      {0x0019, 0xC9, "Write SETTINGS2 addr"},
+      {0x0071, 0xB5, "Write SETTINGS2 data 0x71"},
+  };
+
+  bool all_ok = true;
+  for (const auto& c : tx_cases) {
+    uint8_t crc = Encoder::ComputeCRC8(c.payload);
+    bool ok = (crc == c.expected_crc);
+    if (!ok) all_ok = false;
+    ESP_LOGI(TAG, "  CRC(0x%04X) = 0x%02X (sent 0x%02X) %s [%s]", (unsigned)c.payload,
+             (unsigned)crc, (unsigned)c.expected_crc, ok ? "OK" : "MISMATCH", c.desc);
+  }
+
+  // Device RX from 32-bit test: RX 22 59 26 00 -> payload 0x2259, device CRC 0x26 (informational)
+  {
+    uint16_t rx_payload = 0x2259;
+    uint8_t device_crc = 0x26;
+    uint8_t crc_calc = Encoder::ComputeCRC8(rx_payload);
+    ESP_LOGI(TAG, "  RX payload 0x%04X -> CRC 0x%02X (device sent 0x%02X) [32-bit MISO, informational]",
+             (unsigned)rx_payload, (unsigned)crc_calc, (unsigned)device_crc);
+  }
+
+  if (all_ok) {
+    ESP_LOGI(TAG, "CRC verification passed: all TX CRCs from log match ComputeCRC8 (DS Fig.31)");
+  } else {
+    ESP_LOGE(TAG, "CRC verification failed (see mismatches above)");
+  }
+  return all_ok;
+}
+
+//=============================================================================
 // ERROR HANDLING TESTS
 //=============================================================================
 
@@ -430,6 +483,11 @@ extern "C" void app_main(void) {
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_INITIALIZATION_TESTS, "INITIALIZATION TESTS",
       RUN_TEST_IN_TASK("test_initialization", test_initialization, 8192, 5););
+
+  // CRC verification (no hardware needed; proves ComputeCRC8 matches log/datasheet)
+  RUN_TEST_SECTION_IF_ENABLED(
+      true, "CRC VERIFICATION",
+      RUN_TEST_IN_TASK("test_crc_verification", test_crc_verification, 8192, 5););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_ANGLE_READING_TESTS, "ANGLE READING TESTS",

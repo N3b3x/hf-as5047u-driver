@@ -460,9 +460,9 @@ AS5047U_REG::DIA AS5047U<SpiType>::GetDiagnostics() const {
 // ══════════════════════════════════════════════════════════════════════════════════════════
 //
 // SPI frame layout per AS5047U datasheet (DS000637):
-// - 16-bit: Fig.20-22  MOSI [0,R,ADDR13:0]  MISO [ER,0,RDATA13:0]; data on next read (Fig.29).
-// - 24-bit: Fig.23-25  Command/data bits 23:8 = payload for CRC; 7:0 = CRC. Init 0xC4, poly 0x1D, XOR 0xFF (Fig.31).
-// - 32-bit: Fig.26-28  PAD in byte0 (MOSI) / byte3 (MISO); 32-bit MISO: B0=[ER,Err,Data13:8], B1=Data7:0, B2=CRC, B3=PAD; CRC over bits 31:16 (DS p.23).
+// - 16-bit: Fig.20-22  MOSI bit14=R(1:Read), 13:0=ADDR; MISO bit15=ER, 14=0, 13:0=RDATA (Fig.21-22).
+// - 24-bit: Fig.23-25  MOSI 22=RW, 21:8=ADDR, 7:0=CRC; MISO 23=ER, 22=Error, 21:8=DATA[13:0], 7:0=CRC (Fig.25). CRC Fig.31.
+// - 32-bit: Fig.26-28  PAD in B0 (MOSI) / B3 (MISO); MISO B0=[ER,Err,Data13:8], B1=Data7:0, B2=CRC, B3=PAD (Fig.28).
 //
 // Low level register read without sticky error update.
 // DS: "The data is transmitted on MISO with the *next* read command." So we always send
@@ -599,17 +599,26 @@ bool AS5047U<SpiType>::writeRegister(uint16_t address, uint16_t value, uint8_t r
       uint8_t rx_data[3];
       spi_.transfer(tx_data, rx_data, 3);  // MISO here = old content (DS Fig.30)
 
-      // NOP — MISO = new content of the written register
+      // NOP — MISO = new content of the written register (third TX = response to write)
+      // 24-bit MISO same layout as 32-bit: Byte0=[ER,Err,Data13:8], Byte1=Data7:0 → 14-bit = (B0&0x3F)<<8|B1
       const uint8_t tx_nop[3] = {static_cast<uint8_t>(((nop_addr >> 8) & 0x3F) | 0x40),
                                  static_cast<uint8_t>(nop_addr & 0xFF), crc_nop};
       uint8_t rx_nop[3];
       spi_.transfer(tx_nop, rx_nop, 3);
-      uint16_t read_back = ((static_cast<uint16_t>(rx_nop[0]) << 8) | rx_nop[1]) & 0x3FFF;
+      uint16_t read_back = (static_cast<uint16_t>(rx_nop[0] & 0x3Fu) << 8) | rx_nop[1];
       if (read_back == expected) {
         success = true;
         break;
       }
-      updateStickyErrors(this->template ReadReg<AS5047U_REG::ERRFL>().value);
+      auto errfl = this->template ReadReg<AS5047U_REG::ERRFL>();
+      updateStickyErrors(errfl.value);
+      printf("AS5047U write verify failed: addr=0x%04X expected=0x%04X read_back=0x%04X "
+             "ERRFL=0x%04X (CRC_error=%u Framing_error=%u Command_error=%u)\n",
+             static_cast<unsigned>(address), static_cast<unsigned>(expected),
+             static_cast<unsigned>(read_back), static_cast<unsigned>(errfl.value),
+             static_cast<unsigned>(errfl.bits.CRC_error),
+             static_cast<unsigned>(errfl.bits.Framing_error),
+             static_cast<unsigned>(errfl.bits.Command_error));
     } else if (active_format == FrameFormat::SPI_32) {
       // ---- 32-bit write: command, data, then NOP (MISO on NOP = new content) ----
       uint16_t cmd_payload = static_cast<uint16_t>(address & 0x3FFF);
@@ -638,7 +647,15 @@ bool AS5047U<SpiType>::writeRegister(uint16_t address, uint16_t value, uint8_t r
         success = true;
         break;
       }
-      updateStickyErrors(this->template ReadReg<AS5047U_REG::ERRFL>().value);
+      auto errfl = this->template ReadReg<AS5047U_REG::ERRFL>();
+      updateStickyErrors(errfl.value);
+      printf("AS5047U write verify failed: addr=0x%04X expected=0x%04X read_back=0x%04X "
+             "ERRFL=0x%04X (CRC_error=%u Framing_error=%u Command_error=%u)\n",
+             static_cast<unsigned>(address), static_cast<unsigned>(expected),
+             static_cast<unsigned>(read_back), static_cast<unsigned>(errfl.value),
+             static_cast<unsigned>(errfl.bits.CRC_error),
+             static_cast<unsigned>(errfl.bits.Framing_error),
+             static_cast<unsigned>(errfl.bits.Command_error));
     }
   }
   return success;
