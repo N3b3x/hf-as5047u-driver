@@ -363,6 +363,13 @@
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 
 <p><strong>Recommendation</strong>: Use <code class="language-plaintext highlighter-rouge">SPI_24</code> for most applications - it provides CRC protection with good throughput.</p>
+
+<p><strong>SPI read/write protocol (AS5047U datasheet):</strong></p>
+<ul>
+  <li><strong>Read:</strong> Send a read command (address with R=1), then a NOP. The <strong>NOP response</strong> on MISO is the data for the requested register.</li>
+  <li><strong>Write:</strong> Send write command (address), then write data, then NOP. The <strong>NOP response</strong> on MISO is the new content of the written register; the driver uses this to verify the write.</li>
+  <li>24-bit and 32-bit MISO frames follow datasheet Fig. 25 / Fig. 28: high bits = ER, Error; bits 21:8 (24-bit) or 29:16 (32-bit) = 14-bit data; low byte(s) = CRC (and PAD in 32-bit).</li>
+</ul>
 <h3 id="change-frame-format-at-runtime">
   
   
