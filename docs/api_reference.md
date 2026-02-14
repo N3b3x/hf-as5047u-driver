@@ -82,8 +82,11 @@ explicit AS5047U(SpiType& bus, FrameFormat format = AS5047U_CFG::DEFAULT_FRAME_F
 | `SetIndexPulseLength()` | `bool SetIndexPulseLength(uint8_t lsb_len, uint8_t retries = AS5047U_CFG::CRC_RETRIES)` | [`src/as5047u.ipp#L187`](../src/as5047u.ipp#L187) |
 | `ConfigureInterface()` | `bool ConfigureInterface(bool abi, bool uvw, bool pwm, uint8_t retries = AS5047U_CFG::CRC_RETRIES)` | [`src/as5047u.ipp#L205`](../src/as5047u.ipp#L205) |
 | `SetDynamicAngleCompensation()` | `bool SetDynamicAngleCompensation(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES)` | [`src/as5047u.ipp#L225`](../src/as5047u.ipp#L225) |
-| `SetAdaptiveFilter()` | `bool SetAdaptiveFilter(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES)` | [`src/as5047u.ipp#L232`](../src/as5047u.ipp#L232) |
-| `SetFilterParameters()` | `bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries = AS5047U_CFG::CRC_RETRIES)` | [`src/as5047u.ipp#L239`](../src/as5047u.ipp#L239) |
+| `SetAdaptiveFilter()` | `bool SetAdaptiveFilter(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES)` | [`src/as5047u.ipp`](../src/as5047u.ipp) |
+| `SetFilterPreset()` | `bool SetFilterPreset(FilterPreset preset, uint8_t retries = AS5047U_CFG::CRC_RETRIES)` | [`src/as5047u.ipp`](../src/as5047u.ipp) |
+| `SetFilterParameters()` | `bool SetFilterParameters(uint8_t k_min, uint8_t k_max, uint8_t retries = AS5047U_CFG::CRC_RETRIES)` | [`src/as5047u.ipp`](../src/as5047u.ipp) |
+| `GetAdaptiveFilterEnabled()` | `bool GetAdaptiveFilterEnabled(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const` | [`src/as5047u.ipp`](../src/as5047u.ipp) |
+| `GetFilterParameters()` | `std::pair<uint8_t, uint8_t> GetFilterParameters(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const` | [`src/as5047u.ipp`](../src/as5047u.ipp) |
 | `Set150CTemperatureMode()` | `bool Set150CTemperatureMode(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES)` | [`src/as5047u.ipp#L250`](../src/as5047u.ipp#L250) |
 | `SetHysteresis()` | `bool SetHysteresis(AS5047U_REG::SETTINGS3::Hysteresis hysteresis, uint8_t retries = AS5047U_CFG::CRC_RETRIES)` | [`src/as5047u.ipp#L315`](../src/as5047u.ipp#L315) |
 | `GetHysteresis()` | `AS5047U_REG::SETTINGS3::Hysteresis GetHysteresis() const` | [`src/as5047u.ipp#L322`](../src/as5047u.ipp#L322) |

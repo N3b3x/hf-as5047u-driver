@@ -56,6 +56,51 @@ This guide helps you diagnose and resolve common issues when using the AS5047U d
 
 ---
 
+### Velocity range and scale (why the numbers look the way they do)
+
+**Datasheet Figure 16 – Angular Velocity Measurement Parameter:**
+
+| Symbol   | Parameter                    | Min/Typ/Max | Unit      | Notes                          |
+|---------|------------------------------|------------|-----------|--------------------------------|
+| **VRes**  | Velocity signal resolution   | 14         | bit       | Two's complement value         |
+| **VRange**| Measurement range (default)  | -28000 … 28000 | rpm   | Default range                  |
+| **VSens** | Velocity sensitivity (default) | 24.141   | °/s/bit   | 14-bit resolution; ±5% (actual rotation speed) |
+| **VError**| Velocity total error         | 16.9 … 68.4 | —       | Based on actual rotation speed |
+| **FCutoff** | Cut-off frequency          | 231        | Hz        | Depends on K (adaptive filter) |
+
+- The velocity register is **14-bit two’s complement**: **-8192 to +8191 LSB**. Scale is **VSens = 24.141 °/s per LSB** (default, ±5%).
+- The **measurement range** (VRange) is **±28,000 rpm** (default), i.e. about ±168,000 °/s. So 1 LSB = 24.141 °/s over that range; the ECU can use the value without further averaging.
+
+**Why “1 LSB” is ~24 °/s:** The sensor covers a wide velocity range (up to ±28,000 rpm) in 14 bits, so each LSB is a fixed **24.141 °/s**. Example: **33 LSB** = 33 × 24.141 ≈ **797 °/s** (~133 rpm). In LSB terms that’s 33/8192 ≈ **0.4% of full scale**; in °/s it looks large only because of the fixed scale.
+
+**Datasheet Figure 17 – Angular Velocity Measurement Filter Parameters (RMS noise at standstill):**
+
+| Filter K | Typ RMS noise (°/s) |
+|----------|----------------------|
+| K=0      | 5.8                  |
+| K=1      | 6                    |
+| K=2      | 8.4                  |
+| K=3      | 19.8                 |
+| K=4      | 51.8                 |
+| K=5      | 121.9                |
+| K=6      | 244.9                |
+
+**At standstill:** For typical K (e.g. K=0), RMS noise is **5.8 °/s** ≈ **0.24 LSB**. So 0 or ±1 LSB at standstill is normal. A reading of tens of LSB (e.g. 33 LSB ≈ 797 °/s) with the magnet stationary is **not** normal and may indicate noise, angle jitter, or a wrong register (e.g. AGC instead of VEL).
+
+---
+
+### Velocity Not Zero When Magnet Is Stationary
+
+**Symptoms:**
+- `GetVelocity()` returns small non-zero values (e.g. -1 or +1 LSB) when the magnet is not moving
+- Converted values around ±24 °/s at standstill
+
+**Datasheet:** See **Velocity range and scale** above for Figure 16 (VRes, VRange, VSens) and Figure 17 (RMS noise vs filter K). The AS5047U specifies **RMS velocity noise at standstill** depending on the adaptive filter K (OTP); e.g. **5.8 °/s** (K=0), **6 °/s** (K=1), **8.4 °/s** (K=2), up to **244.9 °/s** (K=6). With **VSens = 24.141 °/s/bit**, ±1 LSB (~24 °/s) at standstill is within the expected noise band.
+
+**Conclusion:** Non-zero velocity while the magnet is not moving is **expected behavior**, not a fault. For “zero speed” detection, compare against a threshold (e.g. ±2 LSB or ±50 °/s) rather than exact zero. If velocity at standstill is **large** (e.g. > 10 LSB, ~240 °/s), the integration test logs a warning: check wiring, AGC, and that the VEL register (0x3FFC) is read correctly (not confused with AGC 0x3FF9).
+
+---
+
 ### Error: AGC Warning
 
 **Symptoms:**
@@ -151,6 +196,30 @@ This guide helps you diagnose and resolve common issues when using the AS5047U d
 3. **Check for Interference**: Remove sources of stray magnetic fields
 4. **Verify Initialization**: Ensure SPI bus is properly initialized
 5. **Check Error Flags**: Read error flags to diagnose specific issues
+
+---
+
+### Zero Position or Direction (SETTINGS2) Not Persisting
+
+**Symptoms:**
+- `SetZeroPosition()` or `SetDirection()` returns OK but read-back is wrong or unchanged
+- Zero position read-back is 0 after write; DIR bit does not change
+
+**Datasheet (AS5047U DS000637):**
+- Non-volatile registers (ZPOSM 0x0016, ZPOSL 0x0017, SETTINGS2 0x0019, etc.) support **soft write**: SPI write can be done multiple times; content persists until **power cycle** (no OTP burn needed for runtime changes).
+- If soft write is accepted, values should persist until reset. If read-back still shows 0 or old value, the write may not be reaching the device.
+
+**Causes:**
+- CRC or framing errors during write (check ERRFL after write; driver may still report success if read-back matches)
+- SPI timing (e.g. tCSn ≥ 350 ns between frames; Mode 1, CPOL=0, CPHA=1)
+- Wiring or noise causing failed transactions
+- On some parts or boards, the device may not accept **DIR=0** (clockwise); DIR remains 1. The integration test passes with a warning in this case.
+
+**Solutions:**
+1. **Check ERRFL**: After a write, read `GetErrorFlags()`. If CRC_error or Framing_error is set, fix SPI signal/timing first.
+2. **Use 24-bit frames**: Writes use 24- or 32-bit frames with CRC; ensure frame format and CRC (polynomial 0x1D, init 0xC4, final XOR 0xFF) match the datasheet.
+3. **Retry**: Use `SetZeroPosition(angle, retries)` or `SetDirection(clockwise, retries)` with retries > 0.
+4. **Permanent programming**: For values that must survive power loss, use the OTP programming procedure (PROG register, PROGOTP, etc.) as described in the datasheet.
 
 ---
 

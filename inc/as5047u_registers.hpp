@@ -274,8 +274,9 @@ struct COSDATA {
  * @details VEL_value is a signed 14-bit integer representing the rotational velocity. The value is
  * given in two’s complement format. A positive value indicates rotation in the default direction
  * (DIR=0 defined direction), while a negative value indicates rotation in the opposite direction.
- * The scale (LSB unit) is proportional to speed, but the exact units depend on the sensor
- * configuration and sampling rate (e.g., LSB per measurement interval).
+ * Scale: 24.141 °/s per LSB (datasheet V_Sens). When the magnet is stationary, the velocity output
+ * has RMS noise per datasheet Figure 17 (e.g. 5.8 °/s typical for K=0); small non-zero readings
+ * at standstill are therefore expected.
  */
 struct VEL {
   static constexpr uint16_t ADDRESS = 0x3FFC;
@@ -415,6 +416,11 @@ struct ANGLECOM {
 //=============================================================================//
 //                      NON-VOLATILE REGISTERS (OTP)                           //
 //=============================================================================//
+// Addresses 0x0015–0x001B (DISABLE, ZPOSM, ZPOSL, SETTINGS1/2/3, ECC) support
+// soft write: SPI read/write works multiple times; content is in volatile shadow
+// and is lost after hardware reset. OTP programming (PROG register) burns the
+// current shadow content permanently; after that, values survive reset and
+// cannot be overwritten. Default state is 0x0000 if never programmed.
 /////////////////////////////////////////////////////////////////////////////////
 
 /**

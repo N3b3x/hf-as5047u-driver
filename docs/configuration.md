@@ -66,7 +66,7 @@ encoder.SetFrameFormat(FrameFormat::SPI_24);
 
 ### Zero Position
 
-Set the zero reference position (soft offset):
+Set the zero reference position (soft offset). Per the AS5047U datasheet, ZPOSM/ZPOSL and all non-volatile registers support **soft write**: SPI write/read is possible multiple times, and the content persists until a **hardware reset** (power cycle). No OTP burn is required for runtime zero position or direction changes.
 
 ```cpp
 // Set zero position to current angle
@@ -101,16 +101,32 @@ encoder.SetDynamicAngleCompensation(false);
 
 ### Adaptive Filter (DFS™)
 
-The Dynamic Filter System adaptively filters noise:
+The Dynamic Filter System (DFS) adaptively filters angle and velocity noise. Higher K = more bandwidth and faster response but more standstill noise (see datasheet Figure 17).
+
+**Easiest: use a preset (recommended)**
 
 ```cpp
-// Enable adaptive filter
+#include "as5047u_types.hpp"  // for FilterPreset
+
+// One call: enables filter and sets K to match the preset
+encoder.SetFilterPreset(FilterPreset::LowNoise);     // ~5.8 °/s RMS at standstill, best for low speed
+encoder.SetFilterPreset(FilterPreset::Balanced);     // ~8–20 °/s, good default
+encoder.SetFilterPreset(FilterPreset::HighBandwidth); // ~245 °/s, use when speed matters most
+```
+
+**Advanced: enable/disable and raw K codes**
+
+```cpp
+// Enable or disable the filter
 encoder.SetAdaptiveFilter(true);
 
-// Set filter parameters (K_min, K_max)
-// K_min: minimum filter strength (0-15)
-// K_max: maximum filter strength (0-15)
-encoder.SetFilterParameters(2, 3);
+// Set K_min and K_max as 3-bit register codes (0–7). See SETTINGS1::AdaptiveFilterKmin/Kmax
+// for mapping to effective K (datasheet Figure 17).
+encoder.SetFilterParameters(k_min_code, k_max_code);
+
+// Read back current state
+bool enabled = encoder.GetAdaptiveFilterEnabled();
+auto [k_min, k_max] = encoder.GetFilterParameters();
 ```
 
 ### Angle Output Source
@@ -243,18 +259,16 @@ uint16_t angle = encoder.GetAngle(3);
 ### For High-Speed Motor Control
 
 ```cpp
-encoder.SetDynamicAngleCompensation(true);  // Enable DAEC
-encoder.SetAdaptiveFilter(true);            // Enable DFS
-encoder.SetFilterParameters(2, 3);         // Moderate filtering
-encoder.SetABIResolution(12);              // 4096 PPR
+encoder.SetDynamicAngleCompensation(true);   // Enable DAEC
+encoder.SetFilterPreset(FilterPreset::Balanced);  // or HighBandwidth for max speed
+encoder.SetABIResolution(12);                // 4096 PPR
 encoder.ConfigureInterface(true, false, false);  // ABI output
 ```
 
 ### For Low-Noise Applications
 
 ```cpp
-encoder.SetAdaptiveFilter(true);
-encoder.SetFilterParameters(3, 5);          // Stronger filtering
+encoder.SetFilterPreset(FilterPreset::LowNoise);
 encoder.SetHysteresis(AS5047U_REG::SETTINGS3::Hysteresis::LSB_2);
 ```
 

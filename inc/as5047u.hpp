@@ -14,6 +14,7 @@
 #include <cstdint>
 #include <cstdio>     // for printf
 #include <functional> // for std::function
+#include <utility>    // for std::pair
 
 // Error flags from ERRFL register
 enum class AS5047U_Error : uint16_t {
@@ -192,8 +193,11 @@ public:
 
   /**
    * @brief Define the rotation direction for increasing angle.
-   * @param clockwise If true, clockwise rotation yields increasing angle
-   * (DIR=0). If false, invert direction (DIR=1).
+   *
+   * Writes SETTINGS2 (0x0019) bit 2 (DIR) per datasheet Fig.47:
+   * 0 = CW default, 1 = invert direction.
+   * @param clockwise If true, clockwise yields increasing angle (DIR=0).
+   * If false, invert direction (DIR=1).
    * @param retries Number of retries on CRC/framing error (default 0 = no
    * retry).
    * @return true if register write succeeded.
@@ -245,9 +249,31 @@ public:
   /** @brief Enable/disable the adaptive filter (Dynamic Filter System). */
   bool SetAdaptiveFilter(bool enable, uint8_t retries = AS5047U_CFG::CRC_RETRIES);
 
-  /** @brief Set adaptive filter parameters (K_min and K_max, 3-bit each). */
+  /**
+   * @brief Set adaptive filter from a preset (easiest way to configure filter).
+   *
+   * Enables the filter and sets K_min/K_max to match the preset. See FilterPreset
+   * and datasheet Figure 17 (velocity RMS noise vs K).
+   */
+  bool SetFilterPreset(FilterPreset preset,
+                      uint8_t retries = AS5047U_CFG::CRC_RETRIES);
+
+  /**
+   * @brief Set adaptive filter parameters (K_min and K_max as 3-bit register codes).
+   *
+   * Both arguments are 0–7 (register codes). See SETTINGS1::AdaptiveFilterKmin
+   * and AdaptiveFilterKmax for mapping to effective K (datasheet Figure 17).
+   * For a single effective K, use SetFilterPreset() instead.
+   */
   bool SetFilterParameters(uint8_t k_min, uint8_t k_max,
                            uint8_t retries = AS5047U_CFG::CRC_RETRIES);
+
+  /** @brief Read whether the adaptive filter is enabled. */
+  [[nodiscard]] bool GetAdaptiveFilterEnabled(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+
+  /** @brief Read current K_min and K_max register codes (0–7 each). */
+  [[nodiscard]] std::pair<uint8_t, uint8_t> GetFilterParameters(
+      uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
 
   /** @brief Set temperature mode for 150°C operation (NOISESET bit).
    *

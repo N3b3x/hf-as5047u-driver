@@ -112,6 +112,9 @@ For detailed installation instructions, see [docs/installation.md](docs/installa
 | `ConfigureInterface()` | Enable/disable ABI, UVW, PWM |
 | `SetDynamicAngleCompensation()` | Enable/disable DAEC |
 | `SetAdaptiveFilter()` | Enable/disable adaptive filter (DFS) |
+| `SetFilterPreset()` | Set filter from preset (LowNoise, Balanced, HighBandwidth) |
+| `GetAdaptiveFilterEnabled()` | Read whether adaptive filter is enabled |
+| `GetFilterParameters()` | Read current K_min and K_max register codes |
 | `ProgramOTP()` | Program current settings into OTP |
 
 For complete API documentation, see [docs/api_reference.md](docs/api_reference.md).
