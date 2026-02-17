@@ -11,10 +11,10 @@
 <!-- Node0 -->
 <g id="Node000000" class="node">
 <title>Node0</title>
-<g id="a_Node000000"><a xlink:href="structas5047u_1_1AS5047U_1_1Velocity.html" target="_top" xlink:title="Helper constants and methods for velocity unit conversions.">
+<g id="a_Node000000"><a xlink:href="structas5047u_1_1AS5047U_1_1Angle.html" target="_top" xlink:title="Angle conversion helpers.">
 <polygon fill="white" stroke="#666666" points="157,-30 0,-30 0,0 157,0 157,-30"/>
 <text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">as5047u::AS5047U&lt; SpiType</text>
-<text text-anchor="middle" x="78.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00"> &gt;::Velocity</text>
+<text text-anchor="middle" x="78.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00"> &gt;::Angle</text>
 </a>
 </g>
 </g>

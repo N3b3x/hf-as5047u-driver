@@ -1,5 +1,6 @@
 var classas5047u_1_1AS5047U =
 [
+    [ "Angle", "structas5047u_1_1AS5047U_1_1Angle.html", null ],
     [ "Velocity", "structas5047u_1_1AS5047U_1_1Velocity.html", null ],
     [ "AS5047U", "classas5047u_1_1AS5047U.html#a1381ab5d9830a9decdbbdf87f0804cf4", null ],
     [ "~AS5047U", "classas5047u_1_1AS5047U.html#a0ac088dcd0b2f4fbb63ea155c935645f", null ],
@@ -7,8 +8,11 @@ var classas5047u_1_1AS5047U =
     [ "DumpStatus", "classas5047u_1_1AS5047U.html#a9a8e04fee8e3d807a007c081f3c81765", null ],
     [ "GetAdaptiveFilterEnabled", "classas5047u_1_1AS5047U.html#a99e0ec7d2de785a76c7d0008c2648848", null ],
     [ "GetAGC", "classas5047u_1_1AS5047U.html#afeef2fe3e619ddb7fc1dd60c00a7faf4", null ],
+    [ "GetAngle", "classas5047u_1_1AS5047U.html#aa013d8752fdfc03bf929a1842e8d1072", null ],
     [ "GetAngle", "classas5047u_1_1AS5047U.html#a4b90fcf2e216c5131f3a9d9dcdfeb183", null ],
+    [ "GetAngleDegrees", "classas5047u_1_1AS5047U.html#a656ca2a0d4d4a00343b2ea3531c6c4e7", null ],
     [ "GetAngleOutputSource", "classas5047u_1_1AS5047U.html#a462f687e1c59f66298912fd59fe62c53", null ],
+    [ "GetAngleRadians", "classas5047u_1_1AS5047U.html#ad51e6f501e9b8513db94ef08e1cdffc1", null ],
     [ "GetDiagnostics", "classas5047u_1_1AS5047U.html#acd336fa5933930e1dddfaaf4f1bfa63c", null ],
     [ "GetErrorFlags", "classas5047u_1_1AS5047U.html#a2d09b3ebefe1e09b0a070884e97c8503", null ],
     [ "GetFilterParameters", "classas5047u_1_1AS5047U.html#a9073d0f810802f6f4352a82f6c17251a", null ],
@@ -17,6 +21,7 @@ var classas5047u_1_1AS5047U =
     [ "GetRawAngle", "classas5047u_1_1AS5047U.html#a0b1a8d4068ec3df2b59f8791e1bca6ab", null ],
     [ "GetStickyErrorFlags", "classas5047u_1_1AS5047U.html#ac7433479a5ef780f6eb96a86eca5afff", null ],
     [ "GetVelocity", "classas5047u_1_1AS5047U.html#ac4ee41f4ea8479b5aa0876d3bab26df5", null ],
+    [ "GetVelocity", "classas5047u_1_1AS5047U.html#accafcb6b3e10e3668c6eede930f23508", null ],
     [ "GetVelocityDegPerSec", "classas5047u_1_1AS5047U.html#a06057a7ce4b63baaa48f54414d8d6e19", null ],
     [ "GetVelocityRadPerSec", "classas5047u_1_1AS5047U.html#aebe7ce70b261ba5fa7f1e4101c8c7de4", null ],
     [ "GetVelocityRPM", "classas5047u_1_1AS5047U.html#a57da214c96f3a428ab9c2cf9a645bf3f", null ],
