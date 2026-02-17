@@ -333,9 +333,9 @@
     
     <span class="c1">// 3. Read angle in a loop</span>
     <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">uint16_t</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">();</span>
-        <span class="kt">float</span> <span class="n">angle_deg</span> <span class="o">=</span> <span class="n">angle</span> <span class="o">*</span> <span class="mf">360.0</span><span class="n">f</span> <span class="o">/</span> <span class="mf">16384.0</span><span class="n">f</span><span class="p">;</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"Angle: %u (%.2f°)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">angle_deg</span><span class="p">);</span>
+        <span class="kt">float</span> <span class="n">angle_lsb</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">(</span><span class="n">as5047u</span><span class="o">::</span><span class="n">AngleUnit</span><span class="o">::</span><span class="n">Lsb</span><span class="p">);</span>
+        <span class="kt">float</span> <span class="n">angle_deg</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">(</span><span class="n">as5047u</span><span class="o">::</span><span class="n">AngleUnit</span><span class="o">::</span><span class="n">Degrees</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Angle: %.0f (%.2f°)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">angle_lsb</span><span class="p">,</span> <span class="n">angle_deg</span><span class="p">);</span>
         
         <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
     <span class="p">}</span>
@@ -353,7 +353,7 @@
 <ol>
   <li><strong>SPI Configuration</strong>: Configure the SPI bus with appropriate pins and settings</li>
   <li><strong>Encoder Creation</strong>: Create the encoder instance with SPI bus and frame format</li>
-  <li><strong>Angle Reading</strong>: Read angle values in a loop and convert to degrees</li>
+  <li><strong>Angle Reading</strong>: Request angle directly in the unit you need</li>
 </ol>
 <h3 id="expected-output">
   
@@ -410,11 +410,11 @@ Angle: 8208 (180.35°)
     
     <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Read velocity in different units</span>
-        <span class="kt">int16_t</span> <span class="n">vel_lsb</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocity</span><span class="p">();</span>
-        <span class="kt">float</span> <span class="n">vel_dps</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocityDegPerSec</span><span class="p">();</span>
-        <span class="kt">float</span> <span class="n">vel_rpm</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocityRPM</span><span class="p">();</span>
+        <span class="kt">float</span> <span class="n">vel_lsb</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocity</span><span class="p">(</span><span class="n">as5047u</span><span class="o">::</span><span class="n">VelocityUnit</span><span class="o">::</span><span class="n">Lsb</span><span class="p">);</span>
+        <span class="kt">float</span> <span class="n">vel_dps</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocity</span><span class="p">(</span><span class="n">as5047u</span><span class="o">::</span><span class="n">VelocityUnit</span><span class="o">::</span><span class="n">DegPerSec</span><span class="p">);</span>
+        <span class="kt">float</span> <span class="n">vel_rpm</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocity</span><span class="p">(</span><span class="n">as5047u</span><span class="o">::</span><span class="n">VelocityUnit</span><span class="o">::</span><span class="n">Rpm</span><span class="p">);</span>
         
-        <span class="n">printf</span><span class="p">(</span><span class="s">"Velocity: %d LSB, %.2f deg/s, %.2f RPM</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> 
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Velocity: %.0f LSB, %.2f deg/s, %.2f RPM</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> 
                <span class="n">vel_lsb</span><span class="p">,</span> <span class="n">vel_dps</span><span class="p">,</span> <span class="n">vel_rpm</span><span class="p">);</span>
         
         <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
@@ -430,12 +430,8 @@ Angle: 8208 (180.35°)
 </h3>
     
 
-<p>The driver provides multiple velocity unit conversions:</p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">GetVelocity()</code> - Returns signed 14-bit LSB units</li>
-  <li><code class="language-plaintext highlighter-rouge">GetVelocityDegPerSec()</code> - Returns degrees per second</li>
-  <li><code class="language-plaintext highlighter-rouge">GetVelocityRPM()</code> - Returns revolutions per minute</li>
-</ul><hr />
+<p>Use <code class="language-plaintext highlighter-rouge">GetVelocity(VelocityUnit)</code> to request the target unit in one call.
+Compatibility methods (<code class="language-plaintext highlighter-rouge">GetVelocityDegPerSec()</code>, <code class="language-plaintext highlighter-rouge">GetVelocityRPM()</code>, etc.) remain available.</p><hr />
 <h2 id="example-3-diagnostics-and-error-handling">
   
   
@@ -490,7 +486,7 @@ Angle: 8208 (180.35°)
     
     <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Read angle with retry on CRC errors</span>
-        <span class="kt">uint16_t</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>  <span class="c1">// 3 retries</span>
+        <span class="kt">float</span> <span class="n">angle_deg</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">(</span><span class="n">as5047u</span><span class="o">::</span><span class="n">AngleUnit</span><span class="o">::</span><span class="n">Degrees</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>  <span class="c1">// 3 retries</span>
         
         <span class="c1">// Read diagnostics</span>
         <span class="kt">uint8_t</span> <span class="n">agc</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAGC</span><span class="p">();</span>
@@ -510,7 +506,7 @@ Angle: 8208 (180.35°)
             <span class="p">}</span>
         <span class="p">}</span>
         
-        <span class="n">printf</span><span class="p">(</span><span class="s">"Angle: %u, AGC: %u, Mag: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">agc</span><span class="p">,</span> <span class="n">mag</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Angle: %.2f°, AGC: %u, Mag: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">angle_deg</span><span class="p">,</span> <span class="n">agc</span><span class="p">,</span> <span class="n">mag</span><span class="p">);</span>
         
         <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
     <span class="p">}</span>
@@ -893,11 +889,11 @@ Angle: 8208 (180.35°)
     
     <span class="c1">// Main loop</span>
     <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">uint16_t</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">();</span>
-        <span class="kt">float</span> <span class="n">vel_dps</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocityDegPerSec</span><span class="p">();</span>
+        <span class="kt">float</span> <span class="n">angle_deg</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">(</span><span class="n">as5047u</span><span class="o">::</span><span class="n">AngleUnit</span><span class="o">::</span><span class="n">Degrees</span><span class="p">);</span>
+        <span class="kt">float</span> <span class="n">vel_dps</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocity</span><span class="p">(</span><span class="n">as5047u</span><span class="o">::</span><span class="n">VelocityUnit</span><span class="o">::</span><span class="n">DegPerSec</span><span class="p">);</span>
         <span class="kt">uint8_t</span> <span class="n">agc</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAGC</span><span class="p">();</span>
         
-        <span class="n">printf</span><span class="p">(</span><span class="s">"Angle: %u, Vel: %.2f deg/s, AGC: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">vel_dps</span><span class="p">,</span> <span class="n">agc</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Angle: %.2f°, Vel: %.2f deg/s, AGC: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">angle_deg</span><span class="p">,</span> <span class="n">vel_dps</span><span class="p">,</span> <span class="n">agc</span><span class="p">);</span>
         
         <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
     <span class="p">}</span>

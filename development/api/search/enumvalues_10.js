@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['watchdogerror_0',['WatchdogError',['../as5047u_8hpp.html#a65e970630e302a2ffedf003f59fe4df5ac90fb798912586ae1522a5115a93b87c',1,'as5047u.hpp']]],
-  ['width1lsb_1',['Width1LSB',['../structAS5047U__REG_1_1SETTINGS2.html#a90b6523961b0201cf77b5eba387b0e59a7d2564d6d2fd5ee8fdc632adb0fadecd',1,'AS5047U_REG::SETTINGS2']]],
-  ['width3lsb_2',['Width3LSB',['../structAS5047U__REG_1_1SETTINGS2.html#a90b6523961b0201cf77b5eba387b0e59a331e60c976fe328a6db3b213f8e3db5e',1,'AS5047U_REG::SETTINGS2']]]
+  ['useanglecom_0',['UseANGLECOM',['../structAS5047U__REG_1_1SETTINGS2.html#a0bf2613a54b21f890873793e8e87cb46aa24118a34beac00630b1ce5c444b20dc',1,'AS5047U_REG::SETTINGS2']]],
+  ['useangleunc_1',['UseANGLEUNC',['../structAS5047U__REG_1_1SETTINGS2.html#a0bf2613a54b21f890873793e8e87cb46a67a4ef1b6a4b1a3c35b064d10f7175af',1,'AS5047U_REG::SETTINGS2']]],
+  ['uvw_5fpwm_5fon_5fi_2',['UVW_PWM_on_I',['../structAS5047U__REG_1_1SETTINGS2.html#af842d979eb61f108243f7d9a59612e00ae9949b878df882ba7a4d12ad488b79cc',1,'AS5047U_REG::SETTINGS2']]]
 ];

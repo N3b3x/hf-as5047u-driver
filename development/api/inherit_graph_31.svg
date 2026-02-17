@@ -11,10 +11,10 @@
 <!-- Node0 -->
 <g id="Node000000" class="node">
 <title>Node0</title>
-<g id="a_Node000000"><a xlink:href="structAS5047U__TestConfig_1_1TestConfig.html" target="_top" xlink:title="Test Configuration.">
+<g id="a_Node000000"><a xlink:href="structAS5047U__TestConfig_1_1Temperature.html" target="_top" xlink:title="Temperature Specifications (celsius)">
 <polygon fill="white" stroke="#666666" points="116,-30 0,-30 0,0 116,0 116,-30"/>
 <text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">AS5047U_TestConfig</text>
-<text text-anchor="middle" x="58" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">::TestConfig</text>
+<text text-anchor="middle" x="58" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">::Temperature</text>
 </a>
 </g>
 </g>

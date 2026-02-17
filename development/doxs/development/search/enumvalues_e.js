@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['tristate_0',['Tristate',['../structAS5047U__REG_1_1DISABLE.html#a0b0f8cfb593348630f6c272a0e4e2e7ca1e12ce0c312e7dd542b46ed8e35a8902',1,'AS5047U_REG::DISABLE::Tristate'],['../structAS5047U__REG_1_1DISABLE.html#ab4c532c4b7ab8568f78b98aebebe50bca1e12ce0c312e7dd542b46ed8e35a8902',1,'AS5047U_REG::DISABLE::Tristate']]]
+  ['spi_5f16_0',['SPI_16',['../as5047u__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a6d31511b938d463710373fc895ef4bd9',1,'as5047u_types.hpp']]],
+  ['spi_5f24_1',['SPI_24',['../as5047u__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a9ce40eb1f75bb2bfd670929f872624f5',1,'as5047u_types.hpp']]],
+  ['spi_5f32_2',['SPI_32',['../as5047u__types_8hpp.html#a6cd9dec52b39c355890e33ce6085c532a367bc64c294b2a6476209c2d855171b5',1,'as5047u_types.hpp']]]
 ];

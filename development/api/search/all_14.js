@@ -12,5 +12,6 @@ var searchData=
   ['vel_5fvalue_9',['VEL_value',['../structAS5047U__REG_1_1VEL.html#aea0a509f1e086364445a105df1173ff7',1,'AS5047U_REG::VEL']]],
   ['velocity_10',['Velocity',['../structas5047u_1_1AS5047U_1_1Velocity.html',1,'as5047u::AS5047U']]],
   ['velocity_5freading_5fexample_2ecpp_11',['velocity_reading_example.cpp',['../velocity__reading__example_8cpp.html',1,'']]],
-  ['velocity_5fsample_5fms_12',['VELOCITY_SAMPLE_MS',['../structAS5047U__TestConfig_1_1TestConfig.html#a4edac155ef208f11f1cad74392e982e6',1,'AS5047U_TestConfig::TestConfig']]]
+  ['velocity_5fsample_5fms_12',['VELOCITY_SAMPLE_MS',['../structAS5047U__TestConfig_1_1TestConfig.html#a4edac155ef208f11f1cad74392e982e6',1,'AS5047U_TestConfig::TestConfig']]],
+  ['velocityunit_13',['VelocityUnit',['../namespaceas5047u.html#a01f0c779d58027b848c3757ba5db972b',1,'as5047u']]]
 ];

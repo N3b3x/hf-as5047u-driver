@@ -369,6 +369,11 @@
   </thead>
   <tbody>
     <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetAngle(AngleUnit)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">float GetAngle(AngleUnit unit, uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/as5047u.ipp"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp</code></a></td>
+    </tr>
+    <tr>
       <td><code class="language-plaintext highlighter-rouge">GetAngle()</code></td>
       <td><code class="language-plaintext highlighter-rouge">uint16_t GetAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
       <td><a href="../src/as5047u.ipp#L33"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp#L33</code></a></td>
@@ -398,6 +403,11 @@
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetVelocity(VelocityUnit)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">float GetVelocity(VelocityUnit unit, uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
+      <td><a href="../src/as5047u.ipp"><code class="language-plaintext highlighter-rouge">src/as5047u.ipp</code></a></td>
+    </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetVelocity()</code></td>
       <td><code class="language-plaintext highlighter-rouge">int16_t GetVelocity(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const</code></td>
@@ -675,6 +685,16 @@
       <td><code class="language-plaintext highlighter-rouge">FrameFormat</code></td>
       <td><code class="language-plaintext highlighter-rouge">SPI_16</code>, <code class="language-plaintext highlighter-rouge">SPI_24</code>, <code class="language-plaintext highlighter-rouge">SPI_32</code></td>
       <td><a href="../inc/as5047u_types.hpp#L15"><code class="language-plaintext highlighter-rouge">inc/as5047u_types.hpp#L15</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AngleUnit</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Lsb</code>, <code class="language-plaintext highlighter-rouge">Degrees</code>, <code class="language-plaintext highlighter-rouge">Radians</code></td>
+      <td><a href="../inc/as5047u.hpp"><code class="language-plaintext highlighter-rouge">inc/as5047u.hpp</code></a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">VelocityUnit</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Lsb</code>, <code class="language-plaintext highlighter-rouge">DegPerSec</code>, <code class="language-plaintext highlighter-rouge">RadPerSec</code>, <code class="language-plaintext highlighter-rouge">Rpm</code></td>
+      <td><a href="../inc/as5047u.hpp"><code class="language-plaintext highlighter-rouge">inc/as5047u.hpp</code></a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">AS5047U_Error</code></td>

@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "AS5047U_REG::AGC", "structAS5047U__REG_1_1AGC.html", null ],
+    [ "as5047u::AS5047U< SpiType >::Angle", "structas5047u_1_1AS5047U_1_1Angle.html", null ],
     [ "AS5047U_REG::ANGLECOM", "structAS5047U__REG_1_1ANGLECOM.html", null ],
     [ "AS5047U_REG::ANGLEUNC", "structAS5047U__REG_1_1ANGLEUNC.html", null ],
     [ "AS5047U_TestConfig::AppConfig", "structAS5047U__TestConfig_1_1AppConfig.html", null ],

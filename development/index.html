@@ -370,11 +370,11 @@ Interactive guides, examples, and step-by-step tutorials</p>
 <span class="n">MySpi</span> <span class="n">spi</span><span class="p">;</span>
 <span class="n">as5047u</span><span class="o">::</span><span class="n">AS5047U</span> <span class="n">encoder</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span> <span class="n">FrameFormat</span><span class="o">::</span><span class="n">SPI_24</span><span class="p">);</span> <span class="c1">// 24-bit frames with CRC</span>
 
-<span class="c1">// 3. Read angle</span>
-<span class="kt">uint16_t</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">();</span>             <span class="c1">// compensated angle</span>
-<span class="kt">uint16_t</span> <span class="n">rawAngle</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetRawAngle</span><span class="p">();</span>       <span class="c1">// raw angle without DAEC</span>
-<span class="kt">int16_t</span> <span class="n">vel</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocity</span><span class="p">();</span>             <span class="c1">// velocity in sensor units</span>
-<span class="kt">float</span> <span class="n">vel_dps</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocityDegPerSec</span><span class="p">();</span> <span class="c1">// velocity in deg/s</span>
+<span class="c1">// 3. Read angle / velocity (unit-selected API)</span>
+<span class="kt">float</span> <span class="n">angle_deg</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">(</span><span class="n">as5047u</span><span class="o">::</span><span class="n">AngleUnit</span><span class="o">::</span><span class="n">Degrees</span><span class="p">);</span>      <span class="c1">// 0..360</span>
+<span class="kt">float</span> <span class="n">angle_rad</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">(</span><span class="n">as5047u</span><span class="o">::</span><span class="n">AngleUnit</span><span class="o">::</span><span class="n">Radians</span><span class="p">);</span>      <span class="c1">// 0..2π</span>
+<span class="kt">float</span> <span class="n">vel_rpm</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocity</span><span class="p">(</span><span class="n">as5047u</span><span class="o">::</span><span class="n">VelocityUnit</span><span class="o">::</span><span class="n">Rpm</span><span class="p">);</span>
+<span class="kt">float</span> <span class="n">vel_dps</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetVelocity</span><span class="p">(</span><span class="n">as5047u</span><span class="o">::</span><span class="n">VelocityUnit</span><span class="o">::</span><span class="n">DegPerSec</span><span class="p">);</span>
 
 <span class="c1">// 4. Diagnostics</span>
 <span class="kt">uint8_t</span> <span class="n">agc</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">GetAGC</span><span class="p">();</span>            <span class="c1">// automatic gain control</span>
@@ -421,6 +421,14 @@ Interactive guides, examples, and step-by-step tutorials</p>
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetAngle(AngleUnit)</code></td>
+      <td>Read absolute angle in selected unit (LSB/deg/rad)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GetVelocity(VelocityUnit)</code></td>
+      <td>Read velocity in selected unit (LSB/deg/s/rad/s/RPM)</td>
+    </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GetAngle()</code></td>
       <td>Read 14-bit compensated absolute angle</td>
@@ -501,6 +509,8 @@ Interactive guides, examples, and step-by-step tutorials</p>
 </table></div>
 
 <p>For complete API documentation, see <a href="/hf-as5047u-driver/development/docs/api_reference/">docs/api_reference.md</a>.</p>
+
+<p>Compatibility note: the unit-specific helpers (<code class="language-plaintext highlighter-rouge">GetAngleDegrees()</code>, <code class="language-plaintext highlighter-rouge">GetVelocityRPM()</code>, etc.) remain available for existing code, but new code should prefer the unit-enum overloads.</p>
 <h2 id="-examples">
   
   

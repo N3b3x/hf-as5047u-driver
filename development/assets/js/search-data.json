@@ -29,7 +29,7 @@
   },"4": {
     "doc": "HardFOC AS5047U Driver",
     "title": "🚀 Quick Start",
-    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 . | #include \"as5047u.hpp\" // 1. Implement the SPI interface (see platform_integration.md) class MySpi : public as5047u::SpiInterface&lt;MySpi&gt; { public: void transfer(const uint8_t* tx, uint8_t* rx, size_t len) { // Your SPI transfer implementation } }; // 2. Create driver instance MySpi spi; as5047u::AS5047U encoder(spi, FrameFormat::SPI_24); // 24-bit frames with CRC // 3. Read angle uint16_t angle = encoder.GetAngle(); // compensated angle uint16_t rawAngle = encoder.GetRawAngle(); // raw angle without DAEC int16_t vel = encoder.GetVelocity(); // velocity in sensor units float vel_dps = encoder.GetVelocityDegPerSec(); // velocity in deg/s // 4. Diagnostics uint8_t agc = encoder.GetAGC(); // automatic gain control uint16_t mag = encoder.GetMagnitude(); // magnetic magnitude uint16_t errors = encoder.GetErrorFlags(); // current error flags . | . For detailed setup, see Installation and Quick Start Guide. ",
+    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 . | #include \"as5047u.hpp\" // 1. Implement the SPI interface (see platform_integration.md) class MySpi : public as5047u::SpiInterface&lt;MySpi&gt; { public: void transfer(const uint8_t* tx, uint8_t* rx, size_t len) { // Your SPI transfer implementation } }; // 2. Create driver instance MySpi spi; as5047u::AS5047U encoder(spi, FrameFormat::SPI_24); // 24-bit frames with CRC // 3. Read angle / velocity (unit-selected API) float angle_deg = encoder.GetAngle(as5047u::AngleUnit::Degrees); // 0..360 float angle_rad = encoder.GetAngle(as5047u::AngleUnit::Radians); // 0..2π float vel_rpm = encoder.GetVelocity(as5047u::VelocityUnit::Rpm); float vel_dps = encoder.GetVelocity(as5047u::VelocityUnit::DegPerSec); // 4. Diagnostics uint8_t agc = encoder.GetAGC(); // automatic gain control uint16_t mag = encoder.GetMagnitude(); // magnetic magnitude uint16_t errors = encoder.GetErrorFlags(); // current error flags . | . For detailed setup, see Installation and Quick Start Guide. ",
     "url": "/hf-as5047u-driver/development/#-quick-start",
     
     "relUrl": "/#-quick-start"
@@ -43,7 +43,7 @@
   },"6": {
     "doc": "HardFOC AS5047U Driver",
     "title": "📖 API Reference",
-    "content": "| Method | Description | . | GetAngle() | Read 14-bit compensated absolute angle | . | GetRawAngle() | Read 14-bit raw absolute angle | . | GetVelocity() | Read signed 14-bit velocity (LSB units) | . | GetVelocityDegPerSec() | Velocity in degrees/sec | . | GetVelocityRPM() | Velocity in revolutions per minute | . | GetAGC() | Read AGC (0–255) value | . | GetMagnitude() | Read magnetic field magnitude | . | GetErrorFlags() | Read and clear error/status flags | . | SetZeroPosition() | Set new zero offset | . | SetDirection() | Set rotation direction (CW or CCW) | . | SetABIResolution() | Set ABI output resolution (10–14 bits) | . | SetUVWPolePairs() | Set UVW pole pairs (1–7) | . | ConfigureInterface() | Enable/disable ABI, UVW, PWM | . | SetDynamicAngleCompensation() | Enable/disable DAEC | . | SetAdaptiveFilter() | Enable/disable adaptive filter (DFS) | . | SetFilterPreset() | Set filter from preset (LowNoise, Balanced, HighBandwidth) | . | GetAdaptiveFilterEnabled() | Read whether adaptive filter is enabled | . | GetFilterParameters() | Read current K_min and K_max register codes | . | ProgramOTP() | Program current settings into OTP | . For complete API documentation, see docs/api_reference.md. ",
+    "content": "| Method | Description | . | GetAngle(AngleUnit) | Read absolute angle in selected unit (LSB/deg/rad) | . | GetVelocity(VelocityUnit) | Read velocity in selected unit (LSB/deg/s/rad/s/RPM) | . | GetAngle() | Read 14-bit compensated absolute angle | . | GetRawAngle() | Read 14-bit raw absolute angle | . | GetVelocity() | Read signed 14-bit velocity (LSB units) | . | GetVelocityDegPerSec() | Velocity in degrees/sec | . | GetVelocityRPM() | Velocity in revolutions per minute | . | GetAGC() | Read AGC (0–255) value | . | GetMagnitude() | Read magnetic field magnitude | . | GetErrorFlags() | Read and clear error/status flags | . | SetZeroPosition() | Set new zero offset | . | SetDirection() | Set rotation direction (CW or CCW) | . | SetABIResolution() | Set ABI output resolution (10–14 bits) | . | SetUVWPolePairs() | Set UVW pole pairs (1–7) | . | ConfigureInterface() | Enable/disable ABI, UVW, PWM | . | SetDynamicAngleCompensation() | Enable/disable DAEC | . | SetAdaptiveFilter() | Enable/disable adaptive filter (DFS) | . | SetFilterPreset() | Set filter from preset (LowNoise, Balanced, HighBandwidth) | . | GetAdaptiveFilterEnabled() | Read whether adaptive filter is enabled | . | GetFilterParameters() | Read current K_min and K_max register codes | . | ProgramOTP() | Program current settings into OTP | . For complete API documentation, see docs/api_reference.md. Compatibility note: the unit-specific helpers (GetAngleDegrees(), GetVelocityRPM(), etc.) remain available for existing code, but new code should prefer the unit-enum overloads. ",
     "url": "/hf-as5047u-driver/development/#-api-reference",
     
     "relUrl": "/#-api-reference"
@@ -127,14 +127,14 @@
   },"18": {
     "doc": "📖 API Reference",
     "title": "Angle Reading",
-    "content": "| Method | Signature | Location | . | GetAngle() | uint16_t GetAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L33 | . | GetRawAngle() | uint16_t GetRawAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L48 | . ",
+    "content": "| Method | Signature | Location | . | GetAngle(AngleUnit) | float GetAngle(AngleUnit unit, uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp | . | GetAngle() | uint16_t GetAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L33 | . | GetRawAngle() | uint16_t GetRawAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L48 | . ",
     "url": "/hf-as5047u-driver/development/docs/api_reference/#angle-reading",
     
     "relUrl": "/docs/api_reference/#angle-reading"
   },"19": {
     "doc": "📖 API Reference",
     "title": "Velocity Reading",
-    "content": "| Method | Signature | Location | . | GetVelocity() | int16_t GetVelocity(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L63 | . | GetVelocityDegPerSec() | float GetVelocityDegPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L79 | . | GetVelocityRadPerSec() | float GetVelocityRadPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L84 | . | GetVelocityRPM() | float GetVelocityRPM(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L89 | . ",
+    "content": "| Method | Signature | Location | . | GetVelocity(VelocityUnit) | float GetVelocity(VelocityUnit unit, uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp | . | GetVelocity() | int16_t GetVelocity(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L63 | . | GetVelocityDegPerSec() | float GetVelocityDegPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L79 | . | GetVelocityRadPerSec() | float GetVelocityRadPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L84 | . | GetVelocityRPM() | float GetVelocityRPM(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const | src/as5047u.ipp#L89 | . ",
     "url": "/hf-as5047u-driver/development/docs/api_reference/#velocity-reading",
     
     "relUrl": "/docs/api_reference/#velocity-reading"
@@ -176,7 +176,7 @@
   },"25": {
     "doc": "📖 API Reference",
     "title": "Enumerations",
-    "content": "| Type | Values | Location | . | FrameFormat | SPI_16, SPI_24, SPI_32 | inc/as5047u_types.hpp#L15 | . | AS5047U_Error | None, AgcWarning, MagHalf, P2ramWarning, P2ramError, FramingError, CommandError, CrcError, WatchdogError, OffCompError, CordicOverflow | inc/as5047u.hpp#L32 | . ",
+    "content": "| Type | Values | Location | . | FrameFormat | SPI_16, SPI_24, SPI_32 | inc/as5047u_types.hpp#L15 | . | AngleUnit | Lsb, Degrees, Radians | inc/as5047u.hpp | . | VelocityUnit | Lsb, DegPerSec, RadPerSec, Rpm | inc/as5047u.hpp | . | AS5047U_Error | None, AgcWarning, MagHalf, P2ramWarning, P2ramError, FramingError, CommandError, CrcError, WatchdogError, OffCompError, CordicOverflow | inc/as5047u.hpp#L32 | . ",
     "url": "/hf-as5047u-driver/development/docs/api_reference/#enumerations",
     
     "relUrl": "/docs/api_reference/#enumerations"
@@ -414,14 +414,14 @@
   },"59": {
     "doc": "💡 Examples",
     "title": "Example 1: Basic Angle Reading",
-    "content": "This example shows the minimal setup required to read angle values. | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 . | #include \"as5047u.hpp\" #include \"esp32_as5047u_bus.hpp\" // Your SPI implementation void app_main() { // 1. Configure SPI bus Esp32As5047uBus::SPIConfig config; config.miso_pin = GPIO_NUM_2; config.mosi_pin = GPIO_NUM_7; config.sclk_pin = GPIO_NUM_6; config.cs_pin = GPIO_NUM_10; config.frequency = 4000000; config.mode = 1; auto bus = std::make_unique&lt;Esp32As5047uBus&gt;(config); bus-&gt;initialize(); // 2. Create encoder instance as5047u::AS5047U encoder(*bus, FrameFormat::SPI_24); // 3. Read angle in a loop while (true) { uint16_t angle = encoder.GetAngle(); float angle_deg = angle * 360.0f / 16384.0f; printf(\"Angle: %u (%.2f°)\\n\", angle, angle_deg); vTaskDelay(pdMS_TO_TICKS(100)); } } . | . ",
+    "content": "This example shows the minimal setup required to read angle values. | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 . | #include \"as5047u.hpp\" #include \"esp32_as5047u_bus.hpp\" // Your SPI implementation void app_main() { // 1. Configure SPI bus Esp32As5047uBus::SPIConfig config; config.miso_pin = GPIO_NUM_2; config.mosi_pin = GPIO_NUM_7; config.sclk_pin = GPIO_NUM_6; config.cs_pin = GPIO_NUM_10; config.frequency = 4000000; config.mode = 1; auto bus = std::make_unique&lt;Esp32As5047uBus&gt;(config); bus-&gt;initialize(); // 2. Create encoder instance as5047u::AS5047U encoder(*bus, FrameFormat::SPI_24); // 3. Read angle in a loop while (true) { float angle_lsb = encoder.GetAngle(as5047u::AngleUnit::Lsb); float angle_deg = encoder.GetAngle(as5047u::AngleUnit::Degrees); printf(\"Angle: %.0f (%.2f°)\\n\", angle_lsb, angle_deg); vTaskDelay(pdMS_TO_TICKS(100)); } } . | . ",
     "url": "/hf-as5047u-driver/development/docs/examples/#example-1-basic-angle-reading",
     
     "relUrl": "/docs/examples/#example-1-basic-angle-reading"
   },"60": {
     "doc": "💡 Examples",
     "title": "Explanation",
-    "content": ". | SPI Configuration: Configure the SPI bus with appropriate pins and settings | Encoder Creation: Create the encoder instance with SPI bus and frame format | Angle Reading: Read angle values in a loop and convert to degrees | . ",
+    "content": ". | SPI Configuration: Configure the SPI bus with appropriate pins and settings | Encoder Creation: Create the encoder instance with SPI bus and frame format | Angle Reading: Request angle directly in the unit you need | . ",
     "url": "/hf-as5047u-driver/development/docs/examples/#explanation",
     
     "relUrl": "/docs/examples/#explanation"
@@ -435,21 +435,21 @@
   },"62": {
     "doc": "💡 Examples",
     "title": "Example 2: Velocity Measurement",
-    "content": "This example demonstrates reading velocity in different units. | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 . | #include \"as5047u.hpp\" void app_main() { // ... SPI setup (same as Example 1) as5047u::AS5047U encoder(*bus, FrameFormat::SPI_24); while (true) { // Read velocity in different units int16_t vel_lsb = encoder.GetVelocity(); float vel_dps = encoder.GetVelocityDegPerSec(); float vel_rpm = encoder.GetVelocityRPM(); printf(\"Velocity: %d LSB, %.2f deg/s, %.2f RPM\\n\", vel_lsb, vel_dps, vel_rpm); vTaskDelay(pdMS_TO_TICKS(100)); } } . | . ",
+    "content": "This example demonstrates reading velocity in different units. | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 . | #include \"as5047u.hpp\" void app_main() { // ... SPI setup (same as Example 1) as5047u::AS5047U encoder(*bus, FrameFormat::SPI_24); while (true) { // Read velocity in different units float vel_lsb = encoder.GetVelocity(as5047u::VelocityUnit::Lsb); float vel_dps = encoder.GetVelocity(as5047u::VelocityUnit::DegPerSec); float vel_rpm = encoder.GetVelocity(as5047u::VelocityUnit::Rpm); printf(\"Velocity: %.0f LSB, %.2f deg/s, %.2f RPM\\n\", vel_lsb, vel_dps, vel_rpm); vTaskDelay(pdMS_TO_TICKS(100)); } } . | . ",
     "url": "/hf-as5047u-driver/development/docs/examples/#example-2-velocity-measurement",
     
     "relUrl": "/docs/examples/#example-2-velocity-measurement"
   },"63": {
     "doc": "💡 Examples",
     "title": "Explanation",
-    "content": "The driver provides multiple velocity unit conversions: . | GetVelocity() - Returns signed 14-bit LSB units | GetVelocityDegPerSec() - Returns degrees per second | GetVelocityRPM() - Returns revolutions per minute | . ",
+    "content": "Use GetVelocity(VelocityUnit) to request the target unit in one call. Compatibility methods (GetVelocityDegPerSec(), GetVelocityRPM(), etc.) remain available. ",
     "url": "/hf-as5047u-driver/development/docs/examples/#explanation-1",
     
     "relUrl": "/docs/examples/#explanation-1"
   },"64": {
     "doc": "💡 Examples",
     "title": "Example 3: Diagnostics and Error Handling",
-    "content": "This example shows proper error handling and diagnostic reading. | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 . | #include \"as5047u.hpp\" void app_main() { // ... SPI setup as5047u::AS5047U encoder(*bus, FrameFormat::SPI_24); while (true) { // Read angle with retry on CRC errors uint16_t angle = encoder.GetAngle(3); // 3 retries // Read diagnostics uint8_t agc = encoder.GetAGC(); uint16_t mag = encoder.GetMagnitude(); // Check for errors AS5047U_Error errors = encoder.GetStickyErrorFlags(); if (errors != AS5047U_Error::None) { printf(\"Error detected: 0x%04X\\n\", static_cast&lt;uint16_t&gt;(errors)); // Check specific errors if (errors &amp; static_cast&lt;uint16_t&gt;(AS5047U_Error::AgcWarning)) { printf(\"Warning: AGC at limit - check magnet placement\\n\"); } if (errors &amp; static_cast&lt;uint16_t&gt;(AS5047U_Error::CrcError)) { printf(\"Warning: CRC error detected\\n\"); } } printf(\"Angle: %u, AGC: %u, Mag: %u\\n\", angle, agc, mag); vTaskDelay(pdMS_TO_TICKS(100)); } } . | . ",
+    "content": "This example shows proper error handling and diagnostic reading. | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 . | #include \"as5047u.hpp\" void app_main() { // ... SPI setup as5047u::AS5047U encoder(*bus, FrameFormat::SPI_24); while (true) { // Read angle with retry on CRC errors float angle_deg = encoder.GetAngle(as5047u::AngleUnit::Degrees, 3); // 3 retries // Read diagnostics uint8_t agc = encoder.GetAGC(); uint16_t mag = encoder.GetMagnitude(); // Check for errors AS5047U_Error errors = encoder.GetStickyErrorFlags(); if (errors != AS5047U_Error::None) { printf(\"Error detected: 0x%04X\\n\", static_cast&lt;uint16_t&gt;(errors)); // Check specific errors if (errors &amp; static_cast&lt;uint16_t&gt;(AS5047U_Error::AgcWarning)) { printf(\"Warning: AGC at limit - check magnet placement\\n\"); } if (errors &amp; static_cast&lt;uint16_t&gt;(AS5047U_Error::CrcError)) { printf(\"Warning: CRC error detected\\n\"); } } printf(\"Angle: %.2f°, AGC: %u, Mag: %u\\n\", angle_deg, agc, mag); vTaskDelay(pdMS_TO_TICKS(100)); } } . | . ",
     "url": "/hf-as5047u-driver/development/docs/examples/#example-3-diagnostics-and-error-handling",
     
     "relUrl": "/docs/examples/#example-3-diagnostics-and-error-handling"
@@ -519,7 +519,7 @@
   },"74": {
     "doc": "💡 Examples",
     "title": "Example 8: Full Feature Configuration",
-    "content": "This example demonstrates configuring all features together. | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 . | #include \"as5047u.hpp\" void app_main() { // ... SPI setup as5047u::AS5047U encoder(*bus, FrameFormat::SPI_24); // Configure all features encoder.SetZeroPosition(0); encoder.SetDirection(true); // Clockwise = positive encoder.SetDynamicAngleCompensation(true); encoder.SetAdaptiveFilter(true); encoder.SetFilterParameters(2, 3); encoder.SetABIResolution(12); encoder.SetUVWPolePairs(5); encoder.ConfigureInterface(true, true, false); // ABI + UVW printf(\"Full configuration applied\\n\"); // Dump status for verification encoder.DumpStatus(); // Main loop while (true) { uint16_t angle = encoder.GetAngle(); float vel_dps = encoder.GetVelocityDegPerSec(); uint8_t agc = encoder.GetAGC(); printf(\"Angle: %u, Vel: %.2f deg/s, AGC: %u\\n\", angle, vel_dps, agc); vTaskDelay(pdMS_TO_TICKS(100)); } } . | . ",
+    "content": "This example demonstrates configuring all features together. | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 . | #include \"as5047u.hpp\" void app_main() { // ... SPI setup as5047u::AS5047U encoder(*bus, FrameFormat::SPI_24); // Configure all features encoder.SetZeroPosition(0); encoder.SetDirection(true); // Clockwise = positive encoder.SetDynamicAngleCompensation(true); encoder.SetAdaptiveFilter(true); encoder.SetFilterParameters(2, 3); encoder.SetABIResolution(12); encoder.SetUVWPolePairs(5); encoder.ConfigureInterface(true, true, false); // ABI + UVW printf(\"Full configuration applied\\n\"); // Dump status for verification encoder.DumpStatus(); // Main loop while (true) { float angle_deg = encoder.GetAngle(as5047u::AngleUnit::Degrees); float vel_dps = encoder.GetVelocity(as5047u::VelocityUnit::DegPerSec); uint8_t agc = encoder.GetAGC(); printf(\"Angle: %.2f°, Vel: %.2f deg/s, AGC: %u\\n\", angle_deg, vel_dps, agc); vTaskDelay(pdMS_TO_TICKS(100)); } } . | . ",
     "url": "/hf-as5047u-driver/development/docs/examples/#example-8-full-feature-configuration",
     
     "relUrl": "/docs/examples/#example-8-full-feature-configuration"
@@ -960,7 +960,7 @@
   },"137": {
     "doc": "⚡ Quick Start",
     "title": "Minimal Example",
-    "content": "Here’s a complete working example: . | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 . | #include \"as5047u.hpp\" // 1. Implement the SPI interface class MySpi : public as5047u::SpiInterface&lt;MySpi&gt; { public: void transfer(const uint8_t* tx, uint8_t* rx, size_t len) { // Your SPI transfer implementation // Assert CS, transfer data, deassert CS } }; // 2. Create instances MySpi spi; as5047u::AS5047U encoder(spi, FrameFormat::SPI_24); // 24-bit frames with CRC // 3. Read angle uint16_t angle = encoder.GetAngle(); // compensated angle (0-16383) float angle_deg = angle * 360.0f / 16384.0f; // convert to degrees // 4. Read velocity int16_t vel = encoder.GetVelocity(); // velocity in LSB float vel_dps = encoder.GetVelocityDegPerSec(); // velocity in deg/s // 5. Diagnostics uint8_t agc = encoder.GetAGC(); // AGC value (0-255) uint16_t mag = encoder.GetMagnitude(); // magnetic magnitude uint16_t errors = encoder.GetErrorFlags(); // error flags . | . ",
+    "content": "Here’s a complete working example: . | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 . | #include \"as5047u.hpp\" // 1. Implement the SPI interface class MySpi : public as5047u::SpiInterface&lt;MySpi&gt; { public: void transfer(const uint8_t* tx, uint8_t* rx, size_t len) { // Your SPI transfer implementation // Assert CS, transfer data, deassert CS } }; // 2. Create instances MySpi spi; as5047u::AS5047U encoder(spi, FrameFormat::SPI_24); // 24-bit frames with CRC // 3. Read angle float angle_lsb = encoder.GetAngle(as5047u::AngleUnit::Lsb); float angle_deg = encoder.GetAngle(as5047u::AngleUnit::Degrees); // 4. Read velocity float vel_lsb = encoder.GetVelocity(as5047u::VelocityUnit::Lsb); float vel_dps = encoder.GetVelocity(as5047u::VelocityUnit::DegPerSec); // 5. Diagnostics uint8_t agc = encoder.GetAGC(); // AGC value (0-255) uint16_t mag = encoder.GetMagnitude(); // magnetic magnitude uint16_t errors = encoder.GetErrorFlags(); // error flags . | . ",
     "url": "/hf-as5047u-driver/development/docs/quickstart/#minimal-example",
     
     "relUrl": "/docs/quickstart/#minimal-example"
@@ -995,21 +995,21 @@
   },"142": {
     "doc": "⚡ Quick Start",
     "title": "Step 4: Read Angle",
-    "content": "| 1 . | uint16_t angle = encoder.GetAngle(); // 14-bit angle (0-16383) . | . The angle is returned as a 14-bit value (0-16383), where 0 = 0° and 16383 = 360°. ",
+    "content": "| 1 . | float angle = encoder.GetAngle(as5047u::AngleUnit::Lsb); // 14-bit angle in float form (0-16383) . | . Use AngleUnit to request the unit you need in one call (Lsb, Degrees, Radians). ",
     "url": "/hf-as5047u-driver/development/docs/quickstart/#step-4-read-angle",
     
     "relUrl": "/docs/quickstart/#step-4-read-angle"
   },"143": {
     "doc": "⚡ Quick Start",
-    "title": "Step 5: Convert to Degrees",
-    "content": "| 1 . | float angle_deg = angle * 360.0f / 16384.0f; . | . ",
-    "url": "/hf-as5047u-driver/development/docs/quickstart/#step-5-convert-to-degrees",
+    "title": "Step 5: Request Degrees Directly",
+    "content": "| 1 . | float angle_deg = encoder.GetAngle(as5047u::AngleUnit::Degrees); . | . ",
+    "url": "/hf-as5047u-driver/development/docs/quickstart/#step-5-request-degrees-directly",
     
-    "relUrl": "/docs/quickstart/#step-5-convert-to-degrees"
+    "relUrl": "/docs/quickstart/#step-5-request-degrees-directly"
   },"144": {
     "doc": "⚡ Quick Start",
     "title": "Step 6: Read Velocity",
-    "content": "| 1 2 3 . | int16_t vel = encoder.GetVelocity(); // LSB units float vel_dps = encoder.GetVelocityDegPerSec(); // degrees/second float vel_rpm = encoder.GetVelocityRPM(); // RPM . | . ",
+    "content": "| 1 2 3 . | float vel_lsb = encoder.GetVelocity(as5047u::VelocityUnit::Lsb); float vel_dps = encoder.GetVelocity(as5047u::VelocityUnit::DegPerSec); float vel_rpm = encoder.GetVelocity(as5047u::VelocityUnit::Rpm); . | . ",
     "url": "/hf-as5047u-driver/development/docs/quickstart/#step-6-read-velocity",
     
     "relUrl": "/docs/quickstart/#step-6-read-velocity"
@@ -1023,7 +1023,7 @@
   },"146": {
     "doc": "⚡ Quick Start",
     "title": "Complete Example with Error Handling",
-    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 . | #include \"as5047u.hpp\" class MySpi : public as5047u::SpiInterface&lt;MySpi&gt; { // ... SPI implementation }; void app_main() { MySpi spi; as5047u::AS5047U encoder(spi, FrameFormat::SPI_24); while (true) { // Read angle with retry on CRC errors uint16_t angle = encoder.GetAngle(3); // 3 retries // Check for errors AS5047U_Error errors = encoder.GetStickyErrorFlags(); if (errors != AS5047U_Error::None) { printf(\"Error detected: 0x%04X\\n\", static_cast&lt;uint16_t&gt;(errors)); } // Read diagnostics uint8_t agc = encoder.GetAGC(); uint16_t mag = encoder.GetMagnitude(); printf(\"Angle: %u (%.2f°), AGC: %u, Mag: %u\\n\", angle, angle * 360.0f / 16384.0f, agc, mag); vTaskDelay(pdMS_TO_TICKS(100)); } } . | . ",
+    "content": "| 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 . | #include \"as5047u.hpp\" class MySpi : public as5047u::SpiInterface&lt;MySpi&gt; { // ... SPI implementation }; void app_main() { MySpi spi; as5047u::AS5047U encoder(spi, FrameFormat::SPI_24); while (true) { // Read angle with retry on CRC errors float angle = encoder.GetAngle(as5047u::AngleUnit::Degrees, 3); // 3 retries // Check for errors AS5047U_Error errors = encoder.GetStickyErrorFlags(); if (errors != AS5047U_Error::None) { printf(\"Error detected: 0x%04X\\n\", static_cast&lt;uint16_t&gt;(errors)); } // Read diagnostics uint8_t agc = encoder.GetAGC(); uint16_t mag = encoder.GetMagnitude(); printf(\"Angle: %.2f°, AGC: %u, Mag: %u\\n\", angle, agc, mag); vTaskDelay(pdMS_TO_TICKS(100)); } } . | . ",
     "url": "/hf-as5047u-driver/development/docs/quickstart/#complete-example-with-error-handling",
     
     "relUrl": "/docs/quickstart/#complete-example-with-error-handling"

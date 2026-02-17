@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['rad_5fper_5flsb_0',['RAD_PER_LSB',['../structas5047u_1_1AS5047U_1_1Velocity.html#aac2cd52f139bbcc379cacddd7e2cf17d',1,'as5047u::AS5047U::Velocity']]],
+  ['rad_5fper_5flsb_0',['RAD_PER_LSB',['../structas5047u_1_1AS5047U_1_1Angle.html#a699d1f709dcf86036f8323d954454798',1,'as5047u::AS5047U::Angle::RAD_PER_LSB'],['../structas5047u_1_1AS5047U_1_1Velocity.html#aac2cd52f139bbcc379cacddd7e2cf17d',1,'as5047u::AS5047U::Velocity::RAD_PER_LSB']]],
   ['readout_5flatency_5fus_1',['READOUT_LATENCY_US',['../structAS5047U__TestConfig_1_1Timing.html#a7ae98529bd6b6a76b1bd5f22e600e6e4',1,'AS5047U_TestConfig::Timing']]],
   ['reserved_2',['reserved',['../structAS5047U__REG_1_1NOP.html#ac4d2f2d479d493defe3327121024f8e3',1,'AS5047U_REG::NOP']]],
   ['reserved_5f1_3',['reserved_1',['../structAS5047U__REG_1_1PROG.html#ae9be666da98f60b0df1a2ad085b6999b',1,'AS5047U_REG::PROG']]],

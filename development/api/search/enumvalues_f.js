@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['useanglecom_0',['UseANGLECOM',['../structAS5047U__REG_1_1SETTINGS2.html#a0bf2613a54b21f890873793e8e87cb46aa24118a34beac00630b1ce5c444b20dc',1,'AS5047U_REG::SETTINGS2']]],
-  ['useangleunc_1',['UseANGLEUNC',['../structAS5047U__REG_1_1SETTINGS2.html#a0bf2613a54b21f890873793e8e87cb46a67a4ef1b6a4b1a3c35b064d10f7175af',1,'AS5047U_REG::SETTINGS2']]],
-  ['uvw_5fpwm_5fon_5fi_2',['UVW_PWM_on_I',['../structAS5047U__REG_1_1SETTINGS2.html#af842d979eb61f108243f7d9a59612e00ae9949b878df882ba7a4d12ad488b79cc',1,'AS5047U_REG::SETTINGS2']]]
+  ['tristate_0',['Tristate',['../structAS5047U__REG_1_1DISABLE.html#a0b0f8cfb593348630f6c272a0e4e2e7ca1e12ce0c312e7dd542b46ed8e35a8902',1,'AS5047U_REG::DISABLE::Tristate'],['../structAS5047U__REG_1_1DISABLE.html#ab4c532c4b7ab8568f78b98aebebe50bca1e12ce0c312e7dd542b46ed8e35a8902',1,'AS5047U_REG::DISABLE::Tristate']]]
 ];

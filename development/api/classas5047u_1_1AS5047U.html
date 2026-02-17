@@ -148,6 +148,9 @@ $(function(){initNavTree('classas5047u_1_1AS5047U.html',''); initResizable(); })
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structas5047u_1_1AS5047U_1_1Angle.html">Angle</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structas5047u_1_1AS5047U_1_1Angle.html" title="Angle conversion helpers.">Angle</a> conversion helpers.  <a href="structas5047u_1_1AS5047U_1_1Angle.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structas5047u_1_1AS5047U_1_1Velocity.html">Velocity</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper constants and methods for velocity unit conversions.  <a href="structas5047u_1_1AS5047U_1_1Velocity.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,12 +168,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4b90fcf2e216c5131f3a9d9dcdfeb183" id="r_a4b90fcf2e216c5131f3a9d9dcdfeb183"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b90fcf2e216c5131f3a9d9dcdfeb183">GetAngle</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
 <tr class="memdesc:a4b90fcf2e216c5131f3a9d9dcdfeb183"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the 14-bit absolute angle with dynamic compensation (DAEC active).  <br /></td></tr>
 <tr class="separator:a4b90fcf2e216c5131f3a9d9dcdfeb183"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa013d8752fdfc03bf929a1842e8d1072" id="r_aa013d8752fdfc03bf929a1842e8d1072"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa013d8752fdfc03bf929a1842e8d1072">GetAngle</a> (<a class="el" href="namespaceas5047u.html#a4b6104e34e0d1518dad5babc20a8c3e3">AngleUnit</a> unit, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:aa013d8752fdfc03bf929a1842e8d1072"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read absolute angle in caller-selected unit.  <br /></td></tr>
+<tr class="separator:aa013d8752fdfc03bf929a1842e8d1072"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a656ca2a0d4d4a00343b2ea3531c6c4e7" id="r_a656ca2a0d4d4a00343b2ea3531c6c4e7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a656ca2a0d4d4a00343b2ea3531c6c4e7">GetAngleDegrees</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:a656ca2a0d4d4a00343b2ea3531c6c4e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read absolute angle in degrees.  <br /></td></tr>
+<tr class="separator:a656ca2a0d4d4a00343b2ea3531c6c4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad51e6f501e9b8513db94ef08e1cdffc1" id="r_ad51e6f501e9b8513db94ef08e1cdffc1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad51e6f501e9b8513db94ef08e1cdffc1">GetAngleRadians</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:ad51e6f501e9b8513db94ef08e1cdffc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read absolute angle in radians.  <br /></td></tr>
+<tr class="separator:ad51e6f501e9b8513db94ef08e1cdffc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b1a8d4068ec3df2b59f8791e1bca6ab" id="r_a0b1a8d4068ec3df2b59f8791e1bca6ab"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b1a8d4068ec3df2b59f8791e1bca6ab">GetRawAngle</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
 <tr class="memdesc:a0b1a8d4068ec3df2b59f8791e1bca6ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the 14-bit absolute angle without dynamic compensation (raw angle).  <br /></td></tr>
 <tr class="separator:a0b1a8d4068ec3df2b59f8791e1bca6ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4ee41f4ea8479b5aa0876d3bab26df5" id="r_ac4ee41f4ea8479b5aa0876d3bab26df5"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4ee41f4ea8479b5aa0876d3bab26df5">GetVelocity</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
 <tr class="memdesc:ac4ee41f4ea8479b5aa0876d3bab26df5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the current rotational velocity (signed 14-bit).  <br /></td></tr>
 <tr class="separator:ac4ee41f4ea8479b5aa0876d3bab26df5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accafcb6b3e10e3668c6eede930f23508" id="r_accafcb6b3e10e3668c6eede930f23508"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#accafcb6b3e10e3668c6eede930f23508">GetVelocity</a> (<a class="el" href="namespaceas5047u.html#a01f0c779d58027b848c3757ba5db972b">VelocityUnit</a> unit, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
+<tr class="memdesc:accafcb6b3e10e3668c6eede930f23508"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read rotational velocity in caller-selected unit.  <br /></td></tr>
+<tr class="separator:accafcb6b3e10e3668c6eede930f23508"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06057a7ce4b63baaa48f54414d8d6e19" id="r_a06057a7ce4b63baaa48f54414d8d6e19"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06057a7ce4b63baaa48f54414d8d6e19">GetVelocityDegPerSec</a> (uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>) const</td></tr>
 <tr class="memdesc:a06057a7ce4b63baaa48f54414d8d6e19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get rotational velocity in degrees per second.  <br /></td></tr>
 <tr class="separator:a06057a7ce4b63baaa48f54414d8d6e19"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -214,7 +229,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a57322e2ec208e49a4df20b4b90938c29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure interface outputs (ABI, UVW) and PWM output.  <br /></td></tr>
 <tr class="separator:a57322e2ec208e49a4df20b4b90938c29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45dee8589a4e785b032afd911debb9c4" id="r_a45dee8589a4e785b032afd911debb9c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45dee8589a4e785b032afd911debb9c4">SetDynamicAngleCompensation</a> (bool enable, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
-<tr class="memdesc:a45dee8589a4e785b032afd911debb9c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable/disable Dynamic Angle Error Compensation (DAEC).  <br /></td></tr>
+<tr class="memdesc:a45dee8589a4e785b032afd911debb9c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable/disable Dynamic <a class="el" href="structas5047u_1_1AS5047U_1_1Angle.html" title="Angle conversion helpers.">Angle</a> Error Compensation (DAEC).  <br /></td></tr>
 <tr class="separator:a45dee8589a4e785b032afd911debb9c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08d24195dbdcc0fccf2a2c9699db659b" id="r_a08d24195dbdcc0fccf2a2c9699db659b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08d24195dbdcc0fccf2a2c9699db659b">SetAdaptiveFilter</a> (bool enable, uint8_t retries=<a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a>)</td></tr>
 <tr class="memdesc:a08d24195dbdcc0fccf2a2c9699db659b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable/disable the adaptive filter (Dynamic Filter System).  <br /></td></tr>
@@ -501,8 +516,41 @@ template&lt;typename SpiType &gt; </div>
 
 </div>
 </div>
+<a id="aa013d8752fdfc03bf929a1842e8d1072" name="aa013d8752fdfc03bf929a1842e8d1072"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa013d8752fdfc03bf929a1842e8d1072">&#9670;&#160;</a></span>GetAngle() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::GetAngle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceas5047u.html#a4b6104e34e0d1518dad5babc20a8c3e3">AngleUnit</a></td>          <td class="paramname"><span class="paramname"><em>unit</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read absolute angle in caller-selected unit. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">unit</td><td>Output unit (LSB / degrees / radians). </td></tr>
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structas5047u_1_1AS5047U_1_1Angle.html" title="Angle conversion helpers.">Angle</a> value in the requested unit. </dd></dl>
+
+</div>
+</div>
 <a id="a4b90fcf2e216c5131f3a9d9dcdfeb183" name="a4b90fcf2e216c5131f3a9d9dcdfeb183"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b90fcf2e216c5131f3a9d9dcdfeb183">&#9670;&#160;</a></span>GetAngle()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b90fcf2e216c5131f3a9d9dcdfeb183">&#9670;&#160;</a></span>GetAngle() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -529,6 +577,34 @@ template&lt;typename SpiType &gt; </div>
 
 </div>
 </div>
+<a id="a656ca2a0d4d4a00343b2ea3531c6c4e7" name="a656ca2a0d4d4a00343b2ea3531c6c4e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a656ca2a0d4d4a00343b2ea3531c6c4e7">&#9670;&#160;</a></span>GetAngleDegrees()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::GetAngleDegrees </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read absolute angle in degrees. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structas5047u_1_1AS5047U_1_1Angle.html" title="Angle conversion helpers.">Angle</a> in degrees in the range [0, 360). </dd></dl>
+
+</div>
+</div>
 <a id="a462f687e1c59f66298912fd59fe62c53" name="a462f687e1c59f66298912fd59fe62c53"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a462f687e1c59f66298912fd59fe62c53">&#9670;&#160;</a></span>GetAngleOutputSource()</h2>
 
@@ -548,6 +624,34 @@ template&lt;typename SpiType &gt; </div>
 
 <p>Get currently selected angle output source for 0x3FFF reads. </p>
 <dl class="section return"><dt>Returns</dt><dd>AngleOutputSource enum indicating ANGLECOM or ANGLEUNC. </dd></dl>
+
+</div>
+</div>
+<a id="ad51e6f501e9b8513db94ef08e1cdffc1" name="ad51e6f501e9b8513db94ef08e1cdffc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad51e6f501e9b8513db94ef08e1cdffc1">&#9670;&#160;</a></span>GetAngleRadians()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::GetAngleRadians </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read absolute angle in radians. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structas5047u_1_1AS5047U_1_1Angle.html" title="Angle conversion helpers.">Angle</a> in radians in the range [0, 2π). </dd></dl>
 
 </div>
 </div>
@@ -723,7 +827,7 @@ template&lt;typename SpiType &gt; </div>
 </div>
 </div>
 <a id="ac4ee41f4ea8479b5aa0876d3bab26df5" name="ac4ee41f4ea8479b5aa0876d3bab26df5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4ee41f4ea8479b5aa0876d3bab26df5">&#9670;&#160;</a></span>GetVelocity()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4ee41f4ea8479b5aa0876d3bab26df5">&#9670;&#160;</a></span>GetVelocity() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -747,6 +851,39 @@ template&lt;typename SpiType &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The current velocity in LSB (signed 14-bit). </dd></dl>
+
+</div>
+</div>
+<a id="accafcb6b3e10e3668c6eede930f23508" name="accafcb6b3e10e3668c6eede930f23508"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accafcb6b3e10e3668c6eede930f23508">&#9670;&#160;</a></span>GetVelocity() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::GetVelocity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceas5047u.html#a01f0c779d58027b848c3757ba5db972b">VelocityUnit</a></td>          <td class="paramname"><span class="paramname"><em>unit</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>retries</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="namespaceAS5047U__CFG.html#a7570a6f4980be86e7ba031206ef76d65">AS5047U_CFG::CRC_RETRIES</a></span></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read rotational velocity in caller-selected unit. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">unit</td><td>Output unit (LSB / deg/s / rad/s / RPM). </td></tr>
+    <tr><td class="paramname">retries</td><td>Number of retries on CRC/framing error (default 0 = no retry). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structas5047u_1_1AS5047U_1_1Velocity.html" title="Helper constants and methods for velocity unit conversions.">Velocity</a> in the requested unit. </dd></dl>
 
 </div>
 </div>
@@ -1040,7 +1177,7 @@ template&lt;typename SpiType &gt; </div>
 <p>Select which angle register (0x3FFF) is returned on reads. </p>
 <p>Controls the Data_select bit in SETTINGS2. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">source</td><td>Angle output source:<ul>
+    <tr><td class="paramname">source</td><td><a class="el" href="structas5047u_1_1AS5047U_1_1Angle.html" title="Angle conversion helpers.">Angle</a> output source:<ul>
 <li>SETTINGS2::AngleOutputSource::UseANGLECOM: read compensated angle (ANGLECOM)</li>
 <li>SETTINGS2::AngleOutputSource::UseANGLEUNC: read raw angle (ANGLEUNC) </li>
 </ul>
@@ -1113,7 +1250,7 @@ template&lt;typename SpiType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Enable/disable Dynamic Angle Error Compensation (DAEC). </p>
+<p>Enable/disable Dynamic <a class="el" href="structas5047u_1_1AS5047U_1_1Angle.html" title="Angle conversion helpers.">Angle</a> Error Compensation (DAEC). </p>
 
 </div>
 </div>
