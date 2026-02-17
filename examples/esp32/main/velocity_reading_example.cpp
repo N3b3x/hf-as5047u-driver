@@ -48,12 +48,12 @@ extern "C" void app_main(void) {
   // Main reading loop
   while (true) {
     // Read velocity in different units
-    int16_t velocity_lsb = encoder.GetVelocity();
-    float vel_deg = encoder.GetVelocityDegPerSec();
-    float vel_rad = encoder.GetVelocityRadPerSec();
-    float vel_rpm = encoder.GetVelocityRPM();
+    float velocity_lsb = encoder.GetVelocity(as5047u::VelocityUnit::Lsb);
+    float vel_deg = encoder.GetVelocity(as5047u::VelocityUnit::DegPerSec);
+    float vel_rad = encoder.GetVelocity(as5047u::VelocityUnit::RadPerSec);
+    float vel_rpm = encoder.GetVelocity(as5047u::VelocityUnit::Rpm);
 
-    ESP_LOGI(TAG, "Velocity: %d LSB, %.2f deg/s, %.2f rad/s, %.2f RPM", velocity_lsb, vel_deg,
+    ESP_LOGI(TAG, "Velocity: %.0f LSB, %.2f deg/s, %.2f rad/s, %.2f RPM", velocity_lsb, vel_deg,
              vel_rad, vel_rpm);
 
     vTaskDelay(pdMS_TO_TICKS(100));

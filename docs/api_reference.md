@@ -47,6 +47,7 @@ explicit AS5047U(SpiType& bus, FrameFormat format = AS5047U_CFG::DEFAULT_FRAME_F
 
 | Method | Signature | Location |
 |--------|-----------|----------|
+| `GetAngle(AngleUnit)` | `float GetAngle(AngleUnit unit, uint8_t retries = AS5047U_CFG::CRC_RETRIES) const` | [`src/as5047u.ipp`](../src/as5047u.ipp) |
 | `GetAngle()` | `uint16_t GetAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const` | [`src/as5047u.ipp#L33`](../src/as5047u.ipp#L33) |
 | `GetRawAngle()` | `uint16_t GetRawAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const` | [`src/as5047u.ipp#L48`](../src/as5047u.ipp#L48) |
 
@@ -54,6 +55,7 @@ explicit AS5047U(SpiType& bus, FrameFormat format = AS5047U_CFG::DEFAULT_FRAME_F
 
 | Method | Signature | Location |
 |--------|-----------|----------|
+| `GetVelocity(VelocityUnit)` | `float GetVelocity(VelocityUnit unit, uint8_t retries = AS5047U_CFG::CRC_RETRIES) const` | [`src/as5047u.ipp`](../src/as5047u.ipp) |
 | `GetVelocity()` | `int16_t GetVelocity(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const` | [`src/as5047u.ipp#L63`](../src/as5047u.ipp#L63) |
 | `GetVelocityDegPerSec()` | `float GetVelocityDegPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const` | [`src/as5047u.ipp#L79`](../src/as5047u.ipp#L79) |
 | `GetVelocityRadPerSec()` | `float GetVelocityRadPerSec(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const` | [`src/as5047u.ipp#L84`](../src/as5047u.ipp#L84) |
@@ -115,6 +117,8 @@ explicit AS5047U(SpiType& bus, FrameFormat format = AS5047U_CFG::DEFAULT_FRAME_F
 | Type | Values | Location |
 |------|--------|----------|
 | `FrameFormat` | `SPI_16`, `SPI_24`, `SPI_32` | [`inc/as5047u_types.hpp#L15`](../inc/as5047u_types.hpp#L15) |
+| `AngleUnit` | `Lsb`, `Degrees`, `Radians` | [`inc/as5047u.hpp`](../inc/as5047u.hpp) |
+| `VelocityUnit` | `Lsb`, `DegPerSec`, `RadPerSec`, `Rpm` | [`inc/as5047u.hpp`](../inc/as5047u.hpp) |
 | `AS5047U_Error` | `None`, `AgcWarning`, `MagHalf`, `P2ramWarning`, `P2ramError`, `FramingError`, `CommandError`, `CrcError`, `WatchdogError`, `OffCompError`, `CordicOverflow` | [`inc/as5047u.hpp#L32`](../inc/as5047u.hpp#L32) |
 
 ### Structures

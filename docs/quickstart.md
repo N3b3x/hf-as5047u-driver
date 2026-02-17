@@ -38,12 +38,12 @@ MySpi spi;
 as5047u::AS5047U encoder(spi, FrameFormat::SPI_24); // 24-bit frames with CRC
 
 // 3. Read angle
-uint16_t angle = encoder.GetAngle();             // compensated angle (0-16383)
-float angle_deg = angle * 360.0f / 16384.0f;    // convert to degrees
+float angle_lsb = encoder.GetAngle(as5047u::AngleUnit::Lsb);
+float angle_deg = encoder.GetAngle(as5047u::AngleUnit::Degrees);
 
 // 4. Read velocity
-int16_t vel = encoder.GetVelocity();             // velocity in LSB
-float vel_dps = encoder.GetVelocityDegPerSec();  // velocity in deg/s
+float vel_lsb = encoder.GetVelocity(as5047u::VelocityUnit::Lsb);
+float vel_dps = encoder.GetVelocity(as5047u::VelocityUnit::DegPerSec);
 
 // 5. Diagnostics
 uint8_t agc = encoder.GetAGC();                  // AGC value (0-255)
@@ -90,23 +90,23 @@ The constructor takes:
 ### Step 4: Read Angle
 
 ```cpp
-uint16_t angle = encoder.GetAngle();  // 14-bit angle (0-16383)
+float angle = encoder.GetAngle(as5047u::AngleUnit::Lsb);  // 14-bit angle in float form (0-16383)
 ```
 
-The angle is returned as a 14-bit value (0-16383), where 0 = 0° and 16383 = 360°.
+Use `AngleUnit` to request the unit you need in one call (`Lsb`, `Degrees`, `Radians`).
 
-### Step 5: Convert to Degrees
+### Step 5: Request Degrees Directly
 
 ```cpp
-float angle_deg = angle * 360.0f / 16384.0f;
+float angle_deg = encoder.GetAngle(as5047u::AngleUnit::Degrees);
 ```
 
 ### Step 6: Read Velocity
 
 ```cpp
-int16_t vel = encoder.GetVelocity();              // LSB units
-float vel_dps = encoder.GetVelocityDegPerSec();   // degrees/second
-float vel_rpm = encoder.GetVelocityRPM();         // RPM
+float vel_lsb = encoder.GetVelocity(as5047u::VelocityUnit::Lsb);
+float vel_dps = encoder.GetVelocity(as5047u::VelocityUnit::DegPerSec);
+float vel_rpm = encoder.GetVelocity(as5047u::VelocityUnit::Rpm);
 ```
 
 ### Step 7: Check Diagnostics
@@ -132,7 +132,7 @@ void app_main() {
     
     while (true) {
         // Read angle with retry on CRC errors
-        uint16_t angle = encoder.GetAngle(3); // 3 retries
+        float angle = encoder.GetAngle(as5047u::AngleUnit::Degrees, 3); // 3 retries
         
         // Check for errors
         AS5047U_Error errors = encoder.GetStickyErrorFlags();
@@ -144,8 +144,7 @@ void app_main() {
         uint8_t agc = encoder.GetAGC();
         uint16_t mag = encoder.GetMagnitude();
         
-        printf("Angle: %u (%.2f°), AGC: %u, Mag: %u\n", 
-               angle, angle * 360.0f / 16384.0f, agc, mag);
+        printf("Angle: %.2f°, AGC: %u, Mag: %u\n", angle, agc, mag);
         
         vTaskDelay(pdMS_TO_TICKS(100));
     }

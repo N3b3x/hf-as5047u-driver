@@ -67,11 +67,11 @@ public:
 MySpi spi;
 as5047u::AS5047U encoder(spi, FrameFormat::SPI_24); // 24-bit frames with CRC
 
-// 3. Read angle
-uint16_t angle = encoder.GetAngle();             // compensated angle
-uint16_t rawAngle = encoder.GetRawAngle();       // raw angle without DAEC
-int16_t vel = encoder.GetVelocity();             // velocity in sensor units
-float vel_dps = encoder.GetVelocityDegPerSec(); // velocity in deg/s
+// 3. Read angle / velocity (unit-selected API)
+float angle_deg = encoder.GetAngle(as5047u::AngleUnit::Degrees);      // 0..360
+float angle_rad = encoder.GetAngle(as5047u::AngleUnit::Radians);      // 0..2π
+float vel_rpm = encoder.GetVelocity(as5047u::VelocityUnit::Rpm);
+float vel_dps = encoder.GetVelocity(as5047u::VelocityUnit::DegPerSec);
 
 // 4. Diagnostics
 uint8_t agc = encoder.GetAGC();            // automatic gain control
@@ -97,6 +97,8 @@ For detailed installation instructions, see [docs/installation.md](docs/installa
 
 | Method | Description |
 |--------|-------------|
+| `GetAngle(AngleUnit)` | Read absolute angle in selected unit (LSB/deg/rad) |
+| `GetVelocity(VelocityUnit)` | Read velocity in selected unit (LSB/deg/s/rad/s/RPM) |
 | `GetAngle()` | Read 14-bit compensated absolute angle |
 | `GetRawAngle()` | Read 14-bit raw absolute angle |
 | `GetVelocity()` | Read signed 14-bit velocity (LSB units) |
@@ -118,6 +120,8 @@ For detailed installation instructions, see [docs/installation.md](docs/installa
 | `ProgramOTP()` | Program current settings into OTP |
 
 For complete API documentation, see [docs/api_reference.md](docs/api_reference.md).
+
+Compatibility note: the unit-specific helpers (`GetAngleDegrees()`, `GetVelocityRPM()`, etc.) remain available for existing code, but new code should prefer the unit-enum overloads.
 
 ## 📊 Examples
 

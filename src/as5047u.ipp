@@ -50,6 +50,30 @@ uint16_t AS5047U<SpiType>::GetAngle(uint8_t retries) const {
 }
 
 template <typename SpiType>
+float AS5047U<SpiType>::GetAngle(AngleUnit unit, uint8_t retries) const {
+  switch (unit) {
+    case AngleUnit::Lsb:
+      return static_cast<float>(GetAngle(retries));
+    case AngleUnit::Degrees:
+      return GetAngleDegrees(retries);
+    case AngleUnit::Radians:
+      return GetAngleRadians(retries);
+    default:
+      return static_cast<float>(GetAngle(retries));
+  }
+}
+
+template <typename SpiType>
+float AS5047U<SpiType>::GetAngleDegrees(uint8_t retries) const {
+  return static_cast<float>(GetAngle(retries)) * Angle::DEG_PER_LSB;
+}
+
+template <typename SpiType>
+float AS5047U<SpiType>::GetAngleRadians(uint8_t retries) const {
+  return static_cast<float>(GetAngle(retries)) * Angle::RAD_PER_LSB;
+}
+
+template <typename SpiType>
 uint16_t AS5047U<SpiType>::GetRawAngle(uint8_t retries) const {
   uint16_t val = 0;
   constexpr uint16_t retryMask = static_cast<uint16_t>(AS5047U_Error::CrcError) |
@@ -78,6 +102,22 @@ int16_t AS5047U<SpiType>::GetVelocity(uint8_t retries) const {
     }
   }
   return val;
+}
+
+template <typename SpiType>
+float AS5047U<SpiType>::GetVelocity(VelocityUnit unit, uint8_t retries) const {
+  switch (unit) {
+    case VelocityUnit::Lsb:
+      return static_cast<float>(GetVelocity(retries));
+    case VelocityUnit::DegPerSec:
+      return GetVelocityDegPerSec(retries);
+    case VelocityUnit::RadPerSec:
+      return GetVelocityRadPerSec(retries);
+    case VelocityUnit::Rpm:
+      return GetVelocityRPM(retries);
+    default:
+      return static_cast<float>(GetVelocity(retries));
+  }
 }
 
 template <typename SpiType>

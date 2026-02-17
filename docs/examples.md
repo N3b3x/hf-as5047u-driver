@@ -37,9 +37,9 @@ void app_main() {
     
     // 3. Read angle in a loop
     while (true) {
-        uint16_t angle = encoder.GetAngle();
-        float angle_deg = angle * 360.0f / 16384.0f;
-        printf("Angle: %u (%.2f°)\n", angle, angle_deg);
+        float angle_lsb = encoder.GetAngle(as5047u::AngleUnit::Lsb);
+        float angle_deg = encoder.GetAngle(as5047u::AngleUnit::Degrees);
+        printf("Angle: %.0f (%.2f°)\n", angle_lsb, angle_deg);
         
         vTaskDelay(pdMS_TO_TICKS(100));
     }
@@ -50,7 +50,7 @@ void app_main() {
 
 1. **SPI Configuration**: Configure the SPI bus with appropriate pins and settings
 2. **Encoder Creation**: Create the encoder instance with SPI bus and frame format
-3. **Angle Reading**: Read angle values in a loop and convert to degrees
+3. **Angle Reading**: Request angle directly in the unit you need
 
 ### Expected Output
 
@@ -76,11 +76,11 @@ void app_main() {
     
     while (true) {
         // Read velocity in different units
-        int16_t vel_lsb = encoder.GetVelocity();
-        float vel_dps = encoder.GetVelocityDegPerSec();
-        float vel_rpm = encoder.GetVelocityRPM();
+        float vel_lsb = encoder.GetVelocity(as5047u::VelocityUnit::Lsb);
+        float vel_dps = encoder.GetVelocity(as5047u::VelocityUnit::DegPerSec);
+        float vel_rpm = encoder.GetVelocity(as5047u::VelocityUnit::Rpm);
         
-        printf("Velocity: %d LSB, %.2f deg/s, %.2f RPM\n", 
+        printf("Velocity: %.0f LSB, %.2f deg/s, %.2f RPM\n", 
                vel_lsb, vel_dps, vel_rpm);
         
         vTaskDelay(pdMS_TO_TICKS(100));
@@ -90,10 +90,8 @@ void app_main() {
 
 ### Explanation
 
-The driver provides multiple velocity unit conversions:
-- `GetVelocity()` - Returns signed 14-bit LSB units
-- `GetVelocityDegPerSec()` - Returns degrees per second
-- `GetVelocityRPM()` - Returns revolutions per minute
+Use `GetVelocity(VelocityUnit)` to request the target unit in one call.
+Compatibility methods (`GetVelocityDegPerSec()`, `GetVelocityRPM()`, etc.) remain available.
 
 ---
 
@@ -111,7 +109,7 @@ void app_main() {
     
     while (true) {
         // Read angle with retry on CRC errors
-        uint16_t angle = encoder.GetAngle(3);  // 3 retries
+        float angle_deg = encoder.GetAngle(as5047u::AngleUnit::Degrees, 3);  // 3 retries
         
         // Read diagnostics
         uint8_t agc = encoder.GetAGC();
@@ -131,7 +129,7 @@ void app_main() {
             }
         }
         
-        printf("Angle: %u, AGC: %u, Mag: %u\n", angle, agc, mag);
+        printf("Angle: %.2f°, AGC: %u, Mag: %u\n", angle_deg, agc, mag);
         
         vTaskDelay(pdMS_TO_TICKS(100));
     }
@@ -330,11 +328,11 @@ void app_main() {
     
     // Main loop
     while (true) {
-        uint16_t angle = encoder.GetAngle();
-        float vel_dps = encoder.GetVelocityDegPerSec();
+        float angle_deg = encoder.GetAngle(as5047u::AngleUnit::Degrees);
+        float vel_dps = encoder.GetVelocity(as5047u::VelocityUnit::DegPerSec);
         uint8_t agc = encoder.GetAGC();
         
-        printf("Angle: %u, Vel: %.2f deg/s, AGC: %u\n", angle, vel_dps, agc);
+        printf("Angle: %.2f°, Vel: %.2f deg/s, AGC: %u\n", angle_deg, vel_dps, agc);
         
         vTaskDelay(pdMS_TO_TICKS(100));
     }

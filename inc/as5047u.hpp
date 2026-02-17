@@ -46,6 +46,21 @@ enum class AS5047U_Error : uint16_t {
 // -----------------------------------------------------------------------------
 namespace as5047u {
 
+/** @brief Units for angle-returning APIs. */
+enum class AngleUnit : uint8_t {
+  Lsb,
+  Degrees,
+  Radians
+};
+
+/** @brief Units for velocity-returning APIs. */
+enum class VelocityUnit : uint8_t {
+  Lsb,
+  DegPerSec,
+  RadPerSec,
+  Rpm
+};
+
 /**
  * @brief AS5047U magnetic rotary sensor driver class.
  *
@@ -108,6 +123,26 @@ public:
    */
   [[nodiscard]] uint16_t GetAngle(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
 
+  /** @brief Read absolute angle in caller-selected unit.
+   *  @param unit Output unit (LSB / degrees / radians).
+   *  @param retries Number of retries on CRC/framing error (default 0 = no retry).
+   *  @return Angle value in the requested unit.
+   */
+  [[nodiscard]] float GetAngle(AngleUnit unit,
+                               uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+
+  /** @brief Read absolute angle in degrees.
+   *  @param retries Number of retries on CRC/framing error (default 0 = no retry).
+   *  @return Angle in degrees in the range [0, 360).
+   */
+  [[nodiscard]] float GetAngleDegrees(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+
+  /** @brief Read absolute angle in radians.
+   *  @param retries Number of retries on CRC/framing error (default 0 = no retry).
+   *  @return Angle in radians in the range [0, 2π).
+   */
+  [[nodiscard]] float GetAngleRadians(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+
   /**
    * @brief Read the 14-bit absolute angle without dynamic compensation (raw
    * angle).
@@ -124,6 +159,28 @@ public:
    *  @return The current velocity in LSB (signed 14-bit).
    */
   [[nodiscard]] int16_t GetVelocity(uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+
+  /** @brief Read rotational velocity in caller-selected unit.
+   *  @param unit Output unit (LSB / deg/s / rad/s / RPM).
+   *  @param retries Number of retries on CRC/framing error (default 0 = no retry).
+   *  @return Velocity in the requested unit.
+   */
+  [[nodiscard]] float GetVelocity(VelocityUnit unit,
+                                  uint8_t retries = AS5047U_CFG::CRC_RETRIES) const;
+
+  /** @brief Angle conversion helpers. */
+  struct Angle {
+    static constexpr float DEG_PER_LSB = 360.0F / 16384.0F;
+    static constexpr float RAD_PER_LSB = (2.0F * static_cast<float>(M_PI)) / 16384.0F;
+
+    static constexpr uint16_t DegreesToLsb(float degrees) noexcept {
+      return static_cast<uint16_t>((degrees * 16384.0F) / 360.0F) & 0x3FFF;
+    }
+
+    static constexpr uint16_t RadiansToLsb(float radians) noexcept {
+      return static_cast<uint16_t>((radians * 16384.0F) / (2.0F * static_cast<float>(M_PI))) & 0x3FFF;
+    }
+  };
 
   /** @brief Helper constants and methods for velocity unit conversions. */
   struct Velocity {
