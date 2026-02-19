@@ -6,6 +6,7 @@
 #pragma once
 #include "as5047u_spi_interface.hpp"
 #include "as5047u_registers.hpp"
+#include "as5047u_version.h"
 #include <algorithm>
 #include <array>
 #include <atomic>
@@ -453,6 +454,33 @@ public:
    */
   AS5047U_Error GetStickyErrorFlags() const;
 
+  // ===========================================================================
+  // Driver Version
+  // ===========================================================================
+
+  /**
+   * @brief Get the compiled driver version string.
+   * @return Null-terminated version string, e.g. "1.0.0".
+   */
+  static constexpr const char* GetDriverVersion() noexcept {
+    return HF_AS5047U_VERSION_STRING;
+  }
+
+  /** @brief Get the compiled driver major version number. */
+  static constexpr uint8_t GetDriverVersionMajor() noexcept {
+    return HF_AS5047U_VERSION_MAJOR;
+  }
+
+  /** @brief Get the compiled driver minor version number. */
+  static constexpr uint8_t GetDriverVersionMinor() noexcept {
+    return HF_AS5047U_VERSION_MINOR;
+  }
+
+  /** @brief Get the compiled driver patch version number. */
+  static constexpr uint8_t GetDriverVersionPatch() noexcept {
+    return HF_AS5047U_VERSION_PATCH;
+  }
+
 private:
   //------------------------------------------------------------------
   // Low-level helpers
@@ -495,6 +523,11 @@ inline bool AS5047U<SpiType>::SetDirection(bool clockwise, uint8_t retries) {
   auto s2 = ReadReg<AS5047U_REG::SETTINGS2>();
   s2.bits.DIR = clockwise ? 0 : 1;
   return WriteReg(s2, retries);
+}
+
+// Public API: Get driver version string
+inline const char* GetDriverVersion() noexcept {
+  return HF_AS5047U_VERSION_STRING;
 }
 
 } // namespace as5047u
