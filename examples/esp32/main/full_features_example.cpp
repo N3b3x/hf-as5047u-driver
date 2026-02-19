@@ -27,6 +27,7 @@ static const char* TAG = "AS5047U_Full";
 extern "C" void app_main(void) {
   ESP_LOGI(TAG, "as5047u::AS5047U Full Features Example");
   ESP_LOGI(TAG, "=============================");
+  ESP_LOGI(TAG, "Driver version: %s", as5047u::GetDriverVersion());
 
   // Create SPI bus using centralized test config
   auto bus = CreateEsp32As5047uSpiBus();
