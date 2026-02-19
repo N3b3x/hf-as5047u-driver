@@ -286,6 +286,18 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a86dbdb383a11b7c3fd25193d8ba983de" id="r_a86dbdb383a11b7c3fd25193d8ba983de"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86dbdb383a11b7c3fd25193d8ba983de">ComputeCRC8</a> (uint16_t data16)</td></tr>
 <tr class="separator:a86dbdb383a11b7c3fd25193d8ba983de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43d902329bb693cff2b5267b04729c4d" id="r_a43d902329bb693cff2b5267b04729c4d"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43d902329bb693cff2b5267b04729c4d">GetDriverVersion</a> () noexcept</td></tr>
+<tr class="memdesc:a43d902329bb693cff2b5267b04729c4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the compiled driver version string.  <br /></td></tr>
+<tr class="separator:a43d902329bb693cff2b5267b04729c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40d9ca5cd579d76d6a5dddf05ea0b69b" id="r_a40d9ca5cd579d76d6a5dddf05ea0b69b"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40d9ca5cd579d76d6a5dddf05ea0b69b">GetDriverVersionMajor</a> () noexcept</td></tr>
+<tr class="memdesc:a40d9ca5cd579d76d6a5dddf05ea0b69b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the compiled driver major version number.  <br /></td></tr>
+<tr class="separator:a40d9ca5cd579d76d6a5dddf05ea0b69b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7554b4e98ff6e8338a5e992deef3b006" id="r_a7554b4e98ff6e8338a5e992deef3b006"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7554b4e98ff6e8338a5e992deef3b006">GetDriverVersionMinor</a> () noexcept</td></tr>
+<tr class="memdesc:a7554b4e98ff6e8338a5e992deef3b006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the compiled driver minor version number.  <br /></td></tr>
+<tr class="separator:a7554b4e98ff6e8338a5e992deef3b006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a351a5ae56959161d5487c0434c7d4fe9" id="r_a351a5ae56959161d5487c0434c7d4fe9"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a351a5ae56959161d5487c0434c7d4fe9">GetDriverVersionPatch</a> () noexcept</td></tr>
+<tr class="memdesc:a351a5ae56959161d5487c0434c7d4fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the compiled driver patch version number.  <br /></td></tr>
+<tr class="separator:a351a5ae56959161d5487c0434c7d4fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename SpiType&gt;<br />
@@ -674,6 +686,123 @@ template&lt;typename SpiType &gt; </div>
 
 <p>Read the full diagnostic register (DIA). </p>
 <dl class="section return"><dt>Returns</dt><dd>DIA register struct containing per-bit calibration and status flags. </dd></dl>
+
+</div>
+</div>
+<a id="a43d902329bb693cff2b5267b04729c4d" name="a43d902329bb693cff2b5267b04729c4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43d902329bb693cff2b5267b04729c4d">&#9670;&#160;</a></span>GetDriverVersion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr const char * <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::GetDriverVersion </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the compiled driver version string. </p>
+<dl class="section return"><dt>Returns</dt><dd>Null-terminated version string, e.g. "1.0.0". </dd></dl>
+
+</div>
+</div>
+<a id="a40d9ca5cd579d76d6a5dddf05ea0b69b" name="a40d9ca5cd579d76d6a5dddf05ea0b69b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40d9ca5cd579d76d6a5dddf05ea0b69b">&#9670;&#160;</a></span>GetDriverVersionMajor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr uint8_t <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::GetDriverVersionMajor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the compiled driver major version number. </p>
+
+</div>
+</div>
+<a id="a7554b4e98ff6e8338a5e992deef3b006" name="a7554b4e98ff6e8338a5e992deef3b006"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7554b4e98ff6e8338a5e992deef3b006">&#9670;&#160;</a></span>GetDriverVersionMinor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr uint8_t <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::GetDriverVersionMinor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the compiled driver minor version number. </p>
+
+</div>
+</div>
+<a id="a351a5ae56959161d5487c0434c7d4fe9" name="a351a5ae56959161d5487c0434c7d4fe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a351a5ae56959161d5487c0434c7d4fe9">&#9670;&#160;</a></span>GetDriverVersionPatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename SpiType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr uint8_t <a class="el" href="classas5047u_1_1AS5047U.html">as5047u::AS5047U</a>&lt; SpiType &gt;::GetDriverVersionPatch </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the compiled driver patch version number. </p>
 
 </div>
 </div>
