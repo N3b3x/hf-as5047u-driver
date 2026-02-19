@@ -1,65 +1,51 @@
-# =============================================================================
-# AS5047U Driver Component - CMakeLists.txt
-# =============================================================================
-# This component provides the AS5047U driver library
-# =============================================================================
-
-cmake_minimum_required(VERSION 3.16)
-
-# =============================================================================
-# Path Configuration
-# =============================================================================
-# Set the source root path relative to this component directory
-set(SRC_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../../../src")
-set(INC_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../../../inc")
-
-message(STATUS "AS5047U Driver - ESP32 Component Configuration")
-message(STATUS "Source Root: ${SRC_ROOT}")
+###############################################################################
+# HF AS5047U Driver - ESP-IDF Component Wrapper
+###############################################################################
+# Purpose:
+#   Adapt the generic, hardware-agnostic driver target contract to ESP-IDF's
+#   component model using idf_component_register().
+#
+# Key Rule:
+#   Do not duplicate source/include/dependency definitions here.
+#   Always consume the shared build settings from driver root.
+#
+# Note:
+#   cmake_minimum_required() is intentionally omitted here — ESP-IDF's
+#   project.cmake already sets it and adding another can cause policy conflicts.
+###############################################################################
 
 # =============================================================================
-# Source File Discovery and Validation
+# Shared Build Contract Import
 # =============================================================================
-# Driver is header-only: implementation is in src/as5047u.ipp (included by inc/as5047u.hpp).
-# No separate .cpp to compile; template is instantiated by the main application.
-set(DRIVER_SRCS "")
+set(HF_AS5047U_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../../.." CACHE PATH
+    "Path to root of hf-as5047u-driver (auto-detected from component location)")
 
-# Optional: if a non-header implementation file is added later, discover it here
-if(EXISTS "${SRC_ROOT}/as5047u.cpp")
-    list(APPEND DRIVER_SRCS "${SRC_ROOT}/as5047u.cpp")
-    message(STATUS "Found driver source: ${SRC_ROOT}/as5047u.cpp")
+# Normalise and validate the resolved path
+get_filename_component(HF_AS5047U_ROOT "${HF_AS5047U_ROOT}" ABSOLUTE)
+if(NOT EXISTS "${HF_AS5047U_ROOT}/cmake/hf_as5047u_build_settings.cmake")
+    message(FATAL_ERROR
+        "Cannot find AS5047U driver root.\n"
+        "  Resolved path: ${HF_AS5047U_ROOT}\n"
+        "  Expected file: ${HF_AS5047U_ROOT}/cmake/hf_as5047u_build_settings.cmake\n"
+        "  Fix: set HF_AS5047U_ROOT to the correct driver checkout path.")
 endif()
-set(EXISTING_SRCS ${DRIVER_SRCS})
+
+include("${HF_AS5047U_ROOT}/cmake/hf_as5047u_build_settings.cmake")
 
 # =============================================================================
-# Include Directories Configuration
+# ESP-IDF Component Registration
 # =============================================================================
-# Define include directories for the driver component
-set(DRIVER_INCLUDE_DIRS
-    "${INC_ROOT}"                       # Main driver headers
-)
-
-# =============================================================================
-# Component Dependencies
-# =============================================================================
-# Define required ESP-IDF components for the driver
-set(DRIVER_REQUIRES
-    driver              # ESP-IDF driver framework
-    freertos            # FreeRTOS support
-)
-
-# =============================================================================
-# Component Registration
-# =============================================================================
-# Register the driver component with ESP-IDF build system
 idf_component_register(
-    SRCS ${EXISTING_SRCS}                 # Source files (validated above)
-    INCLUDE_DIRS ${DRIVER_INCLUDE_DIRS}   # Include directories defined above
-    REQUIRES ${DRIVER_REQUIRES}           # Component dependencies defined above
+    SRCS ${HF_AS5047U_SOURCE_FILES}
+    INCLUDE_DIRS ${HF_AS5047U_PUBLIC_INCLUDE_DIRS}
+    REQUIRES ${HF_AS5047U_IDF_REQUIRES}
 )
 
 # =============================================================================
-# Compiler Configuration
+# C++ Standard Contract
 # =============================================================================
-# Header-only component becomes an INTERFACE library when SRCS is empty.
-# Use INTERFACE so that targets linking this component get C++20.
-target_compile_features(${COMPONENT_LIB} INTERFACE cxx_std_20)
+if(HF_AS5047U_SOURCE_FILES)
+    target_compile_features(${COMPONENT_LIB} PRIVATE cxx_std_20)
+else()
+    target_compile_features(${COMPONENT_LIB} INTERFACE cxx_std_20)
+endif()

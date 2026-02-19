@@ -472,6 +472,7 @@ extern "C" void app_main(void) {
                 "                  ║");
   ESP_LOGI(TAG, "╚═════════════════════════════════════════════════════════════"
                 "═════════════════╝");
+  ESP_LOGI(TAG, "Driver version: %s", as5047u::GetDriverVersion());
   ESP_LOGI(TAG, "");
 
   print_test_section_status(TAG, "AS5047U");

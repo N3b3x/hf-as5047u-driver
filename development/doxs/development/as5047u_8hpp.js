@@ -27,5 +27,6 @@ var as5047u_8hpp =
       [ "DegPerSec", "as5047u_8hpp.html#a01f0c779d58027b848c3757ba5db972baab020e6d6e6b5220ace64a3a350675aa", null ],
       [ "RadPerSec", "as5047u_8hpp.html#a01f0c779d58027b848c3757ba5db972bab49d1f0405ad048ffd540e16a823056b", null ],
       [ "Rpm", "as5047u_8hpp.html#a01f0c779d58027b848c3757ba5db972babfbb9bf22207805b46664fc3576f1701", null ]
-    ] ]
+    ] ],
+    [ "GetDriverVersion", "as5047u_8hpp.html#a1ac9f45cdcea4ae68476603a1b2d0c2d", null ]
 ];

@@ -9,8 +9,8 @@ var searchData=
   ['max_5frotation_5fspeed_5frpm_6',['MAX_ROTATION_SPEED_RPM',['../structAS5047U__TestConfig_1_1EncoderSpecs.html#a1fdd8459c68d0cedecdf6088b8dcc0cf',1,'AS5047U_TestConfig::EncoderSpecs']]],
   ['miso_7',['MISO',['../structAS5047U__TestConfig_1_1SPIPins.html#add5704b2f202f10d9a52d7a36112ce07',1,'AS5047U_TestConfig::SPIPins']]],
   ['miso_5fpin_8',['miso_pin',['../structEsp32As5047uSpiBus_1_1SPIConfig.html#ac6c24d94202afc469d2e117814790c89',1,'Esp32As5047uSpiBus::SPIConfig']]],
-  ['mode_9',['MODE',['../structAS5047U__TestConfig_1_1SPIParams.html#a5ab8ebd8cf31faa7e23d7dc3081d30ac',1,'AS5047U_TestConfig::SPIParams']]],
-  ['mode_10',['mode',['../structEsp32As5047uSpiBus_1_1SPIConfig.html#a9ff5aed6cc3fa82e313109a947e4274f',1,'Esp32As5047uSpiBus::SPIConfig']]],
+  ['mode_9',['mode',['../structEsp32As5047uSpiBus_1_1SPIConfig.html#a9ff5aed6cc3fa82e313109a947e4274f',1,'Esp32As5047uSpiBus::SPIConfig']]],
+  ['mode_10',['MODE',['../structAS5047U__TestConfig_1_1SPIParams.html#a5ab8ebd8cf31faa7e23d7dc3081d30ac',1,'AS5047U_TestConfig::SPIParams']]],
   ['mosi_11',['MOSI',['../structAS5047U__TestConfig_1_1SPIPins.html#aed131d2c6e1cf0bf86461cd8cfd3bfa4',1,'AS5047U_TestConfig::SPIPins']]],
   ['mosi_5fpin_12',['mosi_pin',['../structEsp32As5047uSpiBus_1_1SPIConfig.html#a92d017c9cf08f806e5679805b5f5b285',1,'Esp32As5047uSpiBus::SPIConfig']]]
 ];

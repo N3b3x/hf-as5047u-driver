@@ -35,6 +35,7 @@ extern "C" void app_main(void) {
   
   ESP_LOGI(TAG, "as5047u::AS5047U Basic Angle Reading Example");
   ESP_LOGI(TAG, "===================================");
+  ESP_LOGI(TAG, "Driver version: %s", as5047u::GetDriverVersion());
 
   // Create SPI bus using centralized configuration from esp32_as5047u_test_config.hpp
   // This ensures consistency across all examples and makes it easy to change
