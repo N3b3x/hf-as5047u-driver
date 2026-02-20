@@ -197,7 +197,7 @@
   },"28": {
     "doc": "⚙️ CMake Integration",
     "title": "AS5047U — CMake Integration Guide",
-    "content": "How to consume the AS5047U driver in your CMake or ESP-IDF project. Build contract architecture, variable naming conventions, porting guide, and templates for new drivers are documented at the HAL level: CMake Build Contract. This page covers only the AS5047U-specific integration steps. ",
+    "content": "How to consume the AS5047U driver in your CMake or ESP-IDF project. ",
     "url": "/hf-as5047u-driver/development/docs/cmake_integration/#as5047u--cmake-integration-guide",
     
     "relUrl": "/docs/cmake_integration/#as5047u--cmake-integration-guide"
@@ -225,7 +225,7 @@
   },"32": {
     "doc": "⚙️ CMake Integration",
     "title": "Version Header",
-    "content": "The build system generates as5047u_version.h at configure time: . | 1 2 3 4 . | #define HF_AS5047U_VERSION_MAJOR 1 #define HF_AS5047U_VERSION_MINOR 0 #define HF_AS5047U_VERSION_PATCH 0 #define HF_AS5047U_VERSION_STRING \"1.0.0\" . | . Navigation ⬅️ Back to Documentation Index | CMake Build Contract ↗ . ",
+    "content": "The build system generates as5047u_version.h at configure time: . | 1 2 3 4 . | #define HF_AS5047U_VERSION_MAJOR 1 #define HF_AS5047U_VERSION_MINOR 0 #define HF_AS5047U_VERSION_PATCH 0 #define HF_AS5047U_VERSION_STRING \"1.0.0\" . | . Navigation ⬅️ Back to Documentation Index . ",
     "url": "/hf-as5047u-driver/development/docs/cmake_integration/#version-header",
     
     "relUrl": "/docs/cmake_integration/#version-header"
