@@ -158,6 +158,7 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 </blockquote>
 <p><b>HF-AS5047U</b> is a portable C++20 driver for the <b>AS5047U</b> magnetic encoder from ams. It delivers fast 14‑bit absolute angle readings over SPI, optional CRC protection and advanced features like Dynamic Angle Error Compensation (DAEC) and an adaptive Dynamic Filter System (DFS™). The sensor can also output incremental (A/B/I) and 3‑phase commutation (UVW) signals or a PWM encoded angle, making it a drop‑in replacement for optical encoders in high-performance motor control and robotics.</p>
 <p>The driver uses a CRTP-based <code>SpiInterface</code> for hardware abstraction, allowing it to run on any platform (ESP32, STM32, Arduino, etc.) with zero runtime overhead. It implements all major features from the AS5047U datasheet including absolute angle readout with/without DAEC, velocity measurement, AGC and magnetic field diagnostics, ABI/UVW/PWM interface configuration, error/status flag handling, and full OTP programming sequence.</p>
+<p><img src="docs/assets/as5047u-interfaces.svg" alt="AS5047U magnetic encoder interfaces — SPI / ABI / UVW / PWM" style="pointer-events: none;" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 ✨ Features</h1>
 <ul>

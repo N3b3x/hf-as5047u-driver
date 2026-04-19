@@ -617,7 +617,7 @@
   },"88": {
     "doc": "🔌 Hardware Setup",
     "title": "Hardware Setup",
-    "content": "This guide covers the physical connections and hardware requirements for the AS5047U magnetic encoder chip. ",
+    "content": ". This guide covers the physical connections and hardware requirements for the AS5047U magnetic encoder chip. ",
     "url": "/hf-as5047u-driver/development/docs/hardware_setup/#hardware-setup",
     
     "relUrl": "/docs/hardware_setup/#hardware-setup"
