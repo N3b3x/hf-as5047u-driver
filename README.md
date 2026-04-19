@@ -23,8 +23,9 @@ permalink: /
 5. [API Reference](#-api-reference)
 6. [Examples](#-examples)
 7. [Documentation](#-documentation)
-8. [Contributing](#-contributing)
-9. [License](#-license)
+8. [References](#-references)
+9. [Contributing](#-contributing)
+10. [License](#-license)
 
 ## 📦 Overview
 
@@ -132,6 +133,16 @@ Detailed example walkthroughs are available in [docs/examples.md](docs/examples.
 ## 📚 Documentation
 
 For complete documentation, see the [docs directory](docs/index.md).
+
+## 🔗 References
+
+| Resource | Link |
+|----------|------|
+| ams AS5047U product page | <https://ams.com/as5047u> |
+| AS5047U datasheet (ams) | <https://ams.com/documents/20143/36005/AS5047U_DS000637_2-00.pdf> |
+| DAEC application note | <https://ams.com/documents/20143/36005/AS5047_AN000288_1-00.pdf> |
+| ESP-IDF SPI master | <https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/spi_master.html> |
+| C++20 language reference | <https://en.cppreference.com/w/cpp/20> |
 
 ## 🤝 Contributing
 
