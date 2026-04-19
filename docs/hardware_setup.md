@@ -9,6 +9,8 @@ permalink: /docs/hardware_setup/
 
 # Hardware Setup
 
+![AS5047U interfaces — SPI / ABI / UVW / PWM](assets/as5047u-interfaces.svg)
+
 This guide covers the physical connections and hardware requirements for the AS5047U magnetic encoder chip.
 
 ## Pin Connections

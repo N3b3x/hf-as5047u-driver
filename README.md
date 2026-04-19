@@ -36,6 +36,8 @@ permalink: /
 
 The driver uses a CRTP-based `SpiInterface` for hardware abstraction, allowing it to run on any platform (ESP32, STM32, Arduino, etc.) with zero runtime overhead. It implements all major features from the AS5047U datasheet including absolute angle readout with/without DAEC, velocity measurement, AGC and magnetic field diagnostics, ABI/UVW/PWM interface configuration, error/status flag handling, and full OTP programming sequence.
 
+![AS5047U magnetic encoder interfaces — SPI / ABI / UVW / PWM](docs/assets/as5047u-interfaces.svg)
+
 ## ✨ Features
 
 - ✅ **14-bit absolute angle** with optional CRC check
