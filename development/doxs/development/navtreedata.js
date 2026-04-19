@@ -33,8 +33,9 @@ var NAVTREE =
     [ "📖 API Reference", "index.html#autotoc_md6", null ],
     [ "📊 Examples", "index.html#autotoc_md7", null ],
     [ "📚 Documentation", "index.html#autotoc_md8", null ],
-    [ "🤝 Contributing", "index.html#autotoc_md9", null ],
-    [ "📄 License", "index.html#autotoc_md10", null ],
+    [ "🔗 References", "index.html#autotoc_md9", null ],
+    [ "🤝 Contributing", "index.html#autotoc_md10", null ],
+    [ "📄 License", "index.html#autotoc_md11", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -73,7 +74,7 @@ var NAVTREEINDEX =
 "TestFramework_8h.html",
 "globals_enum.html",
 "structAS5047U__REG_1_1SETTINGS1.html#a5ef3b6165d17481e82fb365b34af7a62a068dd0d821d50dd1294eaefa5a5c27af",
-"structTestResults.html"
+"structEsp32As5047uSpiBus_1_1SPIConfig.html#ac6c24d94202afc469d2e117814790c89"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
