@@ -18,7 +18,7 @@ var searchData=
   ['configuration_5fexample_2ecpp_15',['configuration_example.cpp',['../configuration__example_8cpp.html',1,'']]],
   ['configureinterface_16',['ConfigureInterface',['../classas5047u_1_1AS5047U.html#a57322e2ec208e49a4df20b4b90938c29',1,'as5047u::AS5047U']]],
   ['contents_17',['📚 Table of Contents',['../index.html#autotoc_md1',1,'']]],
-  ['contributing_18',['🤝 Contributing',['../index.html#autotoc_md9',1,'']]],
+  ['contributing_18',['🤝 Contributing',['../index.html#autotoc_md10',1,'']]],
   ['controlpins_19',['ControlPins',['../structAS5047U__TestConfig_1_1ControlPins.html',1,'AS5047U_TestConfig']]],
   ['cordic_5foverflow_20',['CORDIC_Overflow',['../structAS5047U__REG_1_1ERRFL.html#a08adcebf098e1ed046529d4c9cd76800',1,'AS5047U_REG::ERRFL']]],
   ['cordic_5foverflow_5fflag_21',['CORDIC_overflow_flag',['../structAS5047U__REG_1_1DIA.html#a819e6ca06c137af95ff9a335f74c3f36',1,'AS5047U_REG::DIA']]],
